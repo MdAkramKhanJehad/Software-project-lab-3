@@ -13,30 +13,30 @@
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
-    <body>
-      <section class="vh-100" >
-        <div class="container h-100 mt-10">
-          <div class="row d-flex align-items-center h-95">
+    <body  class="bg-success bg-gradient" >
+      <section class="vh-100 mw-100" >
+        <div class="container bg-success bg-gradient h-100">
+          <div class="row align-items-center">
             <div align="center">
               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
                 class="img-fluid" style="max-width: 350px" alt="Phone image">
             </div>
-            <h3 align="center">Welcome to HELLion</h3>
+            <h2 class='text-light' align="center">Welcome to HELLion</h2>
             <br><br><br>
             <div class="w-55 mb-3"  align="center">
               <form  method="post" action="/home">
                 {% csrf_token %}
                 <div class="form-group w-50 p-3">
                   <div style='input-group' align='left'>
-                    <label for="email"><h4><b>Enter email address</b></h4></label>
+                    <label class='text-light' for="email"><h4><b>Enter email address</b></h4></label>
                   </div>
                   <div style='input-group'>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+                    <input  type="email" class="form-control " name="email" id="email" placeholder="Enter email">
                   </div>
                   
                 </div>
                 <div class="text-center ">
-                  <button type="submit" class="btn btn-success" style="font-size:20px">Login</button>
+                  <button type="submit" class="btn btn-light btn-outline-success" style="font-size:20px"><b>Login</b></button>
                 </div>   
               </form>
             </div>
