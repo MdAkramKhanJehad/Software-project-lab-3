@@ -2,6 +2,47 @@
 
 {% block title %}Home{% endblock title %}
 
-{% block body %}
-<h2>This is Home body</h2>
+
+{% block stylesheet %}
+    <style>
+        .btn-secondary,
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            color: #333;
+            text-shadow: none; /* Prevent inheritance from `body` */
+        }
+
+        body {
+            text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+            box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+        }
+
+        .cover-container {
+            max-width: 42em;
+        }
+    </style>
+{% endblock stylesheet %} 
+
+
+{% block body %} 
+
+<div class="d-flex h-100 text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+        <main class="px-3">
+        <h1>Hello there!</h1>
+        <p class="lead">Welcome to HELion survey! We appriciate your participation. Don't worry about your data. It is very important to us. It will not be public.</p>
+        
+        <div class="row">
+            <div class="col-6 mx-auto">
+              <div class="d-flex align-items-center justify-content-evenly">
+                <a class="btn btn-outline-light btn-rounded btn-Success px-2" href="http://127.0.0.1:8000/home/search-routine" role="button">Search Routine</a>
+                <a class="btn btn-outline-light btn-rounded btn-Success" href="http://127.0.0.1:8000/home/create-routine" role="button">Create Routine</a>
+              </div>
+            </div>
+          </div>
+        </main>
+
+    </div>
+</div>
+
 {% endblock body %}
