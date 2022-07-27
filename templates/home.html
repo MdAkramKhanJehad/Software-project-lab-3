@@ -9,7 +9,7 @@
         .btn-secondary:hover,
         .btn-secondary:focus {
             color: #333;
-            text-shadow: none; /* Prevent inheritance from `body` */
+            text-shadow: none;
         }
 
         body {
@@ -26,23 +26,23 @@
 
 {% block body %} 
 
-<div class="d-flex h-100 text-center text-white bg-dark">
-    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
-        <main class="px-3">
-        <h1>Hello there!</h1>
-        <p class="lead">Welcome to HELion survey! We appriciate your participation. Don't worry about your data. It is very important to us. It will not be public.</p>
-        
-        <div class="row">
-            <div class="col-6 mx-auto">
-              <div class="d-flex align-items-center justify-content-evenly">
-                <a class="btn btn-outline-light btn-rounded btn-Success px-2" href="http://127.0.0.1:8000/home/search-routine" role="button">Search Routine</a>
-                <a class="btn btn-outline-light btn-rounded btn-Success" href="http://127.0.0.1:8000/home/create-routine" role="button">Create Routine</a>
-              </div>
-            </div>
-          </div>
-        </main>
-
+    <div class="container-fluid min-vh-100 d-flex justify-content-center h-100 p-3 pt-5 text-center bg-white">
+        <div class="cover-container w-100 h-100">
+            <main class="px-3">
+                <h1 class="text-success">Hello there!</h1>
+                <p class="lead text-dark"><b>Welcome to HELion survey! We appriciate your participation. Don't worry about your data. It is very important to us. It will not be public.</b></p>
+                
+                <div class="row">
+                    <div class="col-6 mx-auto">
+                        <div class="d-flex align-items-center justify-content-evenly">
+                            <a class="btn btn-outline-light bg-success btn-rounded btn-Success p-2" href="http://127.0.0.1:8000/home/search-routine" role="button"><b>Search Routine</b></a>
+                            <a class="btn btn-outline-light bg-success btn-rounded btn-Success p-2" href="http://127.0.0.1:8000/home/create-routine" role="button"><b>Create Routine</b></a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
-</div>
+
 
 {% endblock body %}

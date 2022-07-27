@@ -2,6 +2,38 @@
 
 {% block title %}Search{% endblock title %}
 
+{% block stylesheet %}
+
+    {% load static %}
+    <link id="pagestyle" href="{% static 'style_search_page.css' %}" type="text/css" rel="stylesheet" />
+
+{% endblock stylesheet %} 
+
 {% block body %}
-<h2>This is Search body</h2>
+
+
+    <div class="container-fluid min-vh-100 d-flex justify-content-center h-100 p-3 pt-5 text-center bg-white">
+        <div class="cover-container w-100 h-100 justify-content-center">
+            <h3>Search your previously created routines</h3>
+            <div class="container pt-3">
+
+                <div class="row height d-flex justify-content-center">
+
+                  <div class="col-md-6">
+
+                    <div class="search">
+                      {% comment %} <i class="fa fa-search"></i> {% endcomment %}
+                      <input type="text" class="form-control rounded border-success" placeholder="Enter your ID">
+                      <button type="submit" class="btn bg-success btn-outline-success text-light" style="font-size:20px"><b>Search</b></button>
+                      {% comment %} <button class="btn btn-success">Search</button> {% endcomment %}
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 {% endblock body %}
