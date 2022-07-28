@@ -7,4 +7,4 @@ def index(request):
     return redirect('login')
 
 def user_login(request):
-    return render(request, 'login.html')
+    return render(request, 'login/login.html')
