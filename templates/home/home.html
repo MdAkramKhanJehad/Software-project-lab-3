@@ -4,39 +4,43 @@
 
 
 {% block stylesheet %}
-    <style>
-        .btn-secondary,
-        .btn-secondary:hover,
-        .btn-secondary:focus {
-            color: #333;
-            text-shadow: none;
-        }
+    
+    {% load static %}
+    <link id="pagestyle" href="{% static 'style_home_bg_img.css' %}" type="text/css" rel="stylesheet" />
 
-        body {
-            text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-            box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-        }
+    {% load static %}
+    <link id="pagestyle" href="{% static 'style_home_page.css' %}" type="text/css" rel="stylesheet" />
 
-        .cover-container {
-            max-width: 42em;
-        }
-    </style>
+
 {% endblock stylesheet %} 
 
 
 {% block body %} 
 
-    <div class="container-fluid min-vh-100 d-flex justify-content-center h-100 p-3 pt-5 text-center bg-white">
+    {% comment %} <div class="bg-image" style=""background-image: url('{% static 'img/bg_img.jpg' %}'); height: 100vh;">
+        <div class="mask gradient-custom">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <h1 class="text-white mb-0">Page title</h1>
+                
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+    {% load static %}
+    <div class="container-fluid min-vh-90 d-flex justify-content-center img-fluid h-100 p-3 pt-5 text-center bg-white" >
         <div class="cover-container w-100 h-100">
             <main class="px-3">
                 <h1 class="text-success">Hello there!</h1>
-                <p class="lead text-dark"><b>Welcome to HELion survey! We appriciate your participation. Don't worry about your data. It is very important to us. It will not be public.</b></p>
+                <p class="lead text-dark"><b>Welcome to Routine Creator! We appriciate your participation. Don't worry about your data. It is very important to us. It will not be public.</b></p>
                 
                 <div class="row">
                     <div class="col-6 mx-auto">
                         <div class="d-flex align-items-center justify-content-evenly">
                             <a class="btn btn-outline-light bg-success btn-rounded btn-Success p-2" href="http://127.0.0.1:8000/home/search/search-routine" role="button"><b>Search Routine</b></a>
                             <a class="btn btn-outline-light bg-success btn-rounded btn-Success p-2" href="http://127.0.0.1:8000/home/create/select-device" role="button"><b>Create Routine</b></a>
+                            {% comment %} <button type="submit" class="btn btn-light btn-outline-light btn-outline-success" href="http://127.0.0.1:8000/home/search/search-routine" style="font-size:20px"><b>Search Routine</b></button>
+                            <button type="submit" class="btn btn-light btn-outline-success" href="http://127.0.0.1:8000/home/create/select-device" style="font-size:20px"><b>Create Routine</b></button> {% endcomment %}
+
                         </div>
                     </div>
                 </div>
