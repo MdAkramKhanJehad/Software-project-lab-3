@@ -11,11 +11,14 @@ def search(request):
 def tutorial(request):
     return render(request, 'home/tutorial/tutorial.html')
 
-def device_list(request):
-    return render(request, 'home/create/device_list.html')
+def select_device(request):
+    return render(request, 'home/create/select_device.html')
 
 def create_routine(request):
     return render(request, 'home/create/create_routine.html')
+
+def create_execution_indication(request):
+    return render(request, 'home/create/create_execution_indicator.html')
 
 def confirmation(request):
     return render(request, 'home/confirmation/confirmation.html')

@@ -4,10 +4,11 @@ from home import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('search-routine', views.search, name='search'),
+    path('search/search-routine', views.search, name='search'),
     path('tutorial', views.tutorial, name='tutorial'),
-    path('device-list', views.device_list, name='device_list'),
-    path('create-routine', views.create_routine, name='create_routine'),
-    path('confirmation', views.confirmation, name='confirmation'),
-    path('complete', views.complete, name='complete'),
+    path('create/select-device', views.select_device, name='select_device'),
+    path('create/execution-indication', views.create_execution_indication, name='create_execution_indication'),
+    path('create/routine', views.create_routine, name='create_routine'),
+    path('create/confirmation', views.confirmation, name='confirmation'),
+    path('create/complete', views.complete, name='complete'),
 ]
