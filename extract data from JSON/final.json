@@ -1,0 +1,588 @@
+{
+    "Switches": {
+        "Category": "Others",
+        "Attributes": [
+            "switch",
+            "level",
+            "energy"
+        ]
+    },
+    "LED strip": {
+        "Category": "Others",
+        "Attributes": [
+            "indicatorStatus",
+            "switch"
+        ]
+    },
+    "Light Bulb": {
+        "Category": "Appliances",
+        "Attributes": [
+            "switch",
+            "level",
+            "colorValue",
+            "saturationValue",
+            "hueValue",
+            "colorMode"
+        ]
+    },
+    "Door Lock": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "lock",
+            "",
+            "code"
+        ]
+    },
+    "Security Alarm": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "alarm"
+        ]
+    },
+    "Security Camera": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "switch",
+            "image"
+        ]
+    },
+    "Doorbell": {
+        "Category": "Others",
+        "Attributes": [
+            "door",
+            "alarm"
+        ]
+    },
+    "Garage Door Opener": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "door",
+            "threeAxis",
+            "contact",
+            "lqi-rssi",
+            "temperature"
+        ]
+    },
+    "Sprinkler": {
+        "Category": "Appliances",
+        "Attributes": [
+            "switch",
+            ""
+        ]
+    },
+    "Button": {
+        "Category": "Others",
+        "Attributes": [
+            "button-numberOfButtons"
+        ]
+    },
+    "Robot Vacuum": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "switch",
+            "robotCleanerCleaningMode",
+            "robotCleanerMovement",
+            "robotCleanerTurboMode"
+        ]
+    },
+    "Thermostat": {
+        "Category": "Appliances",
+        "Attributes": [
+            "temperature",
+            "coolingSetpoint-coolingSetpointRange",
+            "thermostatSetpoint",
+            "supportedThermostatFanModes-thermostatFanMode",
+            "heatingSetpoint-heatingSetpointRange",
+            "supportedThermostatModes-thermostatMode",
+            "schedule",
+            "thermostatOperatingState",
+            "humidity"
+        ]
+    },
+    "Water Heater": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "switch",
+            "water"
+        ]
+    },
+    "Air Conditioner": {
+        "Category": "Appliances",
+        "Attributes": [
+            "airConditionerMode",
+            "switch",
+            "temperature",
+            "level",
+            "rapidCooling"
+        ]
+    },
+    "Smart TV": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "switch",
+            "tvChannel",
+            "inputSource-supportedInputSources"
+        ]
+    },
+    "Clothes Dryer": {
+        "Category": "Appliances",
+        "Attributes": [
+            "completionTime-dryerJobState-machineState-supportedMachineStates",
+            "dryerMode"
+        ]
+    },
+    "Humidity Sensor": {
+        "Category": "Sensors",
+        "Attributes": [
+            "humidity",
+            "temperature"
+        ]
+    },
+    "Moisture Sensor": {
+        "Category": "Sensors",
+        "Attributes": [
+            "water",
+            "temperature"
+        ]
+    },
+    "Motion Sensor": {
+        "Category": "Sensors",
+        "Attributes": [
+            "motion"
+        ]
+    },
+    "CO Detector": {
+        "Category": "Sensors",
+        "Attributes": [
+            "carbonMonoxide",
+            "alarm",
+            "tamper",
+            "battery"
+        ]
+    },
+    "Tilt Sensor": {
+        "Category": "Sensors",
+        "Attributes": [
+            "threeAxis",
+            "motion",
+            "acceleration",
+            "lqi-rssi"
+        ]
+    },
+    "Open/Close Sensor": {
+        "Category": "Sensors",
+        "Attributes": [
+            "contact"
+        ]
+    },
+    "Smoke Detector": {
+        "Category": "Sensors",
+        "Attributes": [
+            "smoke",
+            "battery"
+        ]
+    },
+    "Presence Sensor": {
+        "Category": "Sensors",
+        "Attributes": [
+            "presence",
+            "",
+            "lqi-rssi"
+        ]
+    },
+    "Temperature Sensor": {
+        "Category": "Sensors",
+        "Attributes": [
+            "temperature",
+            "humidity"
+        ]
+    },
+    "Speaker": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "switch",
+            "mute",
+            "",
+            "audioTrackData",
+            "volume",
+            "status-level"
+        ]
+    },
+    "Energy Meter": {
+        "Category": "Others",
+        "Attributes": [
+            "energy",
+            "power",
+            "powerSource"
+        ]
+    },
+    "Coffee Maker": {
+        "Category": "Appliances",
+        "Attributes": [
+            "switch",
+            "temperature"
+        ]
+    },
+    "Shades/Blinds": {
+        "Category": "Appliances",
+        "Attributes": [
+            "windowShade"
+        ]
+    },
+    "Valve": {
+        "Category": "Others",
+        "Attributes": [
+            "valve"
+        ]
+    },
+    "Vent": {
+        "Category": "Appliances",
+        "Attributes": [
+            "thermostatOperatingState",
+            "temperature"
+        ]
+    },
+    "Beacon Device": {
+        "Category": "Appliances",
+        "Attributes": [
+            "presence"
+        ]
+    },
+    "Air Purifier": {
+        "Category": "Others",
+        "Attributes": [
+            "airQuality",
+            "switch"
+        ]
+    },
+    "Water Leak Detector": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "water",
+            "alarm"
+        ]
+    },
+    "Induction CookTop": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "switch",
+            "temperature"
+        ]
+    },
+    "Dishwasher": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "dishwasherMode",
+            "completionTime-dishwasherJobState-machineState-supportedMachineStates"
+        ]
+    },
+    "Refrigerator": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "refrigerationSetpoint",
+            "switch"
+        ]
+    },
+    "Microwave Oven": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "completionTime-machineState-operationTime-ovenJobState-progress-supportedMachineStates",
+            "switch",
+            "ovenMode"
+        ]
+    },
+    "Glass Break Detector": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "shock"
+        ]
+    },
+    "Fan": {
+        "Category": "Appliances",
+        "Attributes": [
+            "fanSpeed",
+            "switch"
+        ]
+    },
+    "Pulse Monitor": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "pulse"
+        ]
+    },
+    "Sleep Monitor": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "sleeping"
+        ]
+    },
+    "Smart Battery": {
+        "Category": "Others",
+        "Attributes": [
+            "battery",
+            "powerSource"
+        ]
+    },
+    "Smart Printer": {
+        "Category": "Appliances",
+        "Attributes": [
+            "switch"
+        ]
+    },
+    "Weather Station": {
+        "Category": "Appliances",
+        "Attributes": [
+            "temperature",
+            "coolingSetpoint-coolingSetpointRange",
+            "thermostatSetpoint",
+            "supportedThermostatFanModes-thermostatFanMode",
+            "heatingSetpoint-heatingSetpointRange",
+            "supportedThermostatModes-thermostatMode",
+            "schedule",
+            "thermostatOperatingState",
+            "humidity",
+            "illuminance",
+            "temperature",
+            "humidity",
+            "ultravioletIndex"
+        ]
+    },
+    "Water Purifier": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "water"
+        ]
+    },
+    "Gas Sensor": {
+        "Category": "Sensors",
+        "Attributes": [
+            "odorLevel",
+            "alarm"
+        ]
+    },
+    "Smart Mirror": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "image",
+            "videoClip"
+        ]
+    },
+    "Dust Detector": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "dustLevel-fineDustLevel"
+        ]
+    },
+    "Blood Pressure Monitor": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "pressure"
+        ]
+    },
+    "Blood Oximeter": {
+        "Category": "Others",
+        "Attributes": [
+            "oximeter"
+        ]
+    },
+    "Oil Warmer": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "switch",
+            "completionTime-sessionStatus"
+        ]
+    },
+    "Electric Blanket": {
+        "Category": "Others",
+        "Attributes": [
+            "switch",
+            "temperature"
+        ]
+    },
+    "Dehumidifier": {
+        "Category": "Others",
+        "Attributes": [
+            "humidity",
+            "temperature",
+            "switch"
+        ]
+    },
+    "Humidifier": {
+        "Category": "Appliances",
+        "Attributes": [
+            "humidity",
+            "temperature",
+            "switch"
+        ]
+    },
+    "Kettle": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "switch",
+            "temperature",
+            "completionTime-sessionStatus"
+        ]
+    },
+    "Rice Cooker": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "switch",
+            "temperature",
+            "completionTime-sessionStatus"
+        ]
+    },
+    "SoyMilk Maker": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "switch",
+            "completionTime-sessionStatus"
+        ]
+    },
+    "Bread Maker": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "switch",
+            "temperature",
+            "completionTime-sessionStatus"
+        ]
+    },
+    "Gas Stove": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "switch",
+            "completionTime-sessionStatus"
+        ]
+    },
+    "Air Cooler": {
+        "Category": "Appliances",
+        "Attributes": [
+            "switch",
+            "fanSpeed"
+        ]
+    },
+    "Milk Dispenser": {
+        "Category": "Others",
+        "Attributes": [
+            "switch",
+            "completionTime-sessionStatus"
+        ]
+    },
+    "Smart IR": {
+        "Category": "Sensors",
+        "Attributes": [
+            "infraredLevel"
+        ]
+    },
+    "Sous Vide": {
+        "Category": "Kitchen & Cleaning",
+        "Attributes": [
+            "switch",
+            "temperature"
+        ]
+    },
+    "Curtains": {
+        "Category": "Others",
+        "Attributes": [
+            "switch"
+        ]
+    },
+    "Plant Grower": {
+        "Category": "Others",
+        "Attributes": [
+            "switch"
+        ]
+    },
+    "Airer": {
+        "Category": "Others",
+        "Attributes": [
+            "switch"
+        ]
+    },
+    "Scene Switch": {
+        "Category": "Others",
+        "Attributes": [
+            "switch",
+            "button-numberOfButtons",
+            "color-hue-saturation",
+            "colorValue",
+            "colorMode",
+            "colorTemperature"
+        ]
+    },
+    "Lighting Remote": {
+        "Category": "Others",
+        "Attributes": [
+            "switch",
+            "button-numberOfButtons",
+            "color-hue-saturation",
+            "colorValue",
+            "colorMode",
+            "colorTemperature"
+        ]
+    },
+    "Car Automation": {
+        "Category": "Others",
+        "Attributes": [
+            "presence",
+            "switch"
+        ]
+    },
+    "Door Sensor": {
+        "Category": "Others",
+        "Attributes": [
+            "door",
+            "contact",
+            "lqi-rssi"
+        ]
+    },
+    "Illuminance Sensor": {
+        "Category": "Sensors",
+        "Attributes": [
+            "energy",
+            "level",
+            "switch"
+        ]
+    },
+    "Step Sensor": {
+        "Category": "Sensors",
+        "Attributes": [
+            "goal-steps"
+        ]
+    },
+    "Water Filter": {
+        "Category": "Others",
+        "Attributes": [
+            "filterStatus"
+        ]
+    },
+    "Audio Player": {
+        "Category": "Safety & Multimedia",
+        "Attributes": [
+            "mute",
+            "volume"
+        ]
+    },
+    "GeoLocation Monitor": {
+        "Category": "Others",
+        "Attributes": [
+            "accuracy-altitudeAccuracy-heading-lastUpdateTime-latitude-longitude-method-speed"
+        ]
+    },
+    "PH Sensor": {
+        "Category": "Sensors",
+        "Attributes": [
+            "pH"
+        ]
+    },
+    "Smart Assistant": {
+        "Category": "Others",
+        "Attributes": [
+            "switch",
+            "mute",
+            "",
+            "audioTrackData",
+            "volume",
+            "status-level"
+        ]
+    }
+}
