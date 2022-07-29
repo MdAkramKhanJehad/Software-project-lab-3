@@ -24,14 +24,17 @@
             <h2 class='text-light' align="center">Welcome to Routine Creator</h2>
             <br><br><br>
             <div class="w-55 mb-3"  align="center">
-              <form  method="post" action="/home/">
+              <form class="needs-validation" method="post" action="/home/">
                 {% csrf_token %}
                 <div class="form-group w-50 p-3">
                   <div style='input-group' align='left'>
                     <label class='text-light' for="email"><h4><b>Enter email address</b></h4></label>
                   </div>
-                  <div style='input-group'>
-                    <input  type="email" class="form-control " name="email" id="email" placeholder="Enter email">
+                  <div class="has-validation" style='input-group'>
+                    <input  type="email" class="form-control " name="email" id="email" placeholder="Enter email" required>
+                    <div class="invalid-feedback">
+                      Please provide a valid email
+                    </div>
                   </div>
                   
                 </div>

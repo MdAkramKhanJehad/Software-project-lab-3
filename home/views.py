@@ -1,8 +1,19 @@
 from django.shortcuts import render
+from login.models import NewUser
 
 # Create your views here.
 
 def home(request):
+    
+    if request.method == "POST":
+        email = request.POST.get('email')
+        new_user = NewUser(email=email)
+        new_user.save()
+
+        print("Inside home inside if")
+
+    print("Inside home out")
+
     return render(request, 'home/home.html')
 
 def search(request):
