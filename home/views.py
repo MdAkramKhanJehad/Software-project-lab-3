@@ -12,11 +12,12 @@ def home(request):
         new_user = NewUser(email=email)
         new_user.save()
 
-        print("Inside home inside if")
-    else:
+        print("A new user added")
+    elif request.method == "POST":
         print("USER available: ", all_users[0].id, " || ", all_users[0].email)
-
-    print("Inside home out")
+    
+    else:
+        print("inside else")
 
     return render(request, 'home/home.html')
 

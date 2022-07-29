@@ -5,8 +5,8 @@
 
 {% block stylesheet %}
     
-    {% load static %}
-    <link id="pagestyle" href="{% static 'style_home_bg_img.css' %}" type="text/css" rel="stylesheet" />
+    {% comment %} {% load static %}
+    <link id="pagestyle" href="{% static 'style_home_bg_img.css' %}" type="text/css" rel="stylesheet" /> {% endcomment %}
 
     {% load static %}
     <link id="pagestyle" href="{% static 'style_home_page.css' %}" type="text/css" rel="stylesheet" />
@@ -17,33 +17,34 @@
 
 {% block body %} 
 
-    {% comment %} <div class="bg-image" style=""background-image: url('{% static 'img/bg_img.jpg' %}'); height: 100vh;">
-        <div class="mask gradient-custom">
-            <div class="d-flex justify-content-center align-items-center h-100">
-                <h1 class="text-white mb-0">Page title</h1>
-                
+    <div class="bg-image overflow-hidden d-flex align-items-center justify-content-center" style=" background-image: url('{% static 'img/bg_img.jpg' %}'); height: 100vh;  background-repeat: no-repeat; background-size: contain; ">
+        <div class="mask">
+            <div class="d-flex text-center">
+                <div class="card  border-success bg-dark text-center" style="opacity: .9">
+                    <div class="card-body  text-white">
+                        <main class="px-3">
+                            <h1 >Hello there!</h1>
+                            <p class="lead text-light ps-5 pe-5"><b>Welcome to Routine Creator! We appriciate your participation. Don't worry about your data. It is very important to us. It will not be public.</b></p>  
+                            <div class="row">
+                                <div class="col-6 mx-auto">
+                                    <div class="d-flex align-items-center justify-content-evenly">
+                                        <a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" href="http://127.0.0.1:8000/home/search/search-routine" role="button"><b>Search Routine</b></a>
+                                        <a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" href="http://127.0.0.1:8000/home/create/routine" role="button"><b>Create Routine</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div> 
             </div>
         </div>
-    </div> {% endcomment %}
-
-    {% load static %}
-    <div class="container-fluid min-vh-90 d-flex justify-content-center img-fluid h-100 p-3 pt-5 text-center bg-white" >
-        <div class="cover-container w-100 h-100">
-            <main class="px-3">
-                <h1 class="text-success">Hello there!</h1>
-                <p class="lead text-dark"><b>Welcome to Routine Creator! We appriciate your participation. Don't worry about your data. It is very important to us. It will not be public.</b></p>
-                
-                <div class="row">
-                    <div class="col-6 mx-auto">
-                        <div class="d-flex align-items-center justify-content-evenly">
-                            <a class="btn btn-outline-light bg-success btn-rounded btn-Success p-2" href="http://127.0.0.1:8000/home/search/search-routine" role="button"><b>Search Routine</b></a>
-                            <a class="btn btn-outline-light bg-success btn-rounded btn-Success p-2" href="http://127.0.0.1:8000/home/create/select-device" role="button"><b>Create Routine</b></a>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
     </div>
+
+    {% comment %} <div class="container-fluid min-vh-90 d-flex justify-content-center img-fluid h-100 p-3 pt-5 text-center bg-white" >
+        <div class="container d-flex align-items-center justify-content-center text-center h-100">
+            
+        </div>
+    </div> {% endcomment %}
 
 
 {% endblock body %}
