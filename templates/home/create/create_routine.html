@@ -2,8 +2,246 @@
 
 {% block title %}Create{% endblock title %}
 
+
+{% block stylesheet %}
+
+    {% load static %}
+    <link id="pagestyle" href="{% static 'style_create_routine_page.css' %}" type="text/css" rel="stylesheet" />
+
+{% endblock stylesheet %} 
+
+
 {% block body %}
 <div class="container-fluid min-vh-100 d-flex justify-content-center">
-    <h2>This is create routine body</h2>
+    {% comment %} <div class="cover-container w-100 h-100 justify-content-center">
+        <h2  class="text-center fs-4">Create as many routines as you want!</h2>
+    </div> {% endcomment %}
+    {% comment %} <h1 class="text-center fs-4">Form Wizard - Multi Step Form</h1> {% endcomment %}
+    <div class="container-fluid">
+        <form id="signUpForm" action="#">
+            {% csrf_token %}
+            <!-- start step indicators -->
+            <div class="form-header d-flex mb-4">
+                <span class="stepIndicator"><h4>Select Device</h4></span>
+                <span class="stepIndicator"><h4>Create Routine</h4></span>
+                <span class="stepIndicator"><h4>Execution Indicator</h4></span>
+                <span class="stepIndicator"><h4>Confirmation</h4></span>
+            </div>
+            <!-- end step indicators -->
+        
+
+            {% comment %} <div class="container-fluid min-vh-100 d-flex justify-content-center">
+                <h2>
+                    Tutorial body
+                </h2>
+            </div> {% endcomment %}
+
+            <!-- step one -->
+            <div class="step">
+                <p class="yb-1"><h4 class='text-center'>Select your Device</h4></p>
+                <div class="container">
+                    <div class="row d-flex justify-content-center align-content-center text-center">
+                        <div class="col">
+                            <h4>Appliances</h4>
+                            <div class="row">
+                                <p>Air Conditioner</p>
+                                <p>Air Cooler</p>
+                                <p>Beacon Device</p>
+                                <p>Clothes Dryer</p>
+                                <p>Coffee Maker</p>
+                                <p>Fan</p>
+                                <p>Humidifier</p>
+                                <p>Light Bulb</p>
+                                <p>Shades/Blinds</p>
+                                <p>Smart Printer</p>
+                                <p>Sprinkler</p>
+                                <p>Thermostat</p>
+                            </div>
+                            {% comment %} <div class="row">
+                                row 1
+                            </div>
+                            <div class="row">
+                                row 2
+                            </div>
+                            <div class="row">
+                                row 3
+                            </div> {% endcomment %}
+                        </div>
+                        <div class="col">
+                            <h4>Kitchen & Cleaning</h4>
+                            <div class="row">
+                                <p>Bread Maker</p>
+                                <p>Dishwasher</p>
+                                <p>Dust Detector</p>
+                                <p>Gas Stove</p>
+                                <p>Induction CookTop</p>
+                                <p>Kettle</p>
+                                <p>Microwave Oven</p>
+                                <p>Oil Warmer</p>
+                                <p>Refrigerator</p>
+                                <p>Rice Cooker</p>
+                                <p>Robot Vacuum</p>
+                                <p>Sous Vide</p>
+                            </div>
+                            {% comment %} <div class="row">
+                                row 1
+                            </div>
+                            <div class="row">
+                                row 2
+                            </div>
+                            <div class="row">
+                                row 3
+                            </div> {% endcomment %}
+                        </div>
+                        <div class="col">
+                            <h4>Safety & Multimedia</h4>
+                            <div class="row">
+                                <p>Audio Player</p>
+                                <p>Blood Pressure Monitor</p>
+                                <p>Door Lock</p>
+                                <p>Garage Door Opener</p>
+                                <p>Glass Break Detector</p>
+                                <p>Pulse Monitor</p>
+                                <p>Security Alarm</p>
+                                <p>Security Camera</p>
+                                <p>Sleep Monitor</p>
+                                <p>Smart Mirror</p>
+                                <p>Smart TV</p>
+                                <p>Speaker</p>
+                            </div>
+                            {% comment %} <div class="row">
+                                row 1
+                            </div>
+                            <div class="row">
+                                row 2
+                            </div>
+                            <div class="row">
+                                row 3
+                            </div> {% endcomment %}
+                        </div>
+                        <div class="col">
+                            <h4>Sensors</h4>
+                            <div class="row">
+                                <p>CO Detector</p>
+                                <p>Gas Sensor</p>
+                                <p>Humidity Sensor</p>
+                                <p>Illuminance Sensor</p>
+                                <p>Moisture Sensor</p>
+                                <p>Motion Sensor</p>
+                                <p>Open/Close Sensor</p>
+                                <p>PH Sensor</p>
+                                <p>Presence Sensor</p>
+                                <p>Smart IR</p>
+                                <p>Smoke Detector</p>
+                                <p>Step Sensor</p>
+                            </div>
+                            {% comment %} <div class="row">
+                                row 1
+                            </div>
+                            <div class="row">
+                                row 2
+                            </div>
+                            <div class="row">
+                                row 3
+                            </div> {% endcomment %}
+                        </div>
+                        <div class="col">
+                            <h4>Others</h4>
+                            <div class="row">
+                                <p>Air Purifier</p>
+                                <p>Airer</p>
+                                <p>Button</p>
+                                <p>Car Automation</p>
+                                <p>Doorbell</p>
+                                <p>Electric Blanket</p>
+                                <p>Energy Meter</p>
+                                <p>Water Filter</p>
+                                <p>GeoLocation Monitor</p>
+                                <p>Lighting Remote</p>
+                                <p>Scene Switch</p>
+                                <p>Smart Battery</p>
+                            </div>                            
+                            {% comment %} <div class="row">
+                                row 1
+                            </div>
+                            <div class="row">
+                                row 2
+                            </div>
+                            <div class="row">
+                                row 3
+                            </div> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+                
+{% comment %}                 
+                <div class="mb-3">
+                    <input type="email" placeholder="Email Address" oninput="this.className = ''" name="email">
+                </div>
+                <div class="mb-3">
+                    <input type="password" placeholder="Password" oninput="this.className = ''" name="password">
+                </div>
+                <div class="mb-3">
+                    <input type="password" placeholder="Confirm Password" oninput="this.className = ''" name="password">
+                </div>
+             {% endcomment %}
+            
+            </div>
+        
+            <!-- step two -->
+            <div class="step">
+                <p class="mb-4"><h4 class='text-center'>See attribute and create your Routine</h4></p>
+                <div class="mb-3">
+                    <input type="text" placeholder="Linked In" oninput="this.className = ''" name="linkedin">
+                </div>
+                <div class="mb-3">
+                    <input type="text" placeholder="Twitter" oninput="this.className = ''" name="twitter">
+                </div>
+                <div class="mb-3">
+                    <input type="text" placeholder="Facebook" oninput="this.className = ''" name="facebook">
+                </div>
+            </div>
+    
+            <!-- step three -->
+            <div class="step">
+                <p class="mb-4"><h4 class='text-center'>Edit or delete Routine. Select Execution Indicator</h4></p>
+                <div class="mb-3">
+                    <input type="text" placeholder="Linked In" oninput="this.className = ''" name="linkedin">
+                </div>
+                <div class="mb-3">
+                    <input type="text" placeholder="Twitter" oninput="this.className = ''" name="twitter">
+                </div>
+                <div class="mb-3">
+                    <input type="text" placeholder="Facebook" oninput="this.className = ''" name="facebook">
+                </div>
+            </div>
+        
+            <!-- step four -->
+            <div class="step">
+                <p class="mb-4"><h4 class='text-center'>Confirm your Routines and EI</h4></p>
+                <div class="mb-3">
+                    <input type="text" placeholder="Full name" oninput="this.className = ''" name="fullname">
+                </div>
+                <div class="mb-3">
+                    <input type="text" placeholder="Mobile" oninput="this.className = ''" name="mobile">
+                </div>
+                <div class="mb-3">
+                    <input type="text" placeholder="Address" oninput="this.className = ''" name="address">
+                </div>
+            </div>
+        
+            <!-- start previous / next buttons -->
+            <div class="form-footer d-flex justify-content-center mt-2 fs-3">
+                <button class="btn btn-secondary btn-lg" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button class="btn btn-secondary btn-lg" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            </div>
+            <!-- end previous / next buttons -->
+        </form>
+    </div>
+    
 </div>
+
+{% load static %}
+<script src="{% static 'create_routine_page.js' %}"></script>
+
 {% endblock body %}
