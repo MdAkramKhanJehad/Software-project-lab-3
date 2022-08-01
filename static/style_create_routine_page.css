@@ -120,3 +120,8 @@ body{
     background-color: #198754;
     color: white;
 }
+
+.cards:select{
+    background-color: gray;
+    color: white;
+}
