@@ -1,5 +1,6 @@
 from django.contrib import admin
-from login.models import NewUser
+from home.models import Device, DeviceAttribute
 
 # Register your models here.
-admin.site.register(NewUser)
+admin.site.register(Device)
+admin.site.register(DeviceAttribute)

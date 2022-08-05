@@ -11,13 +11,16 @@ f = open('data.json')
 data = json.load(f)
 
 
-dev_dict = {}
+dev_items = []
 
 for item in data:
+    # print(item)
     device_name = list(item.keys())[0]
+    # print(device_name)
     item_keys = []
     desc = {}
     attrAndDesc = []
+    device_details = []
     for i in item[device_name]:
         item_keys.append(list(i.keys())[0])
         attrAndDesc.append(i)
@@ -38,10 +41,31 @@ for item in data:
         desc["Category"] = "Others"
     
     desc["AttributesAndDescriptions"] = attrAndDesc
-    dev_dict[device_name]= desc
+    
+    device_details.append({"Category": desc["Category"]})
+    device_details.append({"AttributesAndDescriptions": desc["AttributesAndDescriptions"]})
 
-json_object = json.dumps(dev_dict, indent = 4)
-print(json_object)
+    dev_items.append({device_name: device_details})
 
-with open("final.json", "w") as outfile:
-    outfile.write(json_object)
+json_object = json.dumps(dev_items, indent = 3)
+# print(json_object)
+
+# with open("device_data.json", "w") as outfile:
+#     outfile.write(json_object)
+
+f2 = open('device_data.json')
+data2 = json.load(f2)
+
+# print(type(data2))
+
+for item in data2:
+    device_name = list(item.keys())[0]
+    for i in item[device_name]:
+        # print(list(i.keys())[0], " ", list(i.values())[0])
+
+        if list(i.keys())[0] == "AttributesAndDescriptions":
+            for attr in list(i.values())[0]:
+                print(attr)
+
+    print('\n')
+

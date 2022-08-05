@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from login.models import NewUser
+from home.models import Device, DeviceAttribute
 
 # Create your views here.
 
@@ -31,6 +32,18 @@ def tutorial(request):
 
 
 def select_device(request):
+    # check whether availabe in db, first time db will be empty
+    # if available, get data else first insert, then get data
+
+    
+    device_list = Device.objects.all()
+
+    if len(device_list) == 0:
+        # first insert in device, then device attribute
+        
+
+
+
     return render(request, 'home/create/select_device.html')
 
 
