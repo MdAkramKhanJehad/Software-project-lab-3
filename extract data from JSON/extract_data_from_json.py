@@ -59,13 +59,17 @@ data2 = json.load(f2)
 # print(type(data2))
 
 for item in data2:
+    print(item)
     device_name = list(item.keys())[0]
+    print("device: ", device_name)
     for i in item[device_name]:
-        # print(list(i.keys())[0], " ", list(i.values())[0])
+        if list(i.keys())[0] == "Category":
+            print(list(i.keys())[0], " ", i[list(i.keys())[0]])
 
         if list(i.keys())[0] == "AttributesAndDescriptions":
             for attr in list(i.values())[0]:
-                print(attr)
+                print(list(attr.keys())[0], " : ", attr[list(attr.keys())[0]])
+                print(list(attr.keys())[1], " : ", attr[list(attr.keys())[1]])
 
     print('\n')
 
