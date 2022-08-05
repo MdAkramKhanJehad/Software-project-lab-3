@@ -46,21 +46,23 @@ def select_device(request):
         data = json.load(f)
     
         for item in data:
-            # print(item)
-            device_name = list(item.keys())[0]
 
-            print("device name: ", device_name)
-            print("device cat: ", list(item[device_name][0].keys())[0], " : ", item[device_name][0][list(item[device_name][0].keys())[0]])
-            for i in item[device_name]:
-                if list(i.keys())[0] == "Category":
-                    print(list(i.keys())[0], " ", i[list(i.keys())[0]])
+            current_device_name = list(item.keys())[0]
 
-                if list(i.keys())[0] == "AttributesAndDescriptions":
-                    for attr in list(i.values())[0]:
-                        print(list(attr.keys())[0], " : ", attr[list(attr.keys())[0]])
-                        print(list(attr.keys())[1], " : ", attr[list(attr.keys())[1]])
+            # print("device name: ", current_device_name)
+            # print("device cat: ", list(item[current_device_name][0].keys())[0], " : ", item[current_device_name][0][list(item[current_device_name][0].keys())[0]])
+        
+            new_device = Device(device_name=current_device_name, category=item[current_device_name][0][list(item[current_device_name][0].keys())[0]])
+            new_device.save()
 
-            print('\n')
+            for attr in item[current_device_name][1][list(item[current_device_name][1].keys())[0]]:
+                # print(list(attr.keys())[0], " : ", attr[list(attr.keys())[0]])
+                # print(list(attr.keys())[1], " : ", attr[list(attr.keys())[1]])
+
+                new_attribute = DeviceAttribute(attribute=list(attr.keys())[0], action=attr[list(attr.keys())[0]], description=attr[list(attr.keys())[1]], device=new_device)
+                new_attribute.save()
+
+            # print('\n')
 
     return render(request, 'home/create/select_device.html')
 

@@ -6,7 +6,7 @@ class Device(models.Model):
     category = models.CharField(max_length=40)
 
     def __str__(self):
-        return self.device_name + " " + self.category
+        return self.device_name
 
 
 class DeviceAttribute(models.Model):
@@ -16,4 +16,4 @@ class DeviceAttribute(models.Model):
     device = models.ForeignKey(Device, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.attribute + " " + self.action
+        return self.attribute
