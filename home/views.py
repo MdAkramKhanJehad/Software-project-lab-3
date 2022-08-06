@@ -35,9 +35,6 @@ def tutorial(request):
 
 
 def select_device(request):
-    # check whether availabe in db, first time db will be empty
-    # if available, get data else first insert, then get data
-
     
     device_list = Device.objects.all()
 
@@ -46,25 +43,34 @@ def select_device(request):
         data = json.load(f)
     
         for item in data:
-
             current_device_name = list(item.keys())[0]
-
-            # print("device name: ", current_device_name)
-            # print("device cat: ", list(item[current_device_name][0].keys())[0], " : ", item[current_device_name][0][list(item[current_device_name][0].keys())[0]])
-        
             new_device = Device(device_name=current_device_name, category=item[current_device_name][0][list(item[current_device_name][0].keys())[0]])
             new_device.save()
 
             for attr in item[current_device_name][1][list(item[current_device_name][1].keys())[0]]:
-                # print(list(attr.keys())[0], " : ", attr[list(attr.keys())[0]])
-                # print(list(attr.keys())[1], " : ", attr[list(attr.keys())[1]])
-
                 new_attribute = DeviceAttribute(attribute=list(attr.keys())[0], action=attr[list(attr.keys())[0]], description=attr[list(attr.keys())[1]], device=new_device)
                 new_attribute.save()
+    
 
-            # print('\n')
+    appliances_devices = Device.objects.all().filter(category="Appliances")
+    kitchen_and_cleaning_devices = Device.objects.all().filter(category="Kitchen & Cleaning")
+    safety_and_multimedia_devices = Device.objects.all().filter(category="Safety & Multimedia")
+    sensors_devices = Device.objects.all().filter(category="Sensors")
+    others_devices = Device.objects.all().filter(category="Others")
 
-    return render(request, 'home/create/select_device.html')
+    # print(len(appliances_devices), " || ", len(kitchen_and_cleaning_devices), " || ", len(safety_and_multimedia_devices), " || ", len(sensors_devices), " || ", len(others_devices), " || ")
+    # print("Total: ", len(appliances_devices) + len(kitchen_and_cleaning_devices) + len(safety_and_multimedia_devices) + len(sensors_devices) + len(others_devices))
+    # print(others_devices[0].device_name, " || ", others_devices[0].id, " || ", others_devices[0].category)
+
+    context = {
+        'appliances_devices': appliances_devices,
+        'kitchen_and_cleaning_devices': kitchen_and_cleaning_devices,
+        'safety_and_multimedia_devices': safety_and_multimedia_devices,
+        'sensors_devices': sensors_devices,
+        'others_devices': others_devices,
+    }
+
+    return render(request, 'home/create/select_device.html', context)
 
 
 def create_routine(request):

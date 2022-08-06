@@ -31,275 +31,60 @@
                 <p><h4 class='text-center'>Select your Device</h4></p>
                 <div class="container">
                     <div class="row d-flex mt-4 justify-content-center text-center">
+
                         <div class="col">
                             <h5>Appliances</h5>
                             <div class="row">
+                                {% for device in appliances_devices %}
                                 <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Air Conditioner</div>
+                                    <div class="card-body">{{device.device_name}}</div>
                                 </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Air Cooler</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Beacon Device</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Clothes Dryer</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Coffee Maker</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Fan</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Humidifier</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Light Bulb</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Shades/Blinds</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Smart Printer</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Sprinkler</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Thermostat</div>
-                                </div>
-                                {% comment %} <p>Air Conditioner</p>
-                                <p>Air Cooler</p>
-                                <p>Beacon Device</p>
-                                <p>Clothes Dryer</p>
-                                <p>Coffee Maker</p> 
-                                <p>Fan</p>
-                                <p>Humidifier</p>
-                                <p>Light Bulb</p>
-                                <p>Shades/Blinds</p>
-                                <p>Smart Printer</p>
-                                <p>Sprinkler</p>
-                                <p>Thermostat</p> {% endcomment %}
-                            </div>
-                            
+                                {% endfor %}
+                            </div>                            
                         </div>
+
                         <div class="col">
                             <h5>Kitchen & Cleaning</h5>
                             <div class="row">
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Bread Maker</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Dishwasher</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Dust Detector</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Gas Stove</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Induction CookTop</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Kettle</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Microwave Oven</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Oil Warmer</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Refrigerator</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Rice Cooker</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Robot Vacuum</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Sous Vide</div>
-                                </div>
-                                {% comment %} <p>Bread Maker</p>
-                                <p>Dishwasher</p>
-                                <p>Dust Detector</p>
-                                <p>Gas Stove</p>
-                                <p>Induction CookTop</p>
-                                <p>Kettle</p>
-                                <p>Microwave Oven</p>
-                                <p>Oil Warmer</p>
-                                <p>Refrigerator</p>
-                                <p>Rice Cooker</p>
-                                <p>Robot Vacuum</p>
-                                <p>Sous Vide</p> {% endcomment %}
+                                {% for device in kitchen_and_cleaning_devices %}
+                                    <div class="card cards w-75 mb-2 me-1 ms-1">
+                                        <div class="card-body">{{device.device_name}}</div>
+                                    </div>
+                                {% endfor %}
                             </div>
-                            
                         </div>
+
                         <div class="col">
                             <h5>Safety & Multimedia</h5>
                             <div class="row">
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Audio Player</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Blood Pressure Monitor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Door Lock</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Garage Door Opener</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Glass Break Detector</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Pulse Monitor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Security Alarm</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Security Camera</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Sleep Monitor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Smart Mirror</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Smart TV</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Speaker</div>
-                                </div>
-                                {% comment %} <p>Audio Player</p>
-                                <p>Blood Pressure Monitor</p>
-                                <p>Door Lock</p>
-                                <p>Garage Door Opener</p>
-                                <p>Glass Break Detector</p>
-                                <p>Pulse Monitor</p>
-                                <p>Security Alarm</p>
-                                <p>Security Camera</p>
-                                <p>Sleep Monitor</p>
-                                <p>Smart Mirror</p>
-                                <p>Smart TV</p>
-                                <p>Speaker</p> {% endcomment %}
+                                {% for device in safety_and_multimedia_devices %}
+                                    <div class="card cards w-75 mb-2 me-1 ms-1">
+                                        <div class="card-body">{{device.device_name}}</div>
+                                    </div>
+                                {% endfor %}
                             </div>
                             
                         </div>
                         <div class="col">
                             <h5>Sensors</h5>
                             <div class="row">
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">CO Detector</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Gas Sensor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Humidity Sensor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Illuminance Sensor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Moisture Sensor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Motion Sensor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Open/Close Sensor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">PH Sensor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Presence Sensor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Smart IR</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Smoke Detector</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Step Sensor</div>
-                                </div>
-                                {% comment %} <p>CO Detector</p>
-                                <p>Gas Sensor</p>
-                                <p>Humidity Sensor</p>
-                                <p>Illuminance Sensor</p>
-                                <p>Moisture Sensor</p>
-                                <p>Motion Sensor</p>
-                                <p>Open/Close Sensor</p>
-                                <p>PH Sensor</p>
-                                <p>Presence Sensor</p>
-                                <p>Smart IR</p>
-                                <p>Smoke Detector</p>
-                                <p>Step Sensor</p> {% endcomment %}
-                            </div>
-                            
+                                {% for device in sensors_devices %}
+                                    <div class="card cards w-75 mb-2 me-1 ms-1">
+                                        <div class="card-body">{{device.device_name}}</div>
+                                    </div>
+                                {% endfor %}
+                            </div>                          
                         </div>
+
                         <div class="col">
                             <h5 class='text-center '>Others</h5>
                             <div class="row">
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Air Purifier</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Airer</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Button</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Car Automation</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Doorbell</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Electric Blanket</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Energy Meter</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Water Filter</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">GeoLocation Monitor</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Lighting Remote</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Scene Switch</div>
-                                </div>
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">Smart Battery</div>
-                                </div>
-                                {% comment %} <p>Air Purifier</p>
-                                <p>Airer</p>
-                                <p>Button</p>
-                                <p>Car Automation</p>
-                                <p>Doorbell</p>
-                                <p>Electric Blanket</p>
-                                <p>Energy Meter</p>
-                                <p>Water Filter</p>
-                                <p>GeoLocation Monitor</p>
-                                <p>Lighting Remote</p>
-                                <p>Scene Switch</p>
-                                <p>Smart Battery</p> {% endcomment %}
-                            </div>                            
-                            
+                                {% for device in others_devices %}
+                                    <div class="card cards w-75 mb-2 me-1 ms-1">
+                                        <div class="card-body">{{device.device_name}}</div>
+                                    </div>
+                                {% endfor %}                               
+                            </div>                                                       
                         </div>
                     </div>
                 </div>            
