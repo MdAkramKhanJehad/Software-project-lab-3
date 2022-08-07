@@ -1,5 +1,7 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
+var totalRoutine = 1;
 showTab(currentTab); // Display the current tab
+
 
 function showTab(n) {
     // This function will display the specified tab of the form...
@@ -71,3 +73,14 @@ function fixStepIndicator(n) {
     x[n].className += " active";
 }
 
+function addNewRoutine(){
+
+    // if (!validateForm()) return false;
+
+    const node = document.getElementById("routineField");
+    const clone = node.cloneNode(true);
+
+    document.getElementById("routineHolder").appendChild(clone); 
+    totalRoutine += 1;
+    console.log(totalRoutine);
+}
