@@ -50,7 +50,8 @@ def select_device(request):
             for attr in item[current_device_name][1][list(item[current_device_name][1].keys())[0]]:
                 new_attribute = DeviceAttribute(attribute=list(attr.keys())[0], action=attr[list(attr.keys())[0]], description=attr[list(attr.keys())[1]], device=new_device)
                 new_attribute.save()
-    
+
+        print("device data inserted")
 
     appliances_devices = Device.objects.all().filter(category="Appliances")
     kitchen_and_cleaning_devices = Device.objects.all().filter(category="Kitchen & Cleaning")
