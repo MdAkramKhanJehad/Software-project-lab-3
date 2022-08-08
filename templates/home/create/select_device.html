@@ -34,10 +34,10 @@
 
                         <div class="col">
                             <h5>Appliances</h5>
-                            <div class="row  d-flex justify-content-center" id="devices-list">
+                            <div class="row  d-flex justify-content-center" id='devices-list'>
                                 {% for device in appliances_devices %}
                                 <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body">{{device.device_name}}</div>
+                                    <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
                                 </div>
                                 {% endfor %}
                             </div>                            
@@ -45,10 +45,10 @@
 
                         <div class="col">
                             <h5>Kitchen & Cleaning</h5>
-                            <div class="row d-flex justify-content-center" id="devices-list">
+                            <div class="row d-flex justify-content-center" id='devices-list'>
                                 {% for device in kitchen_and_cleaning_devices %}
                                     <div class="card cards w-75 mb-2 me-1 ms-1">
-                                        <div class="card-body">{{device.device_name}}</div>
+                                        <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
                                     </div>
                                 {% endfor %}
                             </div>
@@ -56,10 +56,10 @@
 
                         <div class="col">
                             <h5>Safety & Multimedia</h5>
-                            <div class="row  d-flex justify-content-center" id="devices-list">
+                            <div class="row  d-flex justify-content-center" id='devices-list'>
                                 {% for device in safety_and_multimedia_devices %}
                                     <div class="card cards w-75 mb-2 me-1 ms-1">
-                                        <div class="card-body">{{device.device_name}}</div>
+                                        <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
                                     </div>
                                 {% endfor %}
                             </div>
@@ -67,10 +67,10 @@
                         </div>
                         <div class="col">
                             <h5>Sensors</h5>
-                            <div class="row  d-flex justify-content-center" id="devices-list">
+                            <div class="row  d-flex justify-content-center" id='devices-list'>
                                 {% for device in sensors_devices %}
                                     <div class="card cards w-75 mb-2 me-1 ms-1">
-                                        <div class="card-body">{{device.device_name}}</div>
+                                        <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
                                     </div>
                                 {% endfor %}
                             </div>                          
@@ -78,10 +78,10 @@
 
                         <div class="col">
                             <h5 class='text-center '>Others</h5>
-                            <div class="row  d-flex justify-content-center" id="devices-list">
+                            <div class="row  d-flex justify-content-center" id='devices-list'>
                                 {% for device in others_devices %}
                                     <div class="card cards w-75 mb-2 me-1 ms-1">
-                                        <div class="card-body">{{device.device_name}}</div>
+                                        <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
                                     </div>
                                 {% endfor %}                               
                             </div>                                                       
@@ -158,13 +158,13 @@
                                     <div class="col-1">
                                         If
                                     </div>
-                                    <div class="col-5">
+                                    <div class="trig col-5">
                                         <textarea class="form-control" id="trigger" rows="2"></textarea>
                                     </div>
                                     <div class="col-1">
                                         Then
                                     </div>
-                                    <div class="col-5">
+                                    <div class="act col-5">
                                         <textarea class="form-control" id="action" rows="2"></textarea>
                                     </div>
                                 </div>

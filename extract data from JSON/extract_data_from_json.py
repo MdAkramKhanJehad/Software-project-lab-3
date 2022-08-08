@@ -48,10 +48,10 @@ for item in data:
     dev_items.append({device_name: device_details})
 
 json_object = json.dumps(dev_items, indent = 3)
-# print(json_object)
+print(json_object)
 
-# with open("device_data.json", "w") as outfile:
-#     outfile.write(json_object)
+with open("device_data.json", "w") as outfile:
+    outfile.write(json_object)
 
 f2 = open('device_data.json')
 data2 = json.load(f2)

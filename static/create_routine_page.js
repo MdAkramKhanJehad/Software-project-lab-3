@@ -75,41 +75,45 @@ function fixStepIndicator(n) {
 
 function addNewRoutine(){
 
-    // if (!validateForm()) return false;
+    if (document.getElementById("trigger").value=='' && document.getElementById("action").value=='') return false;
 
+    makeCloneNode();
+    setOldRoutineTriggerActionId();
 
-    const node = document.getElementById("routineField");
-    const clone = node.cloneNode(true);
-    // clone.getElementById("trigger").innerHTML=''
-    // clone.getElementById("action").innerHTML=''
-
-    document.getElementById("routineHolder").appendChild(clone); 
-
-    // set previous elements id
-    const firstElement = document.getElementById("routineField").firstChild
-    firstElement.id = "routineField" + totalRoutine.toString();
-    const firstElementTrigger = document.getElementById("trigger")
-    // firstElementTrigger.id = "trigger" + totalRoutine.toString();
-    firstElementTrigger.setAttribute("id", "trigger" + totalRoutine.toString());
-    const firstElementAction = document.getElementById("action")
-    // firstElementAction.id = "action" + totalRoutine.toString();
-    firstElementAction.setAttribute("id", "action" + totalRoutine.toString());
-
-    console.log("before: ")
-    console.log(document.getElementById("trigger").value);
-    console.log(document.getElementById("action").value);
-
-    // clear newly added text areas
-    const newlyAddedTrigger = document.getElementById("trigger")
-    newlyAddedTrigger.innerText=''
-    const newlyAddedAction = document.getElementById("action")
-    newlyAddedAction.innerText=''
-
-    console.log("after: ")
-    console.log(document.getElementById("trigger").innerText);
-    console.log(document.getElementById("action").innerText);
-
+    document.getElementById("trigger").value = '';
+    document.getElementById("action").value = '';
 
     totalRoutine += 1;
     console.log(totalRoutine);
+}
+
+
+function makeCloneNode(){
+    const node = document.getElementById("routineField");
+    const clone = node.cloneNode(true);
+    document.getElementById("routineHolder").appendChild(clone); 
+}
+
+function setOldRoutineTriggerActionId(){
+    const firstElement = document.getElementById("routineField")
+    const newId = "routineField" + totalRoutine.toString()
+    firstElement.setAttribute("id", newId);
+
+    console.log(firstElement.getAttribute("id"));
+
+    const firstElementTrigger = document.getElementById("trigger")
+    const triggerNewId = "trigger" + totalRoutine.toString()
+    firstElementTrigger.setAttribute("id", triggerNewId);
+
+    console.log(firstElementTrigger.getAttribute("id"));
+
+    const firstElementAction = document.getElementById("action")
+    const actionNewId = "action" + totalRoutine.toString()
+    firstElementAction.setAttribute("id", actionNewId);
+
+    console.log(firstElementAction.getAttribute("id"));
+}
+
+function selectedCard(device){
+    console.log(device)
 }
