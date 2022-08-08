@@ -1,10 +1,12 @@
-var currentTab = 0; // Current tab is set to be the first tab (0)
+var currentTab = 0; 
 var totalRoutine = 1;
-showTab(currentTab); // Display the current tab
+var selectedDevices = [];
+showTab(currentTab); 
 
 
 function showTab(n) {
     // This function will display the specified tab of the form...
+    
     var x = document.getElementsByClassName("step");
     x[n].style.display = "block";
     //... and fix the Previous/Next buttons:
@@ -115,5 +117,14 @@ function setOldRoutineTriggerActionId(){
 }
 
 function selectedCard(device){
-    console.log(device)
+    const index = selectedDevices.indexOf(device);
+    
+    if(index > -1){
+        selectedDevices.splice(index, 1);
+        
+    }else {
+        selectedDevices.push(device);
+    }
+
+    console.log(selectedDevices);
 }
