@@ -69,21 +69,39 @@ def select_device(request):
         'safety_and_multimedia_devices': safety_and_multimedia_devices,
         'sensors_devices': sensors_devices,
         'others_devices': others_devices,
+        'page': 1
     }
 
     return render(request, 'home/create/select_device.html', context)
 
 
 def create_routine(request):
-    return render(request, 'home/create/create_routine.html')
+    
+    context = { 'page': 2 }
+
+    return render(request, 'home/create/create_routine.html', context)
+
+
+def edit_delete_routine(request):
+    
+    context = { 'page': 3 }
+
+    return render(request, 'home/create/edit_or_delete_routine.html', context)
+
 
 
 def create_execution_indication(request):
-    return render(request, 'home/create/create_execution_indicator.html')
+    
+    context = { 'page': 4 }
+
+    return render(request, 'home/create/create_execution_indicator.html', context)
 
 
 def confirmation(request):
-    return render(request, 'home/confirmation/confirmation.html')
+
+    context = { 'page': 5 }
+
+    return render(request, 'home/create/confirmation.html', context)
 
 
 def complete(request):
