@@ -1,226 +1,71 @@
-{% extends 'base.html' %}
+{% extends 'base_create_routine.html' %}
 
-{% block title %}Create{% endblock title %}
+{% block page-title %}Select Device{% endblock page-title %}
 
+{% block step %}
 
-{% block stylesheet %}
+    <div class="step">
+        <p><h4 class='text-center'>Select your Device</h4></p>
+        <div class="container">
+            
+            <div id="page-number" data-page-number="{{page}}"></div>
 
-    {% load static %}
-    <link id="pagestyle" href="{% static 'style_create_routine_page.css' %}" type="text/css" rel="stylesheet" />
-
-{% endblock stylesheet %} 
-
-
-{% block body %}
-<div class="container-fluid min-vh-100 d-flex justify-content-center">
-   
-    <div class="container-fluid">
-        <form id="signUpForm" action="#">
-            {% csrf_token %}
-            <!-- start step indicators -->
-            <div class="form-header d-flex mb-3">
-                <span class="stepIndicator"><h4>Select Device</h4></span>
-                <span class="stepIndicator"><h4>Create Routine</h4></span>
-                <span class="stepIndicator"><h4>Execution Indicator</h4></span>
-                <span class="stepIndicator"><h4>Confirmation</h4></span>
-            </div>
-            <!-- end step indicators -->
-
-            <!-- step one -->
-            <div class="step">
-                <p><h4 class='text-center'>Select your Device</h4></p>
-                <div class="container">
-                    <div class="row d-flex mt-4 justify-content-center text-center">
-
-                        <div class="col">
-                            <h5>Appliances</h5>
-                            <div class="row  d-flex justify-content-center" id='devices-list'>
-                                {% for device in appliances_devices %}
-                                <div class="card cards w-75 mb-2 me-1 ms-1">
-                                    <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                </div>
-                                {% endfor %}
-                            </div>                            
+            <div class="row d-flex mt-4 justify-content-center text-center">
+                <div class="col">
+                    <h5>Appliances</h5>
+                    <div class="row  d-flex justify-content-center" id='devices-list'>
+                        {% for device in appliances_devices %}
+                        <div class="card cards w-75 mb-2 me-1 ms-1">
+                            <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
                         </div>
+                        {% endfor %}
+                    </div>                            
+                </div>
 
-                        <div class="col">
-                            <h5>Kitchen & Cleaning</h5>
-                            <div class="row d-flex justify-content-center" id='devices-list'>
-                                {% for device in kitchen_and_cleaning_devices %}
-                                    <div class="card cards w-75 mb-2 me-1 ms-1">
-                                        <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                    </div>
-                                {% endfor %}
+                <div class="col">
+                    <h5>Kitchen & Cleaning</h5>
+                    <div class="row d-flex justify-content-center" id='devices-list'>
+                        {% for device in kitchen_and_cleaning_devices %}
+                            <div class="card cards w-75 mb-2 me-1 ms-1">
+                                <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
                             </div>
-                        </div>
-
-                        <div class="col">
-                            <h5>Safety & Multimedia</h5>
-                            <div class="row  d-flex justify-content-center" id='devices-list'>
-                                {% for device in safety_and_multimedia_devices %}
-                                    <div class="card cards w-75 mb-2 me-1 ms-1">
-                                        <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                            
-                        </div>
-                        <div class="col">
-                            <h5>Sensors</h5>
-                            <div class="row  d-flex justify-content-center" id='devices-list'>
-                                {% for device in sensors_devices %}
-                                    <div class="card cards w-75 mb-2 me-1 ms-1">
-                                        <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                    </div>
-                                {% endfor %}
-                            </div>                          
-                        </div>
-
-                        <div class="col">
-                            <h5 class='text-center '>Others</h5>
-                            <div class="row  d-flex justify-content-center" id='devices-list'>
-                                {% for device in others_devices %}
-                                    <div class="card cards w-75 mb-2 me-1 ms-1">
-                                        <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                    </div>
-                                {% endfor %}                               
-                            </div>                                                       
-                        </div>
+                        {% endfor %}
                     </div>
-                </div>            
-            </div>
-        
-            <!-- step two -->
-            <div class="step container">
+                </div>
 
-                <div class="row">
-                    <div class="col">
-                        <p class="mb-4"><h4 class='text-center'>Your preselected devices are :</h4></p>
+                <div class="col">
+                    <h5>Safety & Multimedia</h5>
+                    <div class="row  d-flex justify-content-center" id='devices-list'>
+                        {% for device in safety_and_multimedia_devices %}
+                            <div class="card cards w-75 mb-2 me-1 ms-1">
+                                <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+                <div class="col">
+                    <h5>Sensors</h5>
+                    <div class="row  d-flex justify-content-center" id='devices-list'>
+                        {% for device in sensors_devices %}
+                            <div class="card cards w-75 mb-2 me-1 ms-1">
+                                <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
+                            </div>
+                        {% endfor %}
+                    </div>                          
+                </div>
 
-                        <div class='row justify-content-center'>
-                            <div class="col-sm-1 card cards w-25 mb-2 me-1 ms-1">
-                                <div class="card-body">Smart IR</div>
+                <div class="col">
+                    <h5 class='text-center '>Others</h5>
+                    <div class="row  d-flex justify-content-center" id='devices-list'>
+                        {% for device in others_devices %}
+                            <div class="card cards w-75 mb-2 me-1 ms-1">
+                                <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
                             </div>
-                            <div class="col--sm-1 card cards w-25 mb-2 me-1 ms-1">
-                                <div class="card-body">Air Purifier</div>
-                            </div>
-                        </div>
-                        
-                        <div class='row'>
-                            {% comment %} <div class='col-3'></div> {% endcomment %}
-        
-                            <div class='col-8 d-flex justify-content-center'>
-                                <div class="ms-5">
-                                    <p class="mb-4"><h4>State and Commands:</h4></p>
-                                    <div>
-                                        <div>
-                                            <p class="lead">
-                                                <b>carbonMonoxide :</b>
-                                            </p>
-                                            <p class='ps-4'>
-                                                -  Read Carbon Monoxide level
-                                            </p>
-                                        </div>                                  
-                                        <div>
-                                            <p class="lead">
-                                                <b>alarm: setAlarmMode</b>
-                                            </p>
-                                            <p class='ps-4'>
-                                                -  Read and set the alarm mode to Siren, strobe, both or off
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="lead">
-                                                <b>tamper :</b>
-                                            </p>
-                                            <p class='ps-4'>
-                                                -  Check if the device is tempered. For example, clear, detected
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p class="lead">
-                                                <b>battery :</b>
-                                            </p>
-                                            <p class='ps-4'>
-                                                -  Read the status of the battery
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>                     
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col" >
-                        <p class="mb-4"><h4 class='text-center'>Create your routines :</h4></p>
-                        <div id="routineHolder"> 
-                            <div class="col" id="routineField">
-                                <div class="row text-center justify-content-center" >
-                                    <div class="col-1">
-                                        If
-                                    </div>
-                                    <div class="trig col-5">
-                                        <textarea class="form-control" id="trigger" rows="2"></textarea>
-                                    </div>
-                                    <div class="col-1">
-                                        Then
-                                    </div>
-                                    <div class="act col-5">
-                                        <textarea class="form-control" id="action" rows="2"></textarea>
-                                    </div>
-                                </div>
-                                <br> 
-                            </div>                          
-                        </div>
-                                              
-                        <div class="text-center pt-3">
-                            <button id="addRoutineBtn" class="btn btn-light btn-outline-success" type="button" onclick="addNewRoutine()" style="font-size:16px"><b>Add Routine</b></button>
-                        </div>
-                    </div>
-                </div>       
-            </div>
-    
-            <!-- step three -->
-            <div class="step">
-                <p class="mb-4"><h4 class='text-center'>Edit or delete Routine. Select Execution Indicator</h4></p>
-                <div class="mb-3">
-                    <input type="text" placeholder="Linked In" oninput="this.className = ''" name="linkedin">
-                </div>
-                <div class="mb-3">
-                    <input type="text" placeholder="Twitter" oninput="this.className = ''" name="twitter">
-                </div>
-                <div class="mb-3">
-                    <input type="text" placeholder="Facebook" oninput="this.className = ''" name="facebook">
+                        {% endfor %}                               
+                    </div>                                                       
                 </div>
             </div>
-        
-            <!-- step four -->
-            <div class="step">
-                <p class="mb-4"><h4 class='text-center'>Confirm your Routines and EI</h4></p>
-                <div class="mb-3">
-                    <input type="text" placeholder="Full name" oninput="this.className = ''" name="fullname">
-                </div>
-                <div class="mb-3">
-                    <input type="text" placeholder="Mobile" oninput="this.className = ''" name="mobile">
-                </div>
-                <div class="mb-3">
-                    <input type="text" placeholder="Address" oninput="this.className = ''" name="address">
-                </div>
-            </div>
-        
-            <!-- start previous / next buttons -->
-            <div class="form-footer d-flex justify-content-center mt-3 mb-3 fs-3">
-                <button class="btn btn-secondary btn-lg" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                <button class="btn btn-secondary btn-lg" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-            </div>
-            <!-- end previous / next buttons -->
-        </form>
+        </div>            
     </div>
-    
-</div>
-
-{% load static %}
-<script src="{% static 'create_routine_page.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-{% endblock body %}
+{% endblock step %}

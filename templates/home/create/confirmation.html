@@ -1,0 +1,21 @@
+{% extends 'base_create_routine.html' %}
+
+{% block page-title %}Confirmation{% endblock page-title %}
+
+{% block step %}
+    <div class="step">
+        
+        <div id="page-number" data-page-number="{{page}}"></div>
+
+        <p class="mb-4"><h4 class='text-center'>Confirm your Routines and EI</h4></p>
+        <div class="mb-3">
+            <input type="text" placeholder="Full name" oninput="this.className = ''" name="fullname">
+        </div>
+        <div class="mb-3">
+            <input type="text" placeholder="Mobile" oninput="this.className = ''" name="mobile">
+        </div>
+        <div class="mb-3">
+            <input type="text" placeholder="Address" oninput="this.className = ''" name="address">
+        </div>
+    </div>
+{% endblock step %}

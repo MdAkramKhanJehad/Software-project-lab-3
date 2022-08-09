@@ -1,8 +1,96 @@
-{% extends 'base.html' %}
+{% extends 'base_create_routine.html' %}
 
-{% block title %}Device List{% endblock title %}
+{% block page-title %}Create Routine{% endblock page-title %}
 
-{% block body %}
-<h2>This is create routine body</h2>
+{% block step %}
+    <div class="step container">
+        
+        <div id="page-number" data-page-number="{{page}}"></div>
 
-{% endblock body %}
+        <div class="row">
+            <div class="col">
+                <p class="mb-4"><h4 class='text-center'>Your preselected devices are :</h4></p>
+
+                <div class='row justify-content-center'>
+                    <div class="col-sm-1 card cards w-25 mb-2 me-1 ms-1">
+                        <div class="card-body">Smart IR</div>
+                    </div>
+                    <div class="col--sm-1 card cards w-25 mb-2 me-1 ms-1">
+                        <div class="card-body">Air Purifier</div>
+                    </div>
+                </div>
+                
+                <div class='row'>
+                    {% comment %} <div class='col-3'></div> {% endcomment %}
+
+                    <div class='col-8 d-flex justify-content-center'>
+                        <div class="ms-5">
+                            <p class="mb-4"><h4>State and Commands:</h4></p>
+                            <div>
+                                <div>
+                                    <p class="lead">
+                                        <b>carbonMonoxide :</b>
+                                    </p>
+                                    <p class='ps-4'>
+                                        -  Read Carbon Monoxide level
+                                    </p>
+                                </div>                                  
+                                <div>
+                                    <p class="lead">
+                                        <b>alarm: setAlarmMode</b>
+                                    </p>
+                                    <p class='ps-4'>
+                                        -  Read and set the alarm mode to Siren, strobe, both or off
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="lead">
+                                        <b>tamper :</b>
+                                    </p>
+                                    <p class='ps-4'>
+                                        -  Check if the device is tempered. For example, clear, detected
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="lead">
+                                        <b>battery :</b>
+                                    </p>
+                                    <p class='ps-4'>
+                                        -  Read the status of the battery
+                                    </p>
+                                </div>
+                            </div>
+                        </div>                     
+                    </div>
+                </div>
+            </div>
+            <div class="col" >
+                <p class="mb-4"><h4 class='text-center'>Create your routines :</h4></p>
+                <div id="routineHolder"> 
+                    <div class="col" id="routineField">
+                        <div class="row text-center justify-content-center" >
+                            <div class="col-1">
+                                If
+                            </div>
+                            <div class="trig col-5">
+                                <textarea class="form-control" id="trigger" rows="2"></textarea>
+                            </div>
+                            <div class="col-1">
+                                Then
+                            </div>
+                            <div class="act col-5">
+                                <textarea class="form-control" id="action" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <br> 
+                    </div>                          
+                </div>
+                                    
+                <div class="text-center pt-3">
+                    <button id="addRoutineBtn" class="btn btn-light btn-outline-success" type="button" onclick="addNewRoutine()" style="font-size:16px"><b>Add Routine</b></button>
+                </div>
+            </div>
+        </div>       
+    </div>
+
+{% endblock step %}

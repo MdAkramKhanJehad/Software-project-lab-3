@@ -1,7 +1,99 @@
-{% extends 'base.html' %}
+{% extends 'base_create_routine.html' %}
 
-{% block title %}EI{% endblock title %}
+{% block page-title %}Create EI{% endblock page-title %}
 
-{% block body %}
-    <h2>This is Execution Indicator body</h2>
-{% endblock body %}
+{% block step %}
+
+    <div class="step">
+        <p class="mb-4"><h4 class='text-center'>Select Execution Indicator</h4></p>
+        
+        <div id="page-number" data-page-number="{{page}}"></div>
+
+        <div class="col m-3">
+            <div class="row">
+                <div class="routine col-2 me-5">
+                    1. If user at home, turn on the light
+                </div>
+
+                <select class="selectpicker bg-success text-white col-1 mx-3 fs-5" style="border-radius:10px" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+
+                <select class="selectpicker bg-success text-light col-1 mx-3 fs-5" style="border-radius:10px" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+
+                <select class="selectpicker bg-success text-white col-1 mx-3 fs-5" style="border-radius:10px" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+
+                <select class="selectpicker bg-success text-white col-1 mx-3 fs-5" style="border-radius:10px" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+
+                <select class="selectpicker bg-success text-white col-1 mx-3 fs-5" style="border-radius:10px" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div> <br>
+
+            <div class="row">
+                <div class="routine col-2 me-5">
+                    2. If user at home, turn on the light
+                </div>
+
+                <select class="selectpicker bg-success text-white col-1 mx-3 fs-5" style="border-radius:10px" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+
+                <select class="selectpicker bg-success text-light col-1 mx-3 fs-5" style="border-radius:10px" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+
+                <select class="selectpicker bg-success text-white col-1 mx-3 fs-5" style="border-radius:10px" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+
+                <select class="selectpicker bg-success text-white col-1 mx-3 fs-5" style="border-radius:10px" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+
+                <select class="selectpicker bg-success text-white col-1 mx-3 fs-5" style="border-radius:10px" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+        </div>
+        
+        
+    </div>
+
+{% endblock step %}

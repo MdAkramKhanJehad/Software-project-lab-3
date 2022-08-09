@@ -4,10 +4,53 @@ var selectedDevices = [];
 showTab(currentTab); 
 
 
+const pageNo = document.getElementById("page-number").getAttribute("data-page-number");
+console.log("page no: ", pageNo);
+showButton();
+
+function showButton(){
+    if (pageNo == 1) {
+        document.getElementById("prevBtn").style.display = "none";
+    } else {
+        document.getElementById("prevBtn").style.display = "inline";
+    }
+
+    if (pageNo == 5) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+    } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+    }
+
+    if(pageNo == 1 ){
+        document.getElementById("nextBtn").href = "/home/create/routine";
+
+    } else if( pageNo == 2){
+        document.getElementById("nextBtn").href = "/home/create/edit-delete-routine";
+        document.getElementById("prevBtn").href = "/home/create/select-device";
+
+    } else if( pageNo == 3){
+        document.getElementById("nextBtn").href = "/home/create/execution-indication";
+        document.getElementById("prevBtn").href = "/home/create/routine";
+
+    } else if( pageNo == 4){
+        document.getElementById("nextBtn").href = "/home/create/confirmation";
+        document.getElementById("prevBtn").href = "/home/create/edit-delete-routine";
+        
+    } else {
+        document.getElementById("nextBtn").href = "/home/create/complete";
+        document.getElementById("prevBtn").href = "/home/create/execution-indication";
+    }
+
+    fixStepIndicator(pageNo-1);
+
+}
+
 function showTab(n) {
     // This function will display the specified tab of the form...
-    
+  
     var x = document.getElementsByClassName("step");
+    console.log("length: ", x.length )
+    // console.log()
     x[n].style.display = "block";
     //... and fix the Previous/Next buttons:
     if (n == 0) {
@@ -23,6 +66,7 @@ function showTab(n) {
     //... and run a function that will display the correct step indicator:
     fixStepIndicator(n)
 }
+
 
 function nextPrev(n) {
     // This function will figure out which tab to display
