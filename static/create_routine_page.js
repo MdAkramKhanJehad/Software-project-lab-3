@@ -54,14 +54,14 @@ function showTab(n) {
     x[n].style.display = "block";
     //... and fix the Previous/Next buttons:
     if (n == 0) {
-    document.getElementById("prevBtn").style.display = "none";
+        document.getElementById("prevBtn").style.display = "none";
     } else {
-    document.getElementById("prevBtn").style.display = "inline";
+        document.getElementById("prevBtn").style.display = "inline";
     }
     if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
+        document.getElementById("nextBtn").innerHTML = "Submit";
     } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
+        document.getElementById("nextBtn").innerHTML = "Next";
     }
     //... and run a function that will display the correct step indicator:
     fixStepIndicator(n)
@@ -165,9 +165,22 @@ function selectedCard(device){
     
     if(index > -1){
         selectedDevices.splice(index, 1);
-        
+        document.getElementById(device).className = document.getElementById(device).className.replace(" selected", "");
+        console.log(document.getElementById(device).getAttribute('class'));
+
+        document.getElementById(device).style.transform = "scale(1)";
+        document.getElementById(device).style.backgroundColor = "white";
+        document.getElementById(device).style.color = "black";
     }else {
         selectedDevices.push(device);
+        document.getElementById(device).className += " selected";
+        console.log(document.getElementById(device).getAttribute('class'));
+
+        // document.getElementById(device).style.boxShadow = "5px 6px 6px 2px #e9ecef";
+        document.getElementById(device).style.transform = "scale(1.11)";
+        document.getElementById(device).style.backgroundColor = "#198754";
+        document.getElementById(device).style.color = "white";
+        document.getElementById(device).style.borderRadius = "10px";
     }
 
     console.log(selectedDevices);
