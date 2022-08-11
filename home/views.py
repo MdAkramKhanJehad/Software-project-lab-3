@@ -77,6 +77,12 @@ def select_device(request):
 
 def create_routine(request):
     
+    if request.method == 'POST':
+        response_json = request.POST
+        response_json = json.dumps(response_json)
+        data = json.loads(response_json)
+        print("dataaaaaaaa: ", data)
+    
     context = { 'page': 2 }
 
     return render(request, 'home/create/create_routine.html', context)

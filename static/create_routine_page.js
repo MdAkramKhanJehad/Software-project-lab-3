@@ -8,42 +8,6 @@ const pageNo = document.getElementById("page-number").getAttribute("data-page-nu
 console.log("page no: ", pageNo);
 showButton();
 
-function showButton(){
-    if (pageNo == 1) {
-        document.getElementById("prevBtn").style.display = "none";
-    } else {
-        document.getElementById("prevBtn").style.display = "inline";
-    }
-
-    if (pageNo == 5) {
-        document.getElementById("nextBtn").innerHTML = "Submit";
-    } else {
-        document.getElementById("nextBtn").innerHTML = "Next";
-    }
-
-    if(pageNo == 1 ){
-        document.getElementById("nextBtn").href = "/home/create/routine";
-
-    } else if( pageNo == 2){
-        document.getElementById("nextBtn").href = "/home/create/edit-delete-routine";
-        document.getElementById("prevBtn").href = "/home/create/select-device";
-
-    } else if( pageNo == 3){
-        document.getElementById("nextBtn").href = "/home/create/execution-indication";
-        document.getElementById("prevBtn").href = "/home/create/routine";
-
-    } else if( pageNo == 4){
-        document.getElementById("nextBtn").href = "/home/create/confirmation";
-        document.getElementById("prevBtn").href = "/home/create/edit-delete-routine";
-        
-    } else {
-        document.getElementById("nextBtn").href = "/home/create/complete";
-        document.getElementById("prevBtn").href = "/home/create/execution-indication";
-    }
-
-    fixStepIndicator(pageNo-1);
-
-}
 
 function showTab(n) {
     // This function will display the specified tab of the form...
@@ -119,6 +83,7 @@ function fixStepIndicator(n) {
     x[n].className += " active";
 }
 
+
 function addNewRoutine(){
 
     if (document.getElementById("trigger").value=='' && document.getElementById("action").value=='') return false;
@@ -160,28 +125,109 @@ function setOldRoutineTriggerActionId(){
     console.log(firstElementAction.getAttribute("id"));
 }
 
+
+
+function showButton(){
+    if (pageNo == 1) {
+        document.getElementById("prevBtn").style.display = "none";
+    } else {
+        document.getElementById("prevBtn").style.display = "inline";
+    }
+
+    if (pageNo == 5) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+    } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+    }
+
+    if(pageNo == 1 ){
+        // document.getElementById("nextBtn").href = "/home/create/routine";
+        console.log("this is page 1");
+
+    } else if( pageNo == 2){
+        document.getElementById("nextBtn").href = "/home/create/edit-delete-routine";
+        document.getElementById("prevBtn").href = "/home/create/select-device";
+
+    } else if( pageNo == 3){
+        document.getElementById("nextBtn").href = "/home/create/execution-indication";
+        document.getElementById("prevBtn").href = "/home/create/routine";
+
+    } else if( pageNo == 4){
+        document.getElementById("nextBtn").href = "/home/create/confirmation";
+        document.getElementById("prevBtn").href = "/home/create/edit-delete-routine";
+        
+    } else {
+        document.getElementById("nextBtn").href = "/home/create/complete";
+        document.getElementById("prevBtn").href = "/home/create/execution-indication";
+    }
+
+    fixStepIndicator(pageNo-1);
+
+}
+
 function selectedCard(device){
     const index = selectedDevices.indexOf(device);
     
     if(index > -1){
+        //remove from selected device
         selectedDevices.splice(index, 1);
-        document.getElementById(device).className = document.getElementById(device).className.replace(" selected", "");
-        console.log(document.getElementById(device).getAttribute('class'));
-
-        document.getElementById(device).style.transform = "scale(1)";
-        document.getElementById(device).style.backgroundColor = "white";
-        document.getElementById(device).style.color = "black";
+        styleChangeAfterDeselection(device);
+    
     }else {
+        //add in selected device
         selectedDevices.push(device);
-        document.getElementById(device).className += " selected";
-        console.log(document.getElementById(device).getAttribute('class'));
-
-        // document.getElementById(device).style.boxShadow = "5px 6px 6px 2px #e9ecef";
-        document.getElementById(device).style.transform = "scale(1.11)";
-        document.getElementById(device).style.backgroundColor = "#198754";
-        document.getElementById(device).style.color = "white";
-        document.getElementById(device).style.borderRadius = "10px";
+        styleChangeAfterSelection(device);
     }
-
-    console.log(selectedDevices);
+    
+    console.log("all dev las: " + selectedDevices);
 }
+
+
+function styleChangeAfterSelection(device){
+    document.getElementById(device).className += " selected";
+    console.log(document.getElementById(device).getAttribute('class'));
+
+    document.getElementById(device).style.transform = "scale(1.11)";
+    document.getElementById(device).style.backgroundColor = "#198754";
+    document.getElementById(device).style.color = "white";
+    document.getElementById(device).style.borderRadius = "10px";
+}
+
+
+function styleChangeAfterDeselection(device){
+    document.getElementById(device).className = document.getElementById(device).className.replace(" selected", "");
+    console.log(document.getElementById(device).getAttribute('class'));
+
+    document.getElementById(device).style.transform = "scale(1)";
+    document.getElementById(device).style.backgroundColor = "white";
+    document.getElementById(device).style.color = "black";
+}
+
+
+// function handleNextButtonClick
+
+$('#nextBtn').click(function(){
+    var data, nextBtnUrl, dataDev = {};
+    if(pageNo == 1){
+        nextBtnUrl = "/home/create/routine";
+        data = selectedDevices;
+        for (let i = 0; i < selectedDevices.length; i++) {
+            dataDev[i] = selectedDevices[i];
+        }
+    } 
+
+    
+    $.ajax(
+    {
+        type:"POST",
+        url: nextBtnUrl,
+        headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
+        data: {
+            devices: dataDev
+        },
+        success: function( ) 
+        {
+            console.log("successssssssss");
+        }
+     })
+});
