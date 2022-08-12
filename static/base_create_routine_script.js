@@ -22,6 +22,9 @@ if(pageNo == 1){
         styleChangeAfterSelection(selectedDevice);
     }
     
+} else if(pageNo == 2){
+    var selectedDevicesFromSession = document.getElementById("selected-device").getAttribute("data-previously-selected-device");
+    console.log("sel dev in page 2: ", selectedDevicesFromSession);
 }
 
 
@@ -237,21 +240,21 @@ $('#nextBtn').click(function(){
         for (let i = 0; i < selectedDevices.length; i++) {
             dataDev[i] = selectedDevices[i];
         }
-    } 
 
-    
-    $.ajax(
-    {
-        type:"POST",
-        url: nextBtnUrl,
-        headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
-        data: {
-            devices: dataDev
-        },
-        success: function() 
-        {   
-            console.log("successssssssss");
-            window.location.href = "/home/create/routine";
-        }
-     });
+        $.ajax(
+            {
+                type:"POST",
+                url: nextBtnUrl,
+                headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
+                data: {
+                    devices: dataDev
+                },
+                success: function() 
+                {   
+                    console.log("successssssssss");
+                    window.location.href = "/home/create/routine";
+                }
+            }
+        );
+    } 
 });

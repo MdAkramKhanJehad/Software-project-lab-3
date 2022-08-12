@@ -44,16 +44,12 @@ def select_device(request):
         response_json = json.dumps(response_json)
         data = json.loads(response_json)
         
-        
-        
         for i in range(len(data)):
             selected_device_list.append(data["devices[{}]".format(i)])
        
-        # del request.session['selected_devices']
-        # request.session.modified = True
         request.session["selected_devices"] = selected_device_list
         request.session.modified = True
-        print("data from session page 1: ", request.session['selected_devices'] , end="\n\n")
+        # print("data from session page 1: ", request.session['selected_devices'] , end="\n\n")
         
         
     # get previously selected devices, if available in session
@@ -108,24 +104,16 @@ def select_device(request):
 def create_routine(request):
     selected_device_list = []
     
-    print("inside create routine 1", end="\n\n")
-
-    
     if request.session.get("selected_devices"):
         selected_device_list = request.session["selected_devices"]
-        print("session available page 2 else: ", selected_device_list , end="\n\n") 
-        # print("inside create routine 2", end="\n\n")
+        print("session available page 2: ", selected_device_list , end="\n\n") 
     else:
         print("no session available", end="\n\n")
-
-    print("inside create routine 3", end="\n\n")
     
     context = { 
         'previously_selected_devices': selected_device_list,
         'page': 2 
     }
-
-    print("inside create routine 4", selected_device_list, end="\n\n")
 
     return render(request, 'home/create/create_routine.html', context)
 
