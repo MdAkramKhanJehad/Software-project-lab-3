@@ -25,6 +25,12 @@ if(pageNo == 1){
 }
 
 
+// if( pageNo == 2){
+//     var selectedDevicesFromSession = document.getElementById("selected-device").getAttribute("data-selected-device");
+//     console.log("sel dev in page 2: ", selectedDevicesFromSession);
+// }
+
+
 
 function showTab(n) {
     // This function will display the specified tab of the form...
@@ -158,7 +164,7 @@ function showButton(){
     }
 
     if(pageNo == 1 ){
-        document.getElementById("nextBtn").href = "/home/create/routine";
+        // document.getElementById("nextBtn").href = "/home/create/routine";
         console.log("this is page 1");
 
     } else if( pageNo == 2){
@@ -245,6 +251,7 @@ $('#nextBtn').click(function(){
         success: function() 
         {   
             console.log("successssssssss");
+            window.location.href = "/home/create/routine";
         }
      });
 });

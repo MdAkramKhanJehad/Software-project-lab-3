@@ -39,7 +39,6 @@ def select_device(request):
     
     # get and save session after next button clicking in device selection ui
     if request.method == 'POST':
-        print("inside select_device")
 
         response_json = request.POST
         response_json = json.dumps(response_json)
@@ -50,15 +49,17 @@ def select_device(request):
         for i in range(len(data)):
             selected_device_list.append(data["devices[{}]".format(i)])
        
+        # del request.session['selected_devices']
+        # request.session.modified = True
         request.session["selected_devices"] = selected_device_list
         request.session.modified = True
-        print("data from session: ", request.session['selected_devices'] )
+        print("data from session page 1: ", request.session['selected_devices'] , end="\n\n")
         
         
     # get previously selected devices, if available in session
     if request.session.get("selected_devices"):
         selected_device_list = request.session["selected_devices"]
-        print("session available: ", selected_device_list ) 
+        # print("session available: ", selected_device_list ) 
     else:
         print("no session available")
        
@@ -105,8 +106,26 @@ def select_device(request):
 
 
 def create_routine(request):
+    selected_device_list = []
     
-    context = { 'page': 2 }
+    print("inside create routine 1", end="\n\n")
+
+    
+    if request.session.get("selected_devices"):
+        selected_device_list = request.session["selected_devices"]
+        print("session available page 2 else: ", selected_device_list , end="\n\n") 
+        # print("inside create routine 2", end="\n\n")
+    else:
+        print("no session available", end="\n\n")
+
+    print("inside create routine 3", end="\n\n")
+    
+    context = { 
+        'previously_selected_devices': selected_device_list,
+        'page': 2 
+    }
+
+    print("inside create routine 4", selected_device_list, end="\n\n")
 
     return render(request, 'home/create/create_routine.html', context)
 

@@ -6,18 +6,24 @@
     <div class="step container">
         
         <div id="page-number" data-page-number="{{page}}"></div>
+        <div id="selected-device" data-previously-selected-device="{{previously_selected_devices}}"></div>
 
         <div class="row">
             <div class="col">
                 <p class="mb-4"><h4 class='text-center'>Your preselected devices are :</h4></p>
 
                 <div class='row justify-content-center'>
-                    <div class="col-sm-1 card cards w-25 mb-2 me-1 ms-1">
+                    {% for device in previously_selected_devices %}
+                        <div class="col-sm-1 card cards w-25 mb-2 me-1 ms-1">
+                            <div class="card-body" id="{{device}}">{{device}}</div>
+                        </div>
+                    {% endfor %}
+                    {% comment %} <div class="col-sm-1 card cards w-25 mb-2 me-1 ms-1">
                         <div class="card-body">Smart IR</div>
                     </div>
                     <div class="col--sm-1 card cards w-25 mb-2 me-1 ms-1">
                         <div class="card-body">Air Purifier</div>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
                 
                 <div class='row'>
@@ -94,3 +100,8 @@
     </div>
 
 {% endblock step %}
+
+{% block script-2 %}
+    {% load static %}
+    <script src="{% static 'page_create_routine_script.js' %}"></script>
+{% endblock script-2 %}
