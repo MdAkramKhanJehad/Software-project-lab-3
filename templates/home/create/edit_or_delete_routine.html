@@ -3,19 +3,75 @@
 {% block page-title %}Edit Delete Routine{% endblock page-title %}
 
 {% block step %}
-   <div class="step">
-      
-      <div id="page-number" data-page-number="{{page}}"></div>
+   <div class="step container">      
+		<div id="page-number" data-page-number="{{page}}"></div>
 
-      <p class="mb-4"><h4 class='text-center'>Edit or delete Routine</h4></p>
-      <div class="mb-3">
-         <input type="text" placeholder="Full name" oninput="this.className = ''" name="fullname">
-      </div>
-      <div class="mb-3">
-         <input type="text" placeholder="Mobile" oninput="this.className = ''" name="mobile">
-      </div>
-      <div class="mb-3">
-         <input type="text" placeholder="Address" oninput="this.className = ''" name="address">
-      </div>
+		<div class="col">
+			<div class="row">
+				<div class="col-6">
+					<p class="mb-4"><h4 class='text-center'>Your previously created Routines</h4></p>
+				</div>
+				<div class="col-3">
+					<p class="mb-4"><h4 class='text-center'>Update Routine</h4></p>
+				</div>
+				<div class="col-3">
+					<p class="mb-4"><h4 class='text-center'>Delete Routine</h4></p>
+				</div>
+			</div>	
+			
+			<div class="row">
+				<div class="col-6">
+					<div class="row text-center justify-content-center" >
+						<div class="col-1">
+							If
+						</div>
+						<div class="trig col-5">
+							<textarea class="form-control" id="trigger" rows="2">user at home,</textarea>
+						</div>
+						<div class="col-1">
+							Then
+						</div>
+						<div class="act col-5">
+							<textarea class="form-control" id="action" rows="2">turn on the light</textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-3 text-center">					
+					<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" role="button"><b>Update</b></a>
+				</div>
+				<div class="col-3 text-center">
+					<a class="btn btn-outline-light btn-rounded btn-danger btn-lg m-2" role="button"><b>Delete</b></a>
+				</div>
+			</div><br>
+
+			<div class="row">
+				<div class="col-6">
+					<div class="row text-center justify-content-center" >
+						<div class="col-1">
+							If
+						</div>
+						<div class="trig col-5">
+							<textarea class="form-control" id="trigger" rows="2">it is evening,</textarea>
+						</div>
+						<div class="col-1">
+							Then
+						</div>
+						<div class="act col-5">
+							<textarea class="form-control" id="action" rows="2">turn on the gas stove</textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col-3 text-center">					
+					<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" role="button"><b>Update</b></a>
+				</div>
+				<div class="col-3 text-center">
+					<a class="btn btn-outline-light btn-rounded btn-danger btn-lg m-2" role="button"><b>Delete</b></a>
+				</div>
+			</div><br>
+			
+		</div>
+
+		
+      
    </div>
 {% endblock step %}

@@ -1,6 +1,7 @@
 var currentTab = 0; 
 var totalRoutine = 1;
 var selectedDevices = [];
+var createdRoutines = [];
 showTab(currentTab); 
 
 
@@ -26,12 +27,6 @@ if(pageNo == 1){
     var selectedDevicesFromSession = document.getElementById("selected-device").getAttribute("data-previously-selected-device");
     console.log("sel dev in page 2: ", selectedDevicesFromSession);
 }
-
-
-// if( pageNo == 2){
-//     var selectedDevicesFromSession = document.getElementById("selected-device").getAttribute("data-selected-device");
-//     console.log("sel dev in page 2: ", selectedDevicesFromSession);
-// }
 
 
 
@@ -256,5 +251,7 @@ $('#nextBtn').click(function(){
                 }
             }
         );
-    } 
+    } else if(pageNo == 2){
+        nextBtnUrl = "/home/create/routine";
+    }
 });
