@@ -8,6 +8,23 @@ const pageNo = document.getElementById("page-number").getAttribute("data-page-nu
 console.log("page no: ", pageNo);
 showButton();
 
+if(pageNo == 1){
+
+    // change style of previously selected devices
+    var selectedDevicesFromSession = document.getElementById("selected-device").getAttribute("data-selected-device");
+    console.log("sel dev: ", selectedDevicesFromSession);
+    console.log(typeof selectedDevicesFromSession);
+
+    selectedDevicesFromSession = selectedDevicesFromSession.replace(/'/g, '"')
+    selectedDevices = JSON.parse(selectedDevicesFromSession);
+
+    for (const selectedDevice of selectedDevices){
+        styleChangeAfterSelection(selectedDevice);
+    }
+    
+}
+
+
 
 function showTab(n) {
     // This function will display the specified tab of the form...
@@ -179,7 +196,7 @@ function selectedCard(device){
         styleChangeAfterSelection(device);
     }
     
-    console.log("all dev las: " + selectedDevices);
+    console.log("all dev : " + selectedDevices);
 }
 
 
