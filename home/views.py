@@ -35,7 +35,35 @@ def tutorial(request):
 
 
 def select_device(request):
+    selected_device_list = []
     
+    # get and save session after next button clicking in device selection ui
+    if request.method == 'POST':
+        print("inside select_device")
+
+        response_json = request.POST
+        response_json = json.dumps(response_json)
+        data = json.loads(response_json)
+        
+        
+        
+        for i in range(len(data)):
+            selected_device_list.append(data["devices[{}]".format(i)])
+       
+        request.session["selected_devices"] = selected_device_list
+        request.session.modified = True
+        print("data from session: ", request.session['selected_devices'] )
+        
+        
+    # get previously selected devices, if available in session
+    if request.session.get("selected_devices"):
+        selected_device_list = request.session["selected_devices"]
+        print("session available: ", selected_device_list ) 
+    else:
+        print("no session available")
+       
+       
+    # get all device from db    
     device_list = Device.objects.all()
 
     if len(device_list) == 0:
@@ -69,6 +97,7 @@ def select_device(request):
         'safety_and_multimedia_devices': safety_and_multimedia_devices,
         'sensors_devices': sensors_devices,
         'others_devices': others_devices,
+        'previously_selected_devices': selected_device_list,
         'page': 1
     }
 
@@ -76,12 +105,6 @@ def select_device(request):
 
 
 def create_routine(request):
-    
-    if request.method == 'POST':
-        response_json = request.POST
-        response_json = json.dumps(response_json)
-        data = json.loads(response_json)
-        print("dataaaaaaaa: ", data)
     
     context = { 'page': 2 }
 

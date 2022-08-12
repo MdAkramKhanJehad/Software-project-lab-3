@@ -141,7 +141,7 @@ function showButton(){
     }
 
     if(pageNo == 1 ){
-        // document.getElementById("nextBtn").href = "/home/create/routine";
+        document.getElementById("nextBtn").href = "/home/create/routine";
         console.log("this is page 1");
 
     } else if( pageNo == 2){
@@ -209,7 +209,7 @@ function styleChangeAfterDeselection(device){
 $('#nextBtn').click(function(){
     var data, nextBtnUrl, dataDev = {};
     if(pageNo == 1){
-        nextBtnUrl = "/home/create/routine";
+        nextBtnUrl = "/home/create/select-device";
         data = selectedDevices;
         for (let i = 0; i < selectedDevices.length; i++) {
             dataDev[i] = selectedDevices[i];
@@ -225,9 +225,9 @@ $('#nextBtn').click(function(){
         data: {
             devices: dataDev
         },
-        success: function( ) 
-        {
+        success: function() 
+        {   
             console.log("successssssssss");
         }
-     })
+     });
 });
