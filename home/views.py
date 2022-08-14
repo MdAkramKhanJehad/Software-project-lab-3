@@ -103,6 +103,7 @@ def select_device(request):
 
 def create_routine(request):
     selected_device_list = []
+    deviceAttributeList = []
     
     if request.session.get("selected_devices"):
         selected_device_list = request.session["selected_devices"]
@@ -110,8 +111,23 @@ def create_routine(request):
     else:
         print("no session available", end="\n\n")
     
+    # request data from 2 table for those device
+    if len(selected_device_list) > 0:
+        deviceAttributeList = []
+        
+        for device in selected_device_list:
+            attrDesc = {}
+            attributeDescriptionFromDb = DeviceAttribute.objects.filter(device__device_name__contains=device)
+            
+            attrDesc["device_name"] = device
+            attrDesc["device_attribute"] = attributeDescriptionFromDb
+            deviceAttributeList.append(attrDesc)
+            
+        print(deviceAttributeList)       
+            
     context = { 
         'previously_selected_devices': selected_device_list,
+        'selected_devices_attributes': deviceAttributeList,
         'page': 2 
     }
 
