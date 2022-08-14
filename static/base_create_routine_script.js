@@ -23,7 +23,8 @@ if(pageNo == 1){
         styleChangeAfterSelection(selectedDevice);
     }
     
-} else if(pageNo == 2){
+}
+ else if(pageNo == 2){
     var selectedDevicesFromSession = document.getElementById("selected-device").getAttribute("data-previously-selected-device");
     var attr = document.getElementById("device-attribute").getAttribute("data-device-atribute");
     // console.log("sel dev in page 2: ", selectedDevicesFromSession);

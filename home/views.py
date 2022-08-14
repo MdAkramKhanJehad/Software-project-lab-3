@@ -118,20 +118,9 @@ def create_routine(request):
         for device in selected_device_list:
             attrDesc = {}
             attributeDescriptionFromDb = DeviceAttribute.objects.filter(device__device_name__contains=device)
-            
-            # singleDeviceAttr = []
-            # for attribute_desciprtion in attributeDescriptionFromDb:
-            #     attr = []
-            #     attr.append(attribute_desciprtion.attribute)
-            #     attr.append(attribute_desciprtion.action)
-            #     attr.append(attribute_desciprtion.description)
-            #     singleDeviceAttr.append(attr)
-            # attrDesc["device_name"] = device
-            # attrDesc["device_attribute"] = attributeDescriptionFromDb
             deviceAttributeList.append(attributeDescriptionFromDb)
          
-        print((deviceAttributeList))   
-        # print(deviceAttributeList)       
+        print(deviceAttributeList)  
             
     context = { 
         'previously_selected_devices': selected_device_list,
