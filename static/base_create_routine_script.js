@@ -25,8 +25,12 @@ if(pageNo == 1){
     
 } else if(pageNo == 2){
     var selectedDevicesFromSession = document.getElementById("selected-device").getAttribute("data-previously-selected-device");
-    console.log("sel dev in page 2: ", selectedDevicesFromSession);
+    var attr = document.getElementById("device-attribute").getAttribute("data-device-atribute");
+    // console.log("sel dev in page 2: ", selectedDevicesFromSession);
+    // console.log(JSON.parse(attr));
+    console.log(typeof attr);
 }
+
 
 
 

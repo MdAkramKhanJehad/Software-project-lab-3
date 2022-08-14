@@ -7,7 +7,9 @@
         
         <div id="page-number" data-page-number="{{page}}"></div>
         <div id="selected-device" data-previously-selected-device="{{previously_selected_devices}}"></div>
+        <div id="device-attribute" data-device-atribute="{{selected_devices_attributes}}"></div>
 
+        
         <div class="row">
             <div class="col">
                 <p class="mb-4"><h4 class='text-center'>Your preselected devices are :</h4></p>
@@ -15,50 +17,32 @@
                 <div class='row justify-content-center'>
                     {% for device in previously_selected_devices %}
                         <div class="col-sm-1 card cards w-25 mb-2 me-1 ms-1">
-                            <div class="card-body" id="{{device}}">{{device}}</div>
+                            <div class="card-body text-center" id="{{device}}" data-index="{{forloop.counter0}}" onclick="showAttributes('{{device}}')">{{device}}</div>
                         </div>
                     {% endfor %}
                 </div>
                 
                 <div class='row'>
-                    {% comment %} <div class='col-3'></div> {% endcomment %}
+                    {% comment %} <div class='col-3'></div>  {% endcomment %}
 
                     <div class='col-8 d-flex justify-content-center'>
                         <div class="ms-5">
                             <p class="mb-4"><h4>State and Commands:</h4></p>
-                            <div>
-                                <div>
-                                    <p class="lead">
-                                        <b>carbonMonoxide :</b>
-                                    </p>
-                                    <p class='ps-4'>
-                                        -  Read Carbon Monoxide level
-                                    </p>
-                                </div>                                  
-                                <div>
-                                    <p class="lead">
-                                        <b>alarm: setAlarmMode</b>
-                                    </p>
-                                    <p class='ps-4'>
-                                        -  Read and set the alarm mode to Siren, strobe, both or off
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="lead">
-                                        <b>tamper :</b>
-                                    </p>
-                                    <p class='ps-4'>
-                                        -  Check if the device is tempered. For example, clear, detected
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="lead">
-                                        <b>battery :</b>
-                                    </p>
-                                    <p class='ps-4'>
-                                        -  Read the status of the battery
-                                    </p>
-                                </div>
+                            <div>  
+                                {% for device_attribute in selected_devices_attributes%}
+                                    <div id="state-{{forloop.counter0}}" style='display:none;'>
+                                        {% for attribute_desc in device_attribute.all %}                       
+                                            <div>
+                                                <p class="lead">
+                                                    {{attribute_desc.attribute}} : {{attribute_desc.action}}
+                                                </p>
+                                                <p class='ps-4'>
+                                                    -  {{attribute_desc.description}}
+                                                </p>
+                                            </div>
+                                        {% endfor %}
+                                    </div>                                   
+                                {% endfor %}                                                                                            
                             </div>
                         </div>                     
                     </div>
@@ -95,7 +79,7 @@
 
 {% endblock step %}
 
-{% comment %} {% block script-2 %}
+{% block script-2 %}
     {% load static %}
-    <script src="{% static 'page_create_routine_script.js' %}"></script>
-{% endblock script-2 %} {% endcomment %}
+    <script src="{% static 'create_routine_script.js' %}"></script>
+{% endblock script-2 %}
