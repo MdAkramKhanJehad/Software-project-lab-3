@@ -52,29 +52,11 @@ function addNewRoutine(){
     makeCloneNode();
     setOldRoutineTriggerActionId();
 
-    // add trigger action in list
-    var triggerId = "trigger" + totalRoutine;
-    var actionId = "action" + totalRoutine;
-    var routine = {};
-
-    const trigger = document.getElementById(triggerId).value;
-    const action = document.getElementById(actionId).value;
-
-    // there will e a list of routine, each routine is a list consist of trigger (at index 0), and action (at index 1)
-    routine["trigger"] = trigger;
-    routine["action"] = action   
-    createdRoutines.push(routine);
-
     document.getElementById("trigger").value = '';
     document.getElementById("action").value = '';
 
     totalRoutine += 1;
     console.log("total routine: " + totalRoutine);
-
-    // for (let i = 0; i < createdRoutines.length; i++) {
-    //     console.log("Routines: " + i + " " + createdRoutines[i] + " ||| ");
-    // }
-
 }
 
 
@@ -126,10 +108,43 @@ function styleChangeAfterDeselection(device){
 }
 
 
+function getAllNewlyCreatedRoutines(){
+    for (let i = 1; i < totalRoutine; i++) {
+        var routine = {};
+
+        var triggerId = "trigger" + i;
+        var actionId = "action" + i;
+
+        const trigger = document.getElementById(triggerId).value;
+        const action = document.getElementById(actionId).value;
+
+        // there will e a list of routine, each routine is a list consist of trigger (at index 0), and action (at index 1)
+        routine["trigger"] = trigger;
+        routine["action"] = action   
+        createdRoutines.push(routine);
+
+        console.log(routine)
+    }
+   
+    if(document.getElementById("trigger").value != "" &&  document.getElementById("action").value != ""){
+        var routine = {};
+        const trigger = document.getElementById("trigger").value;
+        const action = document.getElementById("action").value;
+
+        routine["trigger"] = trigger;
+        routine["action"] = action   
+        createdRoutines.push(routine);
+            
+        console.log(routine);
+    }
+}
+
+
 $('#nextBtn').click(function(){
     var nextBtnUrl, routineData = {};
     
     nextBtnUrl = "/home/create/routine";
+    getAllNewlyCreatedRoutines();
 
     for (let i = 0; i < createdRoutines.length; i++) {
         routineData[i] = createdRoutines[i];
