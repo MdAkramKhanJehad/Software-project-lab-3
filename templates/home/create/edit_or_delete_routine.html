@@ -5,6 +5,8 @@
 {% block step %}
    <div class="step container">      
 		<div id="page-number" data-page-number="{{page}}"></div>
+		<div id="created-routines" data-created-routines="{{created_routines_list}}"></div>
+
 
 		<div class="col">
 			<div class="row">
@@ -19,80 +21,34 @@
 				</div>
 			</div>	
 			
-			<div class="row">
-				<div class="col-6">
-					<div class="row text-center justify-content-center" >
-						<div class="col-1">
-							If
-						</div>
-						<div class="trig col-5">
-							<textarea class="form-control" id="trigger" rows="2">user at home,</textarea>
-						</div>
-						<div class="col-1">
-							Then
-						</div>
-						<div class="act col-5">
-							<textarea class="form-control" id="action" rows="2">turn on the light</textarea>
+			{% for routine in created_routines_list %}
+				<div class="row">
+					<div class="col-6">
+						<div class="row text-center justify-content-center" >
+							<div class="col-1">
+								If
+							</div>
+							<div class="trig col-5">
+								<textarea class="form-control" id="trigger-{{forloop.counter0}}" rows="2">{{routine.0}}</textarea>
+							</div>
+							<div class="col-1">
+								Then
+							</div>
+							<div class="act col-5">
+								<textarea class="form-control" id="action-{{forloop.counter0}}" rows="2">{{routine.1}}</textarea>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-3 text-center">					
-					<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" role="button"><b>Update</b></a>
-				</div>
-				<div class="col-3 text-center">
-					<a class="btn btn-outline-light btn-rounded btn-danger btn-lg m-2" role="button"><b>Delete</b></a>
-				</div>
-			</div><br>
+					<div class="col-3 text-center">					
+						<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" role="button"><b>Update</b></a>
+					</div>
+					<div class="col-3 text-center">
+						<a class="btn btn-outline-light btn-rounded btn-danger btn-lg m-2" role="button"><b>Delete</b></a>
+					</div>
+				</div><br>
+			{% endfor %}
 
-			<div class="row">
-				<div class="col-6">
-					<div class="row text-center justify-content-center" >
-						<div class="col-1">
-							If
-						</div>
-						<div class="trig col-5">
-							<textarea class="form-control" id="trigger" rows="2">it is evening,</textarea>
-						</div>
-						<div class="col-1">
-							Then
-						</div>
-						<div class="act col-5">
-							<textarea class="form-control" id="action" rows="2">turn on the gas stove</textarea>
-						</div>
-					</div>
-				</div>
-				<div class="col-3 text-center">					
-					<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" role="button"><b>Update</b></a>
-				</div>
-				<div class="col-3 text-center">
-					<a class="btn btn-outline-light btn-rounded btn-danger btn-lg m-2" role="button"><b>Delete</b></a>
-				</div>
-			</div><br>
-
-			<div class="row">
-				<div class="col-6">
-					<div class="row text-center justify-content-center" >
-						<div class="col-1">
-							If
-						</div>
-						<div class="trig col-5">
-							<textarea class="form-control" id="trigger" rows="2">it is evening,</textarea>
-						</div>
-						<div class="col-1">
-							Then
-						</div>
-						<div class="act col-5">
-							<textarea class="form-control" id="action" rows="2">turn on the Air Cooler</textarea>
-						</div>
-					</div>
-				</div>
-				<div class="col-3 text-center">					
-					<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" role="button"><b>Update</b></a>
-				</div>
-				<div class="col-3 text-center">
-					<a class="btn btn-outline-light btn-rounded btn-danger btn-lg m-2" role="button"><b>Delete</b></a>
-				</div>
-			</div><br>
+			
 			
 		</div>
 
@@ -100,3 +56,8 @@
       
    </div>
 {% endblock step %}
+
+{% block script-2 %}
+    {% load static %}
+    <script src="{% static 'edit_or_delete_routine_script.js' %}"></script>
+{% endblock script-2 %}

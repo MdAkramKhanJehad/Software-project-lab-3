@@ -118,7 +118,7 @@ def create_routine(request):
 
         request.session["created_routines"] = created_routines_list
         request.session.modified = True
-        print("data from session page 2: ", request.session['created_routines'] , end="\n\n")
+        print("data from session page 2: ", request.session.get("created_routines") , end="\n\n")
         
         # del request.session["created_routines"]
         # request.session.modified = True
@@ -126,10 +126,9 @@ def create_routine(request):
     # get previously created routines, if available in session
     if request.session.get("created_routines"):
         created_routines_list = request.session["created_routines"]
-        # print("session available: ", selected_device_list ) 
+        print("routine session available page 2: ", created_routines_list ) 
     else:
-        print("*****no routine session available*******")
-    
+        print("*****no routine session available page 2*******")
     
     
     if request.session.get("selected_devices"):
@@ -158,8 +157,18 @@ def create_routine(request):
 
 
 def edit_delete_routine(request):
+    created_routines_list = []
     
-    context = { 'page': 3 }
+    if request.session.get("created_routines"):
+        created_routines_list = request.session["created_routines"]
+        print("routine session available page 3: ", created_routines_list ) 
+    else:
+        print("*****no routine session available page 3*******")
+    
+    context = { 
+        'created_routines_list' : created_routines_list,       
+        'page': 3 
+    }
 
     return render(request, 'home/create/edit_or_delete_routine.html', context)
 

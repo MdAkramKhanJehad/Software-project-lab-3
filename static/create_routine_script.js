@@ -6,6 +6,7 @@ var createdRoutines = [];
 document.getElementById(currentlyShowing).style.display = "block";
 setFirstDeviceStyle();
 getPreviouslyCreatedRoutinesFromSession();
+addPreviouslyCreatedRoutinesFromSessionInUI();
 
 
 
@@ -17,6 +18,12 @@ function getPreviouslyCreatedRoutinesFromSession(){
     for (let i = 0; i < previouslyCreatedRoutines.length; i++) {
         console.log("Routines: " + " " + previouslyCreatedRoutines[i][0] + " -> " + previouslyCreatedRoutines[i][1]);
     }
+}
+
+
+function addPreviouslyCreatedRoutinesFromSessionInUI(){
+    console.log(totalRoutine);
+    totalRoutine += previouslyCreatedRoutines.length;
 }
 
 
@@ -141,9 +148,9 @@ function getAllNewlyCreatedRoutines(){
 
 
 $('#nextBtn').click(function(){
-    var nextBtnUrl, routineData = {};
+    var url, routineData = {};
     
-    nextBtnUrl = "/home/create/routine";
+    url = "/home/create/routine";
     getAllNewlyCreatedRoutines();
 
     for (let i = 0; i < createdRoutines.length; i++) {
@@ -153,7 +160,7 @@ $('#nextBtn').click(function(){
     $.ajax(
         {
             type:"POST",
-            url: nextBtnUrl,
+            url: url,
             headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
             data: {
                 routines: routineData
@@ -161,7 +168,7 @@ $('#nextBtn').click(function(){
             success: function() 
             {   
                 console.log("successssssssss");
-                // window.location.href = "/home/create/edit-delete-routine";
+                window.location.href = "/home/create/edit-delete-routine";
             }
         }
     );

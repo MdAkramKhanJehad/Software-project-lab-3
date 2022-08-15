@@ -24,8 +24,6 @@
                 </div>
                 
                 <div class='row'>
-                    {% comment %} <div class='col-3'></div>  {% endcomment %}
-
                     <div class='col-10 d-flex'>
                         <div class="ms-5">
                             <p class="mb-4"><h4>State and Commands:</h4></p>
@@ -51,6 +49,24 @@
             </div>
             <div class="col" >
                 <p class="mb-4"><h4 class='text-center'>Create your routines :</h4></p>
+                
+                {% for routine in previously_created_routines %}
+                    <div class="row text-center justify-content-center" >
+                        <div class="col-1">
+                            If
+                        </div>
+                        <div class="trig col-5">
+                            <textarea class="form-control" id="trigger{{forloop.counter}}" rows="2">{{routine.0}}</textarea>
+                        </div>
+                        <div class="col-1">
+                            Then
+                        </div>
+                        <div class="act col-5">
+                            <textarea class="form-control" id="action{{forloop.counter}}" rows="2">{{routine.1}}</textarea>
+                        </div>
+                    </div><br>
+                {% endfor %}
+                
                 <div id="routineHolder"> 
                     <div class="col" id="routineField">
                         <div class="row text-center justify-content-center" >
@@ -66,8 +82,7 @@
                             <div class="act col-5">
                                 <textarea class="form-control" id="action" rows="2"></textarea>
                             </div>
-                        </div>
-                        <br> 
+                        </div><br> 
                     </div>                          
                 </div>
                                     
