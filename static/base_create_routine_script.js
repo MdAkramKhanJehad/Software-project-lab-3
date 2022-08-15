@@ -89,7 +89,7 @@ function showButton(){
         console.log("this is page 1");
 
     } else if( pageNo == 2){
-        document.getElementById("nextBtn").href = "/home/create/edit-delete-routine";
+        // document.getElementById("nextBtn").href = "/home/create/edit-delete-routine";
         document.getElementById("prevBtn").href = "/home/create/select-device";
 
     } else if( pageNo == 3){

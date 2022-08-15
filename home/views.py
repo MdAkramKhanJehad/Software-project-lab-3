@@ -37,7 +37,7 @@ def tutorial(request):
 def select_device(request):
     selected_device_list = []
     
-    # get and save session after next button clicking in device selection ui
+    # get and save session after next button clicking
     if request.method == 'POST':
 
         response_json = request.POST
@@ -104,10 +104,37 @@ def select_device(request):
 def create_routine(request):
     selected_device_list = []
     deviceAttributeList = []
+    created_routines_list = []
+    
+    # get and save session after next button clicking 
+    if request.method == 'POST':
+
+        response_json = request.POST
+        response_json = json.dumps(response_json)
+        data = json.loads(response_json)
+
+        for i in range(int(len(data)/2)):
+            created_routines_list.append([data["routines[{}][trigger]".format(i)], data["routines[{}][action]".format(i)]])
+
+        request.session["created_routines"] = created_routines_list
+        request.session.modified = True
+        print("data from session page 2: ", request.session['created_routines'] , end="\n\n")
+        
+        del request.session["created_routines"]
+        request.session.modified = True
+        
+    # get previously created routines, if available in session
+    if request.session.get("created_routines"):
+        created_routines_list = request.session["created_routines"]
+        # print("session available: ", selected_device_list ) 
+    else:
+        print("*****no routine session available*******")
+    
+    
     
     if request.session.get("selected_devices"):
         selected_device_list = request.session["selected_devices"]
-        print("session available page 2: ", selected_device_list , end="\n\n") 
+        print("selected device session available page 2: ", selected_device_list , end="\n\n") 
     else:
         print("no session available", end="\n\n")
     
@@ -119,12 +146,11 @@ def create_routine(request):
             attrDesc = {}
             attributeDescriptionFromDb = DeviceAttribute.objects.filter(device__device_name__contains=device)
             deviceAttributeList.append(attributeDescriptionFromDb)
-         
-        # print(deviceAttributeList)  
-            
+                     
     context = { 
         'previously_selected_devices': selected_device_list,
         'selected_devices_attributes': deviceAttributeList,
+        'previously_created_routines' : created_routines_list,
         'page': 2 
     }
 
