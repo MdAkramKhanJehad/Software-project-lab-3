@@ -120,7 +120,7 @@ def create_routine(request):
             attributeDescriptionFromDb = DeviceAttribute.objects.filter(device__device_name__contains=device)
             deviceAttributeList.append(attributeDescriptionFromDb)
          
-        print(deviceAttributeList)  
+        # print(deviceAttributeList)  
             
     context = { 
         'previously_selected_devices': selected_device_list,

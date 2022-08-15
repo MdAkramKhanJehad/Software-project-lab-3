@@ -1,5 +1,7 @@
 var currentlyShowing = "state-0";
 var currentlySelectedDevice;
+var totalRoutine = 1;
+var createdRoutines = [];
 document.getElementById(currentlyShowing).style.display = "block";
 setFirstDeviceStyle();
 
@@ -27,6 +29,50 @@ function showAttributes(device){
     currentlyShowing = "state-"+index;
     const selected_device = document.getElementById(currentlyShowing)
     selected_device.style.display = "block";
+}
+
+
+function addNewRoutine(){
+
+    if (document.getElementById("trigger").value=='' && document.getElementById("action").value=='') return false;
+
+    makeCloneNode();
+    setOldRoutineTriggerActionId();
+
+    document.getElementById("trigger").value = '';
+    document.getElementById("action").value = '';
+    console.log("total routine 2 : " + totalRoutine);
+
+    totalRoutine += 1;
+    console.log("total routine 3 : " + totalRoutine);
+}
+
+
+function makeCloneNode(){
+    const node = document.getElementById("routineField");
+    const clone = node.cloneNode(true);
+    document.getElementById("routineHolder").appendChild(clone); 
+}
+
+
+function setOldRoutineTriggerActionId(){
+    const firstElement = document.getElementById("routineField")
+    const newId = "routineField" + totalRoutine.toString()
+    firstElement.setAttribute("id", newId);
+
+    console.log(firstElement.getAttribute("id"));
+
+    const firstElementTrigger = document.getElementById("trigger")
+    const triggerNewId = "trigger" + totalRoutine.toString()
+    firstElementTrigger.setAttribute("id", triggerNewId);
+
+    console.log(firstElementTrigger.getAttribute("id"));
+
+    const firstElementAction = document.getElementById("action")
+    const actionNewId = "action" + totalRoutine.toString()
+    firstElementAction.setAttribute("id", actionNewId);
+
+    console.log("total routine: " + totalRoutine);
 }
 
 

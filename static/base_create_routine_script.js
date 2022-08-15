@@ -1,38 +1,9 @@
 var currentTab = 0; 
-var totalRoutine = 1;
-var selectedDevices = [];
-var createdRoutines = [];
 showTab(currentTab); 
-
-
 const pageNo = document.getElementById("page-number").getAttribute("data-page-number");
 console.log("page no: ", pageNo);
+
 showButton();
-
-if(pageNo == 1){
-
-    // change style of previously selected devices
-    var selectedDevicesFromSession = document.getElementById("selected-device").getAttribute("data-selected-device");
-    console.log("sel dev: ", selectedDevicesFromSession);
-    console.log(typeof selectedDevicesFromSession);
-
-    selectedDevicesFromSession = selectedDevicesFromSession.replace(/'/g, '"')
-    selectedDevices = JSON.parse(selectedDevicesFromSession);
-
-    for (const selectedDevice of selectedDevices){
-        styleChangeAfterSelection(selectedDevice);
-    }
-    
-}
- else if(pageNo == 2){
-    var selectedDevicesFromSession = document.getElementById("selected-device").getAttribute("data-previously-selected-device");
-    var attr = document.getElementById("device-attribute").getAttribute("data-device-atribute");
-    // console.log("sel dev in page 2: ", selectedDevicesFromSession);
-    // console.log(JSON.parse(attr));
-    console.log(typeof attr);
-}
-
-
 
 
 function showTab(n) {
@@ -99,59 +70,6 @@ function validateForm() {
     return valid; // return the valid status
 }
 
-function fixStepIndicator(n) {
-    // This function removes the "active" class of all steps...
-    var i, x = document.getElementsByClassName("stepIndicator");
-    for (i = 0; i < x.length; i++) {
-    x[i].className = x[i].className.replace(" active", "");
-    }
-    //... and adds the "active" class on the current step:
-    x[n].className += " active";
-}
-
-
-function addNewRoutine(){
-
-    if (document.getElementById("trigger").value=='' && document.getElementById("action").value=='') return false;
-
-    makeCloneNode();
-    setOldRoutineTriggerActionId();
-
-    document.getElementById("trigger").value = '';
-    document.getElementById("action").value = '';
-
-    totalRoutine += 1;
-    console.log(totalRoutine);
-}
-
-
-function makeCloneNode(){
-    const node = document.getElementById("routineField");
-    const clone = node.cloneNode(true);
-    document.getElementById("routineHolder").appendChild(clone); 
-}
-
-function setOldRoutineTriggerActionId(){
-    const firstElement = document.getElementById("routineField")
-    const newId = "routineField" + totalRoutine.toString()
-    firstElement.setAttribute("id", newId);
-
-    console.log(firstElement.getAttribute("id"));
-
-    const firstElementTrigger = document.getElementById("trigger")
-    const triggerNewId = "trigger" + totalRoutine.toString()
-    firstElementTrigger.setAttribute("id", triggerNewId);
-
-    console.log(firstElementTrigger.getAttribute("id"));
-
-    const firstElementAction = document.getElementById("action")
-    const actionNewId = "action" + totalRoutine.toString()
-    firstElementAction.setAttribute("id", actionNewId);
-
-    console.log(firstElementAction.getAttribute("id"));
-}
-
-
 
 function showButton(){
     if (pageNo == 1) {
@@ -191,72 +109,13 @@ function showButton(){
 
 }
 
-function selectedCard(device){
-    const index = selectedDevices.indexOf(device);
-    
-    if(index > -1){
-        //remove from selected device
-        selectedDevices.splice(index, 1);
-        styleChangeAfterDeselection(device);
-    
-    }else {
-        //add in selected device
-        selectedDevices.push(device);
-        styleChangeAfterSelection(device);
+
+function fixStepIndicator(n) {
+    // This function removes the "active" class of all steps...
+    var i, x = document.getElementsByClassName("stepIndicator");
+    for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
     }
-    
-    console.log("all dev : " + selectedDevices);
+    //... and adds the "active" class on the current step:
+    x[n].className += " active";
 }
-
-
-function styleChangeAfterSelection(device){
-    document.getElementById(device).className += " selected";
-    console.log(document.getElementById(device).getAttribute('class'));
-
-    document.getElementById(device).style.transform = "scale(1.11)";
-    document.getElementById(device).style.backgroundColor = "#198754";
-    document.getElementById(device).style.color = "white";
-    document.getElementById(device).style.borderRadius = "10px";
-}
-
-
-function styleChangeAfterDeselection(device){
-    document.getElementById(device).className = document.getElementById(device).className.replace(" selected", "");
-    console.log(document.getElementById(device).getAttribute('class'));
-
-    document.getElementById(device).style.transform = "scale(1)";
-    document.getElementById(device).style.backgroundColor = "white";
-    document.getElementById(device).style.color = "black";
-}
-
-
-// function handleNextButtonClick
-
-$('#nextBtn').click(function(){
-    var data, nextBtnUrl, dataDev = {};
-    if(pageNo == 1){
-        nextBtnUrl = "/home/create/select-device";
-        data = selectedDevices;
-        for (let i = 0; i < selectedDevices.length; i++) {
-            dataDev[i] = selectedDevices[i];
-        }
-
-        $.ajax(
-            {
-                type:"POST",
-                url: nextBtnUrl,
-                headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
-                data: {
-                    devices: dataDev
-                },
-                success: function() 
-                {   
-                    console.log("successssssssss");
-                    window.location.href = "/home/create/routine";
-                }
-            }
-        );
-    } else if(pageNo == 2){
-        nextBtnUrl = "/home/create/routine";
-    }
-});
