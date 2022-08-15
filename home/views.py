@@ -120,8 +120,8 @@ def create_routine(request):
         request.session.modified = True
         print("data from session page 2: ", request.session['created_routines'] , end="\n\n")
         
-        del request.session["created_routines"]
-        request.session.modified = True
+        # del request.session["created_routines"]
+        # request.session.modified = True
         
     # get previously created routines, if available in session
     if request.session.get("created_routines"):
@@ -136,7 +136,7 @@ def create_routine(request):
         selected_device_list = request.session["selected_devices"]
         print("selected device session available page 2: ", selected_device_list , end="\n\n") 
     else:
-        print("no session available", end="\n\n")
+        print("no device session available", end="\n\n")
     
     # request data from 2 table for those device
     if len(selected_device_list) > 0:
