@@ -17,8 +17,8 @@
 
                 <div class='row justify-content-center'>
                     {% for device in previously_selected_devices %}
-                        <div class="col-sm-1 card cards w-25 mb-2 px-0 me-3">
-                            <div class="card-body text-center" id="{{device}}" data-index="{{forloop.counter0}}" onclick="showAttributes('{{device}}')">{{device}}</div>
+                        <div class="col-sm-1 card cards w-25 mb-2 px-0 me-3 align-middle">
+                            <div class="card-body text-center align-middle" id="{{device}}" data-index="{{forloop.counter0}}" onclick="showAttributes('{{device}}')">{{device}}</div>
                         </div>
                     {% endfor %}
                 </div>

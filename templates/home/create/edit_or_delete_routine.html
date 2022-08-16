@@ -29,31 +29,26 @@
 								If
 							</div>
 							<div class="trig col-5">
-								<textarea class="form-control" id="trigger-{{forloop.counter0}}" rows="2">{{routine.0}}</textarea>
+								<textarea class="form-control" id="trigger-{{forloop.counter}}" onchange="triggerChanged('{{forloop.counter}}')" rows="2">{{routine.0}}</textarea>
 							</div>
 							<div class="col-1">
 								Then
 							</div>
 							<div class="act col-5">
-								<textarea class="form-control" id="action-{{forloop.counter0}}" rows="2">{{routine.1}}</textarea>
+								<textarea class="form-control" id="action-{{forloop.counter}}" onchange="actionChanged('{{forloop.counter}}')"  rows="2">{{routine.1}}</textarea>
 							</div>
 						</div>
 					</div>
 					<div class="col-3 text-center">					
-						<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" role="button"><b>Update</b></a>
+						<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" id="update-{{forloop.counter}}" role="button"><b>Update</b></a>
 					</div>
 					<div class="col-3 text-center">
-						<a class="btn btn-outline-light btn-rounded btn-danger btn-lg m-2" role="button"><b>Delete</b></a>
+						<a class="btn btn-outline-light btn-rounded btn-danger btn-lg m-2" id="delete-{{forloop.counter}}" role="button"><b>Delete</b></a>
 					</div>
 				</div><br>
 			{% endfor %}
-
-			
-			
-		</div>
-
 		
-      
+		</div>	   
    </div>
 {% endblock step %}
 

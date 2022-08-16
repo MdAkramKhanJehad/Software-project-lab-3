@@ -99,6 +99,7 @@ function styleChangeAfterSelection(device){
     console.log(document.getElementById(device).getAttribute('class'));
 
     document.getElementById(device).style.transform = "scale(1.11)";
+    document.getElementById(device).style.boxShadow = "5px 6px 6px 2px #e9ecef";
     document.getElementById(device).style.backgroundColor = "#198754";
     document.getElementById(device).style.color = "white";
     document.getElementById(device).style.borderRadius = "10px";
@@ -110,7 +111,8 @@ function styleChangeAfterDeselection(device){
     console.log(document.getElementById(device).getAttribute('class'));
 
     document.getElementById(device).style.transform = "scale(1)";
-    document.getElementById(device).style.backgroundColor = "white";
+    document.getElementById(device).style.boxShadow = "none";
+    document.getElementById(device).style.backgroundColor = "transparent";
     document.getElementById(device).style.color = "black";
 }
 

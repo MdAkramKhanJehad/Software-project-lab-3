@@ -123,6 +123,14 @@ body{
     border-radius: 10px;
 }
 
+/* .card-body.selected{
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    transform: scale(1.12);
+    background-color: #198754;
+    color: white;
+    border-radius: 10px;
+} */
+
 /* #devices-list .cards .card-body.selected{
     box-shadow: 5px 6px 6px 2px #e9ecef;
     transform: scale(1.15);
