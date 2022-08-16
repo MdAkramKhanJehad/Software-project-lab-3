@@ -175,8 +175,18 @@ def edit_delete_routine(request):
 
 
 def create_execution_indication(request):
+    created_routines_list = []
     
-    context = { 'page': 4 }
+    if request.session.get("created_routines"):
+        created_routines_list = request.session["created_routines"]
+        print("routine session available page 4: ", created_routines_list ) 
+    else:
+        print("*****no routine session available page 4*******")
+        
+    context = { 
+        'created_routines_list' : created_routines_list,       
+        'page': 4 
+    }
 
     return render(request, 'home/create/execution_indicator.html', context)
 
