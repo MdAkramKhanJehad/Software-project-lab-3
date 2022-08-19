@@ -2,6 +2,14 @@
 
 {% block page-title %}Create EI{% endblock page-title %}
 
+{% block stylesheet-2 %}
+
+    {% load static %}
+    <link id="pagestyle" href="{% static 'style_EI_page.css' %}" type="text/css" rel="stylesheet" />
+
+{% endblock stylesheet-2 %}
+
+
 {% block step %}
 
     <div class="step">
@@ -37,11 +45,11 @@
 
             {% for routine in created_routines_list %}
                 <div class="row">
-                    <div class="routine col-4 me-5 ms-3">
+                    <div class="routine col-4 me-4 ms-3">
                         <p class="routine1 fs-5" id="routine-{{forloop.counter}}">{{forloop.counter}}. If {{routine.0}}, then {{routine.1}}</p>
                     </div>
-                    <div class="option col-1">
-                        <select class="selectpicker w-100 bg-success text-white p-2 fs-6" style="border-radius:10px;" aria-label="Default select example">
+                    <div class="option col-1 me-4">
+                        <select class="selectpicker p-2 fs-6" style="width: 180%;" aria-label="Default select example">
                             <option selected>Select</option>
                             <option value="Many times in a day (5+ /day)">Many times in a day (5+ /day)</option>
                             <option value="Few times in a day (1-5/day)">Few times in a day (1-5/day)</option>
@@ -52,7 +60,7 @@
                         </select>
                     </div>
                     <div class="option col-1 ms-5">
-                        <select class="selectpicker w-100 bg-success text-light ms-5 p-2 fs-6" style="border-radius:10px" aria-label="Default select example">
+                        <select class="selectpicker w-100 ms-5 p-2 fs-6" aria-label="Default select example">
                             <option selected>Select</option>
                             <option value="Weekday">Weekday</option>
                             <option value="Weekend">Weekend</option>
@@ -61,7 +69,7 @@
                         </select>
                     </div>
                     <div class="option col-1 ms-5 me-5">
-                        <select class="selectpicker w-100 bg-success text-white ms-4 p-2 fs-6" style="border-radius:10px" aria-label="Default select example">
+                        <select class="selectpicker ms-3 me-2 p-2 fs-6" style="width: 220%;" aria-label="Default select example">
                             <option selected>Select</option>
                             <option value="Morning(6am- 11am)">Morning(6am- 11am)</option>
                             <option value="Around noon(11am-1pm)">Around noon(11am-1pm)</option>
@@ -73,7 +81,7 @@
                         </select>
                     </div>
                     <div class="option col-1 ms-5">
-                        <select class="selectpicker w-100 bg-success text-white ms-5 p-2 fs-6" style="border-radius:10px" aria-label="Default select example">
+                        <select class="selectpicker w-100 ms-5 p-2 fs-6" aria-label="Default select example">
                             <option selected>Select</option>
                             <option value="Scheduled-time (e.g., brew coffee at 7 am)">Scheduled-time (e.g., brew coffee at 7 am)</option>
                             <option value="Manually-triggered (e.g., a button press)">Manually-triggered (e.g., a button press)</option>
@@ -81,7 +89,7 @@
                         </select>
                     </div>
                     <div class="option col-1 ms-5">
-                        <select class="selectpicker w-100 bg-success text-white ms-3 p-2 fs-6" style="border-radius:10px" aria-label="Default select example">
+                        <select class="selectpicker w-100 p-2 fs-6"aria-label="Default select example">
                             <option selected>Select</option>
                             <option value="Bedroom">Bedroom</option>
                             <option value="Kitchen">Kitchen</option>

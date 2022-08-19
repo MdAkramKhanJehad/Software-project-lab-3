@@ -7,10 +7,11 @@
 
     {% load static %}
     <link id="pagestyle" href="{% static 'base_create_routine_style.css' %}" type="text/css" rel="stylesheet" />
-
+    
+    {% block stylesheet-2 %}{% endblock stylesheet-2 %}
 {% endblock stylesheet %} 
 
-{% block stylesheet-2 %}{% endblock stylesheet-2 %}
+
 
 
 {% block body %}
