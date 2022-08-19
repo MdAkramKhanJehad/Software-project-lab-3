@@ -161,7 +161,7 @@ def edit_delete_routine(request):
     
     if request.session.get("created_routines"):
         created_routines_list = request.session["created_routines"]
-        print("routine session available page 3: ", created_routines_list ) 
+        # print("routine session available page 3: ", created_routines_list ) 
     else:
         print("*****no routine session available page 3*******")
     
