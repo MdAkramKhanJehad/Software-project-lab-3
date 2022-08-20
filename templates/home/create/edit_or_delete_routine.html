@@ -2,6 +2,13 @@
 
 {% block page-title %}Edit Delete Routine{% endblock page-title %}
 
+{% block stylesheet-2 %}
+
+    {% load static %}
+    <link id="pagestyle" href="{% static 'style_edit_or_delete.css' %}" type="text/css" rel="stylesheet" />
+
+{% endblock stylesheet-2 %}
+
 {% block step %}
    <div class="step container">      
 		<div id="page-number" data-page-number="{{page}}"></div>
@@ -27,23 +34,23 @@
 			{% for routine in created_routines_list %}
 				<div class="row">
 					<div class="col-1 pe-0 ps-4">
-						<div  class="form-check">
-							<input class="form-check-input text-center" type="checkbox" onchange="checkboxCount(this)" id="checkbox-{{forloop.counter}}" style="accent-color: #198754; filter: grayscale(1); width:10px; height: 10px; transform: scale(0.7); outline: 1px solid #198754;" value="" aria-label="..." />
+						<div class="form-check">
+							<input class="form-check-input text-center" type="checkbox" onchange="checkboxCount(this)" id="checkbox-{{forloop.counter}}"  value="" aria-label="..." />
 						</div>
 					</div>
 
 					<div class="col-6 px-0">
 						<div class="row text-center justify-content-center" >
-							<div class="col-1">
+							<div class="col-1 pe-0 me-0">
 								If
 							</div>
-							<div class="trig col-5">
+							<div class="trig col-5 px-0 mx-0">
 								<textarea class="form-control" id="trigger-{{forloop.counter}}" onchange="triggerChanged('{{forloop.counter}}')" rows="2">{{routine.0}}</textarea>
 							</div>
 							<div class="col-1">
 								Then
 							</div>
-							<div class="act col-5">
+							<div class="act col-5 px-0 mx-0">
 								<textarea class="form-control" id="action-{{forloop.counter}}" onchange="actionChanged('{{forloop.counter}}')"  rows="2">{{routine.1}}</textarea>
 							</div>
 						</div>

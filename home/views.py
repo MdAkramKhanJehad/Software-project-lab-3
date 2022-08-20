@@ -4,6 +4,7 @@ from home.models import Device, DeviceAttribute
 import json
 import os
 from spl_3 import settings
+from home.methods import get_created_routine_from_session, get_selected_devices_from_session
 
 # Create your views here.
 
@@ -102,7 +103,7 @@ def select_device(request):
 
 
 def create_routine(request):
-    selected_device_list = []
+    selected_device_list = get_selected_devices_from_session(request, 2)
     deviceAttributeList = []
     created_routines_list = []
     
@@ -124,18 +125,8 @@ def create_routine(request):
         # request.session.modified = True
         
     # get previously created routines, if available in session
-    if request.session.get("created_routines"):
-        created_routines_list = request.session["created_routines"]
-        print("routine session available page 2: ", created_routines_list ) 
-    else:
-        print("*****no routine session available page 2*******")
+    created_routines_list = get_created_routine_from_session(request, 2)
     
-    
-    if request.session.get("selected_devices"):
-        selected_device_list = request.session["selected_devices"]
-        print("selected device session available page 2: ", selected_device_list , end="\n\n") 
-    else:
-        print("no device session available", end="\n\n")
     
     # request data from 2 table for those device
     if len(selected_device_list) > 0:
@@ -157,13 +148,7 @@ def create_routine(request):
 
 
 def edit_delete_routine(request):
-    created_routines_list = []
-    
-    if request.session.get("created_routines"):
-        created_routines_list = request.session["created_routines"]
-        # print("routine session available page 3: ", created_routines_list ) 
-    else:
-        print("*****no routine session available page 3*******")
+    created_routines_list = get_created_routine_from_session(request, 3)
     
     context = { 
         'created_routines_list' : created_routines_list,       
@@ -175,14 +160,8 @@ def edit_delete_routine(request):
 
 
 def create_execution_indication(request):
-    created_routines_list = []
+    created_routines_list = get_created_routine_from_session(request, 4)
     
-    if request.session.get("created_routines"):
-        created_routines_list = request.session["created_routines"]
-        print("routine session available page 4: ", created_routines_list ) 
-    else:
-        print("*****no routine session available page 4*******")
-        
     context = { 
         'created_routines_list' : created_routines_list,       
         'page': 4 
@@ -192,11 +171,19 @@ def create_execution_indication(request):
 
 
 def confirmation(request):
-
-    context = { 'page': 5 }
+    created_routines_list = get_created_routine_from_session(request, 5)
+    selected_devices_list = get_selected_devices_from_session(request, 5)
+        
+    context = { 
+        'selected_devices_list' : selected_devices_list, 
+        'created_routines_list' : created_routines_list,       
+        'page': 5 
+    }
 
     return render(request, 'home/create/confirmation.html', context)
 
 
 def complete(request):
     return render(request, 'home/complete/complete.html')
+
+

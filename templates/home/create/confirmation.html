@@ -2,20 +2,89 @@
 
 {% block page-title %}Confirmation{% endblock page-title %}
 
+{% block stylesheet-2 %}
+
+    {% load static %}
+    <link id="pagestyle" href="{% static 'style_confirmation.css' %}" type="text/css" rel="stylesheet" />
+
+{% endblock stylesheet-2 %}
+
 {% block step %}
-    <div class="step">
+    <div class="step ms-3">
         
         <div id="page-number" data-page-number="{{page}}"></div>
+        <div id="created-routines" data-created-routines="{{created_routines_list}}"></div>
+        <div id="selected-devices" data-selected-devices="{{selected_devices_list}}"></div>
 
-        <p class="mb-4"><h4 class='text-center'>Confirm your Routines and EI</h4></p>
-        {% comment %} <div class="mb-3">
-            <input type="text" placeholder="Full name" oninput="this.className = ''" name="fullname">
+        {% comment %} <p class="mb-4"><h4 class='text-center'>Confirm your Routines and EI</h4></p> {% endcomment %}
+        
+        <p class="mb-4"><h4 class='text-center'>Your Selected Devices:</h4></p>
+        <div class='row justify-content-center'>
+            {% for device in selected_devices_list %}
+                <div class="card cards w-auto mb-2 px-0 me-3">
+                    <div class="card-body text-center align-middle" id="{{device}}" data-index="{{forloop.counter0}}">{{device}}</div>
+                </div>
+            {% endfor %}
+        </div><br>
+
+        <p class="mb-4"><h4 class='text-center'>Your Created Routines and Execution Indicators:</h4></p>
+        <div class="col m-3">
+            <div class="row">
+                <div class="routine-heading col-4 me-0 ms-3">
+                    <p class="mb-4"><h5>Previously Created Routines</h5></p>
+                </div>
+                
+                <div class="EI col-2 ms-0">
+                    <p class="mb-4 ms-0"><h6 class='text-left ms-0' id='EI-heading'>How often, on average, do you expect each of your routines to execute based on your interaction with your smart home device?</h6></p>
+                </div>
+                <div class="EI col-1 me-2">
+                    <p class="mb-4"><h6 class='text-left'  id='EI-heading'>When is your routine more likely to execute?</h6></p>
+                </div>
+                <div class="EI col-2 me-0">
+                    <p class="mb-4"><h6 class='text-left' id='EI-heading'>For a given day, please select the time around which you'd expect your routines to execute. Please select all that apply.</h6></p>
+                </div>
+                <div class="EI col-1 me-2">
+                    <p class="mb-4"><h6 class='text-left' id='EI-heading'>How are your routines triggered?</h6></p>
+                </div>
+                <div class="EI col-1 me-2">
+                    <p class="mb-4"><h6 class='text-left' id='EI-heading'>Where is your routine located?</h6></p>
+                </div>
+            </div>
+
+
+            {% for routine in created_routines_list %}
+                <div class="row">
+                    <div class="routine col-4 me-2 ms-3">
+                        <p class="routine1 fs-5" id="routine-{{forloop.counter}}">{{forloop.counter}}. If {{routine.0}}, then {{routine.1}}</p>
+                    </div>
+
+                    <div class="option col-1 me-3 px-0 ms-0">                     
+                        <textarea disabled class="form-control text-area" style="width: 180%; border-radius:10px; border: 0.5px solid #198754;"  id="ei-1-{{forloop.counter}}" rows="2">Many times in a day (5+ /day)</textarea>                       
+                    </div>
+
+                    <div class="option col-1 ms-5">                     
+                        <textarea disabled class="form-control text-area ms-5 p-2" style="border-radius:10px; border: 0.5px solid #198754;" id="ei-2-{{forloop.counter}}" rows="1">Weekday</textarea>                       
+                    </div>
+
+                    <div class="option col-1 ms-5 me-5">                     
+                        <textarea disabled class="form-control text-area me-2 p-2" style="width: 217%; border-radius:10px; border: 0.5px solid #198754;" id="ei-3-{{forloop.counter}}" rows="1">Around noon(11am-1pm)</textarea>                       
+                    </div>
+
+                    <div class="option col-1 ms-5 me-2">                     
+                        <textarea disabled class="form-control text-area ms-3 p-2" style="width: 125%; border-radius:10px; border: 0.5px solid #198754;" id="ei-4-{{forloop.counter}}" rows="2">Executed at random (e.g., every time I enter the room)</textarea>                       
+                    </div>
+
+                    <div class="option col-1 ms-4">                     
+                        <textarea disabled class="form-control text-area p-2" style="width: 105%; border-radius:10px; border: 0.5px solid #198754;" id="ei-5-{{forloop.counter}}" rows="1">Drawing Room</textarea>                       
+                    </div>
+                
+                </div> <br>
+		    {% endfor %}
+            
+
+            
+            
         </div>
-        <div class="mb-3">
-            <input type="text" placeholder="Mobile" oninput="this.className = ''" name="mobile">
-        </div>
-        <div class="mb-3">
-            <input type="text" placeholder="Address" oninput="this.className = ''" name="address">
-        </div> {% endcomment %}
+
     </div>
 {% endblock step %}
