@@ -148,6 +148,22 @@ def create_routine(request):
 
 
 def edit_delete_routine(request):
+    created_routines_list = []
+    
+    if request.method == 'POST':
+
+        response_json = request.POST
+        response_json = json.dumps(response_json)
+        data = json.loads(response_json)
+
+        for i in range(int(len(data)/2)):
+            created_routines_list.append([data["routines[{}][trigger]".format(i)], data["routines[{}][action]".format(i)]])
+
+        request.session["created_routines"] = created_routines_list
+        request.session.modified = True
+        print("data from session page 3: ", request.session.get("created_routines") , end="\n\n")
+    
+    
     created_routines_list = get_created_routine_from_session(request, 3)
     
     context = { 

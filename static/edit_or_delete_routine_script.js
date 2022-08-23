@@ -8,10 +8,10 @@ function getPreviouslyCreatedRoutinesFromSession(){
     previouslyCreatedRoutines = previouslyCreatedRoutines.replace(/'/g, '"');
     previouslyCreatedRoutines = JSON.parse(previouslyCreatedRoutines);
 
-    console.log("inside func")
-    for (let i = 0; i < previouslyCreatedRoutines.length; i++) {
-        console.log("Routines in page 3: " + " " + previouslyCreatedRoutines[i][0] + " -> " + previouslyCreatedRoutines[i][1]);
-    }
+    // console.log("inside func")
+    // for (let i = 0; i < previouslyCreatedRoutines.length; i++) {
+    //     console.log("Routines: " + " " + previouslyCreatedRoutines[i][0] + " -> " + previouslyCreatedRoutines[i][1]);
+    // }
 }
 
 
@@ -46,10 +46,6 @@ function updateRoutine(num){
 }
 
 
-function deleteRoutine(num){
-    console.log("delete routine");
-}
-
 
 function checkboxCount(element){
     if(element.checked == true){
@@ -68,3 +64,57 @@ function checkboxCount(element){
         document.getElementById('delete-selected').className += " text-black-50";
     }
 }
+
+
+function getRoutinesForSending(routines){
+    var allRoutines = [];
+    for (let i = 0; i < routines.length; i++) {
+        var routine = {};
+
+        routine["trigger"] = routines[i][0];
+        routine["action"] = routines[i][1];   
+        allRoutines.push(routine);
+    }
+
+    return allRoutines;
+}
+
+
+function deleteRoutine(num){
+    var url, routineData = {};
+    console.log("delete routines");
+    // console.log(previouslyCreatedRoutines[num - 1][0] + " -> " + previouslyCreatedRoutines[num - 1][1]);
+
+    const previousRoutines = previouslyCreatedRoutines;
+    previousRoutines.splice(num, 1);
+
+    for (let i = 0; i < previousRoutines.length; i++) {
+        console.log("Routines del: " + " " + previousRoutines[i][0] + " -> " + previousRoutines[i][1]);
+    }
+
+    url = "/home/create/edit-delete-routine";
+    var updatedRoutines = getRoutinesForSending(previousRoutines);
+
+    for (let i = 0; i < updatedRoutines.length; i++) {
+        routineData[i] = updatedRoutines[i];
+    }
+
+    $(".btn-close").click();
+
+    $.ajax(
+        {
+            type:"POST",
+            url: url,
+            headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
+            data: {
+                routines: routineData
+            },
+            success: function() 
+            {   
+                console.log("successssssssss");
+                window.location.href = "/home/create/edit-delete-routine";
+            }
+        }
+    );
+}
+
