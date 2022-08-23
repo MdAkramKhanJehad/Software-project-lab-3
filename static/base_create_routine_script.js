@@ -117,5 +117,8 @@ function fixStepIndicator(n) {
         x[i].className = x[i].className.replace(" active", "");
     }
     //... and adds the "active" class on the current step:
-    x[n].className += " active";
+    for(i=0; i< n+1; i++){
+        x[i].className += " active";
+    }
+    
 }
