@@ -17,19 +17,34 @@ function getPreviouslyCreatedRoutinesFromSession(){
 
 function triggerChanged(num){
     const trigger = document.getElementById("trigger-"+num).value
-    console.log("trigger changed to: " + trigger  + " | prev: " + previouslyCreatedRoutines[num-1][0]);
+
+    if(trigger != previouslyCreatedRoutines[num-1][0]){
+        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");    
+        document.getElementById('nextBtn').className += " disabled";
+    } else{
+        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+    }
+
+    // console.log("trigger changed to: " + trigger  + " | prev: " + previouslyCreatedRoutines[num-1][0]);
 
     // const id = "update-" + num;
     // document.getElementById(id).style.backgroundColor = "#C1FBC9";
     // document.getElementById(id).style.color = "black";
-    console.log("typee");
-    console.log( typeof previouslyCreatedRoutines[0]);
+    // console.log("typee");
+    // console.log( typeof previouslyCreatedRoutines[0]);
 }
 
 
 function actionChanged(num){
     const action = document.getElementById("action-"+num).value
-    console.log("action changed to: " + action + " | prev: " + previouslyCreatedRoutines[num-1][1]);
+    // console.log("action changed to: " + action + " | prev: " + previouslyCreatedRoutines[num-1][1]);
+
+    if(action != previouslyCreatedRoutines[num-1][1]){
+        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");    
+        document.getElementById('nextBtn').className += " disabled";
+    } else{
+        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+    }
 }
 
 
@@ -38,6 +53,15 @@ function updateRoutine(num){
     const action = document.getElementById("action-"+num).value;
 
     const allRoutines = previouslyCreatedRoutines;
+
+    if(trigger != previouslyCreatedRoutines[num-1][0] || action != previouslyCreatedRoutines[num-1][1] ){
+        console.log("trigger changed to: " + trigger  + " | prev: " + previouslyCreatedRoutines[num-1][0]);
+        console.log("action changed to: " + action + " | prev: " + previouslyCreatedRoutines[num-1][1]);
+    } else{
+        console.log("Nothing to change");
+    }
+
+    
 
 
 

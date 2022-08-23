@@ -56,7 +56,7 @@
 						</div>
 					</div>
 					<div class="col-3 text-center px-0" id="update-div-{{forloop.counter}}">					
-						<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg fs-6 m-2" href="#" id="update-{{forloop.counter}}" role="button"><b>Update</b></a>
+						<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg fs-6 m-2" id="update-{{forloop.counter}}" onclick="updateRoutine('{{forloop.counter}}')" role="button"><b>Update</b></a>
 					</div>
 					<div class="col-2 text-center px-0" id="delete-div-{{forloop.counter}}">
 						<a class="btn btn-outline-light btn-rounded btn-danger btn-lg m-2 fs-6" data-bs-toggle="modal" id="delete-{{forloop.counter}}" data-bs-target="#deleteModal-{{forloop.counter}}"><b>Delete</b></a>
