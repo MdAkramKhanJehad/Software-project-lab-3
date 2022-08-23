@@ -156,6 +156,11 @@ def edit_delete_routine(request):
         response_json = json.dumps(response_json)
         data = json.loads(response_json)
 
+        # if data["name"] == "update":
+        #     print("its update")
+        # elif data["name"] == "delete":
+        #     print("its delete")
+
         for i in range(int(len(data)/2)):
             created_routines_list.append([data["routines[{}][trigger]".format(i)], data["routines[{}][action]".format(i)]])
 

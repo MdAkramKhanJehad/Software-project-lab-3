@@ -1,5 +1,6 @@
 var previouslyCreatedRoutines;
 var totalChecked = 0;
+var url = "/home/create/edit-delete-routine";
 getPreviouslyCreatedRoutinesFromSession();
 
 
@@ -7,11 +8,6 @@ function getPreviouslyCreatedRoutinesFromSession(){
     previouslyCreatedRoutines = document.getElementById("created-routines").getAttribute("data-created-routines");
     previouslyCreatedRoutines = previouslyCreatedRoutines.replace(/'/g, '"');
     previouslyCreatedRoutines = JSON.parse(previouslyCreatedRoutines);
-
-    // console.log("inside func")
-    // for (let i = 0; i < previouslyCreatedRoutines.length; i++) {
-    //     console.log("Routines: " + " " + previouslyCreatedRoutines[i][0] + " -> " + previouslyCreatedRoutines[i][1]);
-    // }
 }
 
 
@@ -19,19 +15,11 @@ function triggerChanged(num){
     const trigger = document.getElementById("trigger-"+num).value
 
     if(trigger != previouslyCreatedRoutines[num-1][0]){
-        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");    
         document.getElementById('nextBtn').className += " disabled";
     } else{
         document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
     }
 
-    // console.log("trigger changed to: " + trigger  + " | prev: " + previouslyCreatedRoutines[num-1][0]);
-
-    // const id = "update-" + num;
-    // document.getElementById(id).style.backgroundColor = "#C1FBC9";
-    // document.getElementById(id).style.color = "black";
-    // console.log("typee");
-    // console.log( typeof previouslyCreatedRoutines[0]);
 }
 
 
@@ -40,7 +28,6 @@ function actionChanged(num){
     // console.log("action changed to: " + action + " | prev: " + previouslyCreatedRoutines[num-1][1]);
 
     if(action != previouslyCreatedRoutines[num-1][1]){
-        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");    
         document.getElementById('nextBtn').className += " disabled";
     } else{
         document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
@@ -51,24 +38,46 @@ function actionChanged(num){
 function updateRoutine(num){
     const trigger = document.getElementById("trigger-"+num).value;
     const action = document.getElementById("action-"+num).value;
-
+    var routineData = {};
     const allRoutines = previouslyCreatedRoutines;
 
     if(trigger != previouslyCreatedRoutines[num-1][0] || action != previouslyCreatedRoutines[num-1][1] ){
         console.log("trigger changed to: " + trigger  + " | prev: " + previouslyCreatedRoutines[num-1][0]);
         console.log("action changed to: " + action + " | prev: " + previouslyCreatedRoutines[num-1][1]);
+
+        console.log("allroutine previous: ", allRoutines);
+        var routine = [trigger, action];
+        allRoutines.splice(num-1, 1, routine);
+        console.log("allroutine after: ", allRoutines);
+
+        var updatedRoutines = getRoutinesForSending(allRoutines);
+
+        for (let i = 0; i < updatedRoutines.length; i++) {
+            routineData[i] = updatedRoutines[i];
+        }
+
+        $.ajax(
+            {
+                type:"POST",
+                url: url,
+                headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
+                data: {
+                    routines: routineData,
+                    name: "update"
+                },
+                success: function() 
+                {   
+                    console.log("successssssssss");
+                    window.location.href = "/home/create/edit-delete-routine";
+                }
+            }
+        );
+
     } else{
         console.log("Nothing to change");
     }
-
-    
-
-
-
-    // allRoutines.splice(num, 1, [trigger, action]);
-    //  onclick="updateRoutine('{{forloop.counter}}')" 
+ 
 }
-
 
 
 function checkboxCount(element){
@@ -105,7 +114,7 @@ function getRoutinesForSending(routines){
 
 
 function deleteRoutine(num){
-    var url, routineData = {};
+    var routineData = {};
     console.log("delete routines");
     // console.log(previouslyCreatedRoutines[num - 1][0] + " -> " + previouslyCreatedRoutines[num - 1][1]);
 
@@ -116,7 +125,7 @@ function deleteRoutine(num){
         console.log("Routines del: " + " " + previousRoutines[i][0] + " -> " + previousRoutines[i][1]);
     }
 
-    url = "/home/create/edit-delete-routine";
+    
     var updatedRoutines = getRoutinesForSending(previousRoutines);
 
     for (let i = 0; i < updatedRoutines.length; i++) {
@@ -131,7 +140,8 @@ function deleteRoutine(num){
             url: url,
             headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
             data: {
-                routines: routineData
+                routines: routineData,
+                name: "delete"
             },
             success: function() 
             {   
