@@ -27,12 +27,12 @@
                 <div class='row'>
                     <div class='col-10 d-flex'>
                         <div class="ms-5">
-                            <p class="mb-4"><h4>State and Commands:</h4></p>
+                            {% comment %} <p class="mb-4"><h4>State and Commands:</h4></p> {% endcomment %}
                             <div>  
                                 {% for env_var in environmental_variables%}
                                     <div id="state-environmental-variables-{{forloop.counter0}}" style='display:none;'>     
                                         <p class="lead">
-                                            Description
+                                            <b>Description</b>
                                         </p>
                                         <p class='ps-4'>
                                             -  {{env_var.1}}
