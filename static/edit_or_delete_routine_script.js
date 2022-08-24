@@ -113,7 +113,9 @@ function deleteSelectedRoutine(){
 
     const previousRoutines = previouslyCreatedRoutines;
     console.log(previousRoutines);
-// sort index and remove
+
+    selectedRoutinesIndex.sort();
+    selectedRoutinesIndex.reverse();
     for(let i=0; i<totalChecked; i++){
         previousRoutines.splice(selectedRoutinesIndex[i], 1);
     }
@@ -128,30 +130,30 @@ function deleteSelectedRoutine(){
 
 
     
-    // var updatedRoutines = getRoutinesForSending(previousRoutines);
+    var updatedRoutines = getRoutinesForSending(previousRoutines);
 
-    // for (let i = 0; i < updatedRoutines.length; i++) {
-    //     routineData[i] = updatedRoutines[i];
-    // }
+    for (let i = 0; i < updatedRoutines.length; i++) {
+        routineData[i] = updatedRoutines[i];
+    }
 
-    // $(".btn-close").click();
+    $(".btn-close-selected-routine").click();
 
-    // $.ajax(
-    //     {
-    //         type:"POST",
-    //         url: url,
-    //         headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
-    //         data: {
-    //             routines: routineData,
-    //             name: "delete"
-    //         },
-    //         success: function() 
-    //         {   
-    //             console.log("successssssssss");
-    //             window.location.href = "/home/create/edit-delete-routine";
-    //         }
-    //     }
-    // );
+    $.ajax(
+        {
+            type:"POST",
+            url: url,
+            headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
+            data: {
+                routines: routineData,
+                name: "delete"
+            },
+            success: function() 
+            {   
+                console.log("successssssssss");
+                window.location.href = "/home/create/edit-delete-routine";
+            }
+        }
+    );
 }
 
 
