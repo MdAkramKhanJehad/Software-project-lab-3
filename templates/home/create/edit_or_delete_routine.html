@@ -20,26 +20,26 @@
 				<div class="col-1">
 					<p class="mb-4"><h4 class='text-center'></h4></p>
 				</div>
-				<div class="col-6">
+				<div class="col-7">
 					<p class="mb-4"><h4 class='text-center'>Your Created Routines</h4></p>
 				</div>
-				<div class="col-3">
+				<div class="col-4">
 					<p class="mb-4"><h4 class='text-center'>Update Routine</h4></p>
 				</div>
-				<div class="col-2">
+				{% comment %} <div class="col-2">
 					<p class="mb-4"><h4 class='text-center'>Delete Routine</h4></p>
-				</div>
+				</div> {% endcomment %}
 			</div>	
 			
 			{% for routine in created_routines_list %}
 				<div class="row">
 					<div class="col-1 pe-0 ps-4">
 						<div class="form-check">
-							<input class="form-check-input text-center" type="checkbox" onchange="checkboxCount(this)" id="checkbox-{{forloop.counter}}"  value="" aria-label="..." />
+							<input class="form-check-input text-center" type="checkbox" onchange="checkboxCount(this, '{{forloop.counter0}}')" id="checkbox-{{forloop.counter}}"  value="" aria-label="..." />
 						</div>
 					</div>
 
-					<div class="col-6 px-0">
+					<div class="col-7 px-0">
 						<div class="row text-center justify-content-center" >
 							<div class="col-1 pe-0 me-0">
 								If
@@ -55,20 +55,20 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-3 text-center px-0" id="update-div-{{forloop.counter}}">					
+					<div class="col-4 text-center px-0" id="update-div-{{forloop.counter}}">					
 						<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg fs-6 m-2" id="update-{{forloop.counter}}" onclick="updateRoutine('{{forloop.counter}}')" role="button"><b>Update</b></a>
 					</div>
-					<div class="col-2 text-center px-0" id="delete-div-{{forloop.counter}}">
+					{% comment %} <div class="col-2 text-center px-0" id="delete-div-{{forloop.counter}}">
 						<a class="btn btn-outline-light btn-rounded btn-danger btn-lg m-2 fs-6" data-bs-toggle="modal" id="delete-{{forloop.counter}}" data-bs-target="#deleteModal-{{forloop.counter}}"><b>Delete</b></a>
-					</div>
+					</div> {% endcomment %}
 					
 					<!-- Modal -->
 					<div class="modal fade" id="deleteModal-{{forloop.counter}}" tabindex="-1" aria-labelledby="deleteModallLabel-{{forloop.counter}}" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="modal-dialog-{{forloop.counter}}">
 							<div class="modal-content">
 								<div class="modal-header">
-								<h5 class="modal-title" id="deleteModallLabel-{{forloop.counter}}">Delete Routine</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									<h5 class="modal-title" id="deleteModallLabel-{{forloop.counter}}">Delete Routine</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
 								<div class="modal-body" id="modal-body-{{forloop.counter}}">
 									<p>Are you sure you want to delete the following Routine?<br>
@@ -85,7 +85,7 @@
 				</div><br>
 			{% endfor %}
 			<div class='container text-start ps-0 ms-0'>
-				<a class="btn btn-outline-light btn-rounded btn-danger disabled text-black-50 m-2" data-bs-toggle="modal" id="delete-selected" data-bs-target="#deleteSelectedModal"><b>Delete Selected</b></a>
+				<a class="btn btn-outline-light btn-rounded btn-danger btn-lg fs-6 disabled text-black-50 m-2" data-bs-toggle="modal" id="delete-selected" data-bs-target="#deleteSelectedModal"><b>Delete Selected</b></a>
 			</div>
 
 			<div class="modal fade" id="deleteSelectedModal" tabindex="-1" aria-labelledby="deleteSelectedModalLabel" aria-hidden="true">
@@ -100,7 +100,7 @@
 						</div>
 						<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-danger" id="modal-delete-{{forloop.counter}}">Delete</button>
+						<button type="button" class="btn btn-danger" id="modal-delete-{{forloop.counter}}" onclick="deleteSelectedRoutine()">Delete</button>
 						</div>
 					</div>
 				</div>
