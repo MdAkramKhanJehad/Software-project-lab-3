@@ -9,10 +9,41 @@
         <div id="selected-device" data-previously-selected-device="{{previously_selected_devices}}"></div>
         <div id="device-attribute" data-device-atribute="{{selected_devices_attributes}}"></div>
         <div id="created-routines" data-created-routines="{{previously_created_routines}}"></div>
-
+        <div id="environmental-variables" data-environmental-variables="{{environmental_variables}}"></div>
         
         <div class="row">
             <div class="col">
+                
+                <p class="mb-4"><h4 class='text-center'>Environmental Variables:</h4></p>
+
+                <div class='row justify-content-center'>
+                    {% for env_var in environmental_variables %}
+                        <div class="col-sm-1 card cards w-25 mb-2 px-0 me-3 align-middle">
+                            <div class="card-body text-center align-middle" id="{{env_var.0}}" data-index-env-var="{{forloop.counter0}}" onclick="showEnvVarAttributes('{{forloop.counter0}}')">{{env_var.0}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class='row'>
+                    <div class='col-10 d-flex'>
+                        <div class="ms-5">
+                            <p class="mb-4"><h4>State and Commands:</h4></p>
+                            <div>  
+                                {% for env_var in environmental_variables%}
+                                    <div id="state-environmental-variables-{{forloop.counter0}}" style='display:none;'>     
+                                        <p class="lead">
+                                            Description
+                                        </p>
+                                        <p class='ps-4 fs-6'>
+                                            -  {{env_var.1}}
+                                        </p>                    
+                                    </div>                                   
+                                {% endfor %}                                                                                            
+                            </div>
+                        </div>                     
+                    </div>
+                </div><br>
+
                 <p class="mb-4"><h4 class='text-center'>Your selected devices are :</h4></p>
 
                 <div class='row justify-content-center'>

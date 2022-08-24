@@ -4,7 +4,7 @@ from home.models import Device, DeviceAttribute
 import json
 import os
 from spl_3 import settings
-from home.methods import get_created_routine_from_session, get_selected_devices_from_session
+from home.methods import get_created_routine_from_session, get_selected_devices_from_session, get_environmental_variable
 
 # Create your views here.
 
@@ -104,6 +104,7 @@ def select_device(request):
 
 def create_routine(request):
     selected_device_list = get_selected_devices_from_session(request, 2)
+    environmental_variable = get_environmental_variable()
     deviceAttributeList = []
     created_routines_list = []
     
@@ -136,9 +137,11 @@ def create_routine(request):
             attrDesc = {}
             attributeDescriptionFromDb = DeviceAttribute.objects.filter(device__device_name__contains=device)
             deviceAttributeList.append(attributeDescriptionFromDb)
-                     
+        
+    print(environmental_variable)           
     context = { 
         'previously_selected_devices': selected_device_list,
+        'environmental_variables': environmental_variable,
         'selected_devices_attributes': deviceAttributeList,
         'previously_created_routines' : created_routines_list,
         'page': 2 

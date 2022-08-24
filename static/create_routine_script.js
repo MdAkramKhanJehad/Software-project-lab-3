@@ -1,14 +1,33 @@
 var currentlyShowing = "state-0";
+var currentlyShowingEnvVar = "state-environmental-variables-0";
 var currentlySelectedDevice;
+var currentlySelectedEnvVar;
 var totalRoutine = 1;
 var previouslyCreatedRoutines;
 var createdRoutines = [];
+var environmental_variables;
+
 document.getElementById(currentlyShowing).style.display = "block";
+document.getElementById(currentlyShowingEnvVar).style.display = "block";
+
 setFirstDeviceStyle();
+getEnvironmentalVariable();
+setFirstEnvVarStyle();
 getPreviouslyCreatedRoutinesFromSession();
 addPreviouslyCreatedRoutinesFromSessionInUI();
 
 
+
+function getEnvironmentalVariable(){
+    environmental_variables = document.getElementById("environmental-variables").getAttribute("data-environmental-variables");
+    environmental_variables = environmental_variables.replace(/'/g, '"');
+    environmental_variables = JSON.parse(environmental_variables);
+
+    console.log(environmental_variables.length);
+    for (let i = 0; i < environmental_variables.length; i++) {
+        console.log("Environmental Variables: " + " " + environmental_variables[i][0] + " -> " + environmental_variables[i][1]);
+    }
+}
 
 function getPreviouslyCreatedRoutinesFromSession(){
     previouslyCreatedRoutines = document.getElementById("created-routines").getAttribute("data-created-routines");
@@ -37,6 +56,12 @@ function setFirstDeviceStyle(){
 }
 
 
+function setFirstEnvVarStyle(){
+    currentlySelectedEnvVar = environmental_variables[0][0];
+    styleChangeAfterSelection(currentlySelectedEnvVar);
+}
+
+
 function showAttributes(device){
     styleChangeAfterDeselection(currentlySelectedDevice);
     currentlySelectedDevice = device;
@@ -52,8 +77,22 @@ function showAttributes(device){
 }
 
 
-function addNewRoutine(){
+function showEnvVarAttributes(index){
+    styleChangeAfterDeselection(currentlySelectedEnvVar);
+    currentlySelectedEnvVar = environmental_variables[index][0];
+    styleChangeAfterSelection(currentlySelectedEnvVar);
 
+    document.getElementById(currentlyShowingEnvVar).style.display = "none";
+
+    const device_elememt = document.getElementById(currentlySelectedEnvVar);
+    // const index_env_var = device_elememt.getAttribute("data-index-env-var");
+    currentlyShowingEnvVar = "state-environmental-variables-"+index;
+    const selected_env_var = document.getElementById(currentlyShowingEnvVar)
+    selected_env_var.style.display = "block";
+}
+
+
+function addNewRoutine(){
     if (document.getElementById("trigger").value=='' || document.getElementById("action").value=='') return false;
 
     makeCloneNode();
