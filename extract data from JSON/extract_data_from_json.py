@@ -5,7 +5,27 @@ appliances = ["Air Conditioner", "Air Cooler", "Beacon Device", "Clothes Dryer",
 kitchenAndCleaning = ["Bread Maker", "Dishwasher", "Dust Detector", "Gas Stove", "Induction CookTop", "Kettle", "Microwave Oven", "Oil Warmer", "Refrigerator", "Rice Cooker", "Robot Vacuum", "Sous Vide", "SoyMilk Maker", "Water Heater"]
 safetyAndMultimedia = ["Audio Player", "Blood Pressure Monitor", "Door Lock", "Garage Door Opener", "Glass Break Detector", "Pulse Monitor", "Security Alarm", "Security Camera", "Sleep Monitor", "Smart Mirror", "Smart TV", "Speaker", "Water Leak Detector", "Water Purifier"]
 sensors = ["CO Detector", "Gas Sensor", "Humidity Sensor", "Illuminance Sensor", "Moisture Sensor", "Motion Sensor", "Open/Close Sensor", "PH Sensor", "Presence Sensor", "Smart IR", "Smoke Detector", "Step Sensor", "Temperature Sensor", "Tilt Sensor"]
+'''
 
+newly categorized by me
+appliance = ["Air Conditioner",  "Refrigerator", "Air Cooler", "Clothes Dryer", "Fan", "Humidifier", "Thermostat", "Vent",  "Dehumidifier", "Air Purifier", "Water Heater", "Electric Blanket" , "Airer"] 
+
+sensors = ["Gas Sensor", "Humidity Sensor", "Motion Sensor", "Open/Close Sensor", "Presence Sensor", "Step Sensor", "Door Sensor"] 
+
+securityAndSafetyDevices = ["CO Detector", "Smoke Detector", "Smart IR", "Door Lock", "Garage Door Opener", "Glass Break Detector", "Security Alarm", "Security Camera", "Water Leak Detector", "Tilt Sensor"] 
+
+kitchenAndCleaning = ["Bread Maker", "Dishwasher", "Dust Detector", "Gas Stove", "Induction CookTop", "Kettle", "Microwave Oven", "Oil Warmer", "Rice Cooker", "Robot Vacuum", "Sous Vide", "SoyMilk Maker",  "Coffee Maker", "Milk Dispenser", "Water Filter",  "Water Purifier"] 
+
+multimedia = ["Audio Player", "Smart Mirror", "Smart TV", "Speaker"] 
+
+health = ["Blood Oximeter", "Blood Pressure Monitor", "Pulse Monitor", "Sleep Monitor"] 
+
+lightingAndSwitches = ["Light Bulb", "Switches", "LED strip", "Scene Switch", "Lighting Remote", "Illuminance Sensor", "Button"] 
+
+gardeningDevices = ["Sprinkler", "Valve", "Plant Grower", "Weather Station", "pH Sensor", "Moisture Sensor", "Temperature Sensor"] 
+
+others = ["Beacon Device", "Shades/Blinds", "Smart Printer", "Doorbell", "Energy Meter", "Smart Battery", "Curtains", "Car Automation", "Geolocation Monitor", "Smart Assistant"]
+'''
 
 f = open('data.json')
 data = json.load(f)
