@@ -724,7 +724,7 @@
             "AttributesAndDescriptions": [
                {
                   "airQuality": "",
-                  "desc": "Reda the quality of air"
+                  "desc": "Read the quality of air"
                },
                {
                   "switch": "off-on",
