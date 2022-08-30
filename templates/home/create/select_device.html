@@ -37,7 +37,7 @@
                 <div class="col">
                     <h5>Safety & Multimedia</h5>
                     <div class="row  d-flex justify-content-center" id='devices-list'>
-                        {% for device in safety_and_multimedia_devices %}
+                        {% for device in security_and_safety %}
                             <div class="card cards w-75 mb-2 mx-0 px-0">
                                 <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
                             </div>

@@ -38,6 +38,11 @@ def tutorial(request):
 def select_device(request):
     selected_device_list = []
     
+    # del request.session["created_routines"]
+    # request.session.modified = True
+    # del request.session["selected_devices"]
+    # request.session.modified = True
+    
     # get and save session after next button clicking
     if request.method == 'POST':
 
@@ -65,10 +70,15 @@ def select_device(request):
     device_list = Device.objects.all()
 
     if len(device_list) == 0:
-        f = open(os.path.join(settings.STATIC_ROOT, 'data/device_data.json'))
+        f = open(os.path.join(settings.STATIC_ROOT, 'data/device_data_updated.json'))
         data = json.load(f)
+
+        # print("data/device_data.json:",data)
+    
     
         for item in data:
+            # print("device: ", list(item.keys())[0])
+            # print("category: ", item[current_device_name][0][list(item[current_device_name][0].keys())[0]])
             current_device_name = list(item.keys())[0]
             new_device = Device(device_name=current_device_name, category=item[current_device_name][0][list(item[current_device_name][0].keys())[0]])
             new_device.save()
@@ -81,18 +91,26 @@ def select_device(request):
 
     appliances_devices = Device.objects.all().filter(category="Appliances")
     kitchen_and_cleaning_devices = Device.objects.all().filter(category="Kitchen & Cleaning")
-    safety_and_multimedia_devices = Device.objects.all().filter(category="Safety & Multimedia")
+    security_and_safety = Device.objects.all().filter(category="Security & Safety")
+    multimedia = Device.objects.all().filter(category="Multimedia")
+    health = Device.objects.all().filter(category="Health")
+    lights_and_switches = Device.objects.all().filter(category="Lights & Switches")
+    gardening_devices = Device.objects.all().filter(category="Gardening Devices")
     sensors_devices = Device.objects.all().filter(category="Sensors")
     others_devices = Device.objects.all().filter(category="Others")
 
     # print(len(appliances_devices), " || ", len(kitchen_and_cleaning_devices), " || ", len(safety_and_multimedia_devices), " || ", len(sensors_devices), " || ", len(others_devices), " || ")
-    # print("Total: ", len(appliances_devices) + len(kitchen_and_cleaning_devices) + len(safety_and_multimedia_devices) + len(sensors_devices) + len(others_devices))
+    print("Total: ", len(appliances_devices) , " ", len(kitchen_and_cleaning_devices), " ", len(security_and_safety) , " ", len(health) , len(multimedia))
     # print(others_devices[0].device_name, " || ", others_devices[0].id, " || ", others_devices[0].category)
 
     context = {
         'appliances_devices': appliances_devices,
         'kitchen_and_cleaning_devices': kitchen_and_cleaning_devices,
-        'safety_and_multimedia_devices': safety_and_multimedia_devices,
+        'security_and_safety': security_and_safety,
+        'multimedia': multimedia,
+        'health': health,
+        'lights_and_switches': lights_and_switches,
+        'gardening_devices': gardening_devices,
         'sensors_devices': sensors_devices,
         'others_devices': others_devices,
         'previously_selected_devices': selected_device_list,

@@ -53,9 +53,6 @@ for item in data:
     
     elif device_name in gardeningDevices:
         desc["Category"] = "Gardening Devices"
-     
-    elif device_name in lightsAndSwitches:
-        desc["Category"] = "Lights & Switches"
        
     elif device_name in sensors:
         desc["Category"] = "Sensors"
