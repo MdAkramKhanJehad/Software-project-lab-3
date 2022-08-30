@@ -99,9 +99,7 @@ def select_device(request):
     sensors_devices = Device.objects.all().filter(category="Sensors")
     others_devices = Device.objects.all().filter(category="Others")
 
-    # print(len(appliances_devices), " || ", len(kitchen_and_cleaning_devices), " || ", len(safety_and_multimedia_devices), " || ", len(sensors_devices), " || ", len(others_devices), " || ")
     print("Total: ", len(appliances_devices) , " ", len(kitchen_and_cleaning_devices), " ", len(security_and_safety) , " ", len(health) , len(multimedia))
-    # print(others_devices[0].device_name, " || ", others_devices[0].id, " || ", others_devices[0].category)
 
     context = {
         'appliances_devices': appliances_devices,
