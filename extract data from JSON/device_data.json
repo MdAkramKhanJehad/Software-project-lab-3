@@ -1,316 +1,5 @@
 [
    {
-      "Switches": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Toggle switch off or on"
-               },
-               {
-                  "level": "setLevel",
-                  "desc": "Set the dimmer level for the lights"
-               },
-               {
-                  "energy": "",
-                  "desc": "Read the energy consumption of the switch"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "LED strip": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "indicatorStatus": "indicatorNever-indicatorWhenOff-indicatorWhenOn",
-                  "desc": "Change the behaviour of the indicator"
-               },
-               {
-                  "switch": "off-on",
-                  "desc": "Toggle LED strip off or on"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Light Bulb": [
-         {
-            "Category": "Appliances"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Toggle bulb off or on"
-               },
-               {
-                  "level": "setLevel",
-                  "desc": "Set brightness level"
-               },
-               {
-                  "colorValue": "setColorValue",
-                  "desc": "Set the color of the light"
-               },
-               {
-                  "saturationValue": "setSaturation",
-                  "desc": "Set the saturation level of your light"
-               },
-               {
-                  "hueValue": "setHue",
-                  "desc": "Set the hue level of your light"
-               },
-               {
-                  "colorMode": "setMode",
-                  "desc": "Set the scene based on your mood"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Door Lock": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "lock": "lock-unlock",
-                  "desc": "Lock or unlock your door"
-               },
-               {
-                  "": "configure",
-                  "desc": "Change different attributes of your lock. For e.g. Jam next operation, Clear next Jam Operation, set battery level."
-               },
-               {
-                  "code": "setCode",
-                  "desc": "Change the lock code"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Security Alarm": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "alarm": "setAlarmMode",
-                  "desc": "Read or set the alarm mode to Siren, strobe, both or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Security Camera": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Toggle the camera on or off"
-               },
-               {
-                  "image": "take",
-                  "desc": "Capture an still image using the camera"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Doorbell": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "door": "close-open",
-                  "desc": "Open or close the door"
-               },
-               {
-                  "alarm": "setAalarmMode",
-                  "desc": "Read or set the alarm mode to Siren, strobe, both or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Garage Door Opener": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "door": "close-open",
-                  "desc": "Open or close the garage door"
-               },
-               {
-                  "threeAxis": "",
-                  "desc": "Read the 3-axis co-ordinates of the device"
-               },
-               {
-                  "contact": "",
-                  "desc": "Read the value of contact sensor to confirm if the door is fully closed"
-               },
-               {
-                  "lqi-rssi": "",
-                  "desc": "Read the signal strength"
-               },
-               {
-                  "temperature": "",
-                  "desc": "Read the temperature inside your garage"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Sprinkler": [
-         {
-            "Category": "Appliances"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn sprinkler on or off"
-               },
-               {
-                  "": "push",
-                  "desc": "Sprinkler is turned on for a limited time until the manual button is released"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Button": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "button-numberOfButtons": "",
-                  "desc": "Add functionalities to the button to control devices remotely"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Robot Vacuum": [
-         {
-            "Category": "Kitchen & Cleaning"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the vacuum cleaner on or off"
-               },
-               {
-                  "robotCleanerCleaningMode": "setRobotCleanerCleaningMode",
-                  "desc": "Set the cleaning mode of the cleaner. For e.g. Auto, Manual, Repeat, Stop"
-               },
-               {
-                  "robotCleanerMovement": "setRobotCleanerMovement",
-                  "desc": "Control and set different modes for the cleaner movement. For e.g. Homing, Idle, Charging, Alarm, Power Off, Reserve, Point, After, Cleaning"
-               },
-               {
-                  "robotCleanerTurboMode": "setRobotCleanerTurboMode",
-                  "desc": "Put the vacuum cleaner into turbo mode. For e.g. On, Off, Silence"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Thermostat": [
-         {
-            "Category": "Appliances"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "temperature": "",
-                  "desc": "Read the current temperature of the room"
-               },
-               {
-                  "coolingSetpoint-coolingSetpointRange": "setCoolingSetpoint-setCoolingSetpointRange",
-                  "desc": "Set the target cooling temperature for the thermostat"
-               },
-               {
-                  "thermostatSetpoint": "",
-                  "desc": "Read the currently set target temperature"
-               },
-               {
-                  "supportedThermostatFanModes-thermostatFanMode": "setThermostatFanMode",
-                  "desc": "Check and set different modes for the fan. For e.g. fanAuto, fanOn, fanCirculate"
-               },
-               {
-                  "heatingSetpoint-heatingSetpointRange": "setHeatingSetpoint-setHeatingSetpointRange",
-                  "desc": "Set the target heating temperature for the thermostat"
-               },
-               {
-                  "supportedThermostatModes-thermostatMode": "setThermostatMode",
-                  "desc": "Check and set the thermostat to different modes. For e.g. Auto, Cool, EmergencyHeat, Heat, Off"
-               },
-               {
-                  "schedule": "setSchedule",
-                  "desc": "Check and set the schedule to run the thermostat or the fan "
-               },
-               {
-                  "thermostatOperatingState": "",
-                  "desc": "Read the current mode that the thermostat is operating in"
-               },
-               {
-                  "humidity": "",
-                  "desc": "Read the humidity in the room"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Water Heater": [
-         {
-            "Category": "Kitchen & Cleaning"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the heater on or off"
-               },
-               {
-                  "water": "",
-                  "desc": "Check the moisture state, either dry or wet."
-               }
-            ]
-         }
-      ]
-   },
-   {
       "Air Conditioner": [
          {
             "Category": "Appliances"
@@ -322,11 +11,11 @@
                   "desc": "Check and set the air conditioner mode. For e.g. auto, cool, dry, coolClean, dryClean, fanOnly, heat, heatClean"
                },
                {
-                  "switch": "off-on",
+                  "switch": "setOff-on",
                   "desc": "Turn the air conditioner on or off"
                },
                {
-                  "temperature": "",
+                  "temperature": "readTemperature",
                   "desc": "Read the temperature of your house or a room"
                },
                {
@@ -342,23 +31,201 @@
       ]
    },
    {
-      "Smart TV": [
+      "Air Cooler": [
          {
-            "Category": "Safety & Multimedia"
+            "Category": "Appliances"
          },
          {
             "AttributesAndDescriptions": [
                {
-                  "switch": "off-on",
-                  "desc": "Turn the TV on or off"
+                  "switch": "setOff-on",
+                  "desc": "Turn the Air Cooler on or off"
                },
                {
-                  "tvChannel": "setTvChannel",
-                  "desc": "Check or set the Tv channel. For e.g. channelDown, channelUp"
+                  "Fan speed": "setFanSpeed",
+                  "desc": "Read or control the fan speed"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Air Purifier": [
+         {
+            "Category": "Appliances"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Air quality": "readAirQuality",
+                  "desc": "Read the quality of air"
                },
                {
-                  "inputSource-supportedInputSources": "setInputSource",
-                  "desc": "Check or set the supported input source for the TV"
+                  "switch": "setOff-on",
+                  "desc": "Turn the Air Purifier on or off"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Airer": [
+         {
+            "Category": "Appliances"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the Airer on or off"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Audio Player": [
+         {
+            "Category": "Multimedia"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Mute": "setMute",
+                  "desc": "Check or mute/unmute the speaker"
+               },
+               {
+                  "Volume": "setVolume",
+                  "desc": "Check or set the volume of the audio player"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Beacon Device": [
+         {
+            "Category": "Others"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "presence": "checkPresence",
+                  "desc": "Check if the device is nearby"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Blood Oximeter": [
+         {
+            "Category": "Health"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Blood oxygen level": "Read",
+                  "desc": "Read the current oxygen level in the blood"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Blood Pressure Monitor": [
+         {
+            "Category": "Health"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Blood pressure": "read",
+                  "desc": "Read the current blood pressure reading"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Bread Maker": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the Bread Maker on or off"
+               },
+               {
+                  "Read temperature": "getTemperature",
+                  "desc": "Read the current temperature"
+               },
+               {
+                  "completionTime-sessionStatus": "cancel-pause-setCompletionTime-start-stop",
+                  "desc": "Read the state or control the Bread Maker device (cancel, pause, set completion time, start, stop)"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Button": [
+         {
+            "Category": "Lights & Switches"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Add function": "addFunction",
+                  "desc": "Add functionalities to the button to control devices remotely"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "CO Detector": [
+         {
+            "Category": "Security & Safety"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "carbonMonoxide": "read",
+                  "desc": "Read carbon monoxide level"
+               },
+               {
+                  "alarm": "setAlarmMode",
+                  "desc": "Read and set the alarm mode to Siren, strobe, both or off"
+               },
+               {
+                  "tamper": "setTamper",
+                  "desc": "Check if the device is tampered. For e.g. clear, detected"
+               },
+               {
+                  "battery": "readBattery",
+                  "desc": "Read the status of the battery"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Car Automation": [
+         {
+            "Category": "Others"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "presence": "checkPresence",
+                  "desc": "Know if the car is nearby"
+               },
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the Car on or off"
                }
             ]
          }
@@ -384,389 +251,57 @@
       ]
    },
    {
-      "Humidity Sensor": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "humidity": "",
-                  "desc": "Read the humidity in the room"
-               },
-               {
-                  "temperature": "",
-                  "desc": "Read the current temperature of the room"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Moisture Sensor": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "water": "",
-                  "desc": "Check the moisture state, either dry or wet."
-               },
-               {
-                  "temperature": "",
-                  "desc": "Read the current temperature"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Motion Sensor": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "motion": "",
-                  "desc": "Know when motion is detected"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "CO Detector": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "carbonMonoxide": "",
-                  "desc": "Read carbon monoxide level"
-               },
-               {
-                  "alarm": "setAlarmMode",
-                  "desc": "Read and set the alarm mode to Siren, strobe, both or off"
-               },
-               {
-                  "tamper": "",
-                  "desc": "Check if the device is tampered. For e.g. clear, detected"
-               },
-               {
-                  "battery": "",
-                  "desc": "Read the status of the battery"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Tilt Sensor": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "threeAxis": "",
-                  "desc": "Read the 3-axis co-ordinates of the device"
-               },
-               {
-                  "motion": "",
-                  "desc": "Know when motion is detected"
-               },
-               {
-                  "acceleration": "",
-                  "desc": "Know when there is acceleration. It can be used to know if a device like washing machine is vibrating or when a device has moved"
-               },
-               {
-                  "lqi-rssi": "",
-                  "desc": "Read the signal strength"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Open/Close Sensor": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "contact": "",
-                  "desc": "Check if the door, window or a drawer is open or closed"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Smoke Detector": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "smoke": "",
-                  "desc": "Detect smoke in the room"
-               },
-               {
-                  "temperature": "",
-                  "desc": "Read the current temperature of the room"
-               },
-               {
-                  "tamper": "",
-                  "desc": "Check if the device is tampered. For e.g. clear, detected"
-               },
-               {
-                  "battery": "",
-                  "desc": "Read the battery status"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Presence Sensor": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "presence": "",
-                  "desc": "Check if the device is nearby"
-               },
-               {
-                  "": "beep",
-                  "desc": "Make a beep sound on the device"
-               },
-               {
-                  "lqi-rssi": "",
-                  "desc": "Read the signal strength"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Temperature Sensor": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "temperature": "",
-                  "desc": "Read the current temperature of the room"
-               },
-               {
-                  "humidity": "",
-                  "desc": "Read the humidity in the room"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Speaker": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the speaker on or off"
-               },
-               {
-                  "mute": "setMute",
-                  "desc": "Check or mute/unmute the speaker"
-               },
-               {
-                  "": "playTrack-playTrackAndRestore-playTrackAndResume",
-                  "desc": "Play, replay or resume the track being played"
-               },
-               {
-                  "audioTrackData": "",
-                  "desc": "Get the description related to the audio track"
-               },
-               {
-                  "volume": "setVolume",
-                  "desc": "Check the volume or turn the volume up or down"
-               },
-               {
-                  "status-level": "nextTrack-pause-play-playTrack-previousTrack-restoreTrack-resumeTrack-setLevel-setTrack-stop-unmute",
-                  "desc": "Get the status or control the speaker"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Energy Meter": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "energy": "",
-                  "desc": "Read the energy consumption of the device"
-               },
-               {
-                  "power": "",
-                  "desc": "Read the power consumption"
-               },
-               {
-                  "powerSource": "",
-                  "desc": "Read the current power source of the device. For e.g. DC, mains, battery"
-               }
-            ]
-         }
-      ]
-   },
-   {
       "Coffee Maker": [
-         {
-            "Category": "Appliances"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Coffee Maker on or off"
-               },
-               {
-                  "temperature": "",
-                  "desc": "Read the current temperature"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Shades/Blinds": [
-         {
-            "Category": "Appliances"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "windowShade": "close-open-presetPosition",
-                  "desc": "Control the window shade; open/close it or open it to a preset position"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Valve": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "valve": "close-open",
-                  "desc": "Open or close the valve"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Vent": [
-         {
-            "Category": "Appliances"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "thermostatOperatingState": "",
-                  "desc": "Read the current mode that the thermostat is operating in"
-               },
-               {
-                  "temperature": "",
-                  "desc": "Read the current temperature of the room"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Beacon Device": [
-         {
-            "Category": "Appliances"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "presence": "",
-                  "desc": "Check if the device is nearby"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Air Purifier": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "airQuality": "",
-                  "desc": "Read the quality of air"
-               },
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Air Purifier on or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Water Leak Detector": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "water": "",
-                  "desc": "Check the moisture state, either dry or wet."
-               },
-               {
-                  "alarm": "setAlarmMode",
-                  "desc": "Read or set the alarm mode to Siren, strobe, both or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Induction CookTop": [
          {
             "Category": "Kitchen & Cleaning"
          },
          {
             "AttributesAndDescriptions": [
                {
-                  "switch": "off-on",
-                  "desc": "Turn the CookTop on or off"
+                  "switch": "setOff-on",
+                  "desc": "Turn the Coffee Maker on or off"
                },
                {
-                  "temperature": "",
+                  "Read temperature": "readTemperature",
                   "desc": "Read the current temperature"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Curtains": [
+         {
+            "Category": "Others"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the Curtains on or off"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Dehumidifier": [
+         {
+            "Category": "Appliances"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read Humidity": "readHumidity",
+                  "desc": "Read the humidity in the room"
+               },
+               {
+                  "Read temperature": "temperature",
+                  "desc": "Read the current temperature"
+               },
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the device on or off"
                }
             ]
          }
@@ -784,7 +319,7 @@
                   "desc": "Check or set the diswasher mode. For e.g. auto, quick, rinse, dry"
                },
                {
-                  "completionTime-dishwasherJobState-machineState-supportedMachineStates": "setMachineState",
+                  "Read machine state": "setMachineState",
                   "desc": "Check and set the machine state for the diswasher. For e.g. airwash, cooling, drying, finish, preDrain, preWash, rinse, spin, wash, wrinklePrevent"
                }
             ]
@@ -792,275 +327,65 @@
       ]
    },
    {
-      "Refrigerator": [
+      "Door Lock": [
          {
-            "Category": "Kitchen & Cleaning"
+            "Category": "Security & Safety"
          },
          {
             "AttributesAndDescriptions": [
                {
-                  "refrigerationSetpoint": "setRefrigerationSetpoint",
-                  "desc": "Read or set the temperature value for refrigerator"
+                  "lock": "lock-unlock",
+                  "desc": "Lock or unlock your door"
                },
                {
-                  "switch": "off-on",
-                  "desc": "Turn the Refrigerator on or off"
+                  "configure": "configure",
+                  "desc": "Change different attributes of your lock. For e.g. Jam next operation, Clear next Jam Operation, set battery level."
+               },
+               {
+                  "code": "setCode",
+                  "desc": "Change the lock code"
                }
             ]
          }
       ]
    },
    {
-      "Microwave Oven": [
-         {
-            "Category": "Kitchen & Cleaning"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "completionTime-machineState-operationTime-ovenJobState-progress-supportedMachineStates": "setMachineState-stop",
-                  "desc": "Check or set the oven machine state mode. For e.g. ready, running, paused"
-               },
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Oven on or off"
-               },
-               {
-                  "ovenMode": "setOvenMode",
-                  "desc": "Check or set the oven mode. For e.g. heating, grill, warming, defrosting"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Smoke Detector": [
+      "Door Sensor": [
          {
             "Category": "Sensors"
          },
          {
             "AttributesAndDescriptions": [
                {
-                  "smoke": "",
-                  "desc": "Detect smoke in the room"
+                  "door": "close-open",
+                  "desc": "Open or close the door"
                },
                {
-                  "battery": "",
-                  "desc": "Read the battery status"
+                  "contact": "readC ontact",
+                  "desc": "Read the value of contact sensor to confirm if the door is fully closed "
+               },
+               {
+                  "Read signal strength": "lqi-rssi",
+                  "desc": "Read the signal strength"
                }
             ]
          }
       ]
    },
    {
-      "Glass Break Detector": [
+      "Doorbell": [
          {
-            "Category": "Safety & Multimedia"
+            "Category": "Security & Safety"
          },
          {
             "AttributesAndDescriptions": [
                {
-                  "shock": "",
-                  "desc": "Detect whether or not there is a shock"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Fan": [
-         {
-            "Category": "Appliances"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "fanSpeed": "setFanSpeed",
-                  "desc": "Read or control the fan speed"
+                  "open-close": "close-open",
+                  "desc": "Open or close the door"
                },
                {
-                  "switch": "off-on",
-                  "desc": "Turn the Fan on or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Pulse Monitor": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "pulse": "",
-                  "desc": "Read the current pulse rate"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Sleep Monitor": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "sleeping": "",
-                  "desc": "Detect whether someone is sleeping or not"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Smart Battery": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "battery": "",
-                  "desc": "Read the battery status"
-               },
-               {
-                  "powerSource": "",
-                  "desc": "Read the current power source of the device. For e.g. DC, mains, battery"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Smart Printer": [
-         {
-            "Category": "Appliances"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the printer on or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Weather Station": [
-         {
-            "Category": "Appliances"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "temperature": "",
-                  "desc": "Read the current temperature of the room"
-               },
-               {
-                  "coolingSetpoint-coolingSetpointRange": "setCoolingSetpoint-setCoolingSetpointRange",
-                  "desc": "Set the target cooling temperature for the thermostat"
-               },
-               {
-                  "thermostatSetpoint": "",
-                  "desc": "Read the currently set target temperature"
-               },
-               {
-                  "supportedThermostatFanModes-thermostatFanMode": "setThermostatFanMode",
-                  "desc": "Check and set different modes for the fan. For e.g. fanAuto, fanOn, fanCirculate"
-               },
-               {
-                  "heatingSetpoint-heatingSetpointRange": "setHeatingSetpoint-setHeatingSetpointRange",
-                  "desc": "Set the target heating temperature for the thermostat"
-               },
-               {
-                  "supportedThermostatModes-thermostatMode": "setThermostatMode",
-                  "desc": "Check and set the thermostat to different modes. For e.g. Auto, Cool, EmergencyHeat, Heat, Off"
-               },
-               {
-                  "schedule": "setSchedule",
-                  "desc": "Check and set the schedule to run the thermostat or the fan "
-               },
-               {
-                  "thermostatOperatingState": "",
-                  "desc": "Read the current mode that the thermostat is operating in"
-               },
-               {
-                  "humidity": "",
-                  "desc": "Read the humidity in the room"
-               },
-               {
-                  "illuminance": "",
-                  "desc": "Get the measurement for current illuminance"
-               },
-               {
-                  "temperature": "",
-                  "desc": "Read the current temperature"
-               },
-               {
-                  "humidity": "",
-                  "desc": "Read the humidity in the room"
-               },
-               {
-                  "ultravioletIndex": "",
-                  "desc": "Read the ultraviolet index"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Water Purifier": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "water": "",
-                  "desc": "Check the moisture state, either dry or wet."
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Gas Sensor": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "odorLevel": "",
-                  "desc": "Read the odor sensor reading"
-               },
-               {
-                  "alarm": "setAlarmMode",
+                  "Set alarm mode to siren": "setAalarmMode",
                   "desc": "Read or set the alarm mode to Siren, strobe, both or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Smart Mirror": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "image": "take",
-                  "desc": "Take a picture"
-               },
-               {
-                  "videoClip": "captureClip",
-                  "desc": "Capture a video clip"
                }
             ]
          }
@@ -1074,57 +399,8 @@
          {
             "AttributesAndDescriptions": [
                {
-                  "dustLevel-fineDustLevel": "",
+                  "Read dust level": "dustLevel-fineDustLevel",
                   "desc": "Read the current dust level"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Blood Pressure Monitor": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "pressure": "",
-                  "desc": "Read the current blood pressure reading"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Blood Oximeter": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "oximeter": "",
-                  "desc": "Read the current oxygen level in the blood"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Oil Warmer": [
-         {
-            "Category": "Kitchen & Cleaning"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the heater off or on"
-               },
-               {
-                  "completionTime-sessionStatus": "cancel-pause-setCompletionTime-start-stop",
-                  "desc": "Set a timer, pause/cancel the heater or start/stop the process altogether."
                }
             ]
          }
@@ -1133,16 +409,16 @@
    {
       "Electric Blanket": [
          {
-            "Category": "Others"
+            "Category": "Appliances"
          },
          {
             "AttributesAndDescriptions": [
                {
-                  "switch": "off-on",
+                  "switch": "setOff-on",
                   "desc": "Turn the blanket on or off"
                },
                {
-                  "temperature": "",
+                  "Read temperature": "temperature",
                   "desc": "Read the current temperature"
                }
             ]
@@ -1150,134 +426,92 @@
       ]
    },
    {
-      "Dehumidifier": [
+      "Energy Meter": [
          {
             "Category": "Others"
          },
          {
             "AttributesAndDescriptions": [
                {
-                  "humidity": "",
-                  "desc": "Read the humidity in the room"
+                  "Read energy consumption": "readEnergyConsumption",
+                  "desc": "Read the energy consumption of the device"
                },
                {
-                  "temperature": "",
-                  "desc": "Read the current temperature"
+                  "Read power consumption": "readPowerConsumption",
+                  "desc": "Read the power consumption"
                },
                {
-                  "switch": "off-on",
-                  "desc": "Turn the device on or off"
+                  "Read power source": "readPowerSource",
+                  "desc": "Read the current power source of the device. For e.g. DC, mains, battery"
                }
             ]
          }
       ]
    },
    {
-      "Humidifier": [
+      "Fan": [
          {
             "Category": "Appliances"
          },
          {
             "AttributesAndDescriptions": [
                {
-                  "humidity": "",
-                  "desc": "Read the humidity in the room"
+                  "Set fan speed": "setFanSpeed",
+                  "desc": "Read or control the fan speed"
                },
                {
-                  "temperature": "",
-                  "desc": "Read the current temperature"
-               },
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Humidifier on or off"
+                  "switch": "setOff-on",
+                  "desc": "Turn the Fan on or off"
                }
             ]
          }
       ]
    },
    {
-      "Kettle": [
+      "Garage Door Opener": [
          {
-            "Category": "Kitchen & Cleaning"
+            "Category": "Security & Safety"
          },
          {
             "AttributesAndDescriptions": [
                {
-                  "switch": "off-on",
-                  "desc": "Turn the kettle on or off"
+                  "open-close": "close-open",
+                  "desc": "Open or close the garage door"
                },
                {
-                  "temperature": "",
-                  "desc": "Read the current temperature of the room"
+                  "Read axis": "threeAxis",
+                  "desc": "Read the 3-axis co-ordinates of the device"
                },
                {
-                  "completionTime-sessionStatus": "cancel-pause-setCompletionTime-start-stop",
-                  "desc": "Set a timer, pause/cancel the heater or start/stop the process altogether."
+                  "Read close state": "readCloseState",
+                  "desc": "Read the value of contact sensor to confirm if the door is fully closed"
+               },
+               {
+                  "Read signal strength": "lqi-rssi",
+                  "desc": "Read the signal strength"
+               },
+               {
+                  "Read temperature": "readTemperature",
+                  "desc": "Read the temperature inside your garage"
                }
             ]
          }
       ]
    },
    {
-      "Rice Cooker": [
+      "Gas Sensor": [
          {
-            "Category": "Kitchen & Cleaning"
+            "Category": "Sensors"
          },
          {
             "AttributesAndDescriptions": [
                {
-                  "switch": "off-on",
-                  "desc": "Turn the Rice cooker on or off"
+                  "Read gas odor": "readOdorLevel",
+                  "desc": "Read the odor sensor reading"
                },
                {
-                  "temperature": "",
-                  "desc": "Read the current temperature"
-               },
-               {
-                  "completionTime-sessionStatus": "cancel-pause-setCompletionTime-start-stop",
-                  "desc": "Read the state or control the rice cooker device (cancel, pause, set completion time, start, stop)"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "SoyMilk Maker": [
-         {
-            "Category": "Kitchen & Cleaning"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Soymilk Maker on or off"
-               },
-               {
-                  "completionTime-sessionStatus": "cancel-pause-setCompletionTime-start-stop",
-                  "desc": "Read the state or control the SoyMilk Maker device (cancel, pause, set completion time, start, stop)"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Bread Maker": [
-         {
-            "Category": "Kitchen & Cleaning"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Bread Maker on or off"
-               },
-               {
-                  "temperature": "",
-                  "desc": "Read the current temperature"
-               },
-               {
-                  "completionTime-sessionStatus": "cancel-pause-setCompletionTime-start-stop",
-                  "desc": "Read the state or control the Bread Maker device (cancel, pause, set completion time, start, stop)"
+                  "Alarm set": "setAlarmMode",
+                  "desc": "Read or set the alarm mode to Siren, strobe, both or off"
                }
             ]
          }
@@ -1291,313 +525,12 @@
          {
             "AttributesAndDescriptions": [
                {
-                  "switch": "off-on",
+                  "switch": "setOff-on",
                   "desc": "Turn the Gas Stove on or off"
                },
                {
-                  "completionTime-sessionStatus": "cancel-pause-setCompletionTime-start-stop",
+                  "Completion time status": "cancel-pause-setCompletionTime-start-stop",
                   "desc": "Read the state or control the Gas Stove device (cancel, pause, set completion time, start, stop)"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Air Cooler": [
-         {
-            "Category": "Appliances"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Air Cooler on or off"
-               },
-               {
-                  "fanSpeed": "setFanSpeed",
-                  "desc": "Read or control the fan speed"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Milk Dispenser": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Milk Dispenser on or off"
-               },
-               {
-                  "completionTime-sessionStatus": "cancel-pause-setCompletionTime-start-stop",
-                  "desc": "Read the state or control the Milk Dispenser device (cancel, pause, set completion time, start, stop)"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Smart IR": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "infraredLevel": "setInfraredLevel",
-                  "desc": "Detect or set the infrared level"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Sous Vide": [
-         {
-            "Category": "Kitchen & Cleaning"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Sous Vide on or off"
-               },
-               {
-                  "temperature": "",
-                  "desc": "Read the current temperature"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Curtains": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Curtains on or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Plant Grower": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Plant Grower on or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Airer": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Airer on or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Scene Switch": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Scene Switch on or off"
-               },
-               {
-                  "button-numberOfButtons": "",
-                  "desc": "Read the button descriptions"
-               },
-               {
-                  "color-hue-saturation": "setColor-setHue-setSaturation",
-                  "desc": "Check or control the color map "
-               },
-               {
-                  "colorValue": "setColorValue",
-                  "desc": "Check or control the color value"
-               },
-               {
-                  "colorMode": "",
-                  "desc": "Check the color mode. For e.g. color, colorTemperature"
-               },
-               {
-                  "colorTemperature": "setColorTemperature",
-                  "desc": "Read the current temperature"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Lighting Remote": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Lighting on or off"
-               },
-               {
-                  "button-numberOfButtons": "",
-                  "desc": "Read the button descriptions"
-               },
-               {
-                  "color-hue-saturation": "setColor-setHue-setSaturation",
-                  "desc": "Check or control the color map"
-               },
-               {
-                  "colorValue": "setColorValue",
-                  "desc": "Check or control the color value"
-               },
-               {
-                  "colorMode": "",
-                  "desc": "Check the color mode. For e.g. color, colorTemperature"
-               },
-               {
-                  "colorTemperature": "setColorTemperature",
-                  "desc": "Read the current temperature of the room"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Car Automation": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "presence": "",
-                  "desc": "Know if the car is nearby"
-               },
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the Car on or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Door Sensor": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "door": "close-open",
-                  "desc": "Open or close the door"
-               },
-               {
-                  "contact": "",
-                  "desc": "Read the value of contact sensor to confirm if the door is fully closed "
-               },
-               {
-                  "lqi-rssi": "",
-                  "desc": "Read the signal strength"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Illuminance Sensor": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "energy": "",
-                  "desc": "Read the energy consumption of the Illuminance Sensor"
-               },
-               {
-                  "level": "setLevel",
-                  "desc": "Check and set the illuminance measurement level"
-               },
-               {
-                  "switch": "off-on",
-                  "desc": "Turn the device on or off"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Step Sensor": [
-         {
-            "Category": "Sensors"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "goal-steps": "setGoal",
-                  "desc": "Count number of steps. Read or set the goal for the number of steps."
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Water Filter": [
-         {
-            "Category": "Others"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "filterStatus": "",
-                  "desc": "Check the status of the filter. For e.g. normal, replace"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "Audio Player": [
-         {
-            "Category": "Safety & Multimedia"
-         },
-         {
-            "AttributesAndDescriptions": [
-               {
-                  "mute": "setMute",
-                  "desc": "Check or mute/unmute the speaker"
-               },
-               {
-                  "volume": "setVolume",
-                  "desc": "Check or set the volume of the audio player"
                }
             ]
          }
@@ -1611,8 +544,329 @@
          {
             "AttributesAndDescriptions": [
                {
-                  "accuracy-altitudeAccuracy-heading-lastUpdateTime-latitude-longitude-method-speed": "",
+                  "Read location": "accuracy-altitudeAccuracy-heading-lastUpdateTime-latitude-longitude-method-speed",
                   "desc": "Get the current geolocation related information. For e.g. latitude and longitude information, accuracy level of location, etc. "
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Glass Break Detector": [
+         {
+            "Category": "Security & Safety"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read glass break status": "shock",
+                  "desc": "Detect whether or not there is a shock"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Humidifier": [
+         {
+            "Category": "Appliances"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read room humidity": "readRoomHumidity",
+                  "desc": "Read the humidity in the room"
+               },
+               {
+                  "Read room temperature": "readRoomTemperature",
+                  "desc": "Read the current temperature"
+               },
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the Humidifier on or off"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Humidity Sensor": [
+         {
+            "Category": "Sensors"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read Humidity": "readHumidity",
+                  "desc": "Read the humidity in the room"
+               },
+               {
+                  "Read temperature": "readTemperature",
+                  "desc": "Read the current temperature of the room"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Illuminance Sensor": [
+         {
+            "Category": "Lights & Switches"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read energy consumption": "readEnergyConsumption",
+                  "desc": "Read the energy consumption of the Illuminance Sensor"
+               },
+               {
+                  "Set level": "setLevel",
+                  "desc": "Check and set the illuminance measurement level"
+               },
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the device on or off"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Induction CookTop": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the CookTop on or off"
+               },
+               {
+                  "Read temperature": "readTemperature",
+                  "desc": "Read the current temperature"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Kettle": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the kettle on or off"
+               },
+               {
+                  "Read temperature": "readTemperature",
+                  "desc": "Read the current temperature of the room"
+               },
+               {
+                  "Completion time status": "cancel-pause-setCompletionTime-start-stop",
+                  "desc": "Set a timer, pause/cancel the heater or start/stop the process altogether."
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "LED strip": [
+         {
+            "Category": "Lights & Switches"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Indicator level": "indicatorNever-indicatorWhenOff-indicatorWhenOn",
+                  "desc": "Change the behaviour of the indicator"
+               },
+               {
+                  "Switch": "setOff-on",
+                  "desc": "Toggle LED strip off or on"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Light Bulb": [
+         {
+            "Category": "Lights & Switches"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Toggle bulb off or on"
+               },
+               {
+                  "Set level": "setLevel",
+                  "desc": "Set brightness level"
+               },
+               {
+                  "Set color": "setColorValue",
+                  "desc": "Set the color of the light"
+               },
+               {
+                  "Set saturation": "setSaturation",
+                  "desc": "Set the saturation level of your light"
+               },
+               {
+                  "Set hue": "setHue",
+                  "desc": "Set the hue level of your light"
+               },
+               {
+                  "Set mode": "setMode",
+                  "desc": "Set the scene based on your mood"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Lighting Remote": [
+         {
+            "Category": "Lights & Switches"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the Lighting on or off"
+               },
+               {
+                  "Read description": "button-numberOfButtons",
+                  "desc": "Read the button descriptions"
+               },
+               {
+                  "Set hue, saturation": "setColor-setHue-setSaturation",
+                  "desc": "Check or control the color map"
+               },
+               {
+                  "Set color value": "setColorValue",
+                  "desc": "Check or control the color value"
+               },
+               {
+                  "Set color Mode": "colorMode",
+                  "desc": "Check the color mode. For e.g. color, colorTemperature"
+               },
+               {
+                  "Set color temperature": "setColorTemperature",
+                  "desc": "Read the current temperature of the room"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Microwave Oven": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Get or set machine state": "setMachineState-stop",
+                  "desc": "Check or set the oven machine state mode. For e.g. ready, running, paused"
+               },
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the Oven on or off"
+               },
+               {
+                  "Set oven mode": "setOvenMode",
+                  "desc": "Check or set the oven mode. For e.g. heating, grill, warming, defrosting"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Milk Dispenser": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the Milk Dispenser on or off"
+               },
+               {
+                  "Read dispanser state": "cancel-pause-setCompletionTime-start-stop",
+                  "desc": "Read the state or control the Milk Dispenser device (cancel, pause, set completion time, start, stop)"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Moisture Sensor": [
+         {
+            "Category": "Gardening Devices"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read moisture": "readMoisture",
+                  "desc": "Check the moisture state, either dry or wet."
+               },
+               {
+                  "Read temperature": "readTemperature",
+                  "desc": "Read the current temperature"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Motion Sensor": [
+         {
+            "Category": "Sensors"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read motion": "readMotion",
+                  "desc": "Know when motion is detected"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Oil Warmer": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the heater off or on"
+               },
+               {
+                  "Read completion time": "cancel-pause-setCompletionTime-start-stop",
+                  "desc": "Set a timer, pause/cancel the heater or start/stop the process altogether."
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Open/Close Sensor": [
+         {
+            "Category": "Sensors"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read sensor status": "readStatus",
+                  "desc": "Check if the door, window or a drawer is open or closed"
                }
             ]
          }
@@ -1621,13 +875,234 @@
    {
       "PH Sensor": [
          {
+            "Category": "Others"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read PH": "readPH",
+                  "desc": "Get the pH value of the current solution."
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Plant Grower": [
+         {
+            "Category": "Gardening Devices"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the Plant Grower on or off"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Presence Sensor": [
+         {
             "Category": "Sensors"
          },
          {
             "AttributesAndDescriptions": [
                {
-                  "pH": "",
-                  "desc": "Get the pH value of the current solution."
+                  "Read presence": "getPresence",
+                  "desc": "Check if the device is nearby"
+               },
+               {
+                  "Play a beep": "playBeep",
+                  "desc": "Make a beep sound on the device"
+               },
+               {
+                  "Read signal strength": "lqi-rssi",
+                  "desc": "Read the signal strength"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Pulse Monitor": [
+         {
+            "Category": "Health"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read pulse rate": "readPulse",
+                  "desc": "Read the current pulse rate"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Refrigerator": [
+         {
+            "Category": "Appliances"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Get or set temperature": "setRefrigerationSetpoint",
+                  "desc": "Read or set the temperature value for refrigerator"
+               },
+               {
+                  "Switch": "setOff-on",
+                  "desc": "Turn the Refrigerator on or off"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Rice Cooker": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the Rice cooker on or off"
+               },
+               {
+                  "Read temperature": "getTemperature",
+                  "desc": "Read the current temperature"
+               },
+               {
+                  "Read status": "cancel-pause-setCompletionTime-start-stop",
+                  "desc": "Read the state or control the rice cooker device (cancel, pause, set completion time, start, stop)"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Robot Vacuum": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the vacuum cleaner on or off"
+               },
+               {
+                  "Set cleaning mode": "setRobotCleanerCleaningMode",
+                  "desc": "Set the cleaning mode of the cleaner. For e.g. Auto, Manual, Repeat, Stop"
+               },
+               {
+                  "Set cleaner movement": "setRobotCleanerMovement",
+                  "desc": "Control and set different modes for the cleaner movement. For e.g. Homing, Idle, Charging, Alarm, Power Off, Reserve, Point, After, Cleaning"
+               },
+               {
+                  "Set turbo mode": "setRobotCleanerTurboMode",
+                  "desc": "Put the vacuum cleaner into turbo mode. For e.g. On, Off, Silence"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Scene Switch": [
+         {
+            "Category": "Lights & Switches"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the Scene Switch on or off"
+               },
+               {
+                  "Read descriptions": "readButton",
+                  "desc": "Read the button descriptions"
+               },
+               {
+                  "Set color hue saturation": "setColor-setHue-setSaturation",
+                  "desc": "Check or control the color map "
+               },
+               {
+                  "Set color value": "setColorValue",
+                  "desc": "Check or control the color value"
+               },
+               {
+                  "Get color mode": "getColorMode",
+                  "desc": "Check the color mode. For e.g. color, colorTemperature"
+               },
+               {
+                  "Set color temperature": "setColorTemperature",
+                  "desc": "Read the current temperature"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Security Alarm": [
+         {
+            "Category": "Security & Safety"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read alarm status": "setAlarmMode",
+                  "desc": "Read or set the alarm mode to Siren, strobe, both or off"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Security Camera": [
+         {
+            "Category": "Security & Safety"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Toggle the camera on or off"
+               },
+               {
+                  "Capture image": "capture",
+                  "desc": "Capture an still image using the camera"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Shades/Blinds": [
+         {
+            "Category": "Others"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Present position": "close-open-presetPosition",
+                  "desc": "Control the window shade; open/close it or open it to a preset position"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Sleep Monitor": [
+         {
+            "Category": "Health"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Sleep status": "getSleepingStatus",
+                  "desc": "Detect whether someone is sleeping or not"
                }
             ]
          }
@@ -1641,28 +1116,526 @@
          {
             "AttributesAndDescriptions": [
                {
-                  "switch": "off-on",
+                  "switch": "setOff-on",
                   "desc": "Turn the device on or off"
                },
                {
-                  "mute": "setMute",
+                  "Mute/unmute": "setMute",
                   "desc": "Check or mute/unmute the speaker"
                },
                {
-                  "": "playTrack-playTrackAndRestore-playTrackAndResume",
+                  "Play resume track": "playTrack-playTrackAndRestore-playTrackAndResume",
                   "desc": "Play, replay and resume the track being played"
                },
                {
-                  "audioTrackData": "",
+                  "Get track description": "getTrackDescription",
                   "desc": "Get the description related to the audio track"
                },
                {
-                  "volume": "setVolume",
+                  "Set volume": "setVolume",
                   "desc": "Check or set the volume of the audio player"
                },
                {
-                  "status-level": "nextTrack-pause-play-playTrack-previousTrack-restoreTrack-resumeTrack-setLevel-setTrack-stop-unmute",
+                  "Status level": "nextTrack-pause-play-playTrack-previousTrack-restoreTrack-resumeTrack-setLevel-setTrack-stop-unmute",
                   "desc": "Get the status or control the speaker"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Smart Battery": [
+         {
+            "Category": "Others"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Get battery status": "getBatteryStatus",
+                  "desc": "Read the battery status"
+               },
+               {
+                  "Get power source": "powerSource",
+                  "desc": "Read the current power source of the device. For e.g. DC, mains, battery"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Smart IR": [
+         {
+            "Category": "Security & Safety"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Infrared Level": "setInfraredLevel",
+                  "desc": "Detect or set the infrared level"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Smart Mirror": [
+         {
+            "Category": "Multimedia"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Capture image": "capture",
+                  "desc": "Take a picture"
+               },
+               {
+                  "video clip": "captureClip",
+                  "desc": "Capture a video clip"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Smart Printer": [
+         {
+            "Category": "Others"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Switch": "setOff-on",
+                  "desc": "Turn the printer on or off"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Smart TV": [
+         {
+            "Category": "Multimedia"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Switch": "setOff-on",
+                  "desc": "Turn the TV on or off"
+               },
+               {
+                  "Set channel": "setTvChannel",
+                  "desc": "Check or set the Tv channel. For e.g. channelDown, channelUp"
+               },
+               {
+                  "Set source": "setInputSource",
+                  "desc": "Check or set the supported input source for the TV"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Smoke Detector": [
+         {
+            "Category": "Security & Safety"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Smoke status": "getSmokeStatus",
+                  "desc": "Detect smoke in the room"
+               },
+               {
+                  "Read temperature": "readTemperature",
+                  "desc": "Read the current temperature of the room"
+               },
+               {
+                  "Read tampering status": "getTamperingStatus",
+                  "desc": "Check if the device is tampered. For e.g. clear, detected"
+               },
+               {
+                  "Read battery status": "getBatteryStatus",
+                  "desc": "Read the battery status"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Sous Vide": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Switch": "setOff-on",
+                  "desc": "Turn the Sous Vide on or off"
+               },
+               {
+                  "Read temperature": "getTemperature",
+                  "desc": "Read the current temperature"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "SoyMilk Maker": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Switch": "setOff-on",
+                  "desc": "Turn the Soymilk Maker on or off"
+               },
+               {
+                  "Completion time status": "cancel-pause-setCompletionTime-start-stop",
+                  "desc": "Read the state or control the SoyMilk Maker device (cancel, pause, set completion time, start, stop)"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Speaker": [
+         {
+            "Category": "Multimedia"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Switch": "setOff-on",
+                  "desc": "Turn the speaker on or off"
+               },
+               {
+                  "Mute/unmute": "setMute",
+                  "desc": "Check or mute/unmute the speaker"
+               },
+               {
+                  "Play resume track": "playTrack-playTrackAndRestore-playTrackAndResume",
+                  "desc": "Play, replay or resume the track being played"
+               },
+               {
+                  "Get track description": "getTrackDescription",
+                  "desc": "Get the description related to the audio track"
+               },
+               {
+                  "Set volume": "setVolume",
+                  "desc": "Check the volume or turn the volume up or down"
+               },
+               {
+                  "Status level": "nextTrack-pause-play-playTrack-previousTrack-restoreTrack-resumeTrack-setLevel-setTrack-stop-unmute",
+                  "desc": "Get the status or control the speaker"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Sprinkler": [
+         {
+            "Category": "Gardening Devices"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Switch": "setOff-on",
+                  "desc": "Turn sprinkler on or off"
+               },
+               {
+                  "Turn on": "push",
+                  "desc": "Sprinkler is turned on for a limited time until the manual button is released"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Step Sensor": [
+         {
+            "Category": "Sensors"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Set goal step count": "setGoal",
+                  "desc": "Count number of steps. Read or set the goal for the number of steps."
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Switches": [
+         {
+            "Category": "Lights & Switches"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Switch": "setOff-on",
+                  "desc": "Toggle switch off or on"
+               },
+               {
+                  "Set level": "setLevel",
+                  "desc": "Set the dimmer level for the lights"
+               },
+               {
+                  "Read energy consumption": "getEnergyConsumption",
+                  "desc": "Read the energy consumption of the switch"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Temperature Sensor": [
+         {
+            "Category": "Gardening Devices"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read temperature": "getTemperature",
+                  "desc": "Read the current temperature of the room"
+               },
+               {
+                  "Read room humidity": "getHumidity",
+                  "desc": "Read the humidity in the room"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Thermostat": [
+         {
+            "Category": "Appliances"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read temperature": "getTemperature",
+                  "desc": "Read the current temperature of the room"
+               },
+               {
+                  "Set cooling target temperature": "setCoolingSetpoint-setCoolingSetpointRange",
+                  "desc": "Set the target cooling temperature for the thermostat"
+               },
+               {
+                  "Read heating target temperature": "thermostatSetpoint",
+                  "desc": "Read the currently set target temperature"
+               },
+               {
+                  "Change fan mode": "setThermostatFanMode",
+                  "desc": "Check and set different modes for the fan. For e.g. fanAuto, fanOn, fanCirculate"
+               },
+               {
+                  "Set heating target temperature": "setHeatingSetpoint-setHeatingSetpointRange",
+                  "desc": "Set the target heating temperature for the thermostat"
+               },
+               {
+                  "Read/set thermostat mode": "setThermostatMode",
+                  "desc": "Check and set the thermostat to different modes. For e.g. Auto, Cool, EmergencyHeat, Heat, Off"
+               },
+               {
+                  "Set schedule": "setSchedule",
+                  "desc": "Check and set the schedule to run the thermostat or the fan "
+               },
+               {
+                  "Read current mode": "getThermostatMode",
+                  "desc": "Read the current mode that the thermostat is operating in"
+               },
+               {
+                  "Read room humidity": "getHumidity",
+                  "desc": "Read the humidity in the room"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Tilt Sensor": [
+         {
+            "Category": "Security & Safety"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read axis": "threeAxis",
+                  "desc": "Read the 3-axis co-ordinates of the device"
+               },
+               {
+                  "Motion detected": "motion",
+                  "desc": "Know when motion is detected"
+               },
+               {
+                  "Acceleration": "acceleration",
+                  "desc": "Know when there is acceleration. It can be used to know if a device like washing machine is vibrating or when a device has moved"
+               },
+               {
+                  "Read signal strength": "lqi-rssi",
+                  "desc": "Read the signal strength"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Valve": [
+         {
+            "Category": "Gardening Devices"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Valve": "close-open",
+                  "desc": "Open or close the valve"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Vent": [
+         {
+            "Category": "Appliances"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Operating status": "thermostatOperatingState",
+                  "desc": "Read the current mode that the thermostat is operating in"
+               },
+               {
+                  "Read room temperature": "getTemperature",
+                  "desc": "Read the current temperature of the room"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Water Filter": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Get filter status": "filterStatus",
+                  "desc": "Check the status of the filter. For e.g. normal, replace"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Water Heater": [
+         {
+            "Category": "Appliances"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "switch": "setOff-on",
+                  "desc": "Turn the heater on or off"
+               },
+               {
+                  "Get moisture level": "getMoistureLevel",
+                  "desc": "Check the moisture state, either dry or wet."
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Water Leak Detector": [
+         {
+            "Category": "Security & Safety"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Leak detected": "leak",
+                  "desc": "Check the leak status detected"
+               },
+               {
+                  "Set alarm": "setAlarmMode",
+                  "desc": "Read or set the alarm mode to Siren, strobe, both or off"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Water Purifier": [
+         {
+            "Category": "Kitchen & Cleaning"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Get moisture level": "getMoistureLevel",
+                  "desc": "Check the moisture state, either dry or wet."
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "Weather Station": [
+         {
+            "Category": "Gardening Devices"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "Read temperature": "getTemperature",
+                  "desc": "Read the current temperature of the room"
+               },
+               {
+                  "Set cooling target temperature": "setCoolingSetpoint-setCoolingSetpointRange",
+                  "desc": "Set the target cooling temperature for the thermostat"
+               },
+               {
+                  "Read current temperature": "getTemperature",
+                  "desc": "Read the currently set target temperature"
+               },
+               {
+                  "Change fan mode": "setThermostatFanMode",
+                  "desc": "Check and set different modes for the fan. For e.g. fanAuto, fanOn, fanCirculate"
+               },
+               {
+                  "Set heating target temperature": "setHeatingSetpoint-setHeatingSetpointRange",
+                  "desc": "Set the target heating temperature for the thermostat"
+               },
+               {
+                  "Read/set thermostat mode": "setThermostatMode",
+                  "desc": "Check and set the thermostat to different modes. For e.g. Auto, Cool, EmergencyHeat, Heat, Off"
+               },
+               {
+                  "Set schedule": "setSchedule",
+                  "desc": "Check and set the schedule to run the thermostat or the fan "
+               },
+               {
+                  "Read current mode": "thermostatOperatingMode",
+                  "desc": "Read the current mode that the thermostat is operating in"
+               },
+               {
+                  "Read room humidity": "getHumidity",
+                  "desc": "Read the humidity in the room"
+               },
+               {
+                  "Read current illuminance": "getIlluminance",
+                  "desc": "Get the measurement for current illuminance"
+               },
+               {
+                  "Read ultraviolet index": "getUltravioletIndex",
+                  "desc": "Read the ultraviolet index"
                }
             ]
          }
