@@ -165,10 +165,8 @@ def create_routine(request):
                 # print("TYPE:", type(a.attribute))
                 attributeDescriptionFromDb[counter] = attrOfSingle
                 
-                
                 counter += 1
                 
-            print("AFTER:: type:", type(attributeDescriptionFromDb), " | VAL:", attributeDescriptionFromDb)
             deviceAttributeList.append(attributeDescriptionFromDb)
         
     context = { 

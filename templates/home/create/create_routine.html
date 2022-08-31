@@ -92,6 +92,7 @@
                             If
                         </div>
                         <div class="trig autocomplete col-5">
+                            {% comment %} <input class="myInput" type="text" id="trigger{{forloop.counter}}" name="myCountry" placeholder="Country"> {% endcomment %}
                             <textarea class="form-control" id="trigger{{forloop.counter}}" rows="2">{{routine.0}}</textarea>
                         </div>
                         <div class="col-1">
@@ -110,7 +111,8 @@
                                 If
                             </div>
                             <div class="trig autocomplete col-5">
-                                <textarea class="form-control" id="trigger" rows="2"></textarea>
+                                <input class="myInput" type="text" id="myInput" name="myCountry" placeholder="Country">
+                                {% comment %} <textarea class="form-control" id="trigger" rows="2"></textarea> {% endcomment %}
                             </div>
                             <div class="col-1">
                                 Then

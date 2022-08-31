@@ -352,4 +352,4 @@ function autocomplete(inp, arr) {
   /*An array containing all the country names in the world:*/
   
   /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-  autocomplete(document.getElementsByClassName("form-control"), currentlySelectedDeviceCommands);
+  autocomplete(document.getElementById("myInput"), currentlySelectedDeviceCommands);
