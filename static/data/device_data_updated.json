@@ -84,6 +84,33 @@
       ]
    },
    {
+      "Smart Water Monitor and Shutoff Valve": [
+         {
+            "Category": "Security & Safety"
+         },
+         {
+            "AttributesAndDescriptions": [
+               {
+                  "issue": "detectIssue",
+                  "desc": "Detect issues (e.g. high pressure, freezing water or a small leak)"
+               },
+					{
+                  "alart": "sendAlert",
+                  "desc": "Send alert you through the app"
+               },
+					{
+                  "catastrophicFailure": "detectCatastrophicFailure",
+                  "desc": "Detect catastrophic failure, like a burst pipe or someone leaves the water running,"
+               },
+               {
+                  "switch": "off-on",
+                  "desc": "Shut the water off - no using the app"
+               }
+            ]
+         }
+      ]
+   },
+   {
       "Audio Player": [
          {
             "Category": "Multimedia"
