@@ -1,7 +1,12 @@
 {% extends 'base_create_routine.html' %}
 
 {% block page-title %}Create Routine{% endblock page-title %}
+{% block stylesheet-2 %}
 
+    {% load static %}
+    <link id="pagestyle" href="{% static 'style_create_routine.css' %}" type="text/css" rel="stylesheet" />
+
+{% endblock stylesheet-2 %}
 {% block step %}
     <div class="step container">
         
@@ -60,14 +65,14 @@
                             <p class="mb-4"><h4>State and Commands:</h4></p>
                             <div>  
                                 {% for device_attribute in selected_devices_attributes%}
-                                    <div id="state-{{forloop.counter0}}" style='display:none;'>
-                                        {% for attribute_desc in device_attribute.all %}                       
+                                    <div id="state-{{forloop.counter0}}" data-attribute="{{device_attribute}}" style='display:none;'>
+                                        {% for attribute_desc in device_attribute %}                       
                                             <div>
                                                 <p class="lead">
-                                                    {{attribute_desc.attribute}} : {{attribute_desc.action}}
+                                                    {{attribute_desc.0}} : {{attribute_desc.1}}
                                                 </p>
                                                 <p class='ps-4'>
-                                                    -  {{attribute_desc.description}}
+                                                    -  {{attribute_desc.2}}
                                                 </p>
                                             </div>
                                         {% endfor %}
@@ -86,14 +91,14 @@
                         <div class="col-1">
                             If
                         </div>
-                        <div class="trig col-5">
+                        <div class="trig autocomplete col-5">
                             <textarea class="form-control" id="trigger{{forloop.counter}}" rows="2">{{routine.0}}</textarea>
                         </div>
                         <div class="col-1">
                             Then
                         </div>
-                        <div class="act col-5">
-                            <textarea class="form-control" id="action{{forloop.counter}}" rows="2">{{routine.1}}</textarea>
+                        <div class="act autocomplete col-5">
+                            <textarea class="form-control"   id="action{{forloop.counter}}" rows="2">{{routine.1}}</textarea>
                         </div>
                     </div><br>
                 {% endfor %}
@@ -104,13 +109,13 @@
                             <div class="col-1">
                                 If
                             </div>
-                            <div class="trig col-5">
+                            <div class="trig autocomplete col-5">
                                 <textarea class="form-control" id="trigger" rows="2"></textarea>
                             </div>
                             <div class="col-1">
                                 Then
                             </div>
-                            <div class="act col-5">
+                            <div class="act autocomplete col-5">
                                 <textarea class="form-control" id="action" rows="2"></textarea>
                             </div>
                         </div><br> 

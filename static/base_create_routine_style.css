@@ -132,25 +132,8 @@ body{
     border-bottom: 0px solid rgba(0,0,0,.125);
 }
 
-/* .card-body.selected{
-    box-shadow: 5px 6px 6px 2px #e9ecef;
-    transform: scale(1.12);
-    background-color: #198754;
-    color: white;
-    border-radius: 10px;
-} */
 
-/* #devices-list .cards .card-body.selected{
-    box-shadow: 5px 6px 6px 2px #e9ecef;
-    transform: scale(1.15);
-    background-color: yellow;
-    color: white;
-} */
-
-/* #devices-list{
-    /* height: 500px;
-    overflow-y: scroll; 
-
-    width: 90%;
-    overflow-x: scroll;
-} */
+#routine-create-page-inner-title{
+    border-radius:10px; 
+    background-color: #417D7A;
+}
