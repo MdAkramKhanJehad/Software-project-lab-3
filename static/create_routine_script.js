@@ -106,6 +106,8 @@ function getCurretDeviceCommands(){
 
     // currentlySelectedDeviceCommands = attr
     console.log("lengths: " + currentlySelectedDeviceCommands.length);
+
+    autocomplete(document.getElementById("myInput"), currentlySelectedDeviceCommands);
 }
 
 
@@ -252,12 +254,12 @@ $('#nextBtn').click(function(){
 
 // auto complete
 
-function autocomplete(inp) {
+function autocomplete(inp, arr) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     // var inp = element;
     
-    var arr = getCurretDeviceCommands;
+    // var arr = getCurretDeviceCommands;
     var currentFocus;
     /*execute a function when someone writes in the text field:*/
     inp.addEventListener("input", function(e) {
@@ -355,4 +357,4 @@ function autocomplete(inp) {
   /*An array containing all the country names in the world:*/
   
   /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-  autocomplete(document.getElementById("myInput"));
+  autocomplete(document.getElementById("myInput"), currentlySelectedDeviceCommands);
