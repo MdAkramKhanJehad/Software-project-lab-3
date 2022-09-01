@@ -129,6 +129,8 @@ function addNewRoutine(){
     document.getElementById("trigger").value = '';
     document.getElementById("action").value = '';
 
+    callAutoCompleteMethod();
+    
     totalRoutine += 1;
     console.log("total routine: " + totalRoutine);
 }
