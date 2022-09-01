@@ -4,6 +4,7 @@ var currentlySelectedDevice;
 var currentlySelectedEnvVar;
 var totalRoutine = 1;
 var previouslyCreatedRoutines;
+var totalPreviouslyCreatedRoutines = 0;
 var createdRoutines = [];
 var environmental_variables;
 var currentlySelectedDeviceCommands = [];
@@ -11,25 +12,16 @@ var currentlySelectedDeviceCommands = [];
 document.getElementById(currentlyShowing).style.display = "block";
 document.getElementById(currentlyShowingEnvVar).style.display = "block";
 
+
+getPreviouslyCreatedRoutinesFromSession();
+addPreviouslyCreatedRoutinesFromSessionInUI();
 setFirstDeviceStyle();
 getEnvironmentalVariable();
 setFirstEnvVarStyle();
-getPreviouslyCreatedRoutinesFromSession();
-addPreviouslyCreatedRoutinesFromSessionInUI();
-// getAllCommands();
+callAutoCompleteMethod();
 
 
-// function getAllCommands(){
-//     var attrWithCommands = document.getElementById("device-attribute").getAttribute("data-device-atribute");
-//     attrWithCommands = attrWithCommands.replace(/'/g, '"');
-//     attrWithCommands = JSON.parse(attrWithCommands);
 
-//     console.log("length of attr: " + attrWithCommands.length);
-
-//     for (let i = 0; i < attrWithCommands.length; i++) {
-//         console.log("attrWithCommands: " + attrWithCommands[i])
-//     }   
-// }
 
 function getEnvironmentalVariable(){
     environmental_variables = document.getElementById("environmental-variables").getAttribute("data-environmental-variables");
@@ -50,6 +42,8 @@ function getPreviouslyCreatedRoutinesFromSession(){
     for (let i = 0; i < previouslyCreatedRoutines.length; i++) {
         console.log("Routines: " + " " + previouslyCreatedRoutines[i][0] + " -> " + previouslyCreatedRoutines[i][1]);
     }
+
+    totalPreviouslyCreatedRoutines = previouslyCreatedRoutines.length
 }
 
 
@@ -107,7 +101,7 @@ function getCurretDeviceCommands(){
     // currentlySelectedDeviceCommands = attr
     console.log("lengths: " + currentlySelectedDeviceCommands.length);
 
-    autocomplete(document.getElementById("myInput"), currentlySelectedDeviceCommands);
+    callAutoCompleteMethod();
 }
 
 
@@ -352,9 +346,21 @@ function autocomplete(inp, arr) {
     document.addEventListener("click", function (e) {
         closeAllLists(e.target);
     });
-  }
-  
-  /*An array containing all the country names in the world:*/
-  
-  /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-  autocomplete(document.getElementById("myInput"), currentlySelectedDeviceCommands);
+}
+
+/*An array containing all the country names in the world:*/
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+
+
+function callAutoCompleteMethod(){
+    autocomplete(document.getElementById("trigger"), currentlySelectedDeviceCommands);
+    autocomplete(document.getElementById("action"), currentlySelectedDeviceCommands);
+
+    for (let i = 1; i < totalPreviouslyCreatedRoutines + 1; i++) {
+        var trigID = "trigger" + i.toString();
+        var actID = "action" + i.toString();
+        autocomplete(document.getElementById(trigID), currentlySelectedDeviceCommands);
+        autocomplete(document.getElementById(actID), currentlySelectedDeviceCommands);
+    }
+}
