@@ -28,7 +28,7 @@
             </div>
             
             <div class='row'>
-                <div class='col-12 d-flex'>
+                <div class='col-12 d-flex justify-content-center'>
                     <div class="ms-5">
                         <div>  
                             {% for env_var in environmental_variables%}
@@ -82,8 +82,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-7" >
-                   
+                <div class="col-7" > 
                     
                     {% for routine in previously_created_routines %}
                         {% if forloop.counter == 1 %}
@@ -120,7 +119,7 @@
                                 <div class="col-1">
                                     Then
                                 </div>
-                                <div class="act col-5">
+                                <div class="act col-5" style="position: relative;">
                                     <textarea class="form-control" id="action" rows="2" placeholder="write action"></textarea>
                                 </div>
                             </div><br> 

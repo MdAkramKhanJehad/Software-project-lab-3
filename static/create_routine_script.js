@@ -246,14 +246,9 @@ $('#nextBtn').click(function(){
 
 
 
-// auto complete
 
 function autocomplete(inp, arr) {
-    /*the autocomplete function takes two arguments,
-    the text field element and an array of possible autocompleted values:*/
-    // var inp = element;
-    
-    // var arr = getCurretDeviceCommands;
+
     var currentFocus;
     /*execute a function when someone writes in the text field:*/
     inp.addEventListener("input", function(e) {
@@ -266,6 +261,7 @@ function autocomplete(inp, arr) {
         a = document.createElement("DIV");
         a.setAttribute("id", this.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");
+
         /*append the DIV element as a child of the autocomplete container:*/
         this.parentNode.appendChild(a);
         /*for each item in the array...*/
@@ -347,10 +343,6 @@ function autocomplete(inp, arr) {
         closeAllLists(e.target);
     });
 }
-
-/*An array containing all the country names in the world:*/
-
-/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 
 
 function callAutoCompleteMethod(){
