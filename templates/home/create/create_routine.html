@@ -16,8 +16,14 @@
         <div id="created-routines" data-created-routines="{{previously_created_routines}}"></div>
         <div id="environmental-variables" data-environmental-variables="{{environmental_variables}}"></div>
         
-        <div class="col">      
-            <p class="mb-4"><h4 class='text-center'>Environmental Variables:</h4></p>
+        <div class="col">
+            <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
+                <div class="row w-auto px-4 mb-2 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
+                    <h4 class='text-center px-2 py-1' style="color: #004d00">Environmental Variables:</h4>
+                </div> 
+            </div>
+
+            {% comment %} <p class="mb-4"><h4 class='text-center'>Environmental Variables:</h4></p> {% endcomment %}
 
             <div class='row justify-content-center'>
                 {% for env_var in environmental_variables %}
@@ -48,7 +54,14 @@
         
             <div class="row">
                 <div class="col-5">
-                    <p class="mb-4"><h4 class='text-center'>Your selected devices are :</h4></p>
+
+                    <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
+                        <div class="row w-auto px-4 mb-2 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
+                            <h4 class='text-center px-2 py-1' style="color: #004d00">Your selected devices are :</h4>
+                        </div> 
+                    </div>
+
+                    {% comment %} <p class="mb-4"><h4 class='text-center'>Your selected devices are :</h4></p> {% endcomment %}
 
                     <div class='row justify-content-center'>
                         {% for device in previously_selected_devices %}
@@ -86,7 +99,12 @@
                     
                     {% for routine in previously_created_routines %}
                         {% if forloop.counter == 1 %}
-                            <p class="mb-4"><h4 class='text-center' id="previously-created-routines-title">Previously Created Routines :</h4></p>
+                            <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
+                                <div class="row w-auto px-4 mb-2 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
+                                    <h4 class='text-center px-2 py-1' style="color: #004d00">Previously Created Routines :</h4>
+                                </div> 
+                            </div>
+                            {% comment %} <p class="mb-4"><h4 class='text-center' id="previously-created-routines-title">Previously Created Routines :</h4></p> {% endcomment %}
                         {% endif %}
                         <div class="row text-center justify-content-center" >
                             <div class="col-1">
@@ -104,7 +122,12 @@
                         </div><br>
                     {% endfor %}
 
-                    <p class="mb-4"><h4 class='text-center'>Create New Routines :</h4></p>
+                    <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
+                        <div class="row w-auto px-4 mb-2 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
+                            <h4 class='text-center px-2 py-1' style="color: #004d00">Create New Routines :</h4>
+                        </div> 
+                    </div>
+                    {% comment %} <p class="mb-4"><h4 class='text-center'>Create New Routines :</h4></p> {% endcomment %}
 
                     <div id="routineHolder"> 
                         <div class="col" id="routineField">

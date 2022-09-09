@@ -14,9 +14,14 @@
 
     <div class="step">
         <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
-            <div class="row w-auto px-5 bg-gradient pt-1 align-items-center text-white" id="routine-create-page-inner-title">
-                <h4 class='text-center px-2 py-1'>Select Execution Indicator</h4>
-            </div> 
+            {% comment %} <div class="row w-auto px-5 bg-gradient pt-1 align-items-center text-white" id="routine-create-page-inner-title"> {% endcomment %}
+                <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
+                    <div class="row w-auto px-4 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
+                        <h4 class='text-center px-2 py-1' style="color: #004d00">Select Execution Indicator</h4>
+                    </div> 
+                </div>
+                {% comment %} <h4 class='text-center px-2 py-1'>Select Execution Indicator</h4> {% endcomment %}
+            {% comment %} </div>  {% endcomment %}
         </div>
         {% comment %} <p class="mb-4"><h4 class='text-center'>Select Execution Indicator</h4></p> {% endcomment %}
         
@@ -27,7 +32,7 @@
         <div class="col m-3">
             <div class="row">
                 <div class="routine-heading col-4 me-4 ms-3">
-                    <p class="mb-4"><h4>Previously Created Routines</h4></p>
+                    <p class="mb-4"><h4 class="text-center">Previously Created Routines</h4></p>
                 </div>
                 
                 <div class="EI1 col-2 me-2">
