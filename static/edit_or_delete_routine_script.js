@@ -7,7 +7,13 @@ getPreviouslyCreatedRoutinesFromSession();
 
 function getPreviouslyCreatedRoutinesFromSession(){
     previouslyCreatedRoutines = document.getElementById("created-routines").getAttribute("data-created-routines");
-    previouslyCreatedRoutines = previouslyCreatedRoutines.replace(/'/g, '"');
+   
+    previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("['", '["');
+    previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("',", '",');
+    previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll(" '", ' "');
+    previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("']", '"]');
+    previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("'", "\'");
+
     previouslyCreatedRoutines = JSON.parse(previouslyCreatedRoutines);
 }
 

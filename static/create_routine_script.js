@@ -36,8 +36,16 @@ function getEnvironmentalVariable(){
 
 function getPreviouslyCreatedRoutinesFromSession(){
     previouslyCreatedRoutines = document.getElementById("created-routines").getAttribute("data-created-routines");
-    previouslyCreatedRoutines = previouslyCreatedRoutines.replace(/'/g, '"');
+    console.log("BEFORE PARSE:" + previouslyCreatedRoutines);
+    
+    previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("['", '["');
+    previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("',", '",');
+    previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll(" '", ' "');
+    previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("']", '"]');
+    previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("'", "\'");
+
     previouslyCreatedRoutines = JSON.parse(previouslyCreatedRoutines);
+    // previouslyCreatedRoutines = JSON.stringify(JSON5.parse(previouslyCreatedRoutines))
 
     for (let i = 0; i < previouslyCreatedRoutines.length; i++) {
         console.log("Routines: " + " " + previouslyCreatedRoutines[i][0] + " -> " + previouslyCreatedRoutines[i][1]);

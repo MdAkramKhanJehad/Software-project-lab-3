@@ -153,7 +153,7 @@ def create_routine(request):
         for device in selected_device_list:
             attrDesc = {}
             attributeDescriptionFromDb = DeviceAttribute.objects.filter(device__device_name__contains=device)
-            print("BEFORE:: type:", type(attributeDescriptionFromDb), " | VAL:", attributeDescriptionFromDb)
+            # print("BEFORE:: type:", type(attributeDescriptionFromDb), " | VAL:", attributeDescriptionFromDb)
             attributeDescriptionFromDb = list(attributeDescriptionFromDb)
             
             counter = 0
