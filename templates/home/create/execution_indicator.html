@@ -14,14 +14,11 @@
 
     <div class="step">
         <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
-            {% comment %} <div class="row w-auto px-5 bg-gradient pt-1 align-items-center text-white" id="routine-create-page-inner-title"> {% endcomment %}
-                <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
-                    <div class="row w-auto px-4 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
-                        <h4 class='text-center px-2 py-1' style="color: #004d00">Select Execution Indicator</h4>
-                    </div> 
-                </div>
-                {% comment %} <h4 class='text-center px-2 py-1'>Select Execution Indicator</h4> {% endcomment %}
-            {% comment %} </div>  {% endcomment %}
+            <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
+                <div class="row w-auto px-4 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
+                    <h4 class='text-center px-2 py-1' style="color: #004d00">Select Execution Indicator</h4>
+                </div> 
+            </div>
         </div>
         {% comment %} <p class="mb-4"><h4 class='text-center'>Select Execution Indicator</h4></p> {% endcomment %}
         
@@ -59,7 +56,7 @@
                         <p class="routine1 fs-5" id="routine-{{forloop.counter}}">{{forloop.counter}}. If {{routine.0}}, then {{routine.1}}</p>
                     </div>
                     <div class="option col-1 me-4">
-                        <select class="selectpicker p-2 fs-6" style="width: 215%;" aria-label="Default select example">
+                        <select class="selectpicker p-2 fs-6" id="ei-1-routine-{{forloop.counter}}" style="width: 215%;" aria-label="Default select example">
                             <option selected>Select</option>
                             <option value="Many times in a day (5+ /day)">Many times in a day (5+ /day)</option>
                             <option value="Few times in a day (1-5/day)">Few times in a day (1-5/day)</option>
@@ -70,7 +67,7 @@
                         </select>
                     </div>
                     <div class="option col-1 ms-5">
-                        <select class="selectpicker w-100 ms-5 p-2 fs-6" aria-label="Default select example">
+                        <select class="selectpicker w-100 ms-5 p-2 fs-6" id="ei-2-routine-{{forloop.counter}}" aria-label="Default select example">
                             <option selected>Select</option>
                             <option value="Weekday">Weekday</option>
                             <option value="Weekend">Weekend</option>
@@ -79,7 +76,7 @@
                         </select>
                     </div>
                     <div class="option col-1 ms-5 me-5">
-                        <select class="selectpicker ms-3 me-2 p-2 fs-6" style="width: 220%;" aria-label="Default select example">
+                        <select class="selectpicker ms-3 me-2 p-2 fs-6" id="ei-3-routine-{{forloop.counter}}" style="width: 220%;" aria-label="Default select example">
                             <option selected>Select</option>
                             <option value="Morning(6am- 11am)">Morning(6am- 11am)</option>
                             <option value="Around noon(11am-1pm)">Around noon(11am-1pm)</option>
@@ -91,7 +88,7 @@
                         </select>
                     </div>
                     <div class="option col-1 ms-5">
-                        <select class="selectpicker w-100 ms-5 p-2 fs-6" aria-label="Default select example">
+                        <select class="selectpicker w-100 ms-5 p-2 fs-6" id="ei-4-routine-{{forloop.counter}}" aria-label="Default select example">
                             <option selected>Select</option>
                             <option value="Scheduled-time (e.g., brew coffee at 7 am)">Scheduled-time (e.g., brew coffee at 7 am)</option>
                             <option value="Manually-triggered (e.g., a button press)">Manually-triggered (e.g., a button press)</option>
@@ -99,7 +96,7 @@
                         </select>
                     </div>
                     <div class="option col-1 ms-5">
-                        <select class="selectpicker w-100 p-2 fs-6" aria-label="Default select example">
+                        <select class="selectpicker w-100 p-2 fs-6" id="ei-5-routine-{{forloop.counter}}" aria-label="Default select example">
                             <option selected>Select</option>
                             <option value="Bedroom">Bedroom</option>
                             <option value="Kitchen">Kitchen</option>
