@@ -222,10 +222,6 @@ def create_execution_indication(request):
         response_json = json.dumps(response_json)
         data = json.loads(response_json)
         
-        print("KEYSSS:", data.keys())
-        print("TYPEEE:", type(data["execution_indicators[0][1]"]))
-       
-        
         for i in range(int(len(data)/5)):
             # print("EI data:", data["execution_indicators[{}][]".format(i)])
             execution_indicators_list.append([data["execution_indicators[{}][0]".format(i)], data["execution_indicators[{}][1]".format(i)], 
