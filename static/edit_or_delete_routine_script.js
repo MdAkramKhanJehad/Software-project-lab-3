@@ -177,42 +177,43 @@ function getRoutinesForSending(routines){
 }
 
 
-// function deleteRoutine(num){
-//     var routineData = {};
-//     console.log("delete routines");
-//     // console.log(previouslyCreatedRoutines[num - 1][0] + " -> " + previouslyCreatedRoutines[num - 1][1]);
+function deleteRoutine(num){
+    var routineData = {};
+    console.log("delete routine no: " + num);
+    // console.log(previouslyCreatedRoutines[num - 1][0] + " -> " + previouslyCreatedRoutines[num - 1][1]);
 
-//     const previousRoutines = previouslyCreatedRoutines;
-//     previousRoutines.splice(num, 1);
+    const previousRoutines = previouslyCreatedRoutines;
+    previousRoutines.splice(num, 1);
 
-//     for (let i = 0; i < previousRoutines.length; i++) {
-//         console.log("Routines del: " + " " + previousRoutines[i][0] + " -> " + previousRoutines[i][1]);
-//     }
+    // for (let i = 0; i < previousRoutines.length; i++) {
+    //     console.log("Routines del: " + " " + previousRoutines[i][0] + " -> " + previousRoutines[i][1]);
+    // }
 
     
-//     var updatedRoutines = getRoutinesForSending(previousRoutines);
+    var updatedRoutines = getRoutinesForSending(previousRoutines);
 
-//     for (let i = 0; i < updatedRoutines.length; i++) {
-//         routineData[i] = updatedRoutines[i];
-//     }
+    for (let i = 0; i < updatedRoutines.length; i++) {
+        routineData[i] = updatedRoutines[i];
+    }
 
-//     $(".btn-close").click();
+    $(".btn-close").click();
 
-//     $.ajax(
-//         {
-//             type:"POST",
-//             url: url,
-//             headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
-//             data: {
-//                 routines: routineData,
-//                 name: "delete"
-//             },
-//             success: function() 
-//             {   
-//                 console.log("successssssssss");
-//                 window.location.href = "/home/create/edit-delete-routine";
-//             }
-//         }
-//     );
-// }
+    $.ajax(
+        {
+            type:"POST",
+            url: url,
+            headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
+            data: {
+                routines: routineData,
+                index_number: num,
+                name: "delete"
+            },
+            success: function() 
+            {   
+                console.log("successssssssss");
+                window.location.href = "/home/create/edit-delete-routine";
+            }
+        }
+    );
+}
 

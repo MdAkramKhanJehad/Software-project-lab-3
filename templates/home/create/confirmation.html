@@ -15,16 +15,13 @@
         <div id="page-number" data-page-number="{{page}}"></div>
         <div id="created-routines" data-created-routines="{{created_routines_list}}"></div>
         <div id="selected-devices" data-selected-devices="{{selected_devices_list}}"></div>
-        <div id="execution-indicators" data-execution-indicators="{{execution_indicators_list}}"></div>
 
-        {% comment %} <p class="mb-4"><h4 class='text-center'>Confirm your Routines and EI</h4></p> {% endcomment %}
         
         <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
             <div class="row w-auto mb-2 px-4 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
                 <h4 class='text-center px-2 py-1' style="color: #004d00">Your Selected Devices:</h4>
             </div> 
         </div>
-        {% comment %} <p class="mb-4"><h4 class='text-center'>Your Selected Devices:</h4></p> {% endcomment %}
         
         <div class='row justify-content-center'>
             {% for device in selected_devices_list %}

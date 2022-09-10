@@ -188,10 +188,17 @@ def edit_delete_routine(request):
         response_json = request.POST
         response_json = json.dumps(response_json)
         data = json.loads(response_json)
-
-        for i in range(int(len(data)/2)):
+        
+        for i in range(int(len(data)/2) - 1):
             created_routines_list.append([data["routines[{}][trigger]".format(i)], data["routines[{}][action]".format(i)]])
-
+        
+        if request.session.get("execution_indicators"):
+            indexOfDeletedRoutine = int(data["index_number"])
+            execution_indicators_list = request.session["execution_indicators"]
+            execution_indicators_list = execution_indicators_list[:indexOfDeletedRoutine] + execution_indicators_list[indexOfDeletedRoutine+1 :]
+            request.session["execution_indicators"] = execution_indicators_list
+            request.session.modified = True
+            
         request.session["created_routines"] = created_routines_list
         request.session.modified = True
         print("data from session page 3: ", request.session.get("created_routines") , end="\n\n")
@@ -253,7 +260,6 @@ def confirmation(request):
     context = { 
         'selected_devices_list' : selected_devices_list, 
         'created_routines_list' : zip(created_routines_list, execution_indicators_list),  
-        'execution_indicators_list' : execution_indicators_list,     
         'page': 5 
     }
 
