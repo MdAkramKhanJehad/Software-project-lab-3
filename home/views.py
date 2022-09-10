@@ -214,7 +214,26 @@ def edit_delete_routine(request):
 
 
 def create_execution_indication(request):
+    execution_indicators_list = []
     created_routines_list = get_created_routine_from_session(request, 4)
+    
+    if request.method == 'POST':
+        response_json = request.POST
+        response_json = json.dumps(response_json)
+        data = json.loads(response_json)
+        
+        print("KEYSSS:", data.keys())
+        print("TYPEEE:", type(data["execution_indicators[0][1]"]))
+       
+        
+        for i in range(int(len(data)/5)):
+            # print("EI data:", data["execution_indicators[{}][]".format(i)])
+            execution_indicators_list.append([data["execution_indicators[{}][0]".format(i)], data["execution_indicators[{}][1]".format(i)], 
+                                              data["execution_indicators[{}][2]".format(i)], data["execution_indicators[{}][3]".format(i)], 
+                                              data["execution_indicators[{}][4]".format(i)]])
+
+        print("EI List: ", len(execution_indicators_list), " | ", execution_indicators_list)
+        
     
     context = { 
         'created_routines_list' : created_routines_list,       
