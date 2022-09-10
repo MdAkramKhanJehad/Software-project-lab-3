@@ -3,10 +3,10 @@ from login.models import NewUser
 from home.models import Device, DeviceAttribute
 import json
 import os
+import time
 from spl_3 import settings
-from home.methods import get_created_routine_from_session, get_selected_devices_from_session, get_environmental_variable
+from home.methods import get_created_routine_from_session, get_selected_devices_from_session, get_environmental_variable, get_execution_indicators_from_session
 
-# Create your views here.
 
 def home(request):
     
@@ -189,11 +189,6 @@ def edit_delete_routine(request):
         response_json = json.dumps(response_json)
         data = json.loads(response_json)
 
-        # if data["name"] == "update":
-        #     print("its update")
-        # elif data["name"] == "delete":
-        #     print("its delete")
-
         for i in range(int(len(data)/2)):
             created_routines_list.append([data["routines[{}][trigger]".format(i)], data["routines[{}][action]".format(i)]])
 
@@ -217,6 +212,10 @@ def create_execution_indication(request):
     execution_indicators_list = []
     created_routines_list = get_created_routine_from_session(request, 4)
     
+    # if request.session.get("execution_indicators"):
+    #     del request.session["execution_indicators"]
+    #     request.session.modified = True
+    
     if request.method == 'POST':
         response_json = request.POST
         response_json = json.dumps(response_json)
@@ -228,9 +227,15 @@ def create_execution_indication(request):
                                               data["execution_indicators[{}][2]".format(i)], data["execution_indicators[{}][3]".format(i)], 
                                               data["execution_indicators[{}][4]".format(i)]])
 
-        print("EI List: ", len(execution_indicators_list), " | ", execution_indicators_list)
+        # print("EI List: ", len(execution_indicators_list), " | ", execution_indicators_list)
         
-    
+        request.session["execution_indicators"] = execution_indicators_list
+        request.session.modified = True
+        
+        print("ei data from session page 4 inside if: ", request.session.get("execution_indicators") , end="\n\n")
+        
+    print("ei from session page 4 out post: ", request.session.get("execution_indicators") , end="\n\n")
+        
     context = { 
         'created_routines_list' : created_routines_list,       
         'page': 4 
@@ -240,12 +245,15 @@ def create_execution_indication(request):
 
 
 def confirmation(request):
+    time.sleep(0.01)
     created_routines_list = get_created_routine_from_session(request, 5)
     selected_devices_list = get_selected_devices_from_session(request, 5)
-        
+    execution_indicators_list = get_execution_indicators_from_session(request, 5)
+    
     context = { 
         'selected_devices_list' : selected_devices_list, 
-        'created_routines_list' : created_routines_list,       
+        'created_routines_list' : zip(created_routines_list, execution_indicators_list),  
+        'execution_indicators_list' : execution_indicators_list,     
         'page': 5 
     }
 

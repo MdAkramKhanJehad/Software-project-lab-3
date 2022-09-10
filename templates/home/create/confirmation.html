@@ -15,6 +15,7 @@
         <div id="page-number" data-page-number="{{page}}"></div>
         <div id="created-routines" data-created-routines="{{created_routines_list}}"></div>
         <div id="selected-devices" data-selected-devices="{{selected_devices_list}}"></div>
+        <div id="execution-indicators" data-execution-indicators="{{execution_indicators_list}}"></div>
 
         {% comment %} <p class="mb-4"><h4 class='text-center'>Confirm your Routines and EI</h4></p> {% endcomment %}
         
@@ -64,30 +65,30 @@
             </div>
 
 
-            {% for routine in created_routines_list %}
+            {% for routine, ei in created_routines_list %}
                 <div class="row">
                     <div class="routine col-4 me-2 ms-3">
                         <p class="routine1 fs-5" id="routine-{{forloop.counter}}">{{forloop.counter}}. If {{routine.0}}, then {{routine.1}}</p>
                     </div>
 
                     <div class="option col-1 me-3 px-0 ms-0">                     
-                        <textarea disabled class="form-control text-area" style="width: 180%; border-radius:10px; border: 0.5px solid #198754;"  id="ei-1-{{forloop.counter}}" rows="2">Many times in a day (5+ /day)</textarea>                       
+                        <textarea disabled class="form-control text-area" style="width: 180%; border-radius:10px; border: 0.5px solid #198754;"  id="ei-1-{{forloop.counter}}" rows="2">{{ei.0}}</textarea>                       
                     </div>
 
                     <div class="option col-1 ms-5">                     
-                        <textarea disabled class="form-control text-area ms-5 p-2" style="border-radius:10px; border: 0.5px solid #198754;" id="ei-2-{{forloop.counter}}" rows="1">Weekday</textarea>                       
+                        <textarea disabled class="form-control text-area ms-5 p-2" style="border-radius:10px; border: 0.5px solid #198754;" id="ei-2-{{forloop.counter}}" rows="1">{{ei.1}}</textarea>                       
                     </div>
 
                     <div class="option col-1 ms-5 me-5">                     
-                        <textarea disabled class="form-control text-area me-2 p-2" style="width: 217%; border-radius:10px; border: 0.5px solid #198754;" id="ei-3-{{forloop.counter}}" rows="1">Around noon(11am-1pm)</textarea>                       
+                        <textarea disabled class="form-control text-area me-2 p-2" style="width: 217%; border-radius:10px; border: 0.5px solid #198754;" id="ei-3-{{forloop.counter}}" rows="1">{{ei.2}}</textarea>                       
                     </div>
 
                     <div class="option col-1 ms-5 me-2">                     
-                        <textarea disabled class="form-control text-area ms-3 p-2" style="width: 125%; border-radius:10px; border: 0.5px solid #198754;" id="ei-4-{{forloop.counter}}" rows="2">Executed at random (e.g., every time I enter the room)</textarea>                       
+                        <textarea disabled class="form-control text-area ms-3 p-2" style="width: 125%; border-radius:10px; border: 0.5px solid #198754;" id="ei-4-{{forloop.counter}}" rows="2">{{ei.3}}</textarea>                       
                     </div>
 
                     <div class="option col-1 ms-4">                     
-                        <textarea disabled class="form-control text-area p-2" style="width: 105%; border-radius:10px; border: 0.5px solid #198754;" id="ei-5-{{forloop.counter}}" rows="1">Drawing Room</textarea>                       
+                        <textarea disabled class="form-control text-area p-2" style="width: 105%; border-radius:10px; border: 0.5px solid #198754;" id="ei-5-{{forloop.counter}}" rows="1">{{ei.4}}</textarea>                       
                     </div>
                 
                 </div> <br>
@@ -97,3 +98,8 @@
 
     </div>
 {% endblock step %}
+
+{% block script-2 %}
+    {% load static %}
+    <script src="{% static 'confirmation_script.js' %}"></script>
+{% endblock script-2 %}

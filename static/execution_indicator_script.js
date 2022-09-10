@@ -4,9 +4,9 @@ var totalDefinedEiCount = 0;
 
 getPreviouslyCreatedRoutinesFromSession();
 
-// if(totalDefinedEiCount !=  previouslyCreatedRoutines.length * 5){
-//     document.getElementById('nextBtn').className += " disabled";
-// }
+if(totalDefinedEiCount !=  previouslyCreatedRoutines.length * 5){
+    document.getElementById('nextBtn').className += " disabled";
+}
 
 
 function getPreviouslyCreatedRoutinesFromSession(){
@@ -38,9 +38,9 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
                 if(executionIndicatorsList[i-1][j-1] == undefined){
                     totalDefinedEiCount += 1;
                     
-                    // if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5){
-                    //     document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
-                    // }
+                    if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5){
+                        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+                    }
                 }
                 
                 executionIndicatorsList[i-1][j-1] = $(this).val();
@@ -79,7 +79,7 @@ $('#nextBtn').click(function(){
             success: function() 
             {   
                 console.log("successssssssss");
-                window.location.href = "/home/create/execution-indication";
+                window.location.href = "/home/create/confirmation";
             }
         }
     );
