@@ -238,13 +238,17 @@ def create_execution_indication(request):
         
         request.session["execution_indicators"] = execution_indicators_list
         request.session.modified = True
-        
+   
         print("ei data from session page 4 inside if: ", request.session.get("execution_indicators") , end="\n\n")
+    
+    if request.session.get("execution_indicators"):
+        execution_indicators_list = request.session["execution_indicators"]    
         
-    print("ei from session page 4 out post: ", request.session.get("execution_indicators") , end="\n\n")
+    print("ei from session page 4 out post: ", execution_indicators_list , end="\n\n")
         
     context = { 
-        'created_routines_list' : created_routines_list,       
+        'created_routines_list' : created_routines_list,
+        'execution_indicators_list' : execution_indicators_list,       
         'page': 4 
     }
 
@@ -252,7 +256,7 @@ def create_execution_indication(request):
 
 
 def confirmation(request):
-    time.sleep(0.01)
+    time.sleep(0.05)
     created_routines_list = get_created_routine_from_session(request, 5)
     selected_devices_list = get_selected_devices_from_session(request, 5)
     execution_indicators_list = get_execution_indicators_from_session(request, 5)

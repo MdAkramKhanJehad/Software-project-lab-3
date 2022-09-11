@@ -1,11 +1,54 @@
 var previouslyCreatedRoutines;
 var executionIndicatorsList = [];
 var totalDefinedEiCount = 0;
+var executionIndicatorsList = [];
 
+getExecutionIndicators();
 getPreviouslyCreatedRoutinesFromSession();
 
-if(totalDefinedEiCount !=  previouslyCreatedRoutines.length * 5){
+if(executionIndicatorsList.length == 0){
     document.getElementById('nextBtn').className += " disabled";
+}
+
+
+function getExecutionIndicators(){
+    executionIndicatorsList = document.getElementById("execution-indicators").getAttribute("data-execution-indicators");
+
+    executionIndicatorsList = executionIndicatorsList.replaceAll("['", '["');
+    executionIndicatorsList = executionIndicatorsList.replaceAll("',", '",');
+    executionIndicatorsList = executionIndicatorsList.replaceAll(" '", ' "');
+    executionIndicatorsList = executionIndicatorsList.replaceAll("']", '"]');
+    executionIndicatorsList = executionIndicatorsList.replaceAll("'", "\'");
+
+    executionIndicatorsList = JSON.parse(executionIndicatorsList);
+
+    console.log("ALL EIIIII: " + executionIndicatorsList.length);
+
+    for (let i = 0; i < executionIndicatorsList.length; i++) {
+        console.log("EI's: " + " " + executionIndicatorsList[i][0] + " -> " + executionIndicatorsList[i][1]);
+    }
+
+    if(executionIndicatorsList.length > 0) {
+        setPreviouslySelectedExecutionIndicators();
+    }
+}
+
+
+function setPreviouslySelectedExecutionIndicators(){
+    for (let i = 1; i < executionIndicatorsList.length+1 ; i++) {
+        for (let j = 1; j < 6; j++) {
+            var eiName = "select[name=ei-" + j + "-routine-" + i + "]";
+            $(eiName).val(executionIndicatorsList[i-1][j-1]);
+            // $('.selectpicker').selectpicker('refresh');
+            // var eiId = "#ei-" + j + "-routine-" + i;
+            // $(eiId).selectpicker('val', executionIndicatorsList[i-1][j-1]);
+        }
+        
+    }
+
+    if(executionIndicatorsList.length > 0){
+        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+    }
 }
 
 
@@ -29,6 +72,9 @@ function getPreviouslyCreatedRoutinesFromSession(){
     
 }
 
+
+
+
 for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
     for (let j = 1; j < 6; j++) {
         var eiId = "#ei-" + j + "-routine-" + i;
@@ -45,9 +91,7 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
                 
                 executionIndicatorsList[i-1][j-1] = $(this).val();
 
-                // console.log("Total:" + totalDefinedEiCount + " | Routine:" + i + " | EI:" + j + $(this).val());
             }
-            
         });
     }
 }
