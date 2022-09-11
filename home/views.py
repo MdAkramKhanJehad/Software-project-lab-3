@@ -101,7 +101,7 @@ def select_device(request):
 
     health_multimedia = health | multimedia
 
-    print("Total: ", len(appliances_devices) , " ", len(kitchen_and_cleaning_devices), " ", len(security_and_safety) , " ", len(health) , len(multimedia))
+    # print("Total: ", len(appliances_devices) , " ", len(kitchen_and_cleaning_devices), " ", len(security_and_safety) , " ", len(health) , len(multimedia))
 
     context = {
         'appliances_devices': appliances_devices,
