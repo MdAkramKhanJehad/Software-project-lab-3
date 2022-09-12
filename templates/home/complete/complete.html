@@ -3,9 +3,19 @@
 {% block title %}Tutorial{% endblock title %}
 
 {% block body %}
-    <div class="container-fluid min-vh-100 d-flex justify-content-center">
-        <h2>
-            Complete body
-        </h2>
+    <div class="container mt-4 justify-content-center">
+        <div class="col">
+            <div class="row text-center justify-content-center">
+                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_snmbndsh.json"  background="transparent"  speed="1"  style="width: 35%; height: 20%;" loop autoplay></lottie-player>    
+            </div>
+             
+            <div class="row"><h3 class="text-center">Your Routines Submitted Successfully!</h3></div>
+            <br>
+            <div class="row text-center justify-content-center">
+                <a class="btn btn-outline-light bg-gradient p-2 bg-success btn-rounded btn-Success btn-lg" href="http://127.0.0.1:8000/home/" style="width: 13%; border-radius:11px; font-size:20px" role="button"><b>Go to Home</b></a>
+            </div>
+            
+        </div>
     </div>
 {% endblock body %}
