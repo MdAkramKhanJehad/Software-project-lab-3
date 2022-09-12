@@ -46,6 +46,7 @@ function updateRoutine(num){
     const trigger = document.getElementById("trigger-"+num).value;
     const action = document.getElementById("action-"+num).value;
     var routineData = {};
+    var index_no = num -1;
     const allRoutines = previouslyCreatedRoutines;
 
     if(trigger != previouslyCreatedRoutines[num-1][0] || action != previouslyCreatedRoutines[num-1][1] ){
@@ -70,6 +71,7 @@ function updateRoutine(num){
                 headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
                 data: {
                     routines: routineData,
+                    index_number: index_no,
                     name: "update"
                 },
                 success: function() 
@@ -112,55 +114,55 @@ function checkboxCount(element, indexValue){
 }
 
 
-function deleteSelectedRoutine(){
-    var routineData = {};
-    console.log("delete selected routines");
-    // console.log(previouslyCreatedRoutines[num - 1][0] + " -> " + previouslyCreatedRoutines[num - 1][1]);
+// function deleteSelectedRoutine(){
+//     var routineData = {};
+//     console.log("delete selected routines");
+//     // console.log(previouslyCreatedRoutines[num - 1][0] + " -> " + previouslyCreatedRoutines[num - 1][1]);
 
-    const previousRoutines = previouslyCreatedRoutines;
-    console.log(previousRoutines);
+//     const previousRoutines = previouslyCreatedRoutines;
+//     console.log(previousRoutines);
 
-    selectedRoutinesIndex.sort();
-    selectedRoutinesIndex.reverse();
-    for(let i=0; i<totalChecked; i++){
-        previousRoutines.splice(selectedRoutinesIndex[i], 1);
-    }
+//     selectedRoutinesIndex.sort();
+//     selectedRoutinesIndex.reverse();
+//     for(let i=0; i<totalChecked; i++){
+//         previousRoutines.splice(selectedRoutinesIndex[i], 1);
+//     }
 
-    console.log(previousRoutines);
+//     console.log(previousRoutines);
     
 
-    // for (let i = 0; i < previousRoutines.length; i++) {
-    //     console.log("Routines del: " + " " + previousRoutines[i][0] + " -> " + previousRoutines[i][1]);
-    // }
+//     // for (let i = 0; i < previousRoutines.length; i++) {
+//     //     console.log("Routines del: " + " " + previousRoutines[i][0] + " -> " + previousRoutines[i][1]);
+//     // }
 
 
 
     
-    var updatedRoutines = getRoutinesForSending(previousRoutines);
+//     var updatedRoutines = getRoutinesForSending(previousRoutines);
 
-    for (let i = 0; i < updatedRoutines.length; i++) {
-        routineData[i] = updatedRoutines[i];
-    }
+//     for (let i = 0; i < updatedRoutines.length; i++) {
+//         routineData[i] = updatedRoutines[i];
+//     }
 
-    $(".btn-close-selected-routine").click();
+//     $(".btn-close-selected-routine").click();
 
-    $.ajax(
-        {
-            type:"POST",
-            url: url,
-            headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
-            data: {
-                routines: routineData,
-                name: "delete"
-            },
-            success: function() 
-            {   
-                console.log("successssssssss");
-                window.location.href = "/home/create/edit-delete-routine";
-            }
-        }
-    );
-}
+//     $.ajax(
+//         {
+//             type:"POST",
+//             url: url,
+//             headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
+//             data: {
+//                 routines: routineData,
+//                 name: "delete"
+//             },
+//             success: function() 
+//             {   
+//                 console.log("successssssssss");
+//                 window.location.href = "/home/create/edit-delete-routine";
+//             }
+//         }
+//     );
+// }
 
 
 function getRoutinesForSending(routines){

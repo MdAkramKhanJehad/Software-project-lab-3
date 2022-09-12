@@ -192,12 +192,16 @@ def edit_delete_routine(request):
         for i in range(int(len(data)/2) - 1):
             created_routines_list.append([data["routines[{}][trigger]".format(i)], data["routines[{}][action]".format(i)]])
         
-        if request.session.get("execution_indicators"):
-            indexOfDeletedRoutine = int(data["index_number"])
-            execution_indicators_list = request.session["execution_indicators"]
-            execution_indicators_list = execution_indicators_list[:indexOfDeletedRoutine] + execution_indicators_list[indexOfDeletedRoutine+1 :]
-            request.session["execution_indicators"] = execution_indicators_list
-            request.session.modified = True
+        if data["name"] == "delete":
+            print("ITS DELETE OPS") 
+            if request.session.get("execution_indicators"):
+                indexOfDeletedRoutine = int(data["index_number"])
+                execution_indicators_list = request.session["execution_indicators"]
+                execution_indicators_list = execution_indicators_list[:indexOfDeletedRoutine] + execution_indicators_list[indexOfDeletedRoutine+1 :]
+                request.session["execution_indicators"] = execution_indicators_list
+                request.session.modified = True
+        elif data["name"] == "update":
+            print("ITS Update OPS")
             
         request.session["created_routines"] = created_routines_list
         request.session.modified = True
