@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from login.models import NewUser
 from home.models import Device, DeviceAttribute
 import json
@@ -13,23 +13,16 @@ def home(request):
     all_users = NewUser.objects.all().filter(user_id=request.POST.get('user_id'))
 
     if request.method == "POST":
-        if  len(all_users) < 1:
-            user_id = request.POST.get('user_id')
-            new_user = NewUser(user_id=user_id)
-            new_user.save()
-            print("A new user added")
-        else:
-            print("USER available: ", all_users[0].id, " || ", all_users[0].user_id)
-
+        # if  len(all_users) < 1:
+        #     user_id = request.POST.get('user_id')
+        #     new_user = NewUser(user_id=user_id)
+        #     new_user.save()
         request.session["current_user_id"] = request.POST.get('user_id')
+        # print("****CURRENT USER****: ", request.session["current_user_id"])
           
-    else:
-        print("inside else")
 
-    if request.session.get("current_user_id"):
-        print("*******Current User:-", request.session["current_user_id"])
-    else:
-        print("****NO CURRENT USER*******")
+    if "current_user_id" not in request.session:
+        return redirect('login')
     
     return render(request, 'home/home.html')
 
