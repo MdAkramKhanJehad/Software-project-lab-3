@@ -8,8 +8,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        {% load static %}
-        <link href="{% static 'style_login.css' %}" type="text/css" rel="stylesheet">
+        {% comment %} {% load static %}
+        <link href="{% static 'style_login.css' %}" type="text/css" rel="stylesheet"> {% endcomment %}
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
@@ -24,19 +24,11 @@
             <h2 class='text-light' align="center">Welcome to GenRout!</h2>
             <br><br><br>
             <div class="w-55 mb-3"  align="center">
-              <form class="needs-validation" method="post" action="/home/">
+              
+              <form class="needs-validation" method="post" action="/home/">      
                 {% csrf_token %}
                 <div class="form-group w-50 p-3">
-                  <div style='input-group' align='left'>
-                    <label class='text-light' for="email"><h4><b>Enter email address</b></h4></label>
-                  </div>
-                  <div class="has-validation" style='input-group'>
-                    <input  type="email" class="form-control " name="email" id="email" placeholder="Enter email" required>
-                    <div class="invalid-feedback">
-                      Please provide a valid email
-                    </div>
-                  </div>
-                  
+                    <input  type="text" class="form-control " name="user_id" id="user_id" placeholder="Enter your ID" required>
                 </div>
                 <div class="text-center ">
                   <button type="submit" class="btn btn-light btn-outline-success" style="font-size:20px"><b>Login</b></button>

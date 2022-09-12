@@ -1,14 +1,16 @@
 var previouslyCreatedRoutines;
 var executionIndicatorsList = [];
 var totalDefinedEiCount = 0;
-var executionIndicatorsList = [];
+var previousEICount = 0;
 
 getExecutionIndicators();
 getPreviouslyCreatedRoutinesFromSession();
 
-if(executionIndicatorsList.length == 0){
+document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+
+if(executionIndicatorsList[previouslyCreatedRoutines.length-1].length == 0){
     document.getElementById('nextBtn').className += " disabled";
-}
+} 
 
 
 function getExecutionIndicators(){
@@ -28,9 +30,13 @@ function getExecutionIndicators(){
         console.log("EI's: " + " " + executionIndicatorsList[i][0] + " -> " + executionIndicatorsList[i][1]);
     }
 
+    previousEICount = executionIndicatorsList.length;
+    totalDefinedEiCount = executionIndicatorsList.length * 5;
+
     if(executionIndicatorsList.length > 0) {
         setPreviouslySelectedExecutionIndicators();
     }
+    console.log("INSIDE getEI");
 }
 
 
@@ -39,15 +45,7 @@ function setPreviouslySelectedExecutionIndicators(){
         for (let j = 1; j < 6; j++) {
             var eiName = "select[name=ei-" + j + "-routine-" + i + "]";
             $(eiName).val(executionIndicatorsList[i-1][j-1]);
-            // $('.selectpicker').selectpicker('refresh');
-            // var eiId = "#ei-" + j + "-routine-" + i;
-            // $(eiId).selectpicker('val', executionIndicatorsList[i-1][j-1]);
-        }
-        
-    }
-
-    if(executionIndicatorsList.length > 0){
-        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        } 
     }
 }
 
@@ -63,16 +61,13 @@ function getPreviouslyCreatedRoutinesFromSession(){
 
     previouslyCreatedRoutines = JSON.parse(previouslyCreatedRoutines);
 
-    // for (let i = 0; i < previouslyCreatedRoutines.length; i++) {
-    //     console.log("Routines: " + " " + previouslyCreatedRoutines[i][0] + " -> " + previouslyCreatedRoutines[i][1]);
-    // }
+    if(previousEICount == previouslyCreatedRoutines.length)
+        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
 
-    for(let i=0; i<previouslyCreatedRoutines.length; i++)
+    for(let i=previousEICount; i<previouslyCreatedRoutines.length+1; i++)
         executionIndicatorsList.push([]);
     
 }
-
-
 
 
 for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
@@ -84,7 +79,7 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
                 if(executionIndicatorsList[i-1][j-1] == undefined){
                     totalDefinedEiCount += 1;
                     
-                    if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5){
+                    if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5 && executionIndicatorsList[previouslyCreatedRoutines.length-1].length > 0){
                         document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
                     }
                 }

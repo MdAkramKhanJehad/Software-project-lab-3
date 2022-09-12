@@ -10,20 +10,27 @@ from home.methods import get_created_routine_from_session, get_selected_devices_
 
 def home(request):
     
-    all_users = NewUser.objects.all().filter(email=request.POST.get('email'))
+    all_users = NewUser.objects.all().filter(user_id=request.POST.get('user_id'))
 
-    if request.method == "POST" and len(all_users) < 1:
-        email = request.POST.get('email')
-        new_user = NewUser(email=email)
-        new_user.save()
+    if request.method == "POST":
+        if  len(all_users) < 1:
+            user_id = request.POST.get('user_id')
+            new_user = NewUser(user_id=user_id)
+            new_user.save()
+            print("A new user added")
+        else:
+            print("USER available: ", all_users[0].id, " || ", all_users[0].user_id)
 
-        print("A new user added")
-    elif request.method == "POST":
-        print("USER available: ", all_users[0].id, " || ", all_users[0].email)
-    
+        request.session["current_user_id"] = request.POST.get('user_id')
+          
     else:
         print("inside else")
 
+    if request.session.get("current_user_id"):
+        print("*******Current User:-", request.session["current_user_id"])
+    else:
+        print("****NO CURRENT USER*******")
+    
     return render(request, 'home/home.html')
 
 
@@ -137,7 +144,7 @@ def create_routine(request):
 
         request.session["created_routines"] = created_routines_list
         request.session.modified = True
-        print("data from session page 2: ", request.session.get("created_routines") , end="\n\n")
+        # print("data from session page 2: ", request.session.get("created_routines") , end="\n\n")
         
         # del request.session["created_routines"]
         # request.session.modified = True
@@ -162,7 +169,6 @@ def create_routine(request):
                 attrOfSingle.append(a.attribute)
                 attrOfSingle.append(a.action)
                 attrOfSingle.append(a.description)
-                # print("TYPE:", type(a.attribute))
                 attributeDescriptionFromDb[counter] = attrOfSingle
                 
                 counter += 1
@@ -240,12 +246,12 @@ def create_execution_indication(request):
         request.session["execution_indicators"] = execution_indicators_list
         request.session.modified = True
    
-        print("ei data from session page 4 inside if: ", request.session.get("execution_indicators") , end="\n\n")
+        # print("ei data from session page 4 inside if: ", request.session.get("execution_indicators") , end="\n\n")
     
     if request.session.get("execution_indicators"):
         execution_indicators_list = request.session["execution_indicators"]    
         
-    print("ei from session page 4 out post: ", execution_indicators_list , end="\n\n")
+    # print("ei from session page 4 out post: ", execution_indicators_list , end="\n\n")
         
     context = { 
         'created_routines_list' : created_routines_list,
