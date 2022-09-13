@@ -47,9 +47,9 @@ function getPreviouslyCreatedRoutinesFromSession(){
     previouslyCreatedRoutines = JSON.parse(previouslyCreatedRoutines);
     // previouslyCreatedRoutines = JSON.stringify(JSON5.parse(previouslyCreatedRoutines))
 
-    for (let i = 0; i < previouslyCreatedRoutines.length; i++) {
-        console.log("Routines: " + " " + previouslyCreatedRoutines[i][0] + " -> " + previouslyCreatedRoutines[i][1]);
-    }
+    // for (let i = 0; i < previouslyCreatedRoutines.length; i++) {
+    //     console.log("Routines: " + " " + previouslyCreatedRoutines[i][0] + " -> " + previouslyCreatedRoutines[i][1]);
+    // }
 
     totalPreviouslyCreatedRoutines = previouslyCreatedRoutines.length
 }
@@ -82,7 +82,6 @@ function showAttributes(device){
     styleChangeAfterDeselection(currentlySelectedDevice);
     currentlySelectedDevice = device;
     styleChangeAfterSelection(currentlySelectedDevice);
-
     document.getElementById(currentlyShowing).style.display = "none";
     
     const device_elememt = document.getElementById(device);
@@ -90,7 +89,6 @@ function showAttributes(device){
     currentlyShowing = "state-"+index;
     const selected_device = document.getElementById(currentlyShowing)
     selected_device.style.display = "block";
-
     getCurretDeviceCommands();
 
 }
@@ -100,7 +98,6 @@ function getCurretDeviceCommands(){
     var attr = document.getElementById(currentlyShowing).getAttribute('data-attribute')
     attr = attr.replace(/'/g, '"');
     attr = JSON.parse(attr);
-
     currentlySelectedDeviceCommands = [];
     for (let i = 0; i < attr.length; i++) {
         currentlySelectedDeviceCommands[i] = attr[i][1];

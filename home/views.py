@@ -17,7 +17,7 @@ environ.Env.read_env()
 def home(request):
     
     # all_users = NewUser.objects.all().filter(user_id=request.POST.get('user_id'))
-    print("INSIDE HOME 1:",  datetime.now().strftime("%H:%M:%S"))
+    # print("INSIDE HOME 1:",  datetime.now().strftime("%H:%M:%S"))
     if request.method == "POST":
         # if  len(all_users) < 1:
         #     user_id = request.POST.get('user_id')
@@ -28,11 +28,11 @@ def home(request):
     
     # if request.session.get("current_page"):
     #     request.session["current_page"] = "complete"
-    print("INSIDE HOME 2:",  datetime.now().strftime("%H:%M:%S"))
+    # print("INSIDE HOME 2:",  datetime.now().strftime("%H:%M:%S"))
     
     if "current_user_id" not in request.session:
         return redirect('login')
-    print("INSIDE HOME 3:",  datetime.now().strftime("%H:%M:%S"))
+    # print("INSIDE HOME 3:",  datetime.now().strftime("%H:%M:%S"))
     
     print("****CURRENT USER****: ", request.session["current_user_id"])
     
@@ -48,25 +48,25 @@ def tutorial(request):
 
 
 def select_device(request):
-    print("Current Time 1 =", datetime.now().strftime("%H:%M:%S"))
+    # print("Current Time 1 =", datetime.now().strftime("%H:%M:%S"))
     
     selected_device_list = []
     all_devices = []
     all_device_attributes = []
     
     
-    print("Current Time 2 =", datetime.now().strftime("%H:%M:%S"))
+    # print("Current Time 2 =", datetime.now().strftime("%H:%M:%S"))
     
     # del request.session["all_devices"]
     # request.session.modified = True
     # del request.session["all_devices_attributes"]
     # request.session.modified = True
-    print("Current Time 3 =", datetime.now().strftime("%H:%M:%S"))
+    # print("Current Time 3 =", datetime.now().strftime("%H:%M:%S"))
     # if request.session.get("all_devices"):
         
     if "all_devices" not in request.session:
         print("******NOT IN SESSION - GET FROM MONGO********")
-        print("Current Time 4 =", datetime.now().strftime("%H:%M:%S"))
+        # print("Current Time 4 =", datetime.now().strftime("%H:%M:%S"))
         connect_string = "mongodb+srv://genrout_routine_database:i59nQ7WWbHvMFyjX@routine.wjgsswb.mongodb.net/?retryWrites=true&w=majority"
         my_client = pymongo.MongoClient(connect_string)
         db = env("DATABASE_NAME")
@@ -77,7 +77,7 @@ def select_device(request):
         # print("********COLLECTION_COUNT FROM MONGODB:", count)
         
         device_details = collection_name.find({})
-        print("Current Time 5 =", datetime.now().strftime("%H:%M:%S"))
+        # print("Current Time 5 =", datetime.now().strftime("%H:%M:%S"))
         
         for dev in device_details:
             device_and_attributes = {}
@@ -95,7 +95,6 @@ def select_device(request):
             
             attrs = dev[list(dev.keys())[1]][1]['AttributesAndDescriptions']
             
-            # counter = 0
             for devattr in attrs:
                 # print("attr: ", list(devattr.keys())[0])
                 # print("action: ", devattr[list(devattr.keys())[0]])
@@ -103,21 +102,20 @@ def select_device(request):
                 
                 single_attribute = [list(devattr.keys())[0], devattr[list(devattr.keys())[0]], devattr["desc"]]
                 single_device_attributes.append(single_attribute)
-                # counter += 1
                 
             device_and_attributes["device_attributes"] = single_device_attributes
             all_device_attributes.append(device_and_attributes)
         
-        print("Current Time 6 after for loop =", datetime.now().strftime("%H:%M:%S"))
+        # print("Current Time 6 after for loop =", datetime.now().strftime("%H:%M:%S"))
         # print("All device length:", len(all_devices), " | dev attr length:", len(all_device_attributes) )
         
         request.session["all_devices"] = all_devices
         request.session["all_devices_attributes"] = all_device_attributes
-        print("Current Time 7 after for loop =", datetime.now().strftime("%H:%M:%S"))
+        # print("Current Time 7 after for loop =", datetime.now().strftime("%H:%M:%S"))
     else:
-        print("Current Time 3.5 =", datetime.now().strftime("%H:%M:%S"))
+        # print("Current Time 3.5 =", datetime.now().strftime("%H:%M:%S"))
         all_devices = request.session["all_devices"]
-        print("Current Time 4 =", datetime.now().strftime("%H:%M:%S"))
+        # print("Current Time 4 =", datetime.now().strftime("%H:%M:%S"))
         print("******GOT IN SESSION********")
         
     request.session["current_page"] = "select_device"
@@ -161,7 +159,6 @@ def select_device(request):
 
     # print("TYPE: ", type(health), " | ", type(multimedia))
     health_multimedia = health + multimedia
-
     # print("Total: ", len(appliances_devices) , " ", len(kitchen_and_cleaning_devices), " ", len(security_and_safety) , " ", len(health) , len(multimedia))
 
     context = {
@@ -214,23 +211,17 @@ def create_routine(request):
     if len(selected_device_list) > 0:
         deviceAttributeList = []
         
-        for device in selected_device_list:
-            attrDesc = {}
-            attributeDescriptionFromDb = DeviceAttribute.objects.filter(device__device_name__contains=device)
-            # print("BEFORE:: type:", type(attributeDescriptionFromDb), " | VAL:", attributeDescriptionFromDb)
-            attributeDescriptionFromDb = list(attributeDescriptionFromDb)
+        # print("Current Time in create routine 1 =", datetime.now().strftime("%H:%M:%S"))
+        attrList = request.session["all_devices_attributes"]
+        # print("Current Time in create routine 2 =", datetime.now().strftime("%H:%M:%S"))
+        selected_devices_attributes = [x for x in attrList if x["device_name"] in selected_device_list]
+        # print("Current Time in create routine 3 =", datetime.now().strftime("%H:%M:%S"))
+        print("Len:", len(selected_devices_attributes))
+                
+        for device_attribute in selected_devices_attributes:
+            deviceAttributeList.append(device_attribute["device_attributes"])
             
-            counter = 0
-            for a in attributeDescriptionFromDb:
-                attrOfSingle = []
-                attrOfSingle.append(a.attribute)
-                attrOfSingle.append(a.action)
-                attrOfSingle.append(a.description)
-                attributeDescriptionFromDb[counter] = attrOfSingle
-                
-                counter += 1
-                
-            deviceAttributeList.append(attributeDescriptionFromDb)
+        # print("Current Time in create routine 4 =", datetime.now().strftime("%H:%M:%S"))        
         
     context = { 
         'previously_selected_devices': selected_device_list,
@@ -244,17 +235,23 @@ def create_routine(request):
 
 
 def edit_delete_routine(request):
+    # print("Current Time in edit routine 1 =", datetime.now().strftime("%H:%M:%S"))        
     sel_devices = get_selected_devices_from_session(request, 3)
+    # print("Current Time in edit routine 2 =", datetime.now().strftime("%H:%M:%S"))
     cre_routines = get_created_routine_from_session(request, 3)
+    # print("Current Time in edit routine 3 =", datetime.now().strftime("%H:%M:%S"))
     
-    if len(sel_devices) == 0:
+    if request.session.get("") == 0:
         return redirect('select_device')
     elif len(cre_routines) == 0:
         return redirect('create_routine')
     
+    # print("Current Time in edit routine 4 =", datetime.now().strftime("%H:%M:%S"))
+    
     request.session["current_page"] = "edit_delete_routine"
     created_routines_list = []
     
+    # print("Current Time in edit routine 5 =", datetime.now().strftime("%H:%M:%S"))
     if request.method == 'POST':
 
         response_json = request.POST
@@ -277,9 +274,9 @@ def edit_delete_routine(request):
         request.session.modified = True
         # print("data from session page 3: ", request.session.get("created_routines") , end="\n\n")
     
-    
+    # print("Current Time in edit routine 6 =", datetime.now().strftime("%H:%M:%S"))
     created_routines_list = get_created_routine_from_session(request, 3)
-    
+    # print("Current Time in edit routine 7 =", datetime.now().strftime("%H:%M:%S"))
     context = { 
         'created_routines_list' : created_routines_list,       
         'page': 3 
