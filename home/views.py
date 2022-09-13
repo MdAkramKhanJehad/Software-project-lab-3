@@ -193,9 +193,12 @@ def create_routine(request):
 
 
 def edit_delete_routine(request):
-    if "selected_devices" not in request.session:
+    sel_devices = get_selected_devices_from_session(request, 3)
+    cre_routines = get_created_routine_from_session(request, 3)
+    
+    if len(sel_devices) == 0:
         return redirect('select_device')
-    elif "created_routines" not in request.session:
+    elif len(cre_routines) == 0:
         return redirect('create_routine')
     
     request.session["current_page"] = "edit_delete_routine"
@@ -215,6 +218,7 @@ def edit_delete_routine(request):
                 indexOfDeletedRoutine = int(data["index_number"])
                 execution_indicators_list = request.session["execution_indicators"]
                 execution_indicators_list = execution_indicators_list[:indexOfDeletedRoutine] + execution_indicators_list[indexOfDeletedRoutine+1 :]
+                print("LENGTH OF ROUS: ", len(execution_indicators_list))
                 request.session["execution_indicators"] = execution_indicators_list
                 request.session.modified = True
            
@@ -235,16 +239,18 @@ def edit_delete_routine(request):
 
 
 def create_execution_indication(request):
-    if "selected_devices" not in request.session:
+    execution_indicators_list = []
+    created_routines_list = get_created_routine_from_session(request, 4)
+    selected_devices_list = get_selected_devices_from_session(request, 4)
+    
+    if len(selected_devices_list) == 0:
         return redirect('select_device')
-    elif "created_routines" not in request.session:
+    elif len(created_routines_list) == 0:
         return redirect('create_routine')
     
     request.session["current_page"] = "create_execution_indication"
-    execution_indicators_list = []
-    created_routines_list = get_created_routine_from_session(request, 4)
     
-    # print("1 List length:", len(created_routines_list), " | ", len(execution_indicators_list))
+    print("inside create ei:", len(created_routines_list))
 
     # if request.session.get("execution_indicators"):
     #     del request.session["execution_indicators"]
@@ -287,12 +293,14 @@ def confirmation(request):
     created_routines_list = get_created_routine_from_session(request, 5)
     selected_devices_list = get_selected_devices_from_session(request, 5)
     execution_indicators_list = get_execution_indicators_from_session(request, 5)
-       
-    if "selected_devices" not in request.session:
+    
+    print("inside conf: ", len(created_routines_list), " | ", len(selected_devices_list), " | ", len(execution_indicators_list))
+    
+    if len(selected_devices_list) == 0:
         return redirect('select_device')
-    elif "created_routines" not in request.session:
+    elif len(created_routines_list) == 0:
         return redirect('create_routine')
-    elif "execution_indicators" not in request.session:
+    elif len(execution_indicators_list) == 0:
         return redirect('create_execution_indicators')
     
     request.session["current_page"] = "confirmation"
@@ -315,6 +323,7 @@ def complete(request):
         elif "execution_indicators" not in request.session:
             return redirect('create_execution_indicators')
         else:
+            print(request.session["created_routines"], " r| ", request.session["execution_indicators"])
             return redirect('confirmation')
     
     request.session["current_page"] = "complete"
