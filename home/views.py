@@ -20,7 +20,7 @@ def home(request):
         request.session["current_user_id"] = request.POST.get('user_id')
         # print("****CURRENT USER****: ", request.session["current_user_id"])
           
-
+    print("****CURRENT USER****: ", request.session["current_user_id"])
     if "current_user_id" not in request.session:
         return redirect('login')
     
@@ -120,6 +120,9 @@ def select_device(request):
 
 
 def create_routine(request):
+    if "selected_devices" not in request.session:
+        return redirect('select_device')
+    
     selected_device_list = get_selected_devices_from_session(request, 2)
     environmental_variable = get_environmental_variable()
     deviceAttributeList = []
@@ -180,6 +183,11 @@ def create_routine(request):
 
 
 def edit_delete_routine(request):
+    if "selected_devices" not in request.session:
+        return redirect('select_device')
+    elif "created_routines" not in request.session:
+        return redirect('create_routine')
+    
     created_routines_list = []
     
     if request.method == 'POST':
@@ -216,6 +224,11 @@ def edit_delete_routine(request):
 
 
 def create_execution_indication(request):
+    if "selected_devices" not in request.session:
+        return redirect('select_device')
+    elif "created_routines" not in request.session:
+        return redirect('create_routine')
+    
     execution_indicators_list = []
     created_routines_list = get_created_routine_from_session(request, 4)
     
@@ -261,6 +274,14 @@ def confirmation(request):
     selected_devices_list = get_selected_devices_from_session(request, 5)
     execution_indicators_list = get_execution_indicators_from_session(request, 5)
     
+    if "selected_devices" not in request.session:
+        return redirect('select_device')
+    elif "created_routines" not in request.session:
+        return redirect('create_routine')
+    elif "execution_indicators" not in request.session:
+        return redirect('create_execution_indicators')
+    
+    
     context = { 
         'selected_devices_list' : selected_devices_list, 
         'created_routines_list' : zip(created_routines_list, execution_indicators_list),  
@@ -271,6 +292,8 @@ def confirmation(request):
 
 
 def complete(request):
+    
+    
     return render(request, 'home/complete/complete.html')
 
 
