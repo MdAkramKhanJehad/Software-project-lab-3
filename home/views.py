@@ -10,7 +10,7 @@ from home.methods import get_created_routine_from_session, get_selected_devices_
 
 def home(request):
     
-    all_users = NewUser.objects.all().filter(user_id=request.POST.get('user_id'))
+    # all_users = NewUser.objects.all().filter(user_id=request.POST.get('user_id'))
 
     if request.method == "POST":
         # if  len(all_users) < 1:
@@ -20,9 +20,16 @@ def home(request):
         request.session["current_user_id"] = request.POST.get('user_id')
         # print("****CURRENT USER****: ", request.session["current_user_id"])
           
-    print("****CURRENT USER****: ", request.session["current_user_id"])
+    
+    
+    # if request.session.get("current_page"):
+    
+    #     request.session["current_page"] = "complete"
+    
     if "current_user_id" not in request.session:
         return redirect('login')
+    
+    print("****CURRENT USER****: ", request.session["current_user_id"])
     
     return render(request, 'home/home.html')
 
@@ -37,6 +44,8 @@ def tutorial(request):
 
 def select_device(request):
     selected_device_list = []
+    
+    request.session["current_page"] = "select_device"
     
     # del request.session["created_routines"]
     # request.session.modified = True
@@ -123,6 +132,7 @@ def create_routine(request):
     if "selected_devices" not in request.session:
         return redirect('select_device')
     
+    request.session["current_page"] = "create_routine"
     selected_device_list = get_selected_devices_from_session(request, 2)
     environmental_variable = get_environmental_variable()
     deviceAttributeList = []
@@ -188,6 +198,7 @@ def edit_delete_routine(request):
     elif "created_routines" not in request.session:
         return redirect('create_routine')
     
+    request.session["current_page"] = "edit_delete_routine"
     created_routines_list = []
     
     if request.method == 'POST':
@@ -229,9 +240,12 @@ def create_execution_indication(request):
     elif "created_routines" not in request.session:
         return redirect('create_routine')
     
+    request.session["current_page"] = "create_execution_indication"
     execution_indicators_list = []
     created_routines_list = get_created_routine_from_session(request, 4)
     
+    # print("1 List length:", len(created_routines_list), " | ", len(execution_indicators_list))
+
     # if request.session.get("execution_indicators"):
     #     del request.session["execution_indicators"]
     #     request.session.modified = True
@@ -273,7 +287,7 @@ def confirmation(request):
     created_routines_list = get_created_routine_from_session(request, 5)
     selected_devices_list = get_selected_devices_from_session(request, 5)
     execution_indicators_list = get_execution_indicators_from_session(request, 5)
-    
+       
     if "selected_devices" not in request.session:
         return redirect('select_device')
     elif "created_routines" not in request.session:
@@ -281,7 +295,7 @@ def confirmation(request):
     elif "execution_indicators" not in request.session:
         return redirect('create_execution_indicators')
     
-    
+    request.session["current_page"] = "confirmation"
     context = { 
         'selected_devices_list' : selected_devices_list, 
         'created_routines_list' : zip(created_routines_list, execution_indicators_list),  
@@ -292,7 +306,18 @@ def confirmation(request):
 
 
 def complete(request):
+    if request.session["current_page"] != "confirmation":
+        print("inside not confirmation")
+        if "selected_devices" not in request.session:
+            return redirect('select_device')
+        elif "created_routines" not in request.session:
+            return redirect('create_routine')
+        elif "execution_indicators" not in request.session:
+            return redirect('create_execution_indicators')
+        else:
+            return redirect('confirmation')
     
+    request.session["current_page"] = "complete"
     
     return render(request, 'home/complete/complete.html')
 
