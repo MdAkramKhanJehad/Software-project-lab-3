@@ -95,7 +95,7 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
 $('#nextBtn').click(function(){
     var url, eiData = {};
     
-    url = "/home/create/execution-indication";
+    url = "/home/create/execution-indicators";
 
     for (let i = 0; i < executionIndicatorsList.length; i++) {
         var singleEi={};

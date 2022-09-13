@@ -59,6 +59,7 @@ function validateForm() {
 
     return valid; 
 
+}
 
 function showButton(){
     if (pageNo == 1) {
@@ -107,5 +108,4 @@ function fixStepIndicator(n) {
         x[i].className += " active";
     }
     
-}
 }
