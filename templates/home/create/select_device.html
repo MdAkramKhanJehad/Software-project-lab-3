@@ -23,10 +23,14 @@
                     {% comment %} <div class="row"> {% endcomment %}
                         <h5>Appliances</h5>
                         <div class="row d-flex justify-content-center">                           
-                            {% for device in appliances_devices %}
-                            <div class="col-sm-1 card cards w-auto mb-2 px-0 me-2 align-middle">
-                                <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                            </div>
+                            {% for device in appliances_devices %}    
+                                {% for key, value in device.items %}
+                                    {% if key == "device_name" %}
+                                        <div class="col-sm-1 card cards w-auto mb-2 px-0 me-2 align-middle">
+                                            <div class="card-body" id="{{value}}" onclick="selectedCard('{{value}}')">{{value}}</div>
+                                        </div>
+                                    {% endif %}   
+                                {% endfor %}    
                             {% endfor %}
                         </div><br>                            
                     {% comment %} </div> {% endcomment %}
@@ -35,9 +39,13 @@
                         <h5>Kitchen & Cleaning</h5>
                         <div class="row d-flex justify-content-center">
                             {% for device in kitchen_and_cleaning_devices %}
-                                <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
-                                    <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                </div>
+                                {% for key, value in device.items %}
+                                    {% if key == "device_name" %}
+                                        <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
+                                            <div class="card-body" id="{{value}}" onclick="selectedCard('{{value}}')">{{value}}</div>
+                                        </div>
+                                    {% endif %}   
+                                {% endfor %} 
                             {% endfor %}
                         </div><br>
                     {% comment %} </div> {% endcomment %}
@@ -46,9 +54,13 @@
                         <h5>Security & Safety</h5>
                         <div class="row d-flex justify-content-center">                           
                             {% for device in security_and_safety %}
-                                <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
-                                    <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                </div>
+                                {% for key, value in device.items %}
+                                    {% if key == "device_name" %}
+                                        <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
+                                            <div class="card-body" id="{{value}}" onclick="selectedCard('{{value}}')">{{value}}</div>
+                                        </div>
+                                    {% endif %}   
+                                {% endfor %}
                             {% endfor %}
                         </div><br>
                     {% comment %} </div> {% endcomment %}
@@ -57,9 +69,14 @@
                         <h5>Health & Multimedia</h5>
                         <div class="row d-flex justify-content-center">
                             {% for device in health_and_multimedia %}
-                                <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
-                                    <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                </div>
+                                {% for key, value in device.items %}
+                                    {% if key == "device_name" %}
+                                        <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
+                                            <div class="card-body" id="{{value}}" onclick="selectedCard('{{value}}')">{{value}}</div>
+                                        </div>
+                                    {% endif %}   
+                                {% endfor %}
+                                
                             {% endfor %}
                         </div><br>
                     {% comment %} </div> {% endcomment %}
@@ -68,20 +85,30 @@
                         <h5>Lights and Switches</h5>
                         <div class="row d-flex justify-content-center">                           
                             {% for device in lights_and_switches %}
-                                <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
-                                    <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                </div>
+                                {% for key, value in device.items %}
+                                    {% if key == "device_name" %}
+                                        <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
+                                            <div class="card-body" id="{{value}}" onclick="selectedCard('{{value}}')">{{value}}</div>
+                                        </div>
+                                    {% endif %}   
+                                {% endfor %}
+                                
                             {% endfor %}
                         </div><br>
                     {% comment %} </div> {% endcomment %}
 
                     {% comment %} <div class="row"> {% endcomment %}
                         <h5>Gardening Devices</h5>
-                        <div class="row d-flex justify-content-center">                           
+                        <div class="row d-flex justify-content-center">  
+                                                        
                             {% for device in gardening_devices %}
-                                <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
-                                    <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                </div>
+                                {% for key, value in device.items %}
+                                    {% if key == "device_name" %}
+                                        <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
+                                            <div class="card-body" id="{{value}}" onclick="selectedCard('{{value}}')">{{value}}</div>
+                                        </div>
+                                    {% endif %}   
+                                {% endfor %} 
                             {% endfor %}
                         </div><br>
                     {% comment %} </div> {% endcomment %}
@@ -90,9 +117,14 @@
                         <h5>Sensors</h5>
                         <div class="row d-flex justify-content-center">                           
                             {% for device in sensors_devices %}
-                                <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
-                                    <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                </div>
+                                {% for key, value in device.items %}
+                                    {% if key == "device_name" %}
+                                        <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
+                                            <div class="card-body" id="{{value}}" onclick="selectedCard('{{value}}')">{{value}}</div>
+                                        </div>
+                                    {% endif %}   
+                                {% endfor %}
+                                
                             {% endfor %}
                         </div><br>
                     {% comment %} </div> {% endcomment %}
@@ -101,9 +133,13 @@
                         <h5>Others</h5>
                         <div class="row d-flex justify-content-center">       
                             {% for device in others_devices %}
-                                <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
-                                    <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
-                                </div>
+                                {% for key, value in device.items %}
+                                    {% if key == "device_name" %}
+                                        <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
+                                            <div class="card-body" id="{{value}}" onclick="selectedCard('{{value}}')">{{value}}</div>
+                                        </div>
+                                    {% endif %}   
+                                {% endfor %}    
                             {% endfor %}                               
                         </div>                                                       
                     {% comment %} </div> {% endcomment %}

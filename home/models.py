@@ -1,4 +1,5 @@
 from django.db import models
+import json
 
 # Create your models here.
 class Device(models.Model):
@@ -7,6 +8,9 @@ class Device(models.Model):
 
     def __str__(self):
         return self.device_name
+    
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
 
 class DeviceAttribute(models.Model):
