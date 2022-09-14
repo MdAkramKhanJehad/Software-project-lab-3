@@ -229,16 +229,17 @@ function getAllNewlyCreatedRoutines(){
         routine["trigger"] = trigger;
         routine["action"] = action   
         createdRoutines.push(routine);
-            
+        
+        actualDevicesUsedInRoutineCreation.push(currentlySelectedDevice);
         // console.log(routine);
     }
 
-    console.log("DEVICES REL:" + actualDevicesUsedInRoutineCreation)
+    console.log("D/EVICES REL:" + actualDevicesUsedInRoutineCreation);
 }
 
 
 $('#nextBtn').click(function(){
-    var url, routineData = {};
+    var url, routineData = {}, device = {}, str = "";
     
     url = "/home/create/routine";
     getAllNewlyCreatedRoutines();
@@ -247,14 +248,20 @@ $('#nextBtn').click(function(){
         routineData[i] = createdRoutines[i];
     }
 
+    for (let i = 0; i < actualDevicesUsedInRoutineCreation.length; i++) {
+        str = str.concat(actualDevicesUsedInRoutineCreation[i], ",");
+    }
+    str = str.slice(0, -1);
+    device[0] = str;
+
     $.ajax(
         {
             type:"POST",
             url: url,
             headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
             data: {
-                routines: routineData
-                // device: actualDevicesUsedInRoutineCreation
+                routines: routineData,
+                devices: device
             },
             success: function() 
             {   
