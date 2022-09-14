@@ -37,3 +37,14 @@ def get_execution_indicators_from_session(request, pageNo):
         print("*****no ei available in page {}*******".format(pageNo), end="\n\n")
         
     return execution_indicators_list
+
+def get_relevant_devices_from_session(request, pageNo):
+    relevant_devices_list = []
+    
+    if request.session.get("relevant_device_list"):
+        relevant_devices_list = request.session["relevant_device_list"]
+        # print("selected ei available page {}: ".format(pageNo), execution_indicators_list , end="\n") 
+    else:
+        print("*****no relevant device available in page {}*******".format(pageNo), end="\n\n")
+        
+    return relevant_devices_list

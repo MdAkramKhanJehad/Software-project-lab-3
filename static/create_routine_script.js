@@ -234,7 +234,7 @@ function getAllNewlyCreatedRoutines(){
         // console.log(routine);
     }
 
-    console.log("D/EVICES REL:" + actualDevicesUsedInRoutineCreation);
+    // console.log("DEVICES REL:" + actualDevicesUsedInRoutineCreation);
 }
 
 

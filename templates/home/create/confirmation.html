@@ -14,17 +14,17 @@
         
         <div id="page-number" data-page-number="{{page}}"></div>
         <div id="created-routines" data-created-routines="{{created_routines_list}}"></div>
-        <div id="selected-devices" data-selected-devices="{{selected_devices_list}}"></div>
+        <div id="selected-devices" data-selected-devices="{{relevant_devices_list}}"></div>
 
         
         <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
             <div class="row w-auto mb-2 px-4 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
-                <h4 class='text-center px-2 py-1' style="color: #004d00">Your Selected Devices:</h4>
+                <h4 class='text-center px-2 py-1' style="color: #004d00">Devices</h4>
             </div> 
         </div>
         
         <div class='row justify-content-center'>
-            {% for device in selected_devices_list %}
+            {% for device in relevant_devices_list %}
                 <div class="card cards w-auto mb-2 px-0 me-3">
                     <div class="card-body text-center align-middle" id="{{device}}" data-index="{{forloop.counter0}}">{{device}}</div>
                 </div>
@@ -33,7 +33,7 @@
 
         <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
             <div class="row w-auto px-4 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
-                <h4 class='text-center px-2' style="color: #004d00">Your Created Routines and Execution Indicators:</h4>
+                <h4 class='text-center px-2' style="color: #004d00">Created Routines and Execution Indicators</h4>
             </div> 
         </div>
 

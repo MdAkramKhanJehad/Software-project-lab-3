@@ -59,6 +59,7 @@ function getPreviouslyCreatedRoutinesFromSession(){
     previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("']", '"]');
     previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("'", "\'");
 
+    console.log("######## prev" + previouslyCreatedRoutines);
     previouslyCreatedRoutines = JSON.parse(previouslyCreatedRoutines);
 
     if(previousEICount == previouslyCreatedRoutines.length)

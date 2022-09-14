@@ -7,7 +7,7 @@ import time
 import pymongo
 import environ
 from spl_3 import settings
-from home.methods import get_created_routine_from_session, get_selected_devices_from_session, get_environmental_variable, get_execution_indicators_from_session
+from home.methods import get_created_routine_from_session, get_selected_devices_from_session, get_environmental_variable, get_execution_indicators_from_session, get_relevant_devices_from_session
 from datetime import datetime
 
 env = environ.Env()
@@ -193,7 +193,8 @@ def create_routine(request):
     
     # if request.session.get("relevant_device_list"):
     #     del request.session["relevant_device_list"]
-    #     request.session.modified = True
+    #     del request.session["created_routines"]
+        # request.session.modified = True
     #     print("session deletedddd")
     # get and save session after next button clicking 
     if request.method == 'POST':
@@ -397,9 +398,9 @@ def create_execution_indication(request):
     # print("ei from session page 4 out post: ", execution_indicators_list , end="\n\n")
         
     context = { 
-        'created_routines_list' : created_routines_list,
+        'routines_and_relevant_device_list' : zip(created_routines_list, relevant_device_list),
         'execution_indicators_list' : execution_indicators_list, 
-        'relevant_device_list' : relevant_device_list,      
+        'created_routines_list' : created_routines_list,      
         'page': 4 
     }
 
@@ -407,7 +408,7 @@ def create_execution_indication(request):
 
 
 def confirmation(request):
-    
+    relevant_devices_list = get_relevant_devices_from_session(request, 5)
     created_routines_list = get_created_routine_from_session(request, 5)
     selected_devices_list = get_selected_devices_from_session(request, 5)
     execution_indicators_list = get_execution_indicators_from_session(request, 5)
@@ -416,14 +417,14 @@ def confirmation(request):
     
     if len(selected_devices_list) == 0:
         return redirect('select_device')
-    elif len(created_routines_list) == 0:
+    elif len(created_routines_list) == 0 or len(relevant_devices_list) == 0:
         return redirect('create_routine')
     elif len(execution_indicators_list) == 0:
         return redirect('create_execution_indicators')
     
     request.session["current_page"] = "confirmation"
     context = { 
-        'selected_devices_list' : selected_devices_list, 
+        'relevant_devices_list' : relevant_devices_list, 
         'created_routines_list' : zip(created_routines_list, execution_indicators_list),  
         'page': 5 
     }
