@@ -6,6 +6,7 @@ var totalRoutine = 1;
 var previouslyCreatedRoutines;
 var totalPreviouslyCreatedRoutines = 0;
 var createdRoutines = [];
+var actualDevicesUsedInRoutineCreation = []
 var environmental_variables;
 var currentlySelectedDeviceCommands = [];
 
@@ -28,7 +29,7 @@ function getEnvironmentalVariable(){
     environmental_variables = environmental_variables.replace(/'/g, '"');
     environmental_variables = JSON.parse(environmental_variables);
 
-    console.log(environmental_variables.length);
+    // console.log(environmental_variables.length);
     // for (let i = 0; i < environmental_variables.length; i++) {
     //     console.log("Environmental Variables: " + " " + environmental_variables[i][0] + " -> " + environmental_variables[i][1]);
     // }
@@ -36,7 +37,7 @@ function getEnvironmentalVariable(){
 
 function getPreviouslyCreatedRoutinesFromSession(){
     previouslyCreatedRoutines = document.getElementById("created-routines").getAttribute("data-created-routines");
-    console.log("BEFORE PARSE:" + previouslyCreatedRoutines);
+    // console.log("BEFORE PARSE:" + previouslyCreatedRoutines);
     
     previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("['", '["');
     previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("',", '",');
@@ -67,6 +68,8 @@ function setFirstDeviceStyle(){
     selectedDevicesFromSession = JSON.parse(selectedDevicesFromSession);
     currentlySelectedDevice = selectedDevicesFromSession[0];
 
+    // console.log("CUrrently selected:" + currentlySelectedDevice)
+
     styleChangeAfterSelection(currentlySelectedDevice);
     getCurretDeviceCommands();
 }
@@ -81,6 +84,12 @@ function setFirstEnvVarStyle(){
 function showAttributes(device){
     styleChangeAfterDeselection(currentlySelectedDevice);
     currentlySelectedDevice = device;
+    //new test for getting exact device
+    document.getElementById("trigger").value = '';
+    document.getElementById("action").value = '';
+
+
+    console.log("CUrrently selected:" + currentlySelectedDevice)
     styleChangeAfterSelection(currentlySelectedDevice);
     document.getElementById(currentlyShowing).style.display = "none";
     
@@ -104,7 +113,7 @@ function getCurretDeviceCommands(){
     }
 
     // currentlySelectedDeviceCommands = attr
-    console.log("lengths: " + currentlySelectedDeviceCommands.length);
+    // console.log("lengths: " + currentlySelectedDeviceCommands.length);
 
     callAutoCompleteMethod();
 }
@@ -131,13 +140,16 @@ function addNewRoutine(){
     makeCloneNode();
     setOldRoutineTriggerActionId();
 
+    actualDevicesUsedInRoutineCreation.push(currentlySelectedDevice);
+
     document.getElementById("trigger").value = '';
     document.getElementById("action").value = '';
 
     callAutoCompleteMethod();
     
     totalRoutine += 1;
-    console.log("total routine: " + totalRoutine);
+    console.log("TOTAL ROUTINE: " + totalRoutine + " | " + currentlySelectedDevice);
+    console.log("Inside add new:" + actualDevicesUsedInRoutineCreation)
 }
 
 
@@ -206,7 +218,7 @@ function getAllNewlyCreatedRoutines(){
         routine["action"] = action   
         createdRoutines.push(routine);
 
-        console.log(routine)
+        // console.log(routine)
     }
    
     if(document.getElementById("trigger").value != "" &&  document.getElementById("action").value != ""){
@@ -218,8 +230,10 @@ function getAllNewlyCreatedRoutines(){
         routine["action"] = action   
         createdRoutines.push(routine);
             
-        console.log(routine);
+        // console.log(routine);
     }
+
+    console.log("DEVICES REL:" + actualDevicesUsedInRoutineCreation)
 }
 
 
@@ -240,6 +254,7 @@ $('#nextBtn').click(function(){
             headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
             data: {
                 routines: routineData
+                // device: actualDevicesUsedInRoutineCreation
             },
             success: function() 
             {   
