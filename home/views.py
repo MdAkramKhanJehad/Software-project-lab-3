@@ -354,6 +354,7 @@ def edit_delete_routine(request):
 
 def create_execution_indication(request):
     execution_indicators_list = []
+    relevant_device_list = []
     created_routines_list = get_created_routine_from_session(request, 4)
     selected_devices_list = get_selected_devices_from_session(request, 4)
     
@@ -364,7 +365,7 @@ def create_execution_indication(request):
     
     request.session["current_page"] = "create_execution_indication"
     
-    print("inside create ei:", len(created_routines_list))
+    # print("inside create ei:", len(created_routines_list))
 
     # if request.session.get("execution_indicators"):
     #     del request.session["execution_indicators"]
@@ -382,20 +383,23 @@ def create_execution_indication(request):
                                               data["execution_indicators[{}][4]".format(i)]])
 
         # print("EI List: ", len(execution_indicators_list), " | ", execution_indicators_list)
-        
+        print("inside post: ", execution_indicators_list)
         request.session["execution_indicators"] = execution_indicators_list
+        request.session.save()
         request.session.modified = True
-   
         # print("ei data from session page 4 inside if: ", request.session.get("execution_indicators") , end="\n\n")
     
     if request.session.get("execution_indicators"):
         execution_indicators_list = request.session["execution_indicators"]    
-        
+
+    if request.session.get("relevant_device_list"):
+        relevant_device_list = request.session["relevant_device_list"]
     # print("ei from session page 4 out post: ", execution_indicators_list , end="\n\n")
         
     context = { 
         'created_routines_list' : created_routines_list,
-        'execution_indicators_list' : execution_indicators_list,       
+        'execution_indicators_list' : execution_indicators_list, 
+        'relevant_device_list' :relevant_device_list,      
         'page': 4 
     }
 
@@ -403,12 +407,12 @@ def create_execution_indication(request):
 
 
 def confirmation(request):
-    time.sleep(0.05)
+    
     created_routines_list = get_created_routine_from_session(request, 5)
     selected_devices_list = get_selected_devices_from_session(request, 5)
     execution_indicators_list = get_execution_indicators_from_session(request, 5)
     
-    print("inside conf: ", len(created_routines_list), " | ", len(selected_devices_list), " | ", len(execution_indicators_list))
+    print("inside conf: ", execution_indicators_list)
     
     if len(selected_devices_list) == 0:
         return redirect('select_device')
@@ -443,5 +447,3 @@ def complete(request):
     request.session["current_page"] = "complete"
     
     return render(request, 'home/complete/complete.html')
-
-

@@ -85,7 +85,7 @@ function showButton(){
         document.getElementById("prevBtn").href = "/home/create/routine";
 
     } else if( pageNo == 4){
-        document.getElementById("nextBtn").href = "/home/create/confirmation";
+        // document.getElementById("nextBtn").href = "/home/create/confirmation";
         document.getElementById("prevBtn").href = "/home/create/edit-delete-routine";
         
     } else {
