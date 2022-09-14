@@ -231,7 +231,7 @@ def create_routine(request):
                 
         for i in range(int(len(data)/2)):
             created_routines_list.append([data["routines[{}][trigger]".format(i)], data["routines[{}][action]".format(i)]])
-
+        print("CREATED ROUTINES*******:", len(created_routines_list), " | ", created_routines_list )
         request.session["created_routines"] = created_routines_list
         request.session.modified = True
         # print("data from session page 2: ", request.session.get("created_routines") , end="\n\n")
@@ -399,7 +399,7 @@ def create_execution_indication(request):
     context = { 
         'created_routines_list' : created_routines_list,
         'execution_indicators_list' : execution_indicators_list, 
-        'relevant_device_list' :relevant_device_list,      
+        'relevant_device_list' : relevant_device_list,      
         'page': 4 
     }
 
