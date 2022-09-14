@@ -20,3 +20,27 @@
 //         console.log("EI's: " + " " + executionIndicatorsList[i][0] + " -> " + executionIndicatorsList[i][1]);
 //     }
 // }
+
+
+$('#nextBtn').click(function(){
+    var url, routineData = {"0":"0"};
+    
+    url = "/home/create/confirmation";
+
+    $.ajax(
+        {
+            type:"POST",
+            url: url,
+            headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
+            data: {
+                routines: routineData,
+            },
+            success: function() 
+            {   
+                console.log("successssssssss");
+                window.location.href = "/home/create/complete";
+            }
+        }
+    );
+    
+});

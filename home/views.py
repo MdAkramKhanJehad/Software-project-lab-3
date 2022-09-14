@@ -7,7 +7,7 @@ import time
 import pymongo
 import environ
 from spl_3 import settings
-from home.methods import get_created_routine_from_session, get_selected_devices_from_session, get_environmental_variable, get_execution_indicators_from_session, get_relevant_devices_from_session
+from home.methods import get_created_routine_from_session, get_selected_devices_from_session, get_environmental_variable, get_execution_indicators_from_session, get_relevant_devices_from_session, get_final_json_for_database
 from datetime import datetime
 
 env = environ.Env()
@@ -66,17 +66,21 @@ def select_device(request):
         
     if "all_devices" not in request.session and "all_devices_attributes" not in request.session:
         print("******NOT IN SESSION - GET FROM MONGO********")
-        # print("Current Time 4 =", datetime.now().strftime("%H:%M:%S"))
-        connect_string = "mongodb+srv://genrout_routine_database:i59nQ7WWbHvMFyjX@routine.wjgsswb.mongodb.net/?retryWrites=true&w=majority"
-        my_client = pymongo.MongoClient(connect_string)
-        db = env("DATABASE_NAME")
-        cl_name = env("DEVICE_COLLECTION_NAME")
-        dbname = my_client[db]
-        collection_name  = dbname[cl_name]
-        # count = collection_name.count()
-        # print("********COLLECTION_COUNT FROM MONGODB:", count)
         
-        device_details = collection_name.find({})
+        device_details = []
+        try:
+            connect_string = "mongodb+srv://genrout_routine_database:i59nQ7WWbHvMFyjX@routine.wjgsswb.mongodb.net/?retryWrites=true&w=majority"
+            my_client = pymongo.MongoClient(connect_string)
+            db = env("DATABASE_NAME")
+            cl_name = env("DEVICE_COLLECTION_NAME")
+            dbname = my_client[db]
+            collection_name  = dbname[cl_name]            
+            device_details = collection_name.find({})
+        finally:
+            my_client.close()
+
+        # print("Current Time 4 =", datetime.now().strftime("%H:%M:%S"))
+        
         # print("Current Time 5 =", datetime.now().strftime("%H:%M:%S"))
         
         for dev in device_details:
@@ -220,14 +224,14 @@ def create_routine(request):
                 request.session["relevant_device_list"] = relevant_device_list
                 
                 print("Current Time 5 =", datetime.now().strftime("%H:%M:%S"))
-                print("********Current relevant device list 111:", relevant_device_list)
+                # print("********Current relevant device list 111:", relevant_device_list)
                 
             else:
                 print("Current Time 6 =", datetime.now().strftime("%H:%M:%S"))
                 request.session["relevant_device_list"] = new_relevant_device_list
                 
                 print("Current Time 7 =", datetime.now().strftime("%H:%M:%S"))
-                print("********Current relevant device list 222:", new_relevant_device_list)
+                # print("********Current relevant device list 222:", new_relevant_device_list)
                 
                 
         for i in range(int(len(data)/2)):
@@ -384,7 +388,7 @@ def create_execution_indication(request):
                                               data["execution_indicators[{}][4]".format(i)]])
 
         # print("EI List: ", len(execution_indicators_list), " | ", execution_indicators_list)
-        print("inside post: ", execution_indicators_list)
+        # print("inside post: ", execution_indicators_list)
         request.session["execution_indicators"] = execution_indicators_list
         request.session.save()
         request.session.modified = True
@@ -416,7 +420,7 @@ def confirmation(request):
     selected_devices_list = get_selected_devices_from_session(request, 5)
     execution_indicators_list = get_execution_indicators_from_session(request, 5)
     
-    print("inside conf: ", execution_indicators_list)
+    # print("inside conf: ", execution_indicators_list)
     
     if len(selected_devices_list) == 0:
         return redirect('select_device')
@@ -426,6 +430,32 @@ def confirmation(request):
         return redirect('create_execution_indicators')
     
     request.session["current_page"] = "confirmation"
+    
+    current_user_id = request.session["current_user_id"]
+    
+    if request.method == 'POST':
+        final_json = get_final_json_for_database(current_user_id, relevant_devices_list, created_routines_list, execution_indicators_list)
+        
+        try:
+            connect_string = "mongodb+srv://genrout_routine_database:i59nQ7WWbHvMFyjX@routine.wjgsswb.mongodb.net/?retryWrites=true&w=majority"
+            my_client = pymongo.MongoClient(connect_string)
+            db = env("DATABASE_NAME")
+            cl_name = env("ROUTINE_COLLECTION_NAME")
+            dbname = my_client[db]
+            collection_name  = dbname[cl_name]
+            collection_name.insert_one(final_json)
+        finally:
+            my_client.close()
+            del request.session["selected_devices"]
+            del request.session["created_routines"]
+            del request.session["execution_indicators"]
+            del request.session["relevant_device_list"]
+            request.session.modified = True
+        
+        # print("INSIDE confirmation: final json:", final_json)
+    
+    
+    
     context = { 
         'relevant_devices_list' : relevant_devices_list, 
         'created_routines_list' : zip(created_routines_list, execution_indicators_list),  
@@ -449,5 +479,8 @@ def complete(request):
             return redirect('confirmation')
     
     request.session["current_page"] = "complete"
+    
+    
+    
     
     return render(request, 'home/complete/complete.html')
