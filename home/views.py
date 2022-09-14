@@ -408,6 +408,9 @@ def create_execution_indication(request):
 
 
 def confirmation(request):
+    if request.session["current_page"] == "complete":
+        return redirect("home")
+        
     relevant_devices_list = get_relevant_devices_from_session(request, 5)
     created_routines_list = get_created_routine_from_session(request, 5)
     selected_devices_list = get_selected_devices_from_session(request, 5)
