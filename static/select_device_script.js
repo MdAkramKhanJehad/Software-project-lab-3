@@ -38,7 +38,7 @@ function styleChangeAfterSelection(device){
     document.getElementById(device).className += " selected";
     console.log(document.getElementById(device).getAttribute('class'));
 
-    document.getElementById(device).style.transform = "scale(1.1)";
+    document.getElementById(device).style.transform = "scale(1.11)";
     document.getElementById(device).style.boxShadow = "5px 6px 6px 2px #e9ecef";
     document.getElementById(device).style.backgroundColor = "#198754";
     document.getElementById(device).style.color = "white";

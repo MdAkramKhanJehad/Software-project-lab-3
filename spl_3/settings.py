@@ -85,20 +85,31 @@ WSGI_APPLICATION = 'spl_3.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
 env = environ.Env()
 environ.Env.read_env()
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': env("DATABASE_NAME"),
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'mongodb+srv://genrout_routine_database:i59nQ7WWbHvMFyjX@routine.wjgsswb.mongodb.net/?retryWrites=true&w=majority'
-        }  
+        'USER': env("DATABASE_USERNAME"),
+        'PASSWORD': env("DATABASE_PASSWORD"),
+        'HOST':env("DATABASE_HOST"),
+        'PORT':env("DATABASE_PORT"),
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': env("DATABASE_NAME"),
+#         'ENFORCE_SCHEMA': False,
+#         'CLIENT': {
+#             'host': 'mongodb+srv://genrout_routine_database:i59nQ7WWbHvMFyjX@routine.wjgsswb.mongodb.net/?retryWrites=true&w=majority'
+#         }  
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

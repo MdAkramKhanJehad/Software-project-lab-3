@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from login.models import NewUser
-from home.models import Device, DeviceAttribute
+from home.models import *
 import json
 import os
 import time
@@ -48,81 +48,8 @@ def tutorial(request):
 
 
 def select_device(request):
-    # print("Current Time 1 =", datetime.now().strftime("%H:%M:%S"))
-    
     selected_device_list = []
-    all_devices = []
-    all_device_attributes = []
     
-    
-    # print("Current Time 2 =", datetime.now().strftime("%H:%M:%S"))
-    
-    # del request.session["all_devices"]
-    # request.session.modified = True
-    # del request.session["all_devices_attributes"]
-    # request.session.modified = True
-    # print("Current Time 3 =", datetime.now().strftime("%H:%M:%S"))
-    # if request.session.get("all_devices"):
-        
-    if "all_devices" not in request.session and "all_devices_attributes" not in request.session:
-        print("******NOT IN SESSION - GET FROM MONGO********")
-        
-        device_details = []
-        try:
-            connect_string = "mongodb+srv://genrout_routine_database:i59nQ7WWbHvMFyjX@routine.wjgsswb.mongodb.net/?retryWrites=true&w=majority"
-            my_client = pymongo.MongoClient(connect_string)
-            db = env("DATABASE_NAME")
-            cl_name = env("DEVICE_COLLECTION_NAME")
-            dbname = my_client[db]
-            collection_name  = dbname[cl_name]            
-            device_details = collection_name.find({})
-        finally:
-            my_client.close()
-
-        # print("Current Time 4 =", datetime.now().strftime("%H:%M:%S"))
-        
-        # print("Current Time 5 =", datetime.now().strftime("%H:%M:%S"))
-        
-        for dev in device_details:
-            device_and_attributes = {}
-            single_device_attributes = []
-            
-            # print(type(dev))
-            # print(dev)
-            # print("Device name:", list(dev.keys())[1])
-            # print("Device category: ", dev[list(dev.keys())[1]][0]['Category'])
-            # print("Device attr: ", dev[list(dev.keys())[1]][1]['AttributesAndDescriptions'])
-            
-            new_device = Device(device_name=list(dev.keys())[1], category=dev[list(dev.keys())[1]][0]['Category'])
-            all_devices.append(new_device.toJSON())
-            device_and_attributes["device_name"] = list(dev.keys())[1]
-            
-            attrs = dev[list(dev.keys())[1]][1]['AttributesAndDescriptions']
-            
-            for devattr in attrs:
-                # print("attr: ", list(devattr.keys())[0])
-                # print("action: ", devattr[list(devattr.keys())[0]])
-                # print("desc: ", devattr["desc"])
-                
-                single_attribute = [list(devattr.keys())[0], devattr[list(devattr.keys())[0]], devattr["desc"]]
-                single_device_attributes.append(single_attribute)
-                
-            device_and_attributes["device_attributes"] = single_device_attributes
-            all_device_attributes.append(device_and_attributes)
-        
-        # print("Current Time 6 after for loop =", datetime.now().strftime("%H:%M:%S"))
-        # print("All device length:", len(all_devices), " | dev attr length:", len(all_device_attributes) )
-        
-        request.session["all_devices"] = all_devices
-        request.session["all_devices_attributes"] = all_device_attributes
-        # print("Current Time 7 after for loop =", datetime.now().strftime("%H:%M:%S"))
-    else:
-        # print("Current Time 3.5 =", datetime.now().strftime("%H:%M:%S"))
-        all_devices = request.session["all_devices"]
-        # print("Current Time 4 =", datetime.now().strftime("%H:%M:%S"))
-        print("******GOT IN SESSION********")
-    
-    # print("*************Session in seldev:", request.session["all_devices_attributes"] )   
     request.session["current_page"] = "select_device"
     
     # del request.session["created_routines"]
@@ -130,7 +57,9 @@ def select_device(request):
     # del request.session["selected_devices"]
     # request.session.modified = True
     
+    # get and save session after next button clicking
     if request.method == 'POST':
+
         response_json = request.POST
         response_json = json.dumps(response_json)
         data = json.loads(response_json)
@@ -150,20 +79,43 @@ def select_device(request):
     else:
         print("no session available")
        
-   
-    # print(all_devices[0])
-    appliances_devices = [json.loads(x) for x in all_devices if json.loads(x)["category"] == "Appliances"] 
-    kitchen_and_cleaning_devices = [json.loads(x) for x in all_devices if json.loads(x)["category"] == "Kitchen & Cleaning"]
-    security_and_safety = [json.loads(x) for x in all_devices if json.loads(x)["category"] == "Security & Safety"]
-    multimedia = [json.loads(x) for x in all_devices if json.loads(x)["category"] == "Multimedia"]
-    health = [json.loads(x) for x in all_devices if json.loads(x)["category"] == "Health"]
-    lights_and_switches = [json.loads(x) for x in all_devices if json.loads(x)["category"] == "Lights & Switches"]
-    gardening_devices = [json.loads(x) for x in all_devices if json.loads(x)["category"] == "Gardening Devices"]
-    sensors_devices = [json.loads(x) for x in all_devices if json.loads(x)["category"] == "Sensors"]
-    others_devices = [json.loads(x) for x in all_devices if json.loads(x)["category"] == "Others"]
+       
+    # get all device from db    
+    device_list = DeviceData.objects.all()
 
-    # print("TYPE: ", type(health), " | ", type(multimedia))
-    health_multimedia = health + multimedia
+    if len(device_list) == 0:
+        f = open(os.path.join(settings.STATIC_ROOT, 'data/device_data_updated.json'))
+        data = json.load(f)
+
+        # print("data/device_data.json:",data)
+    
+    
+        for item in data:
+            # print("device: ", list(item.keys())[0])
+            # print("category: ", item[current_device_name][0][list(item[current_device_name][0].keys())[0]])
+            current_device_name = list(item.keys())[0]
+            new_device = DeviceData(device_name=current_device_name, category=item[current_device_name][0][list(item[current_device_name][0].keys())[0]])
+            new_device.save()
+
+            for attr in item[current_device_name][1][list(item[current_device_name][1].keys())[0]]:
+                new_attribute = DeviceAttributeData(attribute=list(attr.keys())[0], action=attr[list(attr.keys())[0]], description=attr[list(attr.keys())[1]], device=new_device)
+                # print("NEW***:", new_attribute.action)
+                new_attribute.save()
+
+        print("device data inserted")
+
+    appliances_devices = DeviceData.objects.all().filter(category="Appliances")
+    kitchen_and_cleaning_devices = DeviceData.objects.all().filter(category="Kitchen & Cleaning")
+    security_and_safety = DeviceData.objects.all().filter(category="Security & Safety")
+    multimedia = DeviceData.objects.all().filter(category="Multimedia")
+    health = DeviceData.objects.all().filter(category="Health")
+    lights_and_switches = DeviceData.objects.all().filter(category="Lights & Switches")
+    gardening_devices = DeviceData.objects.all().filter(category="Gardening Devices")
+    sensors_devices = DeviceData.objects.all().filter(category="Sensors")
+    others_devices = DeviceData.objects.all().filter(category="Others")
+
+    health_multimedia = health | multimedia
+
     # print("Total: ", len(appliances_devices) , " ", len(kitchen_and_cleaning_devices), " ", len(security_and_safety) , " ", len(health) , len(multimedia))
 
     context = {
@@ -187,21 +139,14 @@ def create_routine(request):
         return redirect('select_device')
     
     request.session["current_page"] = "create_routine"
-     
     selected_device_list = get_selected_devices_from_session(request, 2)
     environmental_variable = get_environmental_variable()
     deviceAttributeList = []
     created_routines_list = []
-    new_relevant_device_list = []
-    relevant_device_list = []
     
-    # if request.session.get("relevant_device_list"):
-    #     del request.session["relevant_device_list"]
-    #     del request.session["created_routines"]
-        # request.session.modified = True
-    #     print("session deletedddd")
     # get and save session after next button clicking 
     if request.method == 'POST':
+
         print("Current Time 0 =", datetime.now().strftime("%H:%M:%S"))
         response_json = request.POST
         response_json = json.dumps(response_json)
@@ -224,14 +169,14 @@ def create_routine(request):
                 request.session["relevant_device_list"] = relevant_device_list
                 
                 print("Current Time 5 =", datetime.now().strftime("%H:%M:%S"))
-                # print("********Current relevant device list 111:", relevant_device_list)
+                print("********Current relevant device list 111:", relevant_device_list)
                 
             else:
                 print("Current Time 6 =", datetime.now().strftime("%H:%M:%S"))
                 request.session["relevant_device_list"] = new_relevant_device_list
                 
                 print("Current Time 7 =", datetime.now().strftime("%H:%M:%S"))
-                # print("********Current relevant device list 222:", new_relevant_device_list)
+                print("********Current relevant device list 222:", new_relevant_device_list)
                 
                 
         for i in range(int(len(data)/2)):
@@ -239,7 +184,6 @@ def create_routine(request):
         print("CREATED ROUTINES*******:", len(created_routines_list), " | ", created_routines_list )
         request.session["created_routines"] = created_routines_list
         request.session.modified = True
-        # print("data from session page 2: ", request.session.get("created_routines") , end="\n\n")
         
         # del request.session["created_routines"]
         # request.session.modified = True
@@ -247,31 +191,33 @@ def create_routine(request):
     # get previously created routines, if available in session
     created_routines_list = get_created_routine_from_session(request, 2)
     
+    
     # request data from 2 table for those device
     if len(selected_device_list) > 0:
         deviceAttributeList = []
         
-        # print("Current Time in create routine 1 =", datetime.now().strftime("%H:%M:%S"))
-        attrList = request.session["all_devices_attributes"]
-        # print("Current Time in create routine 2 =", datetime.now().strftime("%H:%M:%S"))
-        # print("TYPE:", type(attrList), " | ", attrList)
-        
-        
-        for selDev in selected_device_list:
-            for devAttrItem in attrList:
-                if devAttrItem['device_name'] == selDev:
-                    deviceAttributeList.append(devAttrItem["device_attributes"])
-        
-        # selected_devices_attributes = [x for x in attrList if x["device_name"] in selected_device_list]
-        # print("Current Time in create routine 3 =", datetime.now().strftime("%H:%M:%S"))
-        # print("Len:", len(selected_devices_attributes))
-                
-        # for device_attribute in selected_devices_attributes:
-        #     deviceAttributeList.append(device_attribute["device_attributes"])
+        for device in selected_device_list:
+            attrDesc = {}
+            current_device = DeviceData.objects.get(device_name=device)
+            # attributeDescriptionFromDb = DeviceAttributeData.objects.filter(device__device_name__contains=device)
+            attributeDescriptionFromDb = DeviceAttributeData.objects.filter(device=current_device)
+            # print("BEFORE:: type:", type(attributeDescriptionFromDb), " | VAL:", attributeDescriptionFromDb)
+            attributeDescriptionFromDb = list(attributeDescriptionFromDb)
             
-        # print("Current Time in create routine 4 =", datetime.now().strftime("%H:%M:%S"))        
-    # print("*************sel dev attr:", type(deviceAttributeList) )    
-    
+            counter = 0
+            for a in attributeDescriptionFromDb:
+                # if device == "Valve":
+                #     print("****VALVE***", a.attribute)
+                attrOfSingle = []
+                attrOfSingle.append(a.attribute)
+                attrOfSingle.append(a.action)
+                attrOfSingle.append(a.description)
+                attributeDescriptionFromDb[counter] = attrOfSingle
+                
+                counter += 1
+                
+            deviceAttributeList.append(attributeDescriptionFromDb)
+        
     context = { 
         'previously_selected_devices': selected_device_list,
         'environmental_variables': environmental_variable,
@@ -436,23 +382,19 @@ def confirmation(request):
     if request.method == 'POST':
         final_json = get_final_json_for_database(current_user_id, relevant_devices_list, created_routines_list, execution_indicators_list)
         
-        try:
-            connect_string = "mongodb+srv://genrout_routine_database:i59nQ7WWbHvMFyjX@routine.wjgsswb.mongodb.net/?retryWrites=true&w=majority"
-            my_client = pymongo.MongoClient(connect_string)
-            db = env("DATABASE_NAME")
-            cl_name = env("ROUTINE_COLLECTION_NAME")
-            dbname = my_client[db]
-            collection_name  = dbname[cl_name]
-            collection_name.insert_one(final_json)
-        finally:
-            my_client.close()
-            del request.session["selected_devices"]
-            del request.session["created_routines"]
-            del request.session["execution_indicators"]
-            del request.session["relevant_device_list"]
-            request.session.modified = True
+        # try:
+        #     connect_string = "mongodb+srv://genrout_routine_database:i59nQ7WWbHvMFyjX@routine.wjgsswb.mongodb.net/?retryWrites=true&w=majority"
+        #     my_client = pymongo.MongoClient(connect_string)
+        #     db = env("DATABASE_NAME")
+        #     cl_name = env("ROUTINE_COLLECTION_NAME")
+        #     dbname = my_client[db]
+        #     collection_name  = dbname[cl_name]
+        #     collection_name.insert_one(final_json)
+        # finally:
+        #     my_client.close()
+            
         
-        # print("INSIDE confirmation: final json:", final_json)
+        print("INSIDE confirmation: final json:", final_json)
     
     
     
@@ -466,20 +408,30 @@ def confirmation(request):
 
 
 def complete(request):
-    if request.session["current_page"] != "confirmation":
-        print("inside not confirmation")
-        if "selected_devices" not in request.session:
-            return redirect('select_device')
-        elif "created_routines" not in request.session:
-            return redirect('create_routine')
-        elif "execution_indicators" not in request.session:
-            return redirect('create_execution_indicators')
-        else:
-            print(request.session["created_routines"], " r| ", request.session["execution_indicators"])
-            return redirect('confirmation')
+    if "execution_indicators" not in request.session:
+    # if request.session["current_page"] != "confirmation" or request.session["current_page"] != "complete":
+        # print("inside not confirmation")
+        # if "selected_devices" not in request.session:
+        #     return redirect('select_device')
+        # elif "created_routines" not in request.session:
+        #     return redirect('create_routine')
+        # elif "execution_indicators" not in request.session:
+        #     return redirect('create_execution_indicators')
+        # else:
+        #     print(request.session["created_routines"], " r| ", request.session["execution_indicators"])
+        #     return redirect('confirmation')
+        return redirect('create_execution_indicators')
     
     request.session["current_page"] = "complete"
     
+    del request.session["selected_devices"]
+    request.session.modified = True
+    del request.session["created_routines"]
+    request.session.modified = True
+    del request.session["execution_indicators"]
+    request.session.modified = True
+    del request.session["relevant_device_list"]
+    request.session.modified = True
     
     
     
