@@ -412,7 +412,7 @@ def confirmation(request):
         del request.session["relevant_device_list"]
         request.session.modified = True
         
-        print("INSIDE confirmation: final json:", final_json)
+        # print("INSIDE confirmation: final json:", final_json)
     
     
     
