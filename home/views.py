@@ -15,7 +15,14 @@ environ.Env.read_env()
 
 
 def home(request):
-    
+    # del request.session["selected_devices"]
+    # request.session.modified = True
+    # del request.session["created_routines"]
+    # request.session.modified = True
+    # del request.session["execution_indicators"]
+    # request.session.modified = True
+    # del request.session["relevant_device_list"]
+    # request.session.modified = True
     # all_users = NewUser.objects.all().filter(user_id=request.POST.get('user_id'))
     # print("INSIDE HOME 1:",  datetime.now().strftime("%H:%M:%S"))
     if request.method == "POST":
@@ -393,6 +400,17 @@ def confirmation(request):
         # finally:
         #     my_client.close()
             
+        new_routine = Routine(routine=final_json)
+        new_routine.save()
+
+        del request.session["selected_devices"]
+        request.session.modified = True
+        del request.session["created_routines"]
+        request.session.modified = True
+        del request.session["execution_indicators"]
+        request.session.modified = True
+        del request.session["relevant_device_list"]
+        request.session.modified = True
         
         print("INSIDE confirmation: final json:", final_json)
     
@@ -408,7 +426,7 @@ def confirmation(request):
 
 
 def complete(request):
-    if "execution_indicators" not in request.session:
+    # if "execution_indicators" not in request.session:
     # if request.session["current_page"] != "confirmation" or request.session["current_page"] != "complete":
         # print("inside not confirmation")
         # if "selected_devices" not in request.session:
@@ -420,19 +438,8 @@ def complete(request):
         # else:
         #     print(request.session["created_routines"], " r| ", request.session["execution_indicators"])
         #     return redirect('confirmation')
-        return redirect('create_execution_indicators')
+        # return redirect('create_execution_indicators')
     
     request.session["current_page"] = "complete"
-    
-    del request.session["selected_devices"]
-    request.session.modified = True
-    del request.session["created_routines"]
-    request.session.modified = True
-    del request.session["execution_indicators"]
-    request.session.modified = True
-    del request.session["relevant_device_list"]
-    request.session.modified = True
-    
-    
     
     return render(request, 'home/complete/complete.html')

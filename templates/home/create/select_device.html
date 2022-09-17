@@ -24,7 +24,7 @@
                         <h5>Appliances</h5>
                         <div class="row d-flex justify-content-center">                           
                             {% for device in appliances_devices %}
-                            <div class="col-sm-1 card cards w-auto mb-2 px-0 me-2 align-middle">
+                            <div class="col-sm-1 card cards w-auto mb-2 px-0 me-3 align-middle">
                                 <div class="card-body" id="{{device.device_name}}" onclick="selectedCard('{{device.device_name}}')">{{device.device_name}}</div>
                             </div>
                             {% endfor %}

@@ -17,3 +17,6 @@ class DeviceAttributeData(models.Model):
 
     def __str__(self):
         return self.attribute
+    
+class Routine(models.Model):
+    routine = models.JSONField(default=dict)
