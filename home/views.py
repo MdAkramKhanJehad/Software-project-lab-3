@@ -1,10 +1,7 @@
 from django.shortcuts import render, redirect
-from login.models import NewUser
 from home.models import *
 import json
 import os
-import time
-import pymongo
 import environ
 from spl_3 import settings
 from home.methods import get_created_routine_from_session, get_selected_devices_from_session, get_environmental_variable, get_execution_indicators_from_session, get_relevant_devices_from_session, get_final_json_for_database
