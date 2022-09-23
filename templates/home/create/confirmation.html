@@ -1,0 +1,101 @@
+{% extends 'base_create_routine.html' %}
+
+{% block page-title %}Confirmation{% endblock page-title %}
+
+{% block stylesheet-2 %}
+
+    {% load static %}
+    <link id="pagestyle" href="{% static 'style_confirmation.css' %}" type="text/css" rel="stylesheet" />
+
+{% endblock stylesheet-2 %}
+
+{% block step %}
+    <div class="step ms-3">
+        
+        <div id="page-number" data-page-number="{{page}}"></div>
+        <div id="created-routines" data-created-routines="{{created_routines_list}}"></div>
+        <div id="selected-devices" data-selected-devices="{{relevant_devices_list}}"></div>
+
+        
+        <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
+            <div class="row w-auto mb-2 px-4 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
+                <h4 class='text-center px-2 py-1' style="color: #004d00">Devices</h4>
+            </div> 
+        </div>
+        
+        <div class='row justify-content-center'>
+            {% for device in relevant_devices_list %}
+                <div class="card cards w-auto mb-2 px-0 me-3">
+                    <div class="card-body text-center align-middle" id="{{device}}" data-index="{{forloop.counter0}}">{{device}}</div>
+                </div>
+            {% endfor %}
+        </div><br>
+
+        <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
+            <div class="row w-auto px-4 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
+                <h4 class='text-center px-2' style="color: #004d00">Created Routines and Execution Indicators</h4>
+            </div> 
+        </div>
+
+        <div class="col mx-3 mb-3">
+            <div class="row">
+                <div class="routine-heading col-3 me-0 ms-3">
+                    <p class="mb-4"><h5>Previously Created Routines</h5></p>
+                </div>
+                
+                <div class="EI col-2">
+                    <p class="mb-4"><h6 class='text-left' id='EI-heading'>How often, on average, do you expect each of your routines to execute based on your interaction with your smart home device?</h6></p>
+                </div>
+                <div class="EI col-1">
+                    <p class="mb-4"><h6 class='text-left'  id='EI-heading'>When is your routine more likely to execute?</h6></p>
+                </div>
+                <div class="EI col-2">
+                    <p class="mb-4"><h6 class='text-left' id='EI-heading' style="width: 110%;" >For a given day, please select the time around which you'd expect your routines to execute. Please select all that apply.</h6></p>
+                </div>
+                <div class="EI col-2">
+                    <p class="mb-4"><h6 class='text-left' id='EI-heading'>How are your routines triggered?</h6></p>
+                </div>
+                <div class="EI col-1">
+                    <p class="mb-4"><h6 class='text-left' id='EI-heading' style="width: 120%;" >Where is your routine located?</h6></p>
+                </div>
+            </div>
+
+
+            {% for routine, ei in created_routines_list %}
+                <div class="row">
+                    <div class="routine col-3 ms-3">
+                        <p class="routine1 fs-5" id="routine-{{forloop.counter}}">{{forloop.counter}}. If {{routine.0}}, then {{routine.1}}</p>
+                    </div>
+
+                    <div class="option col-2">                     
+                        <textarea disabled class="form-control text-area py-1" style="border-radius:10px; border: 0.5px solid #198754;"  id="ei-1-{{forloop.counter}}" rows="2">{{ei.0}}</textarea>                       
+                    </div>
+
+                    <div class="option col-1">                     
+                        <textarea disabled class="form-control text-area py-2" style="border-radius:10px; border: 0.5px solid #198754;" id="ei-2-{{forloop.counter}}" rows="1">{{ei.1}}</textarea>                       
+                    </div>
+
+                    <div class="option col-2">                     
+                        <textarea disabled class="form-control text-area py-2" style="border-radius:10px; border: 0.5px solid #198754;" id="ei-3-{{forloop.counter}}" rows="1">{{ei.2}}</textarea>                       
+                    </div>
+
+                    <div class="option col-2">                     
+                        <textarea disabled class="form-control text-area py-1" style="border-radius:10px; border: 0.5px solid #198754;" id="ei-4-{{forloop.counter}}" rows="2">{{ei.3}}</textarea>                       
+                    </div>
+
+                    <div class="option col-1">                     
+                        <textarea disabled class="form-control text-area py-1" style="width: 120%; border-radius:10px; border: 0.5px solid #198754;" id="ei-5-{{forloop.counter}}" rows="1">{{ei.4}}</textarea>                       
+                    </div>
+                
+                </div> <br>
+		    {% endfor %}   
+            
+        </div>
+
+    </div>
+{% endblock step %}
+
+{% block script-2 %}
+    {% load static %}
+    <script src="{% static 'confirmation_script.js' %}"></script>
+{% endblock script-2 %}

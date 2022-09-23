@@ -1,0 +1,129 @@
+{% extends 'base_create_routine.html' %}
+
+{% block page-title %}Create EI{% endblock page-title %}
+
+{% block stylesheet-2 %}
+
+    {% load static %}
+    <link id="pagestyle" href="{% static 'style_EI_page.css' %}" type="text/css" rel="stylesheet" />
+
+{% endblock stylesheet-2 %}
+
+
+{% block step %}
+
+    <div class="step">
+        <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
+            <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
+                <div class="row w-auto px-4 bg-gradient pt-1 align-items-center" id="routine-create-page-inner-title">
+                    <h4 class='text-center px-2 py-1' style="color: #004d00">Select Execution Indicator</h4>
+                </div> 
+            </div>
+        </div>
+        {% comment %} <p class="mb-4"><h4 class='text-center'>Select Execution Indicator</h4></p> {% endcomment %}
+        
+        <div id="page-number" data-page-number="{{page}}"></div>
+        <div id="created-routines" data-created-routines="{{created_routines_list}}"></div>
+        <div id="execution-indicators" data-execution-indicators="{{execution_indicators_list}}"></div>
+
+
+        <div class="col m-3">
+            <div class="row">
+                <div class="routine-heading col-2 ms-3">
+                    <p class="mb-4"><h5 class="text-left">Routine</h5></p>
+                </div>
+                <div class="routine-heading col-1 me-4 ms-2">
+                    <p class="mb-4"><h5 class="text-left" style="width: 105%;" >Device</h5></p>
+                </div>
+
+                <div class="EI1 col-2">
+                    <p class="mb-4"><h6 class='text-left' style="width: 105%;" >How often, on average, do you expect each of your routines to execute based on your interaction with your smart home device?</h6></p>
+                </div>
+                <div class="EI2 col-1">
+                    <p class="mb-4"><h6 class='text-left' style="width: 105%;" >When is your routine more likely to execute?</h6></p>
+                </div>
+                <div class="EI3 col-2">
+                    <p class="mb-4"><h6 class='text-left' style="width: 110%;" >For a given day, please select the time around which you'd expect your routines to execute. Please select all that apply.</h6></p>
+                </div>
+                <div class="EI4 col-2">
+                    <p class="mb-4"><h6 class='text-left' style="width: 105%;" >How are your routines triggered?</h6></p>
+                </div>
+                <div class="EI5 col-1">
+                    <p class="mb-4"><h6 class='text-left'>Where is your routine located?</h6></p>
+                </div>
+            </div>
+
+
+            {% for routine, relevant_device in routines_and_relevant_device_list %}
+                <div class="row">
+                    <div class="routine col-2 ms-3">
+                        <p class="routine1 fs-5" id="routine-{{forloop.counter}}" style="width: 105%;" >{{forloop.counter}}. If {{routine.0}}, then {{routine.1}}</p>
+                    </div>
+                    <div class="relevant-device col-1 ms-2 me-3">
+                        <p class="device fs-5" id="device-{{forloop.counter}}" style="width: 110%;" >{{relevant_device}}</p>
+                    </div>
+                    <div class="option col-2">
+                        <select class="selectpicker p-2 fs-6" name="ei-1-routine-{{forloop.counter}}" id="ei-1-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
+                            <option selected disabled>Select</option>
+                            <option value="Many times in a day (5+ /day)">Many times in a day (5+ /day)</option>
+                            <option value="Few times in a day (1-5/day)">Few times in a day (1-5/day)</option>
+                            <option value="Few times in a week (1-5/week)">Few times in a week (1-5/week)</option>
+                            <option value="Few times in a month">Few times in a month</option>
+                            <option value="Few times in a year">Few times in a year</option>
+                            <option value="Not Sure">Not Sure</option>
+                        </select>
+                    </div>
+                    <div class="option col-1">
+                        <select class="selectpicker p-2 fs-6" name="ei-2-routine-{{forloop.counter}}" id="ei-2-routine-{{forloop.counter}}" style="width: 111%;" aria-label="Default select example">
+                            <option selected disabled>Select</option>
+                            <option value="Weekday">Weekday</option>
+                            <option value="Weekend">Weekend</option>
+                            <option value="Anytime">Anytime</option>
+                            <option value="Not sure">Not sure</option>
+                        </select>
+                    </div>
+                    <div class="option col-2">
+                        <select class="selectpicker p-2 fs-6" name="ei-3-routine-{{forloop.counter}}" id="ei-3-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
+                            <option selected disabled>Select</option>
+                            <option value="Morning(6am- 11am)">Morning(6am- 11am)</option>
+                            <option value="Around noon(11am-1pm)">Around noon(11am-1pm)</option>
+                            <option value="Afternoon(1pm-5pm)">Afternoon(1pm-5pm)</option>
+                            <option value="Evening(5pm-8pm)">Evening(5pm-8pm)</option>
+                            <option value="Night(8pm-6am)">Night(8pm-6am)</option>
+                            <option value="Anytime">Anytime</option>
+                            <option value="Not sure">Not sure</option>
+                        </select>
+                    </div>
+                    <div class="option col-2">
+                        <select class="selectpicker p-2 fs-6" name="ei-4-routine-{{forloop.counter}}" id="ei-4-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
+                            <option selected disabled>Select</option>
+                            <option value="Scheduled-time (e.g., brew coffee at 7 am)">Scheduled-time (e.g., brew coffee at 7 am)</option>
+                            <option value="Manually-triggered (e.g., a button press)">Manually-triggered (e.g., a button press)</option>
+                            <option value="Executed at random (e.g., every time I enter the room)">Executed at random (e.g., every time I enter the room)</option>
+                        </select>
+                    </div>
+                    <div class="option col-1">
+                        <select class="selectpicker p-2 fs-6" name="ei-5-routine-{{forloop.counter}}" id="ei-5-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
+                            <option selected disabled>Select</option>
+                            <option value="Bedroom">Bedroom</option>
+                            <option value="Kitchen">Kitchen</option>
+                            <option value="Balcony">Balcony</option>
+                            <option value="Drawing Room">Drawing Room</option>
+                            <option value="Dining Room">Dining Room</option>
+                        </select>
+                    </div>
+                
+                </div> <br>
+		    {% endfor %}
+            
+        </div>
+        
+    </div>
+
+{% endblock step %}
+
+{% block script-2 %}
+    {% load static %}
+    <script src="{% static 'execution_indicator_script.js' %}"></script>
+    {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script> {% endcomment %}
+{% endblock script-2 %}
