@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 import environ
 
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +30,7 @@ SECRET_KEY = 'django-insecure-$)msv71quznp00@vcd7#e6*h&kobsv=pe!nqtf-$v@vayy0qq5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['45.33.96.10']
+ALLOWED_HOSTS = [env("DATABASE_ALLOWED_HOST")]
 
 # SESSION_SAVE_EVERY_REQUEST = True
 
@@ -85,8 +87,6 @@ WSGI_APPLICATION = 'spl_3.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-env = environ.Env()
-environ.Env.read_env()
 
 DATABASES = {
     'default': {
