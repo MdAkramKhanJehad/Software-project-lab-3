@@ -73,3 +73,21 @@ def get_final_json_for_database(user_id, device_list, routine_list, ei_list):
     final_json["created_routines"] = routines_with_device_ei
     
     return final_json
+
+
+def delete_all_the_sessions(request):
+    if request.session.get("selected_devices"):
+        del request.session["selected_devices"]
+        request.session.modified = True
+        
+    if request.session.get("created_routines"):
+        del request.session["created_routines"]
+        request.session.modified = True
+        
+    if request.session.get("execution_indicators"):
+        del request.session["execution_indicators"]
+        request.session.modified = True
+        
+    if request.session.get("relevant_device_list"):
+        del request.session["relevant_device_list"]
+        request.session.modified = True

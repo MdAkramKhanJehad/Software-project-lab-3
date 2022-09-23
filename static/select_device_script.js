@@ -1,6 +1,12 @@
 var selectedDevices = [];
 getSelectedDeviceFromSession();
 
+document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+
+if(selectedDevices.length == 0){
+    document.getElementById('nextBtn').className += " disabled";
+} 
+
 
 function getSelectedDeviceFromSession(){
     var selectedDevicesFromSession = document.getElementById("selected-device").getAttribute("data-selected-device");
@@ -29,7 +35,14 @@ function selectedCard(device){
         selectedDevices.push(device);
         styleChangeAfterSelection(device);
     }
-    
+
+    if(selectedDevices.length > 0){
+        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+    } else if(selectedDevices.length == 0){
+        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        document.getElementById('nextBtn').className += " disabled";
+    }
+
     console.log("all dev : " + selectedDevices);
 }
 

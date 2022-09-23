@@ -4,7 +4,7 @@ import json
 import os
 import environ
 from spl_3 import settings
-from home.methods import get_created_routine_from_session, get_selected_devices_from_session, get_environmental_variable, get_execution_indicators_from_session, get_relevant_devices_from_session, get_final_json_for_database
+from home.methods import get_created_routine_from_session, get_selected_devices_from_session, get_environmental_variable, get_execution_indicators_from_session, get_relevant_devices_from_session, get_final_json_for_database, delete_all_the_sessions
 from datetime import datetime
 
 env = environ.Env()
@@ -27,6 +27,7 @@ def home(request):
         #     user_id = request.POST.get('user_id')
         #     new_user = NewUser(user_id=user_id)
         #     new_user.save()
+        delete_all_the_sessions(request)
         request.session["current_user_id"] = request.POST.get('user_id')
         # print("****CURRENT USER****: ", request.session["current_user_id"])
     
@@ -400,14 +401,7 @@ def confirmation(request):
         new_routine = Routine(routine=final_json)
         new_routine.save()
 
-        del request.session["selected_devices"]
-        request.session.modified = True
-        del request.session["created_routines"]
-        request.session.modified = True
-        del request.session["execution_indicators"]
-        request.session.modified = True
-        del request.session["relevant_device_list"]
-        request.session.modified = True
+        delete_all_the_sessions(request)
         
         # print("INSIDE confirmation: final json:", final_json)
     
