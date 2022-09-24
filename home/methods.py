@@ -63,9 +63,10 @@ def get_final_json_for_database(user_id, device_list, routine_list, ei_list):
     for i in range(len(routine_list)):
         single_routine_data = {}
         
-        single_routine_data["related_device"] = device_list[i]
         single_routine_data["trigger"] = routine_list[i][0]
+        single_routine_data["trigger_relevant_device"] = device_list[i][0]
         single_routine_data["action"] = routine_list[i][1]
+        single_routine_data["action_relevant_device"] = device_list[i][1]
         single_routine_data["execution_indicators"] = [ei_list[i][0], ei_list[i][1], ei_list[i][2], ei_list[i][3], ei_list[i][4]]
         
         routines_with_device_ei.append(single_routine_data)    

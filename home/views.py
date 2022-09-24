@@ -145,6 +145,7 @@ def create_routine(request):
     
     request.session["current_page"] = "create_routine"
     selected_device_list = get_selected_devices_from_session(request, 2)
+    relevant_devices_list = get_relevant_devices_from_session(request, 2)
     environmental_variable = get_environmental_variable()
     deviceAttributeList = []
     created_routines_list = []
@@ -160,28 +161,43 @@ def create_routine(request):
         # print("CR data:", data["devices[0]"], " \n\nkeys:", data.keys())
         print("Current Time 1 =", datetime.now().strftime("%H:%M:%S"))
         
-        new_relevant_device_list = data["devices[0]"].split(",")
+        new_relevant_device_list_temp = data["devices[0]"].split(",")
+        new_relevant_device_list = []
         
-        print("new_relevant_device_list:", new_relevant_device_list)
+        for i in range(int(len(new_relevant_device_list_temp))):
+            if i%2 == 0:
+                new_relevant_device_list.append([new_relevant_device_list_temp[i],new_relevant_device_list_temp[i+1]])
+        
+        print("******", len(new_relevant_device_list), "   | ", type(new_relevant_device_list))
+        print("NEW ******** REL DEV:", new_relevant_device_list)
+        
+        # print("new_relevant_device_list:", new_relevant_device_list)
         print("Current Time 2 =", datetime.now().strftime("%H:%M:%S"))
-        if len(new_relevant_device_list) > 0 and len(new_relevant_device_list[0]) > 1:
-            if request.session.get("relevant_device_list"):
-                print("Current Time 3 =", datetime.now().strftime("%H:%M:%S"))
-                relevant_device_list = request.session["relevant_device_list"]
-                relevant_device_list = relevant_device_list + new_relevant_device_list
+        
+        request.session["relevant_device_list"] = new_relevant_device_list
+        # if len(new_relevant_device_list) > 0 and len(new_relevant_device_list[0]) > 1:
+            
+        #     request.session["relevant_device_list"] = new_relevant_device_list
+            
+            # if request.session.get("relevant_device_list"):
+            #     print("Current Time 3 =", datetime.now().strftime("%H:%M:%S"))
+            #     relevant_device_list = request.session["relevant_device_list"]
                 
-                print("Current Time 4 =", datetime.now().strftime("%H:%M:%S"))
-                request.session["relevant_device_list"] = relevant_device_list
+            #     # dont need the addition in future
+            #     # relevant_device_list = relevant_device_list + new_relevant_device_list
                 
-                print("Current Time 5 =", datetime.now().strftime("%H:%M:%S"))
-                print("********Current relevant device list 111:", relevant_device_list)
+            #     print("Current Time 4 =", datetime.now().strftime("%H:%M:%S"))
+            #     request.session["relevant_device_list"] = relevant_device_list
                 
-            else:
-                print("Current Time 6 =", datetime.now().strftime("%H:%M:%S"))
-                request.session["relevant_device_list"] = new_relevant_device_list
+            #     print("Current Time 5 =", datetime.now().strftime("%H:%M:%S"))
+            #     # print("********Current relevant device list 111:", relevant_device_list)
                 
-                print("Current Time 7 =", datetime.now().strftime("%H:%M:%S"))
-                print("********Current relevant device list 222:", new_relevant_device_list)
+            # else:
+            #     print("Current Time 6 =", datetime.now().strftime("%H:%M:%S"))
+            #     request.session["relevant_device_list"] = new_relevant_device_list
+                
+            #     print("Current Time 7 =", datetime.now().strftime("%H:%M:%S"))
+            #     # print("********Current relevant device list 222:", new_relevant_device_list)
                 
                 
         for i in range(int(len(data)/2)):
@@ -227,6 +243,7 @@ def create_routine(request):
         'previously_selected_devices': selected_device_list,
         'environmental_variables': environmental_variable,
         'selected_devices_attributes': deviceAttributeList,
+        'relevant_devices_list' : relevant_devices_list,
         'previously_created_routines' : created_routines_list,
         'page': 2 
     }
@@ -289,7 +306,7 @@ def edit_delete_routine(request):
                 request.session["relevant_device_list"] = relevant_device_list
                 # print("Current Time in edit routine 7 =", datetime.now().strftime("%H:%M:%S"))
                 request.session.modified = True
-                print("relevant_device_list in Edit:", request.session["relevant_device_list"])
+                # print("relevant_device_list in Edit:", request.session["relevant_device_list"])
             
         # print("Current Time in edit routine 9 =", datetime.now().strftime("%H:%M:%S"))
         request.session["created_routines"] = created_routines_list
@@ -403,7 +420,7 @@ def confirmation(request):
 
         delete_all_the_sessions(request)
         
-        # print("INSIDE confirmation: final json:", final_json)
+        print("INSIDE confirmation: final json:", final_json)
     
     
     

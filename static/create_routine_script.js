@@ -7,6 +7,8 @@ var previouslyCreatedRoutines;
 var totalPreviouslyCreatedRoutines = 0;
 var createdRoutines = [];
 var actualDevicesUsedInRoutineCreation = []
+var currentTriggerRelevantDevice;
+var currentActionRelevantDevice;
 var environmental_variables;
 var currentlySelectedDeviceCommands = [];
 
@@ -15,6 +17,7 @@ document.getElementById(currentlyShowingEnvVar).style.display = "block";
 
 
 getPreviouslyCreatedRoutinesFromSession();
+getRelevantDevicesOfPreviouslyCreatedRoutines();
 addPreviouslyCreatedRoutinesFromSessionInUI();
 setFirstDeviceStyle();
 getEnvironmentalVariable();
@@ -22,6 +25,58 @@ setFirstEnvVarStyle();
 callAutoCompleteMethod();
 
 
+
+function triggerChanged(num){
+    var trigger;
+
+    if(num == -2){
+        currentTriggerRelevantDevice = currentlySelectedDevice;
+        trigger = document.getElementById("trigger").value;
+    } else{
+        var index = num - 1;
+        actualDevicesUsedInRoutineCreation[index][0] = currentlySelectedDevice;
+        trigger = document.getElementById("trigger"+num).value;
+    }
+    
+    console.log(trigger);
+    console.log("INSIDE TRIGGERCHANGED: " + currentlySelectedDevice);
+}
+
+
+function actionChanged(num){
+    var action;
+    if(num == -2){
+        currentActionRelevantDevice = currentlySelectedDevice;
+        action = document.getElementById("action").value;
+    } else{
+        var index = num - 1;
+        actualDevicesUsedInRoutineCreation[index][1] = currentlySelectedDevice;
+        action = document.getElementById("action"+num).value;
+    }
+    
+    console.log(action);
+    console.log("INSIDE ACTIONCHANGED: " + currentlySelectedDevice);
+}
+
+
+function getRelevantDevicesOfPreviouslyCreatedRoutines(){
+    actualDevicesUsedInRoutineCreation = document.getElementById("relevant-devices").getAttribute("data-relevant-devices");
+    // console.log("BEFORE PARSE:" + previouslyCreatedRoutines);
+    
+    actualDevicesUsedInRoutineCreation = actualDevicesUsedInRoutineCreation.replaceAll("['", '["');
+    actualDevicesUsedInRoutineCreation = actualDevicesUsedInRoutineCreation.replaceAll("',", '",');
+    actualDevicesUsedInRoutineCreation = actualDevicesUsedInRoutineCreation.replaceAll(" '", ' "');
+    actualDevicesUsedInRoutineCreation = actualDevicesUsedInRoutineCreation.replaceAll("']", '"]');
+    actualDevicesUsedInRoutineCreation = actualDevicesUsedInRoutineCreation.replaceAll("'", "\'");
+
+    actualDevicesUsedInRoutineCreation = JSON.parse(actualDevicesUsedInRoutineCreation);
+    // previouslyCreatedRoutines = JSON.stringify(JSON5.parse(previouslyCreatedRoutines))
+
+    // for (let i = 0; i < actualDevicesUsedInRoutineCreation.length; i++) {
+    //     console.log("Routines: " + " " + actualDevicesUsedInRoutineCreation[i][0] + " -> " + actualDevicesUsedInRoutineCreation[i][1]);
+    // }
+
+}
 
 
 function getEnvironmentalVariable(){
@@ -84,9 +139,10 @@ function setFirstEnvVarStyle(){
 function showAttributes(device){
     styleChangeAfterDeselection(currentlySelectedDevice);
     currentlySelectedDevice = device;
+    
     //new test for getting exact device
-    document.getElementById("trigger").value = '';
-    document.getElementById("action").value = '';
+    // document.getElementById("trigger").value = '';
+    // document.getElementById("action").value = '';
 
 
     console.log("CUrrently selected:" + currentlySelectedDevice)
@@ -140,7 +196,8 @@ function addNewRoutine(){
     makeCloneNode();
     setOldRoutineTriggerActionId();
 
-    actualDevicesUsedInRoutineCreation.push(currentlySelectedDevice);
+
+    actualDevicesUsedInRoutineCreation.push([currentTriggerRelevantDevice, currentActionRelevantDevice]);
 
     document.getElementById("trigger").value = '';
     document.getElementById("action").value = '';
@@ -230,7 +287,7 @@ function getAllNewlyCreatedRoutines(){
         routine["action"] = action   
         createdRoutines.push(routine);
         
-        actualDevicesUsedInRoutineCreation.push(currentlySelectedDevice);
+        actualDevicesUsedInRoutineCreation.push([currentTriggerRelevantDevice, currentActionRelevantDevice]);
         // console.log(routine);
     }
 
