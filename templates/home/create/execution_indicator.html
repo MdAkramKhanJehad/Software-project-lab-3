@@ -29,12 +29,12 @@
 
         <div class="col m-3">
             <div class="row">
-                <div class="routine-heading col-2 ms-3">
+                <div class="routine-heading col-3 ms-3 me-2">
                     <p class="mb-4"><h5 class="text-left">Routine</h5></p>
                 </div>
-                <div class="routine-heading col-1 me-4 ms-2">
+                {% comment %} <div class="routine-heading col-1 me-4 ms-2">
                     <p class="mb-4"><h5 class="text-left" style="width: 105%;" >Device</h5></p>
-                </div>
+                </div> {% endcomment %}
 
                 <div class="EI1 col-2">
                     <p class="mb-4"><h6 class='text-left' style="width: 105%;" >How often, on average, do you expect each of your routines to execute based on your interaction with your smart home device?</h6></p>
@@ -56,12 +56,12 @@
 
             {% for routine, relevant_device in routines_and_relevant_device_list %}
                 <div class="row">
-                    <div class="routine col-2 ms-3">
+                    <div class="routine col-3 ms-2 me-2">
                         <p class="routine1 fs-5" id="routine-{{forloop.counter}}" style="width: 105%;" >{{forloop.counter}}. If {{routine.0}}, then {{routine.1}}</p>
                     </div>
-                    <div class="relevant-device col-1 ms-2 me-3">
+                    {% comment %} <div class="relevant-device col-1 ms-2 me-3">
                         <p class="device fs-5" id="device-{{forloop.counter}}" style="width: 110%;" >{{relevant_device}}</p>
-                    </div>
+                    </div> {% endcomment %}
                     <div class="option col-2">
                         <select class="selectpicker p-2 fs-6" name="ei-1-routine-{{forloop.counter}}" id="ei-1-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
                             <option selected disabled>Select</option>

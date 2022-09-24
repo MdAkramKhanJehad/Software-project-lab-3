@@ -68,21 +68,44 @@
 						</div>
 					</div>
 					<div class="col-3 text-center px-0" id="update-div-{{forloop.counter}}">					
-						<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg fs-6 m-2" id="update-{{forloop.counter}}" onclick="updateRoutine('{{forloop.counter}}')" role="button"><b>Update</b></a>
+						<a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg fs-6 m-2" data-bs-toggle="modal" id="update-{{forloop.counter}}" data-bs-target="#updateModal-{{forloop.counter}}"><b>Update</b></a>
 					</div>
 					<div class="col-2 text-center px-0" id="delete-div-{{forloop.counter}}">
 						<a class="btn btn-outline-light btn-rounded btn-danger btn-lg m-2 fs-6" data-bs-toggle="modal" id="delete-{{forloop.counter}}" data-bs-target="#deleteModal-{{forloop.counter}}"><b>Delete</b></a>
 					</div>
+
+
+					<div class="modal fade" id="updateModal-{{forloop.counter}}" tabindex="-1" aria-labelledby="updateModallLabel-{{forloop.counter}}" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="update-modal-dialog-{{forloop.counter}}">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="updateModallLabel-{{forloop.counter}}">Update Routine</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body" id="update-modal-body-{{forloop.counter}}">
+									<p>Are you sure you want to update the Routine?
+										{% comment %} <br>
+										<b>If {{routine.0}}, Then {{routine.1}}</b> {% endcomment %}
+									</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-success" id="modal-update-{{forloop.counter}}" onclick="updateRoutine('{{forloop.counter}}')" >Update</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					
 					<!-- Modal -->
 					<div class="modal fade" id="deleteModal-{{forloop.counter}}" tabindex="-1" aria-labelledby="deleteModallLabel-{{forloop.counter}}" aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="modal-dialog-{{forloop.counter}}">
+						<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="delete-modal-dialog-{{forloop.counter}}">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h5 class="modal-title" id="deleteModallLabel-{{forloop.counter}}">Delete Routine</h5>
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
-								<div class="modal-body" id="modal-body-{{forloop.counter}}">
+								<div class="modal-body" id="delete-modal-body-{{forloop.counter}}">
 									<p>Are you sure you want to delete the following Routine?<br>
 										<b>If {{routine.0}}, Then {{routine.1}}</b>
 									</p>
