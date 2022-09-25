@@ -49,6 +49,8 @@ def search(request):
 
 
 def tutorial(request):
+    if "current_user_id" not in request.session:
+        return redirect('login')
     return render(request, 'home/tutorial/tutorial.html')
 
 
@@ -420,12 +422,17 @@ def confirmation(request):
 
         delete_all_the_sessions(request)
         
-        print("INSIDE confirmation: final json:", final_json)
+        # print("INSIDE confirmation: final json:", final_json)
     
+    unique_relevant_devices = []
+    for devices in relevant_devices_list:
+        for device in devices:
+            unique_relevant_devices.append(device)
     
+    unique_relevant_devices = list(set(unique_relevant_devices))
     
     context = { 
-        'relevant_devices_list' : relevant_devices_list, 
+        'relevant_devices_list' : unique_relevant_devices, 
         'created_routines_list' : zip(created_routines_list, execution_indicators_list),  
         'page': 5 
     }
