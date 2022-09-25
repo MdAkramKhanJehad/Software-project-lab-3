@@ -16,16 +16,16 @@
     <div class="bg-image overflow-hidden d-flex align-items-center justify-content-center" style=" background-image: url('{% static 'img/bg_img.jpg' %}'); height: 100vh;  background-repeat: no-repeat; background-size: contain; ">
         <div class="mask">
             <div class="d-flex text-center">
-                <div class="card border-success bg-dark text-center" style="opacity: .9">
+                <div class="card border-success bg-dark m-2 px-5 py-2 text-center" style="opacity: .9; border-radius: 17px">
                     <div class="card-body text-white">
                         <main class="px-3">
                             <h1 >Hello there!</h1>
-                            <p class="lead text-light ps-5 pe-5"><b>Welcome to GenRout! A Routine Generation tool for Smart Home. We appriciate your participation. Don't worry about your data. It is very important to us. It will not be public.</b></p>  
+                            <p class="lead text-light ps-5 pe-5"><b>Welcome to GenRout! A Routine Generation tool for Smart Home. We appriciate your participation.</b></p>  
                             <div class="row">
                                 <div class="col-6 mx-auto">
                                     <div class="d-flex align-items-center justify-content-evenly">
-                                        <a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" href="/home/search/search-routine" role="button"><b>Search Routine</b></a>
-                                        <a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" href="/home/create/select-device" role="button"><b>Create Routine</b></a>
+                                        {% comment %} <a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" href="/home/search/search-routine" role="button"><b>Search Routine</b></a> {% endcomment %}
+                                        <a class="btn btn-outline-light bg-success btn-rounded btn-Success btn-lg m-2" href="/home/create/select-device" role="button" style="border-radius: 10px"><b>Create Routine</b></a>
                                     </div>
                                 </div>
                             </div>

@@ -2,10 +2,21 @@
 
 {% block title %}Tutorial{% endblock title %}
 
+{% block stylesheet %}
+
+    {% load static %}
+    <link id="pagestyle" href="{% static 'style_tutorial.css' %}" type="text/css" rel="stylesheet" />
+
+{% endblock stylesheet %}
+
 {% block body %}
-    <div class="container-fluid min-vh-100 d-flex justify-content-center">
-        <h2>
-            Tutorial body
-        </h2>
+    <div class="container-fluid col pt-5 pb-3 justify-content-center">
+        <div class="row text-center">
+            <h4>Follow the tutorial below to learn how to create routines</h4>
+            
+            <iframe src="https://drive.google.com/file/d/14lzjmtZ825RxctbcDGa-EJ7opwAiuqfD/preview" width="30%" height="50%"></iframe>
+
+        </div>
+        
     </div>
 {% endblock body %}

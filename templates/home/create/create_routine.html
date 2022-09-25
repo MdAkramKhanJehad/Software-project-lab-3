@@ -14,6 +14,7 @@
         <div id="selected-device" data-previously-selected-device="{{previously_selected_devices}}"></div>
         <div id="device-attribute" data-device-atribute="{{selected_devices_attributes}}"></div>
         <div id="created-routines" data-created-routines="{{previously_created_routines}}"></div>
+        <div id="relevant-devices" data-relevant-devices="{{relevant_devices_list}}"></div>
         <div id="environmental-variables" data-environmental-variables="{{environmental_variables}}"></div>
         
         <div class="col">
@@ -111,13 +112,13 @@
                                 If
                             </div>
                             <div class="trig autocomplete col-5">
-                                <textarea class="form-control" id="trigger{{forloop.counter}}" rows="2" placeholder="write trigger">{{routine.0}}</textarea>
+                                <textarea class="form-control" id="trigger{{forloop.counter}}" rows="2" onchange="triggerChanged('{{forloop.counter}}')" placeholder="write trigger">{{routine.0}}</textarea>
                             </div>
                             <div class="col-1">
                                 Then
                             </div>
                             <div class="act autocomplete col-5">
-                                <textarea class="form-control"   id="action{{forloop.counter}}" rows="2" placeholder="write action">{{routine.1}}</textarea>
+                                <textarea class="form-control"   id="action{{forloop.counter}}" rows="2" onchange="actionChanged('{{forloop.counter}}')" placeholder="write action">{{routine.1}}</textarea>
                             </div>
                         </div><br>
                     {% endfor %}
@@ -137,13 +138,13 @@
                                 </div>
                                 <div class="trig autocomplete col-5">
                                     {% comment %} <input class="myInput" type="text" id="myInput" name="myCountry" placeholder="write trigger"> {% endcomment %}
-                                    <textarea class="form-control" id="trigger" rows="2" placeholder="write trigger"></textarea>
+                                    <textarea class="form-control" id="trigger" rows="2" onchange="triggerChanged({{-2}})" placeholder="write trigger"></textarea>
                                 </div>
                                 <div class="col-1">
                                     Then
                                 </div>
                                 <div class="act col-5" style="position: relative;">
-                                    <textarea class="form-control" id="action" rows="2" placeholder="write action"></textarea>
+                                    <textarea class="form-control" id="action" rows="2" onchange="actionChanged({{-2}})" placeholder="write action"></textarea>
                                 </div>
                             </div><br> 
                         </div>                          
