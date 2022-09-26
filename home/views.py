@@ -456,5 +456,6 @@ def complete(request):
         # return redirect('create_execution_indicators')
     
     request.session["current_page"] = "complete"
+    delete_all_the_sessions(request)
     
     return render(request, 'home/complete/complete.html')
