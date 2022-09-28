@@ -24,11 +24,11 @@ function getExecutionIndicators(){
 
     executionIndicatorsList = JSON.parse(executionIndicatorsList);
 
-    console.log("ALL EIIIII: " + executionIndicatorsList.length);
+    // console.log("ALL EIIIII: " + executionIndicatorsList.length);
 
-    for (let i = 0; i < executionIndicatorsList.length; i++) {
-        console.log("EI's: " + " " + executionIndicatorsList[i][0] + " -> " + executionIndicatorsList[i][1]);
-    }
+    // for (let i = 0; i < executionIndicatorsList.length; i++) {
+    //     console.log("EI's: " + " " + executionIndicatorsList[i][0] + " -> " + executionIndicatorsList[i][1]);
+    // }
 
     previousEICount = executionIndicatorsList.length;
     totalDefinedEiCount = executionIndicatorsList.length * 5;
@@ -36,7 +36,7 @@ function getExecutionIndicators(){
     if(executionIndicatorsList.length > 0) {
         setPreviouslySelectedExecutionIndicators();
     }
-    console.log("INSIDE getEI");
+    // console.log("INSIDE getEI");
 }
 
 
@@ -59,7 +59,7 @@ function getPreviouslyCreatedRoutinesFromSession(){
     previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("']", '"]');
     previouslyCreatedRoutines = previouslyCreatedRoutines.replaceAll("'", "\'");
 
-    console.log("######## prev" + previouslyCreatedRoutines);
+    // console.log("######## prev" + previouslyCreatedRoutines);
     previouslyCreatedRoutines = JSON.parse(previouslyCreatedRoutines);
 
     if(previousEICount == previouslyCreatedRoutines.length)
@@ -105,7 +105,7 @@ $('#nextBtn').click(function(){
         }
 
         eiData[i] = singleEi;
-        console.log("INSIDEEEE: " + eiData[i]);
+        // console.log("INSIDEEEE: " + eiData[i]);
     }
 
     $.ajax(
