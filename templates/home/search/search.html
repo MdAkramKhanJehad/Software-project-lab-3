@@ -12,28 +12,23 @@
 {% block body %}
 
 
-    <div class="container-fluid min-vh-100 d-flex justify-content-center h-100 p-3 pt-5 text-center bg-white">
-        <div class="cover-container w-100 h-100 justify-content-center">
-            <h4>Search your previously created routines</h4>
-            <div class="container pt-3">
-
-                <div class="row height d-flex justify-content-center">
-
-                  <div class="col-md-5">
-
-                    <div class="search">
-                      {% comment %} <i class="fa fa-search"></i> {% endcomment %}
-                      <input type="text" class="form-control rounded border-success" placeholder="Enter your ID">
-                      <button type="submit" class="btn bg-success btn-outline-success text-light" style="font-size:20px"><b>Search</b></button>
-                      {% comment %} <button class="btn btn-success">Search</button> {% endcomment %}
-                    </div>
-                    
-                  </div>
-                  
+    <div class="container-fluid min-vh-100 d-flex justify-content-center h-100 w-100">
+        {% comment %} <div class="cover-container w-100 h-100 justify-content-center"> {% endcomment %}
+            {% comment %} <h4>Search your previously created routines</h4> {% endcomment %}
+            <div class="container shadow m-5 p-5">
+                <div class="row d-flex justify-content-center">
+                  <div class="col text-center">
+                    <div class="search col w-75 text-center">
+                      <form name="myform" method="GET" action="{% url 'search' %}">  
+                        {% comment %} {% csrf_token %} {% endcomment %}
+                        <div class="form-group"><input type="text" class="form-control rounded border-success" name="id" id="id" placeholder="Enter your ID"></div> 
+                        <button type="submit" class="btn bg-success btn-outline-success text-light" style="font-size:21px"><b>Search</b></button>
+                      </form> 
+                    </div>                    
+                  </div>                 
                 </div>
             </div>
-
-        </div>
+        {% comment %} </div> {% endcomment %}
     </div>
 
     {% comment %} <script src="main.js"></script> {% endcomment %}

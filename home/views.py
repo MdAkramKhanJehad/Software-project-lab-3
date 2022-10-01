@@ -45,6 +45,14 @@ def home(request):
 
 
 def search(request):
+    
+    if request.GET.get('id'):
+        user_id =  request.GET.get('id')
+        print("####Search USER ID ####:", user_id)
+        
+        # search_result = Routine.objects.filter(user_id=user_id)
+        # print("####Search Result####:", search_result)
+        
     return render(request, 'home/search/search.html')
 
 
