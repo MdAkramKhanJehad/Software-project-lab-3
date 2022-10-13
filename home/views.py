@@ -53,6 +53,12 @@ def search(request):
         search_result = Routine.objects.filter(routine__user_id=user_id)
         print("####Search Result####:", search_result)
         
+        for result in search_result:
+            print(result.routine["user_id"])
+            for single_routine in result.routine["created_routines"]:
+                print(single_routine["trigger"] + " -> " + single_routine["action"])
+        
+        
     return render(request, 'home/search/search.html')
 
 

@@ -2,35 +2,38 @@
 
 {% block title %}Search{% endblock title %}
 
-{% block stylesheet %}
+{% comment %} {% block stylesheet %}
 
     {% load static %}
     <link id="pagestyle" href="{% static 'style_search_page.css' %}" type="text/css" rel="stylesheet" />
 
-{% endblock stylesheet %} 
+{% endblock stylesheet %}  {% endcomment %}
 
 {% block body %}
 
+    <div class="container row d-flex  w-100 min-vh-100 h-100 m-5 p-5 shadow-lg">
+      <div class="col">
+        <div class="row">
+          <div class="col px-5 justify-content-center">
+            <form name="myform" method="GET" action="{% url 'search' %}">  
+                <div class="row w-auto text-center shadow" style="height: 50px;">
+                  <input type="text" class="form-control rounded border-success" name="id" id="id" placeholder="Enter your ID">
+                </div>
+                <div class="row pt-2 justify-content-center ">
+                  <button type="submit" class="btn bg-success btn-outline-success shadow text-light text-center" style="font-size:130%;  width:100px;"><b>Search</b></button>
+                </div>
+            </form> 
+          </div>
+        </div> 
 
-    <div class="container-fluid min-vh-100 d-flex justify-content-center h-100 w-100">
-        {% comment %} <div class="cover-container w-100 h-100 justify-content-center"> {% endcomment %}
-            {% comment %} <h4>Search your previously created routines</h4> {% endcomment %}
-            {% comment %} {% comment %} <div class="container row shadow m-5 p-5"> {% endcomment %}
-              <div class="search w-100 h-100 justify-content-center"> 
-                <form name="myform" method="GET" action="{% url 'search' %}">  
-                  {% csrf_token %}
-                  <div class="input-group">
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                    <button type="button" class="btn btn-outline-primary">search</button>
-                  </div>
-                  {% comment %} <div class="form-group"><input type="text" class="form-control rounded border-success" name="id" id="id" placeholder="Enter your ID"></div> 
-                  <button type="submit" class="btn bg-success btn-outline-success text-light" style="font-size:21px"><b>Search</b></button> {% endcomment %}
-                </form> 
-              </div>                                  
-            {% comment %} </div> {% endcomment %}
-        {% comment %} </div> {% endcomment %}
+        <div class="row">
+          <h1 class="text-center">hey this is heading</h1>
+        </div>
+
+        <div class="row">
+          <h3 class="text-center">hey this is routines</h2>
+        </div> 
+      </div>
     </div>
-
-    {% comment %} <script src="main.js"></script> {% endcomment %}
 
 {% endblock body %}
