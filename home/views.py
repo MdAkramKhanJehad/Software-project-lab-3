@@ -48,19 +48,28 @@ def search(request):
     
     if request.GET.get('id'):
         user_id =  request.GET.get('id')
-        print("####Search USER ID ####:", user_id)
+        # print("####Search USER ID ####:", user_id)
         
         search_result = Routine.objects.filter(routine__user_id=user_id)
-        print("####Search Result####:", search_result)
+        # print("####Search Result####:", search_result)
+        
+        created_routines = []
         
         for result in search_result:
-            print(result.routine["user_id"])
+            # print(result.routine["user_id"])
             for single_routine in result.routine["created_routines"]:
-                print(single_routine["trigger"] + " -> " + single_routine["action"])
+                # print(single_routine["trigger"] + " -> " + single_routine["action"])
+                created_routines.append({"trigger":single_routine["trigger"], "action": single_routine["action"]})
         
+        print(created_routines)
         
-    return render(request, 'home/search/search.html')
-
+        context = {
+            'created_routines': created_routines,
+        }
+        
+        return render(request, 'home/search/search.html', context)
+    else:
+        return render(request, 'home/search/search.html')
 
 def tutorial(request):
     if "current_user_id" not in request.session:

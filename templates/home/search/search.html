@@ -26,13 +26,17 @@
           </div>
         </div> 
 
-        <div class="row">
-          <h1 class="text-center">hey this is heading</h1>
+        <div class="row pt-5">
+          {% if created_routines %}
+            {% for routine in created_routines %}
+              <div class="row px-5 ms-2" >
+                <div class="col">
+                  <p class="routine1 fs-5" id="routine-{{forloop.counter}}" style="width: 105%;" >{{forloop.counter}}. If {{routine.trigger}}, then {{routine.action}}</p>
+                </div>
+              </div><br>
+            {% endfor %}
+          {% endif %}
         </div>
-
-        <div class="row">
-          <h3 class="text-center">hey this is routines</h2>
-        </div> 
       </div>
     </div>
 
