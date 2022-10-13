@@ -17,19 +17,20 @@
           <div class="col px-5 justify-content-center">
             <form name="myform" method="GET" action="{% url 'search' %}">  
                 <div class="row w-auto text-center shadow" style="height: 50px;">
-                  <input type="text" class="form-control rounded border-success" name="id" id="id" placeholder="Enter your ID">
+                  <input type="text" class="form-control rounded border-success" name="id" id="id" placeholder="Enter user ID">
                 </div>
                 <div class="row pt-2 justify-content-center ">
-                  <button type="submit" class="btn bg-success btn-outline-success shadow text-light text-center" style="font-size:130%;  width:100px;"><b>Search</b></button>
+                  <button type="submit" class="btn bg-success routine-search-btn btn-outline-success shadow text-light text-center" style="font-size:120%;  width:170px;"><b>Search Routine</b></button>
                 </div>
             </form> 
           </div>
         </div> 
 
-        <div class="row pt-5">
+        <div class="row pt-5 px-5">
           {% if created_routines %}
+            <h4 class="text-center">Search result for user "{{user_id}}"</h4>
             {% for routine in created_routines %}
-              <div class="row px-5 ms-2" >
+              <div class="row" >
                 <div class="col">
                   <p class="routine1 fs-5" id="routine-{{forloop.counter}}" style="width: 105%;" >{{forloop.counter}}. If {{routine.trigger}}, then {{routine.action}}</p>
                 </div>
@@ -41,3 +42,7 @@
     </div>
 
 {% endblock body %}
+{% block script-1 %}
+    {% load static %}
+    <script src="{% static 'search_page_script.js' %}"></script>
+{% endblock script-1 %}

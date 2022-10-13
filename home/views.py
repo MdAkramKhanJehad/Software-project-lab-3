@@ -65,6 +65,7 @@ def search(request):
         
         context = {
             'created_routines': created_routines,
+            'user_id': user_id
         }
         
         return render(request, 'home/search/search.html', context)
