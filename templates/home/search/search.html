@@ -15,8 +15,17 @@
       <div class="col">
         <div class="row">
           <div class="col px-5 justify-content-center">
+
             <form name="myform" method="GET" action="{% url 'search' %}">  
-                <div class="row w-auto text-center shadow" style="height: 50px;">
+                <div class="btn-group text-center" role="group" aria-label="Basic radio toggle button group">
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                  <label class="btn btn-outline-success" for="btnradio1">Search by User Id</label>
+                
+                  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                  <label class="btn btn-outline-success" for="btnradio2">Search by Device Name</label>
+                </div>
+
+                <div class="row w-auto text-center shadow mt-3" style="height: 50px;">
                   <input type="text" class="form-control rounded border-success" name="id" id="id" placeholder="Enter user ID">
                 </div>
                 <div class="row pt-2 justify-content-center ">
@@ -28,7 +37,7 @@
 
         <div class="row pt-5 px-5">
           {% if created_routines %}
-            <h4 class="text-center">Search result for user "{{user_id}}"</h4>
+            <h4 class="text-center">Search result for query "{{user_id}}"</h4>
             {% for routine in created_routines %}
               <div class="row" >
                 <div class="col">
