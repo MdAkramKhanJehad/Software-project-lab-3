@@ -48,10 +48,14 @@ def search(request):
     
     if request.GET.get('id'):
         user_id =  request.GET.get('id')
-        # print("####Search USER ID ####:", user_id)
+        print("------------------Search USER ID :", user_id, type(user_id))
+
+        # search_result = Routine.objects.filter(routine__user_id=user_id)
         
-        search_result = Routine.objects.filter(routine__user_id=user_id)
-        # print("####Search Result####:", search_result)
+        user_id = user_id.replace(" ", " ")
+        search_result = Routine.objects.filter(routine__created_routines__contains={"action_relevant_device":user_id})
+        
+        print("------------------Search Result####:", search_result)
         
         created_routines = []
         
