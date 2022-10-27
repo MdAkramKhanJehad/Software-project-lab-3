@@ -59,7 +59,6 @@ def search(request):
         
         query = request.GET.get('query')
         query = query.replace(" ", " ")
-        query = query.title()
         searchType = request.GET.get('search-type')
         searchType = searchType.replace(" ", " ")
         
@@ -70,6 +69,7 @@ def search(request):
         if searchType == "Search by User Id":  
             search_result = Routine.objects.filter(routine__user_id=query)
         else:   
+            query = query.title()
             search_result = Routine.objects.filter(routine__created_routines__contains={"action_relevant_device":query}) | Routine.objects.filter(routine__created_routines__contains={"trigger_relevant_device":query}) 
         
         print("------------------Search Result####:", search_result)
