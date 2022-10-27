@@ -46,14 +46,14 @@ def home(request):
 
 def search(request):
     
-    if request.GET.get('id'):
-        user_id =  request.GET.get('id')
-        print("------------------Search USER ID :", user_id, type(user_id))
+    if request.GET.get('query'):
+        query =  request.GET.get('query')
+        print("------------------Search USER ID :", query, type(query))
 
-        # search_result = Routine.objects.filter(routine__user_id=user_id)
+        # search_result = Routine.objects.filter(routine__user_id=query)
         
-        user_id = user_id.replace(" ", " ")
-        search_result = Routine.objects.filter(routine__created_routines__contains={"action_relevant_device":user_id})
+        query = query.replace(" ", " ")
+        search_result = Routine.objects.filter(routine__created_routines__contains={"action_relevant_device":query}) | Routine.objects.filter(routine__created_routines__contains={"trigger_relevant_device":query}) 
         
         print("------------------Search Result####:", search_result)
         
@@ -63,13 +63,14 @@ def search(request):
             # print(result.routine["user_id"])
             for single_routine in result.routine["created_routines"]:
                 # print(single_routine["trigger"] + " -> " + single_routine["action"])
-                created_routines.append({"trigger":single_routine["trigger"], "action": single_routine["action"]})
+                if single_routine["trigger_relevant_device"] == query or single_routine["action_relevant_device"] == query:
+                    created_routines.append({"trigger":single_routine["trigger"], "action": single_routine["action"]})
         
         print(created_routines)
         
         context = {
             'created_routines': created_routines,
-            'user_id': user_id
+            'user_id': query
         }
         
         return render(request, 'home/search/search.html', context)
