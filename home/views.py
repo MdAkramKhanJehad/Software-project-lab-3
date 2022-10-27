@@ -47,24 +47,42 @@ def home(request):
 def search(request):
     
     if request.GET.get('query'):
-        query =  request.GET.get('query')
-        print("------------------Search USER ID :", query, type(query))
-
-        # search_result = Routine.objects.filter(routine__user_id=query)
+    
+    # if request.method == 'POST':
+        # print("Current Time in edit routine 1 =", datetime.now().strftime("%H:%M:%S"))
         
+        # response_json = request.POST
+        # response_json = json.dumps(response_json)
+        # data = json.loads(response_json)
+        
+        # print("***DATA****: ", data)
+        
+        query = request.GET.get('query')
         query = query.replace(" ", " ")
-        search_result = Routine.objects.filter(routine__created_routines__contains={"action_relevant_device":query}) | Routine.objects.filter(routine__created_routines__contains={"trigger_relevant_device":query}) 
+        query = query.title()
+        searchType = request.GET.get('search-type')
+        searchType = searchType.replace(" ", " ")
+        
+        print("-------------Search USER ID :", query, type(query), " | ", searchType)
+
+        search_result = None
+        
+        if searchType == "Search by User Id":  
+            search_result = Routine.objects.filter(routine__user_id=query)
+        else:   
+            search_result = Routine.objects.filter(routine__created_routines__contains={"action_relevant_device":query}) | Routine.objects.filter(routine__created_routines__contains={"trigger_relevant_device":query}) 
         
         print("------------------Search Result####:", search_result)
         
         created_routines = []
         
         for result in search_result:
-            # print(result.routine["user_id"])
             for single_routine in result.routine["created_routines"]:
-                # print(single_routine["trigger"] + " -> " + single_routine["action"])
-                if single_routine["trigger_relevant_device"] == query or single_routine["action_relevant_device"] == query:
+                if searchType == "Search by User Id":
                     created_routines.append({"trigger":single_routine["trigger"], "action": single_routine["action"]})
+                else:
+                    if single_routine["trigger_relevant_device"] == query or single_routine["action_relevant_device"] == query:
+                        created_routines.append({"trigger":single_routine["trigger"], "action": single_routine["action"]})
         
         print(created_routines)
         
@@ -76,6 +94,8 @@ def search(request):
         return render(request, 'home/search/search.html', context)
     else:
         return render(request, 'home/search/search.html')
+
+
 
 def tutorial(request):
     if "current_user_id" not in request.session:
