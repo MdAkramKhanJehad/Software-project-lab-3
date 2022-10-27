@@ -12,25 +12,33 @@
 {% block body %}
 
     <div class="container row w-100 min-vh-100 h-100 m-auto mt-4 p-5 shadow-lg">
-      {% comment %} <div class="col">
-        <div class="row"> {% endcomment %}
-          <div class="col px-5 d-flex justify-content-center">
+      <div class="col">
+        <div class="row">
+          <div class="col d-flex flex-column justify-content-center">
 
-            <form name="myform" method="GET" action="{% url 'search' %}">  
-                <div class="btn-group text-center" role="group" aria-label="Basic radio toggle button group">
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                  <label class="btn btn-outline-success" for="btnradio1">Search by User Id</label>
-
-                  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                  <label class="btn btn-outline-success" for="btnradio2">Search by Device Name</label>
-                </div>
-
-                <div class="row w-auto text-center shadow mt-3" style="height: 50px;">
+            <div class="btn-group ms-5 text-center" role="group" aria-label="Basic radio toggle button group">
+              <div class="col-5 text-end">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-success" for="btnradio1">Search by User Id</label>
+              </div>
+              
+              <div class="col-5 ms-2 text-start">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-success" for="btnradio2">Search by Device Name</label>
+              </div>
+              
+            </div> 
+            <form class="w-100 justify-content-center" name="myform" method="GET" action="{% url 'search' %}">  
+                
+              <div class="text-center">
+                <div class="row w-100 shadow mt-3 mx-auto" style="height: 50px;">
                   <input type="text" class="form-control rounded border-success" name="id" id="id" placeholder="Enter user ID or device name">
                 </div>
-                <div class="row pt-2 justify-content-center ">
-                  <button type="submit" class="btn bg-success routine-search-btn btn-outline-success shadow text-light text-center" style="font-size:120%;  width:auto;"><b>Search</b></button>
+                <div class="pt-2 ">
+                  <button type="submit" class="btn bg-success routine-search-btn btn-outline-success shadow text-light " style="font-size:120%;  width:auto;"><b>Search</b></button>
                 </div>
+              </div>
+                
             </form> 
           </div>
         </div> 
@@ -46,8 +54,8 @@
               </div><br>
             {% endfor %}
           {% endif %}
-        {% comment %} </div>
-      </div> {% endcomment %}
+        </div>
+      </div>
     </div>
 
 {% endblock body %}
