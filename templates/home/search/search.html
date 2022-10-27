@@ -10,7 +10,7 @@
 {% endblock stylesheet %}  {% endcomment %}
 
 {% block body %}
-
+    
     <div class="container row w-100 min-vh-100 h-100 m-auto mt-4 p-5 shadow-lg">
       <div class="col">
         <div class="row">
@@ -59,9 +59,12 @@
 
           </div>
         </div> 
-
+        
         <div class="row pt-3 px-5">
           {% if created_routines %}
+            {% comment %} <div id="created_routines" data-search-results="{{created_routines}}"></div>
+            <button class="btn bg-success routine-search-btn btn-outline-success shadow text-light" onclick="downloadObjectAsJson()" style="font-size:120%;  width:auto;"><b>Download Routines</b></button> {% endcomment %}
+
             <h4 class="text-center pb-2">Search result for query "{{user_id}}"</h4>
             {% for routine in created_routines %}
               <div class="row" >
