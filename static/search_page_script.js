@@ -16,6 +16,7 @@ function getSearchResult(){
     searchResult = JSON.parse(searchResult);
 
     console.log("Length:" + searchResult.length);
+    
     return searchResult;
 }
 
@@ -23,21 +24,22 @@ function getSearchResult(){
 $('#btn-group').on('change', function() {
     currentSearchType = $("#btn-group input[type='radio']:checked").val();
     document.getElementById("search-type").value = currentSearchType;
-    console.log("CurSel:" + currentSearchType + " | " + document.getElementById("search-type").value);
+    // console.log("CurSel:" + currentSearchType + " | " + document.getElementById("search-type").value);
 });
 
 
-// function downloadObjectAsJson(){
-//     var searchResult = getSearchResult();
+function downloadObjectAsJson(){
+    var searchResult = document.getElementById("search_results").getAttribute("data-search-results");
 
-//     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(searchResult));
-//     var downloadAnchorNode = document.createElement('a');
-//     downloadAnchorNode.setAttribute("href", dataStr);
-//     downloadAnchorNode.setAttribute("download", "routines.json");
-//     document.body.appendChild(downloadAnchorNode); // required for firefox
-//     downloadAnchorNode.click();
-//     downloadAnchorNode.remove();
-// }
+    // console.log("INSIDE DOWNLOAD" + searchResult);
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(searchResult);
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "routines.json");
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+}
 
 
 // function searchRoutine(){
