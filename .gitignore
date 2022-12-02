@@ -1,1 +1,5 @@
 spl_3/.env
+*.log
+*.pot
+*.pyc
+__pycache__
