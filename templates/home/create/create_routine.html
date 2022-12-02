@@ -35,7 +35,7 @@
             </div>
             
             <div class='row'>
-                <div class='col-12 d-flex justify-content-center'>
+                <div class='col-12 d-flex justify-content-start'>
                     <div class="ms-5">
                         <div>  
                             {% for env_var in environmental_variables%}
@@ -53,7 +53,7 @@
                 </div>
             </div><br>
         
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col-5">
 
                     <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
@@ -96,8 +96,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-7" > 
-                    
+                <div class="col-7 " > 
                     {% for routine in previously_created_routines %}
                         {% if forloop.counter == 1 %}
                             <div class="d-flex card-header bg-white justify-content-center" id="routine-create-page-title">
@@ -129,22 +128,24 @@
                         </div> 
                     </div>
                     {% comment %} <p class="mb-4"><h4 class='text-center'>Create New Routines :</h4></p> {% endcomment %}
+                    <div class="row h5 text-center justify-content-center mb-3">(Example: If the motion is detected, then camera takes a picture)</div>
 
                     <div id="routineHolder"> 
                         <div class="col" id="routineField">
+                            
                             <div class="row text-center justify-content-center" >
                                 <div class="col-1">
                                     If
                                 </div>
                                 <div class="trig autocomplete col-5">
                                     {% comment %} <input class="myInput" type="text" id="myInput" name="myCountry" placeholder="write trigger"> {% endcomment %}
-                                    <textarea class="form-control" id="trigger" rows="2" onchange="triggerChanged({{-2}})" placeholder="write trigger (e.g., the motion is detected)"></textarea>
+                                    <textarea class="form-control" id="trigger" rows="2" onchange="triggerChanged({{-2}})" placeholder="write trigger"></textarea>
                                 </div>
                                 <div class="col-1">
                                     Then
                                 </div>
                                 <div class="act col-5" style="position: relative;">
-                                    <textarea class="form-control" id="action" rows="2" onchange="actionChanged({{-2}})" placeholder="write action (e.g., camera takes a picture)"></textarea>
+                                    <textarea class="form-control" id="action" rows="2" onchange="actionChanged({{-2}})" placeholder="write action"></textarea>
                                 </div>
                             </div><br> 
                         </div>                          
