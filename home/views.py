@@ -83,6 +83,9 @@ def tutorial(request):
 
 
 def select_device(request):
+    if "current_user_id" not in request.session:
+        return redirect('login')
+    
     selected_device_list = []
     
     request.session["current_page"] = "select_device"
@@ -170,6 +173,12 @@ def select_device(request):
 
 
 def create_routine(request):
+    if "current_user_id" not in request.session:
+        return redirect('login')
+    
+    if "current_page" not in request.session:
+        return redirect('home')
+    
     if "selected_devices" not in request.session:
         return redirect('select_device')
     
@@ -282,6 +291,12 @@ def create_routine(request):
 
 
 def edit_delete_routine(request):
+    if "current_user_id" not in request.session:
+        return redirect('login')
+    
+    if "current_page" not in request.session:
+        return redirect('home')
+    
     # print("Current Time in edit routine 1 =", datetime.now().strftime("%H:%M:%S"))        
     sel_devices = get_selected_devices_from_session(request, 3)
     # print("Current Time in edit routine 2 =", datetime.now().strftime("%H:%M:%S"))
@@ -356,6 +371,12 @@ def edit_delete_routine(request):
 
 
 def create_execution_indication(request):
+    if "current_user_id" not in request.session:
+        return redirect('login')
+    
+    if "current_page" not in request.session:
+        return redirect('home')
+    
     execution_indicators_list = []
     relevant_device_list = []
     created_routines_list = get_created_routine_from_session(request, 4)
@@ -410,6 +431,12 @@ def create_execution_indication(request):
 
 
 def confirmation(request):
+    if "current_user_id" not in request.session:
+        return redirect('login')
+    
+    if "current_page" not in request.session:
+        return redirect('home')
+    
     if request.session["current_page"] == "complete":
         return redirect("home")
         
@@ -469,6 +496,9 @@ def confirmation(request):
 
 
 def complete(request):
+    if "current_user_id" not in request.session:
+        return redirect('login')
+    
     # if "execution_indicators" not in request.session:
     # if request.session["current_page"] != "confirmation" or request.session["current_page"] != "complete":
         # print("inside not confirmation")

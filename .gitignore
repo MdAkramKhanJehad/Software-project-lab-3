@@ -1,4 +1,8 @@
 spl_3/.env
+*.pyc
+.idea/
+env/
+venv/
 *.log
 *.pot
 *.pyc
