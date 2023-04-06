@@ -6,6 +6,7 @@ import environ
 from spl_3 import settings
 from home.methods import get_created_routine_from_session, get_selected_devices_from_session, get_environmental_variable, get_execution_indicators_from_session, get_relevant_devices_from_session, get_final_json_for_database, delete_all_the_sessions
 from datetime import datetime
+import random
 
 env = environ.Env()
 environ.Env.read_env()
@@ -22,6 +23,9 @@ def home(request):
     # request.session.modified = True
     # all_users = NewUser.objects.all().filter(user_id=request.POST.get('user_id'))
     # print("INSIDE HOME 1:",  datetime.now().strftime("%H:%M:%S"))
+    if "unique_code" in request.session:
+        del request.session["unique_code"]
+        
     if request.method == "POST":
         # if  len(all_users) < 1:
         #     user_id = request.POST.get('user_id')
@@ -39,7 +43,7 @@ def home(request):
         return redirect('login')
     # print("INSIDE HOME 3:",  datetime.now().strftime("%H:%M:%S"))
     
-    print("****CURRENT USER****: ", request.session["current_user_id"])
+    # print("****CURRENT USER****: ", request.session["current_user_id"])
     
     return render(request, 'home/home.html')
 
@@ -115,7 +119,7 @@ def select_device(request):
                 # print("NEW***:", new_attribute.action)
                 new_attribute.save()
 
-        print("device data inserted")
+        # print("device data inserted")
 
     appliances_devices = DeviceData.objects.all().filter(category="Appliances")
     kitchen_and_cleaning_devices = DeviceData.objects.all().filter(category="Kitchen & Cleaning")
@@ -164,16 +168,17 @@ def create_routine(request):
     deviceAttributeList = []
     created_routines_list = []
     
+    
     # get and save session after next button clicking 
     if request.method == 'POST':
 
-        print("Current Time 0 =", datetime.now().strftime("%H:%M:%S"))
+        # print("Current Time 0 =", datetime.now().strftime("%H:%M:%S"))
         response_json = request.POST
         response_json = json.dumps(response_json)
         data = json.loads(response_json)
 
         # print("CR data:", data["devices[0]"], " \n\nkeys:", data.keys())
-        print("Current Time 1 =", datetime.now().strftime("%H:%M:%S"))
+        # print("Current Time 1 =", datetime.now().strftime("%H:%M:%S"))
         
         new_relevant_device_list_temp = data["devices[0]"].split(",")
         new_relevant_device_list = []
@@ -182,11 +187,11 @@ def create_routine(request):
             if i%2 == 0:
                 new_relevant_device_list.append([new_relevant_device_list_temp[i],new_relevant_device_list_temp[i+1]])
         
-        print("******", len(new_relevant_device_list), "   | ", type(new_relevant_device_list))
-        print("NEW ******** REL DEV:", new_relevant_device_list)
+        # print("******", len(new_relevant_device_list), "   | ", type(new_relevant_device_list))
+        # print("NEW ******** REL DEV:", new_relevant_device_list)
         
         # print("new_relevant_device_list:", new_relevant_device_list)
-        print("Current Time 2 =", datetime.now().strftime("%H:%M:%S"))
+        # print("Current Time 2 =", datetime.now().strftime("%H:%M:%S"))
         
         request.session["relevant_device_list"] = new_relevant_device_list
         # if len(new_relevant_device_list) > 0 and len(new_relevant_device_list[0]) > 1:
@@ -216,7 +221,7 @@ def create_routine(request):
                 
         for i in range(int(len(data)/2)):
             created_routines_list.append([data["routines[{}][trigger]".format(i)], data["routines[{}][action]".format(i)]])
-        print("CREATED ROUTINES*******:", len(created_routines_list), " | ", created_routines_list )
+        # print("CREATED ROUTINES*******:", len(created_routines_list), " | ", created_routines_list )
         request.session["created_routines"] = created_routines_list
         request.session.modified = True
         
@@ -433,8 +438,17 @@ def confirmation(request):
     
     current_user_id = request.session["current_user_id"]
     
+    if "unique_code" in request.session:
+        unique_code = request.session["unique_code"]
+    else:
+        random_number = random.randint(1000000, 9999999)
+        unique_code = "wmgmu" + str(random_number)
+        
+    # print("1----------unique NUMBER", unique_code)
+    request.session["unique_code"] = unique_code
+    
     if request.method == 'POST':
-        final_json = get_final_json_for_database(current_user_id, relevant_devices_list, created_routines_list, execution_indicators_list)
+        final_json = get_final_json_for_database(current_user_id, relevant_devices_list, created_routines_list, execution_indicators_list, unique_code)
         
         # try:
         #     connect_string = "mongodb+srv://genrout_routine_database:i59nQ7WWbHvMFyjX@routine.wjgsswb.mongodb.net/?retryWrites=true&w=majority"
@@ -451,7 +465,7 @@ def confirmation(request):
         new_routine.save()
 
         delete_all_the_sessions(request)
-        
+        request.session["unique_code"] = unique_code
         # print("INSIDE confirmation: final json:", final_json)
     
     unique_relevant_devices = []
@@ -463,7 +477,8 @@ def confirmation(request):
     
     context = { 
         'relevant_devices_list' : unique_relevant_devices, 
-        'created_routines_list' : zip(created_routines_list, execution_indicators_list),  
+        'created_routines_list' : zip(created_routines_list, execution_indicators_list),
+        'unique_code' : unique_code,  
         'page': 5 
     }
 
@@ -473,6 +488,18 @@ def confirmation(request):
 def complete(request):
     if "current_user_id" not in request.session:
         return redirect('login')
+    
+    if "current_page" not in request.session:
+        return redirect('home')
+    
+    if request.session["current_page"] != "confirmation":
+        return redirect("home")
+    
+    
+    if "unique_code" in request.session:
+        unique_code = request.session["unique_code"]
+    else:
+        unique_code = "wmgmu0000000"
     
     # if "execution_indicators" not in request.session:
     # if request.session["current_page"] != "confirmation" or request.session["current_page"] != "complete":
@@ -490,5 +517,10 @@ def complete(request):
     
     request.session["current_page"] = "complete"
     delete_all_the_sessions(request)
+    request.session["unique_code"] = unique_code
     
-    return render(request, 'home/complete/complete.html')
+    context = { 
+        'unique_code' : unique_code,  
+    }
+    
+    return render(request, 'home/complete/complete.html', context)

@@ -2,6 +2,9 @@
 
 // getExecutionIndicators();
 
+var unique_code = document.getElementById("unique-code").getAttribute("data-unique-code");
+// console.log("YESSSSSSSSSSsss");
+// console.log(unique_code);
 
 // function getExecutionIndicators(){
 //     executionIndicatorsList = document.getElementById("execution-indicators").getAttribute("data-execution-indicators");
@@ -23,7 +26,7 @@
 
 
 $('#nextBtn').click(function(){
-    var url, routineData = {"0":"0"};
+    var url, uni_code = {"code":unique_code};
     
     url = "/home/create/confirmation";
 
@@ -33,7 +36,7 @@ $('#nextBtn').click(function(){
             url: url,
             headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
             data: {
-                routines: routineData,
+                unique_code: uni_code,
             },
             success: function() 
             {   

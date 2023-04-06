@@ -50,12 +50,13 @@ def get_relevant_devices_from_session(request, pageNo):
     return relevant_devices_list
 
 
-def get_final_json_for_database(user_id, device_list, routine_list, ei_list):
+def get_final_json_for_database(user_id, device_list, routine_list, ei_list, unique_code):
     final_json = {}
     routines_with_device_ei = []
     final_json["user_id"] = user_id
+    final_json["unique_code"] = unique_code
     
-    # print("user_id", user_id)
+    # print("unique_code", unique_code)
     # print("device_list", device_list)
     # print("routine_list", routine_list)
     # print("ei_list", ei_list)

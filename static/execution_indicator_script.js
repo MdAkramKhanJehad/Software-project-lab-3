@@ -6,6 +6,8 @@ var previousEICount = 0;
 getExecutionIndicators();
 getPreviouslyCreatedRoutinesFromSession();
 
+console.log("YEEEEEEES! EXE INDI");
+
 document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
 
 if(executionIndicatorsList[previouslyCreatedRoutines.length-1].length == 0){

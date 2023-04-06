@@ -7,10 +7,23 @@
         <div class="col">
             <div class="row text-center justify-content-center">
                 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_snmbndsh.json"  background="transparent"  speed="1"  style="width: 35%; height: 20%;" loop autoplay></lottie-player>    
+                <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_snmbndsh.json"  background="transparent"  speed="1"  style="width: 30%; height: 15%;" autoplay></lottie-player>    
             </div>
              
-            <div class="row"><h3 class="text-center">Your Routines Submitted Successfully!</h3></div>
+            <div class="row"><h4 class="text-center">Routines Submitted Successfully!</h4></div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-sm-4">
+                    <h4 class="text-end">Unique Code: </h4>
+                </div>
+                
+                <div class="col-sm-4" style="border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;width:auto;height:auto;float:center;border: 1px solid #198754;padding:6px;text-align:center;">
+                    <h5 id="code">{{unique_code}}</h5>
+                </div>
+                <div class="col-sm-4">
+                    <a title="Copy the Code" class="btn btn-outline-light btn-rounded btn-secondary btn-lg m-1 fs-5" onclick="copyToClipboard()"><b>Copy</b></a>
+                </div>
+            </div>
+
             <br>
             <div class="row text-center justify-content-center">
                 <a class="btn btn-outline-light bg-gradient p-2 bg-success btn-rounded btn-Success btn-lg" href="/home/" style="width: 13%; border-radius:11px; font-size:20px" role="button"><b>Go to Home</b></a>
@@ -18,4 +31,17 @@
             
         </div>
     </div>
+    <script>
+        function copyToClipboard() {
+          var myDiv = document.getElementById("code");
+          var range = document.createRange();
+          range.selectNodeContents(myDiv);
+          var selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          document.execCommand("copy");
+          selection.removeAllRanges();
+          {% comment %} alert("Text copied to clipboard: " + selection.toString()); {% endcomment %}
+        }
+      </script>
 {% endblock body %}
