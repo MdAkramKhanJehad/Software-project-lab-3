@@ -29,8 +29,11 @@ function triggerChanged(num){
     var currentUpdateId = "update-"+num;
 
     if(trigger != previouslyCreatedRoutines[num-1][0]){
-        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
-        document.getElementById('nextBtn').className += " disabled";
+        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        document.getElementById("nextBtn").disabled = false;
+        // document.getElementById('nextBtn').className += " disabled";
+        document.getElementById("nextBtn").disabled = true;
+        
         document.getElementById(currentUpdateId).className = document.getElementById(currentUpdateId).className.replace(" disabled", "");
 
     } else{
@@ -51,9 +54,11 @@ function triggerChanged(num){
             }
 
             if(flag == 0){
-              document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");   
+            //   document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+                document.getElementById("nextBtn").disabled = false;  
             }
             document.getElementById(currentUpdateId).className += " disabled";
+            
         }
     }
 
@@ -66,8 +71,11 @@ function actionChanged(num){
     var currentUpdateId = "update-"+num;
 
     if(action != previouslyCreatedRoutines[num-1][1]){
-        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
-        document.getElementById('nextBtn').className += " disabled";
+        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        document.getElementById("nextBtn").disabled = false;
+        // document.getElementById('nextBtn').className += " disabled";
+        document.getElementById("nextBtn").disabled = true;
+
         document.getElementById(currentUpdateId).className = document.getElementById(currentUpdateId).className.replace(" disabled", "");
     } else{  
         if(trigger == previouslyCreatedRoutines[num-1][0]){
@@ -84,7 +92,8 @@ function actionChanged(num){
             }
 
             if(flag == 0){
-              document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");   
+            //   document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+                document.getElementById("nextBtn").disabled = false;
             }
             
             document.getElementById(currentUpdateId).className += " disabled";
@@ -271,3 +280,20 @@ function deleteRoutine(num){
     );
 }
 
+
+$('#nextBtn').click(function(){    
+
+    $.ajax(
+        {
+            type:"GET",
+            url: url,
+            headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
+            success: function() 
+            {   
+                console.log("successssssssss");
+                window.location.href = "/home/create/execution-indicators";
+            }
+        }
+    );
+    
+});

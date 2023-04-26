@@ -1,10 +1,12 @@
 var selectedDevices = [];
 getSelectedDeviceFromSession();
 
-document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+// document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+document.getElementById("nextBtn").disabled = false; 
 
 if(selectedDevices.length == 0){
-    document.getElementById('nextBtn').className += " disabled";
+    // document.getElementById('nextBtn').className += " disabled";
+    document.getElementById("nextBtn").disabled = true;
 } 
 
 
@@ -37,10 +39,13 @@ function selectedCard(device){
     }
 
     if(selectedDevices.length > 0){
-        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        document.getElementById("nextBtn").disabled = false;
     } else if(selectedDevices.length == 0){
-        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
-        document.getElementById('nextBtn').className += " disabled";
+        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        document.getElementById("nextBtn").disabled = false;
+        // document.getElementById('nextBtn').className += " disabled";
+        document.getElementById("nextBtn").disabled = true;
     }
 
     console.log("all dev : " + selectedDevices);

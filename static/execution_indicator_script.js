@@ -8,10 +8,13 @@ getPreviouslyCreatedRoutinesFromSession();
 
 console.log("YEEEEEEES! EXE INDI");
 
-document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+// document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+document.getElementById("nextBtn").disabled = false;
 
 if(executionIndicatorsList[previouslyCreatedRoutines.length-1].length == 0){
-    document.getElementById('nextBtn').className += " disabled";
+    // document.getElementById('nextBtn').className += " disabled";
+    document.getElementById("nextBtn").disabled = true;
+
     console.log("BTN Disableddd!");
 } 
 
@@ -66,7 +69,8 @@ function getPreviouslyCreatedRoutinesFromSession(){
     previouslyCreatedRoutines = JSON.parse(previouslyCreatedRoutines);
 
     if(previousEICount == previouslyCreatedRoutines.length)
-        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        document.getElementById("nextBtn").disabled = false;
 
     for(let i=previousEICount; i<previouslyCreatedRoutines.length+1; i++)
         executionIndicatorsList.push([]);
@@ -84,7 +88,8 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
                     totalDefinedEiCount += 1;
                     
                     if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5 && executionIndicatorsList[previouslyCreatedRoutines.length-1].length > 0){
-                        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+                        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+                        document.getElementById("nextBtn").disabled = false; 
                         console.log("Button enabled!");
                     }
                 }
