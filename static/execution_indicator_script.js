@@ -12,6 +12,7 @@ document.getElementById('nextBtn').className = document.getElementById('nextBtn'
 
 if(executionIndicatorsList[previouslyCreatedRoutines.length-1].length == 0){
     document.getElementById('nextBtn').className += " disabled";
+    console.log("BTN Disableddd!");
 } 
 
 
@@ -84,6 +85,7 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
                     
                     if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5 && executionIndicatorsList[previouslyCreatedRoutines.length-1].length > 0){
                         document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+                        console.log("Button enabled!");
                     }
                 }
                 
