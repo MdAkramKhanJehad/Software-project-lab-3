@@ -41,7 +41,7 @@ function triggerChanged(num){
         
         
         if(action == previouslyCreatedRoutines[num-1][1]){
-            console.log("tri: " + trigger + " | act: " + action)
+            // console.log("tri: " + trigger + " | act: " + action)
             var flag = 0;
 
             // checking whether any other trigger or action is edited or not
@@ -79,7 +79,7 @@ function actionChanged(num){
         document.getElementById(currentUpdateId).className = document.getElementById(currentUpdateId).className.replace(" disabled", "");
     } else{  
         if(trigger == previouslyCreatedRoutines[num-1][0]){
-            console.log("tri: " + trigger + " | act: " + action)
+            // console.log("tri: " + trigger + " | act: " + action)
             var flag = 0;
 
             // checking whether any other trigger or action is edited or not
@@ -110,13 +110,13 @@ function updateRoutine(num){
     const allRoutines = previouslyCreatedRoutines;
 
     if(trigger != previouslyCreatedRoutines[num-1][0] || action != previouslyCreatedRoutines[num-1][1] ){
-        console.log("trigger changed to: " + trigger  + " | prev: " + previouslyCreatedRoutines[num-1][0]);
-        console.log("action changed to: " + action + " | prev: " + previouslyCreatedRoutines[num-1][1]);
+        // console.log("trigger changed to: " + trigger  + " | prev: " + previouslyCreatedRoutines[num-1][0]);
+        // console.log("action changed to: " + action + " | prev: " + previouslyCreatedRoutines[num-1][1]);
 
-        console.log("allroutine previous: ", allRoutines);
+        // console.log("allroutine previous: ", allRoutines);
         var routine = [trigger, action];
         allRoutines.splice(num-1, 1, routine);
-        console.log("allroutine after: ", allRoutines);
+        // console.log("allroutine after: ", allRoutines);
 
         var updatedRoutines = getRoutinesForSending(allRoutines);
 
@@ -136,7 +136,7 @@ function updateRoutine(num){
                 },
                 success: function() 
                 {   
-                    console.log("successssssssss");
+                    // console.log("successssssssss");
                     window.location.href = "/home/create/edit-delete-routine";
                 }
             }
@@ -154,16 +154,16 @@ function checkboxCount(element, indexValue){
     if(element.checked == true){
         totalChecked += 1;
         selectedRoutinesIndex.push(indexValue);
-        console.log("checked: " + indexValue);
+        // console.log("checked: " + indexValue);
     } else{
         totalChecked -= 1;
-        console.log(totalChecked);
+        // console.log(totalChecked);
         const index = selectedRoutinesIndex.indexOf(indexValue);
         selectedRoutinesIndex.splice(index,1)
-        console.log("Unchecked: " + indexValue);
+        // console.log("Unchecked: " + indexValue);
     }
 
-    console.log(selectedRoutinesIndex);
+    // console.log(selectedRoutinesIndex);
 
     if(totalChecked > 0){
         document.getElementById('delete-selected').className = document.getElementById('delete-selected').className.replace(" disabled", "");
@@ -242,7 +242,7 @@ function getRoutinesForSending(routines){
 
 function deleteRoutine(num){
     var routineData = {};
-    console.log("delete routine no: " + num);
+    // console.log("delete routine no: " + num);
     // console.log(previouslyCreatedRoutines[num - 1][0] + " -> " + previouslyCreatedRoutines[num - 1][1]);
 
     const previousRoutines = previouslyCreatedRoutines;
@@ -273,7 +273,7 @@ function deleteRoutine(num){
             },
             success: function() 
             {   
-                console.log("successssssssss");
+                // console.log("successssssssss");
                 window.location.href = "/home/create/edit-delete-routine";
             }
         }
@@ -290,7 +290,7 @@ $('#nextBtn').click(function(){
             headers:{'X-CSRFToken':$("input[name='csrfmiddlewaretoken']").val()},
             success: function() 
             {   
-                console.log("successssssssss");
+                // console.log("successssssssss");
                 window.location.href = "/home/create/execution-indicators";
             }
         }

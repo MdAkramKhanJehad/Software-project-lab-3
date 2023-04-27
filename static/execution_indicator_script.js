@@ -6,7 +6,7 @@ var previousEICount = 0;
 getExecutionIndicators();
 getPreviouslyCreatedRoutinesFromSession();
 
-console.log("YEEEEEEES! EXE INDI");
+// console.log("YEEEEEEES! EXE INDI");
 
 // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
 document.getElementById("nextBtn").disabled = false;
@@ -15,7 +15,7 @@ if(executionIndicatorsList[previouslyCreatedRoutines.length-1].length == 0){
     // document.getElementById('nextBtn').className += " disabled";
     document.getElementById("nextBtn").disabled = true;
 
-    console.log("BTN Disableddd!");
+    // console.log("BTN Disableddd!");
 } 
 
 
@@ -90,7 +90,7 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
                     if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5 && executionIndicatorsList[previouslyCreatedRoutines.length-1].length > 0){
                         // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
                         document.getElementById("nextBtn").disabled = false; 
-                        console.log("Button enabled!");
+                        // console.log("Button enabled!");
                     }
                 }
                 
@@ -127,7 +127,7 @@ $('#nextBtn').click(function(){
             },
             success: function() 
             {   
-                console.log("successssssssss");
+                // console.log("successssssssss");
                 window.location.href = "/home/create/confirmation";
             }
         }
