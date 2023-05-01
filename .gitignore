@@ -7,3 +7,6 @@ venv/
 *.pot
 *.pyc
 __pycache__
+home/__pycache__
+login/__pycache__
+spl_3/__pycache__
