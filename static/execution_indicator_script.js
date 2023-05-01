@@ -80,12 +80,35 @@ function getPreviouslyCreatedRoutinesFromSession(){
 
 for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
     for (let j = 1; j < 6; j++) {
-        var eiId = "#ei-" + j + "-routine-" + i;
-        $(eiId).on('click',function() {
-            if($(this).val() != null){
 
+        // var eiId = "#ei-" + j + "-routine-" + i;
+        // $(eiId).on('click',function() {
+        //     if($(this).val() != null){
+
+        //         if(executionIndicatorsList[i-1][j-1] == undefined){
+        //             totalDefinedEiCount += 1;
+                    
+        //             if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5 && executionIndicatorsList[previouslyCreatedRoutines.length-1].length > 0){
+        //                 // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        //                 document.getElementById("nextBtn").disabled = false; 
+        //                 // console.log("Button enabled!");
+        //             }
+        //         }
+                
+        //         executionIndicatorsList[i-1][j-1] = $(this).val();
+
+        //     }
+        // });
+
+        //alternative [change the "click" to "change" for another alternative]
+        var eiId = "ei-" + j + "-routine-" + i;
+        // console.log("eiId: " + eiId);
+        const eiIdElement = document.getElementById(eiId);
+        eiIdElement.addEventListener("click", function() {
+            if($(this).val() != null){
                 if(executionIndicatorsList[i-1][j-1] == undefined){
                     totalDefinedEiCount += 1;
+                    // console.log("count: " + totalDefinedEiCount);
                     
                     if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5 && executionIndicatorsList[previouslyCreatedRoutines.length-1].length > 0){
                         // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
