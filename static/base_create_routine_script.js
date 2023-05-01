@@ -1,14 +1,14 @@
 var currentTab = 0; 
 showTab(currentTab); 
 const pageNo = document.getElementById("page-number").getAttribute("data-page-number");
-console.log("page no: ", pageNo);
+// console.log("page no: ", pageNo);
 
 showButton();
 
 
 function showTab(n) {  
     var x = document.getElementsByClassName("step");
-    console.log("length: ", x.length )
+    // console.log("length: ", x.length )
     x[n].style.display = "block";
 
     if (n == 0) {
@@ -75,7 +75,7 @@ function showButton(){
     }
 
     if(pageNo == 1 ){
-        console.log("this is page 1");
+        // console.log("this is page 1");
 
     } else if( pageNo == 2){
         document.getElementById("prevBtn").href = "/home/create/select-device";

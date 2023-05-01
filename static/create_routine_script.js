@@ -38,8 +38,8 @@ function triggerChanged(num){
         trigger = document.getElementById("trigger"+num).value;
     }
     
-    console.log(trigger);
-    console.log("INSIDE TRIGGERCHANGED: " + currentlySelectedDevice);
+    // console.log(trigger);
+    // console.log("INSIDE TRIGGERCHANGED: " + currentlySelectedDevice);
 }
 
 
@@ -54,8 +54,8 @@ function actionChanged(num){
         action = document.getElementById("action"+num).value;
     }
     
-    console.log(action);
-    console.log("INSIDE ACTIONCHANGED: " + currentlySelectedDevice);
+    // console.log(action);
+    // console.log("INSIDE ACTIONCHANGED: " + currentlySelectedDevice);
 }
 
 
@@ -112,7 +112,7 @@ function getPreviouslyCreatedRoutinesFromSession(){
 
 
 function addPreviouslyCreatedRoutinesFromSessionInUI(){
-    console.log(totalRoutine);
+    // console.log(totalRoutine);
     totalRoutine += previouslyCreatedRoutines.length;
 }
 
@@ -145,7 +145,7 @@ function showAttributes(device){
     // document.getElementById("action").value = '';
 
 
-    console.log("CUrrently selected:" + currentlySelectedDevice)
+    // console.log("CUrrently selected:" + currentlySelectedDevice)
     styleChangeAfterSelection(currentlySelectedDevice);
     document.getElementById(currentlyShowing).style.display = "none";
     
@@ -205,8 +205,8 @@ function addNewRoutine(){
     callAutoCompleteMethod();
     
     totalRoutine += 1;
-    console.log("TOTAL ROUTINE: " + totalRoutine + " | " + currentlySelectedDevice);
-    console.log("Inside add new:" + actualDevicesUsedInRoutineCreation)
+    // console.log("TOTAL ROUTINE: " + totalRoutine + " | " + currentlySelectedDevice);
+    // console.log("Inside add new:" + actualDevicesUsedInRoutineCreation)
 }
 
 
@@ -239,7 +239,7 @@ function setOldRoutineTriggerActionId(){
 
 function styleChangeAfterSelection(device){
     document.getElementById(device).className += " selected";
-    console.log(document.getElementById(device).getAttribute('class'));
+    // console.log(document.getElementById(device).getAttribute('class'));
 
     document.getElementById(device).style.transform = "scale(1.11)";
     document.getElementById(device).style.boxShadow = "5px 6px 6px 2px #e9ecef";
@@ -251,7 +251,7 @@ function styleChangeAfterSelection(device){
 
 function styleChangeAfterDeselection(device){
     document.getElementById(device).className = document.getElementById(device).className.replace(" selected", "");
-    console.log(document.getElementById(device).getAttribute('class'));
+    // console.log(document.getElementById(device).getAttribute('class'));
 
     document.getElementById(device).style.transform = "scale(1)";
     document.getElementById(device).style.boxShadow = "none";
@@ -322,7 +322,7 @@ $('#nextBtn').click(function(){
             },
             success: function() 
             {   
-                console.log("successssssssss");
+                // console.log("successssssssss");
                 window.location.href = "/home/create/edit-delete-routine";
             }
         }
