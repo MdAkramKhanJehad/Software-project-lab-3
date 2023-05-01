@@ -93,8 +93,8 @@ def select_device(request):
     if request.session.get("selected_devices"):
         selected_device_list = request.session["selected_devices"]
         # print("session available: ", selected_device_list ) 
-    else:
-        print("no session available")
+    # else:
+    #     print("no session available")
        
        
     # get all device from db    

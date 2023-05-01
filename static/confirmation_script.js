@@ -40,7 +40,7 @@ $('#nextBtn').click(function(){
             },
             success: function() 
             {   
-                console.log("successssssssss");
+                // console.log("successssssssss");
                 window.location.href = "/home/create/complete";
             }
         }

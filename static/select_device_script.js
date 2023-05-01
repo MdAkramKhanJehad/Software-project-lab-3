@@ -1,17 +1,19 @@
 var selectedDevices = [];
 getSelectedDeviceFromSession();
 
-document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+// document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+document.getElementById("nextBtn").disabled = false; 
 
 if(selectedDevices.length == 0){
-    document.getElementById('nextBtn').className += " disabled";
+    // document.getElementById('nextBtn').className += " disabled";
+    document.getElementById("nextBtn").disabled = true;
 } 
 
 
 function getSelectedDeviceFromSession(){
     var selectedDevicesFromSession = document.getElementById("selected-device").getAttribute("data-selected-device");
-    console.log("sel dev: ", selectedDevicesFromSession);
-    console.log(typeof selectedDevicesFromSession);
+    // console.log("sel dev: ", selectedDevicesFromSession);
+    // console.log(typeof selectedDevicesFromSession);
 
     selectedDevicesFromSession = selectedDevicesFromSession.replace(/'/g, '"')
     selectedDevices = JSON.parse(selectedDevicesFromSession);
@@ -37,19 +39,22 @@ function selectedCard(device){
     }
 
     if(selectedDevices.length > 0){
-        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        document.getElementById("nextBtn").disabled = false;
     } else if(selectedDevices.length == 0){
-        document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
-        document.getElementById('nextBtn').className += " disabled";
+        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        document.getElementById("nextBtn").disabled = false;
+        // document.getElementById('nextBtn').className += " disabled";
+        document.getElementById("nextBtn").disabled = true;
     }
 
-    console.log("all dev : " + selectedDevices);
+    // console.log("all dev : " + selectedDevices);
 }
 
 
 function styleChangeAfterSelection(device){
     document.getElementById(device).className += " selected";
-    console.log(document.getElementById(device).getAttribute('class'));
+    // console.log(document.getElementById(device).getAttribute('class'));
 
     document.getElementById(device).style.transform = "scale(1.07)";
     document.getElementById(device).style.boxShadow = "5px 6px 6px 2px #e9ecef";
@@ -61,7 +66,7 @@ function styleChangeAfterSelection(device){
 
 function styleChangeAfterDeselection(device){
     document.getElementById(device).className = document.getElementById(device).className.replace(" selected", "");
-    console.log(document.getElementById(device).getAttribute('class'));
+    // console.log(document.getElementById(device).getAttribute('class'));
 
     document.getElementById(device).style.transform = "scale(1)";
     document.getElementById(device).style.boxShadow = "none";
@@ -89,7 +94,7 @@ $('#nextBtn').click(function(){
             },
             success: function() 
             {   
-                console.log("successssssssss");
+                // console.log("successssssssss");
                 window.location.href = "/home/create/routine";
             }
         }

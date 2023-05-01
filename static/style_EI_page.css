@@ -3,4 +3,10 @@
     background-color: #e9f5ee;
 }
 
-
+.routine1 {
+    hyphens: auto;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+  }
