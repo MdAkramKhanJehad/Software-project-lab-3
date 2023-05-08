@@ -28,40 +28,39 @@ function triggerChanged(num){
     const action = document.getElementById("action-"+num).value
     var currentUpdateId = "update-"+num;
 
-    if(trigger != previouslyCreatedRoutines[num-1][0]){
-        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
-        document.getElementById("nextBtn").disabled = false;
-        // document.getElementById('nextBtn').className += " disabled";
-        document.getElementById("nextBtn").disabled = true;
-        
-        document.getElementById(currentUpdateId).className = document.getElementById(currentUpdateId).className.replace(" disabled", "");
 
-    } else{
-
-        
-        
-        if(action == previouslyCreatedRoutines[num-1][1]){
-            // console.log("tri: " + trigger + " | act: " + action)
-            var flag = 0;
-
-            // checking whether any other trigger or action is edited or not
-            for(let i = 1; i <= previouslyCreatedRoutines.length; i++) {
-                var currentTriggerId = "trigger-"+i;
-                var currentActionId = "action-"+i;
-                if((document.getElementById(currentTriggerId).value != previouslyCreatedRoutines[i-1][0]) || (document.getElementById(currentActionId).value != previouslyCreatedRoutines[i-1][1])){
-                    flag = 1;
-                }
-            }
-
-            if(flag == 0){
-            //   document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
-                document.getElementById("nextBtn").disabled = false;  
-            }
-            document.getElementById(currentUpdateId).className += " disabled";
+    if(trigger.trim() != ""){
+        if(trigger != previouslyCreatedRoutines[num-1][0]){
+            // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+            document.getElementById("nextBtn").disabled = false;
+            // document.getElementById('nextBtn').className += " disabled";
+            document.getElementById("nextBtn").disabled = true;
             
+            document.getElementById(currentUpdateId).className = document.getElementById(currentUpdateId).className.replace(" disabled", "");
+    
+        } else{
+            if(action == previouslyCreatedRoutines[num-1][1]){
+                // console.log("tri: " + trigger + " | act: " + action)
+                var flag = 0;
+    
+                // checking whether any other trigger or action is edited or not
+                for(let i = 1; i <= previouslyCreatedRoutines.length; i++) {
+                    var currentTriggerId = "trigger-"+i;
+                    var currentActionId = "action-"+i;
+                    if((document.getElementById(currentTriggerId).value != previouslyCreatedRoutines[i-1][0]) || (document.getElementById(currentActionId).value != previouslyCreatedRoutines[i-1][1])){
+                        flag = 1;
+                    }
+                }
+    
+                if(flag == 0){
+                //   document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", ""); 
+                    document.getElementById("nextBtn").disabled = false;  
+                }
+                document.getElementById(currentUpdateId).className += " disabled";
+                
+            }
         }
     }
-
 }
 
 
@@ -70,35 +69,38 @@ function actionChanged(num){
     const trigger = document.getElementById("trigger-"+num).value
     var currentUpdateId = "update-"+num;
 
-    if(action != previouslyCreatedRoutines[num-1][1]){
-        // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
-        document.getElementById("nextBtn").disabled = false;
-        // document.getElementById('nextBtn').className += " disabled";
-        document.getElementById("nextBtn").disabled = true;
-
-        document.getElementById(currentUpdateId).className = document.getElementById(currentUpdateId).className.replace(" disabled", "");
-    } else{  
-        if(trigger == previouslyCreatedRoutines[num-1][0]){
-            // console.log("tri: " + trigger + " | act: " + action)
-            var flag = 0;
-
-            // checking whether any other trigger or action is edited or not
-            for(let i = 1; i <= previouslyCreatedRoutines.length; i++) {
-                var currentTriggerId = "trigger-"+i;
-                var currentActionId = "action-"+i;
-                if((document.getElementById(currentTriggerId).value != previouslyCreatedRoutines[i-1][0]) || (document.getElementById(currentActionId).value != previouslyCreatedRoutines[i-1][1])){
-                    flag = 1;
+    if(action.trim() != ""){
+        if(action != previouslyCreatedRoutines[num-1][1]){
+            // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+            document.getElementById("nextBtn").disabled = false;
+            // document.getElementById('nextBtn').className += " disabled";
+            document.getElementById("nextBtn").disabled = true;
+    
+            document.getElementById(currentUpdateId).className = document.getElementById(currentUpdateId).className.replace(" disabled", "");
+        } else{  
+            if(trigger == previouslyCreatedRoutines[num-1][0]){
+                // console.log("tri: " + trigger + " | act: " + action)
+                var flag = 0;
+    
+                // checking whether any other trigger or action is edited or not
+                for(let i = 1; i <= previouslyCreatedRoutines.length; i++) {
+                    var currentTriggerId = "trigger-"+i;
+                    var currentActionId = "action-"+i;
+                    if((document.getElementById(currentTriggerId).value != previouslyCreatedRoutines[i-1][0]) || (document.getElementById(currentActionId).value != previouslyCreatedRoutines[i-1][1])){
+                        flag = 1;
+                    }
                 }
+    
+                if(flag == 0){
+                //   document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+                    document.getElementById("nextBtn").disabled = false;
+                }
+                
+                document.getElementById(currentUpdateId).className += " disabled";
             }
-
-            if(flag == 0){
-            //   document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
-                document.getElementById("nextBtn").disabled = false;
-            }
-            
-            document.getElementById(currentUpdateId).className += " disabled";
         }
     }
+    
 }
 
 
