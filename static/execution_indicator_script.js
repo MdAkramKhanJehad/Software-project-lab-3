@@ -105,13 +105,15 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
         //Alternative 1
         $(document).ready(function() {
             var eiId = "#ei-" + j + "-routine-" + i;
-            $(eiId).on('click', function() {
+            // console.log(document.querySelector(eiId))
+            document.querySelector(eiId).addEventListener('change', function() {
+                // console.log("hello")
                 if($(this).val() != null){
 
-                    console.log("EXX: " + executionIndicatorsList[i-1].length);
+                    // console.log("EXX: " + executionIndicatorsList[i-1].length);
                     if(executionIndicatorsList[i-1][j-1] == undefined){
                         totalDefinedEiCount += 1;
-                        console.log("EXX 2: " + totalDefinedEiCount);
+                        // console.log("EXX 2: " + totalDefinedEiCount);
                         
                         if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5 && executionIndicatorsList[previouslyCreatedRoutines.length-1].length > 0){
                             // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
@@ -130,7 +132,6 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
         //   var eiId = "#ei-" + j + "-routine-" + i;
         //   $(document).on('click', eiId, function() {
         //     if($(this).val() != null){
-
         //         console.log("EXX: " + executionIndicatorsList[i-1].length);
         //         if(executionIndicatorsList[i-1][j-1] == undefined){
         //             totalDefinedEiCount += 1;
@@ -150,6 +151,11 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
 
     }
 }
+
+// function myFunction(id){
+//     console.log("id: " + id);
+// }
+
 
 
 $('#nextBtn').click(function(){
