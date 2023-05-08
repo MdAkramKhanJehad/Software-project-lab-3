@@ -63,7 +63,7 @@
                         <p class="device fs-5" id="device-{{forloop.counter}}" style="width: 100%;" >{{relevant_device}}</p>
                     </div>
                     <div class="option col-2">
-                        <select class="selectpicker p-2 fs-6" name="ei-1-routine-{{forloop.counter}}" id="ei-1-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
+                        <select class="selectpicker p-2 fs-6" name="ei-1-routine-{{forloop.counter}}" onchange="onDropdownChange(1,{{forloop.counter}})" id="ei-1-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
                             <option selected disabled>Select</option>
                             <option value="Many times in a day (5+ /day)">Many times in a day (5+ /day)</option>
                             <option value="Few times in a day (1-5/day)">Few times in a day (1-5/day)</option>
@@ -74,7 +74,7 @@
                         </select>
                     </div>
                     <div class="option col-1">
-                        <select class="selectpicker p-2 fs-6" name="ei-2-routine-{{forloop.counter}}" id="ei-2-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
+                        <select class="selectpicker p-2 fs-6" name="ei-2-routine-{{forloop.counter}}" onchange="onDropdownChange(2,{{forloop.counter}})" id="ei-2-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
                             <option selected disabled>Select</option>
                             <option value="Weekday">Weekday</option>
                             <option value="Weekend">Weekend</option>
@@ -83,7 +83,7 @@
                         </select>
                     </div>
                     <div class="option col-2">
-                        <select class="selectpicker p-2 fs-6" name="ei-3-routine-{{forloop.counter}}" id="ei-3-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
+                        <select class="selectpicker p-2 fs-6" name="ei-3-routine-{{forloop.counter}}" onchange="onDropdownChange(3,{{forloop.counter}})" id="ei-3-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
                             <option selected disabled>Select</option>
                             <option value="Morning(6am- 11am)">Morning(6am- 11am)</option>
                             <option value="Around noon(11am-1pm)">Around noon(11am-1pm)</option>
@@ -95,7 +95,7 @@
                         </select>
                     </div>
                     <div class="option col-1">
-                        <select class="selectpicker p-2 fs-6" name="ei-4-routine-{{forloop.counter}}" id="ei-4-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
+                        <select class="selectpicker p-2 fs-6" name="ei-4-routine-{{forloop.counter}}" onchange="onDropdownChange(4,{{forloop.counter}})" id="ei-4-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
                             <option selected disabled>Select</option>
                             <option value="Scheduled-time (e.g., brew coffee at 7 am)">Scheduled-time (e.g., brew coffee at 7 am)</option>
                             <option value="Manually-triggered (e.g., a button press)">Manually-triggered (e.g., a button press)</option>
@@ -103,7 +103,7 @@
                         </select>
                     </div>
                     <div class="option col-1">
-                        <select class="selectpicker p-2 fs-6" name="ei-5-routine-{{forloop.counter}}" id="ei-5-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
+                        <select class="selectpicker p-2 fs-6" name="ei-5-routine-{{forloop.counter}}" onchange="onDropdownChange(5,{{forloop.counter}})" id="ei-5-routine-{{forloop.counter}}" style="width: 100%;" aria-label="Default select example">
                             <option selected disabled>Select</option>
                             <option value="Bedroom">Bedroom</option>
                             <option value="Kitchen">Kitchen</option>
