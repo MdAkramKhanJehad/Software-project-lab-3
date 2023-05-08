@@ -78,8 +78,8 @@ function getPreviouslyCreatedRoutinesFromSession(){
 }
 
 
-for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
-    for (let j = 1; j < 6; j++) {
+// for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
+//     for (let j = 1; j < 6; j++) {
 
         // var eiId = "#ei-" + j + "-routine-" + i;
         // $(eiId).on('click',function() {
@@ -103,30 +103,30 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
         // });
 
         //Alternative 1
-        $(document).ready(function() {
-            var eiId = "#ei-" + j + "-routine-" + i;
-            // console.log(document.querySelector(eiId))
-            document.querySelector(eiId).addEventListener('change', function() {
-                // console.log("hello")
-                if($(this).val() != null){
+        // $(document).ready(function() {
+        //     var eiId = "#ei-" + j + "-routine-" + i;
+        //     // console.log(document.querySelector(eiId))
+        //     document.querySelector(eiId).addEventListener('change', function() {
+        //         // console.log("hello")
+        //         if($(this).val() != null){
 
-                    // console.log("EXX: " + executionIndicatorsList[i-1].length);
-                    if(executionIndicatorsList[i-1][j-1] == undefined){
-                        totalDefinedEiCount += 1;
-                        // console.log("EXX 2: " + totalDefinedEiCount);
+        //             // console.log("EXX: " + executionIndicatorsList[i-1].length);
+        //             if(executionIndicatorsList[i-1][j-1] == undefined){
+        //                 totalDefinedEiCount += 1;
+        //                 // console.log("EXX 2: " + totalDefinedEiCount);
                         
-                        if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5 && executionIndicatorsList[previouslyCreatedRoutines.length-1].length > 0){
-                            // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
-                            document.getElementById("nextBtn").disabled = false; 
-                            // console.log("Button enabled!");
-                        }
-                    }
+        //                 if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5 && executionIndicatorsList[previouslyCreatedRoutines.length-1].length > 0){
+        //                     // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+        //                     document.getElementById("nextBtn").disabled = false; 
+        //                     // console.log("Button enabled!");
+        //                 }
+        //             }
                     
-                    executionIndicatorsList[i-1][j-1] = $(this).val();
+        //             executionIndicatorsList[i-1][j-1] = $(this).val();
     
-                }
-            });
-          });
+        //         }
+        //     });
+        //   });
 
         // //alternative 2
         //   var eiId = "#ei-" + j + "-routine-" + i;
@@ -149,12 +149,32 @@ for (let i = 1; i < previouslyCreatedRoutines.length + 1; i++) {
         //     }
         //   });
 
-    }
-}
-
-// function myFunction(id){
-//     console.log("id: " + id);
+//     }
 // }
+
+function onDropdownChange(eiNumber, routineNumber){
+    // console.log("ei: " + eiNumber);
+    // console.log("routine: " + routineNumber);
+
+    var eiId = "#ei-" + eiNumber + "-routine-" + routineNumber;
+    var dropdown = document.querySelector(eiId);
+    var selectedOption = dropdown.value;
+    // console.log("id: ", eiId);
+    // console.log("ei value: ", selectedOption);
+
+    if(executionIndicatorsList[routineNumber-1][eiNumber-1] == undefined){
+        totalDefinedEiCount += 1;
+        // console.log("EXX 2: " + totalDefinedEiCount);
+        
+        if(totalDefinedEiCount ==  previouslyCreatedRoutines.length * 5 && executionIndicatorsList[previouslyCreatedRoutines.length-1].length > 0){
+            // document.getElementById('nextBtn').className = document.getElementById('nextBtn').className.replace(" disabled", "");
+            document.getElementById("nextBtn").disabled = false; 
+            // console.log("Button enabled!");
+        }
+    }
+    
+    executionIndicatorsList[routineNumber-1][eiNumber-1] = selectedOption;
+}
 
 
 
