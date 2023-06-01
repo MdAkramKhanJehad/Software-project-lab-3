@@ -22,7 +22,7 @@ addPreviouslyCreatedRoutinesFromSessionInUI();
 setFirstDeviceStyle();
 getEnvironmentalVariable();
 setFirstEnvVarStyle();
-callAutoCompleteMethod();
+// callAutoCompleteMethod();
 
 
 
@@ -171,7 +171,7 @@ function getCurretDeviceCommands(){
     // currentlySelectedDeviceCommands = attr
     // console.log("lengths: " + currentlySelectedDeviceCommands.length);
 
-    callAutoCompleteMethod();
+    // callAutoCompleteMethod();
 }
 
 
@@ -202,7 +202,7 @@ function addNewRoutine(){
     document.getElementById("trigger").value = '';
     document.getElementById("action").value = '';
 
-    callAutoCompleteMethod();
+    // callAutoCompleteMethod();
     
     totalRoutine += 1;
     // console.log("TOTAL ROUTINE: " + totalRoutine + " | " + currentlySelectedDevice);
@@ -404,14 +404,14 @@ function autocomplete(inp, arr) {
 }
 
 
-function callAutoCompleteMethod(){
-    autocomplete(document.getElementById("trigger"), currentlySelectedDeviceCommands);
-    autocomplete(document.getElementById("action"), currentlySelectedDeviceCommands);
+// function callAutoCompleteMethod(){
+//     autocomplete(document.getElementById("trigger"), currentlySelectedDeviceCommands);
+//     autocomplete(document.getElementById("action"), currentlySelectedDeviceCommands);
 
-    for (let i = 1; i < totalPreviouslyCreatedRoutines + 1; i++) {
-        var trigID = "trigger" + i.toString();
-        var actID = "action" + i.toString();
-        autocomplete(document.getElementById(trigID), currentlySelectedDeviceCommands);
-        autocomplete(document.getElementById(actID), currentlySelectedDeviceCommands);
-    }
-}
+//     for (let i = 1; i < totalPreviouslyCreatedRoutines + 1; i++) {
+//         var trigID = "trigger" + i.toString();
+//         var actID = "action" + i.toString();
+//         autocomplete(document.getElementById(trigID), currentlySelectedDeviceCommands);
+//         autocomplete(document.getElementById(actID), currentlySelectedDeviceCommands);
+//     }
+// }
